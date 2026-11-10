@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "gpi_tracking": {
+      "GPI_TRACKING00": {
+        "identifier": "s1e",
+        "identifierType": "s1f",
+        "transactions": [],
+        "id": "GPI_TRACKING00"
+      },
+      "GPI_TRACKING01": {
+        "identifier": "s3c",
+        "identifierType": "s3d",
+        "transactions": [],
+        "id": "GPI_TRACKING01"
+      },
+      "GPI_TRACKING02": {
+        "identifier": "s5a",
+        "identifierType": "s5b",
+        "transactions": [],
+        "id": "GPI_TRACKING02"
+      }
+    }
+  },
+  "new": {
+    "gpi_tracking": {
+      "gpi_tracking_ref01": {
+        "identifier": "s78",
+        "identifierType": "s79",
+        "transactions": []
+      }
+    }
+  },
+  "requests": {
+    "POST /gpi-tracking": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

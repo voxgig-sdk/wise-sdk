@@ -1,0 +1,22 @@
+# BasicScaSessionFlow
+
+main: kit: flow: BasicScaSessionFlow:
+{
+  entity: "sca_session",
+  kind: "basic",
+  name: "BasicScaSessionFlow",
+  step: [
+    {
+      i: {
+        ref: "sca_session_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicScaSessionFlow"
+}

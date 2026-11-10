@@ -1,0 +1,38 @@
+# BasicDirectDebitAccountFlow
+
+main: kit: flow: BasicDirectDebitAccountFlow:
+{
+  entity: "direct_debit_account",
+  kind: "basic",
+  name: "BasicDirectDebitAccountFlow",
+  step: [
+    {
+      i: {
+        ref: "direct_debit_account_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "direct_debit_account_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDirectDebitAccountFlow"
+}

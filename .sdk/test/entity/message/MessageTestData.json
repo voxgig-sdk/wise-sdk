@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "message": {
+      "MESSAGE00": {
+        "submissionData": {},
+        "type": "s15",
+        "case_id": "CASE01",
+        "id": "MESSAGE00"
+      },
+      "MESSAGE01": {
+        "submissionData": {},
+        "type": "s29",
+        "case_id": "CASE01",
+        "id": "MESSAGE01"
+      },
+      "MESSAGE02": {
+        "submissionData": {},
+        "type": "s3d",
+        "case_id": "CASE01",
+        "id": "MESSAGE02"
+      }
+    }
+  },
+  "new": {
+    "message": {
+      "message_ref01": {
+        "submissionData": {},
+        "type": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /cases/{caseId}/messages": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

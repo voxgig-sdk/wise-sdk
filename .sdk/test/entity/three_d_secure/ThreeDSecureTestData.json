@@ -1,0 +1,39 @@
+{
+  "existing": {
+    "three_d_secure": {
+      "THREE_D_SECURE00": {
+        "challengeStatus": "s14",
+        "transactionReference": "s15",
+        "profile_id": "PROFILE01",
+        "id": "THREE_D_SECURE00"
+      },
+      "THREE_D_SECURE01": {
+        "challengeStatus": "s28",
+        "transactionReference": "s29",
+        "profile_id": "PROFILE01",
+        "id": "THREE_D_SECURE01"
+      },
+      "THREE_D_SECURE02": {
+        "challengeStatus": "s3c",
+        "transactionReference": "s3d",
+        "profile_id": "PROFILE01",
+        "id": "THREE_D_SECURE02"
+      }
+    }
+  },
+  "new": {
+    "three_d_secure": {
+      "three_d_secure_ref01": {
+        "challengeStatus": "s50",
+        "transactionReference": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /spend/profiles/{profileId}/3dsecure/challenge-result": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

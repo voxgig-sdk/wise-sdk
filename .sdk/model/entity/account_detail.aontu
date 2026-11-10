@@ -1,0 +1,132 @@
+# Entity: account_detail
+
+main: kit: entity: account_detail: {
+
+  alias: field: {}
+
+  fields: {
+    accountHolderName: {
+      h: "Account Holder Name"
+      n: "accountHolderName"
+      r: true
+      sh: "Name of the account holder as it appears on the account details."
+      t: "`$STRING`"
+    }
+    accountIdentification: {
+      h: "Account Identification"
+      n: "accountIdentification"
+      r: true
+      sh: "Country/scheme-specific account identification."
+      t: "`$ANY`"
+      union: {
+        branches: 3
+        count: 1
+        depth: 0
+      }
+    }
+    country: {
+      h: "Country"
+      n: "country"
+      r: true
+      sh: "ISO 3166-1 alpha-2 country code the account details belong to."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: true
+      sh: "Unique identifier for the account details."
+      t: "`$INTEGER`"
+    }
+    profileId: {
+      fo: "int64"
+      h: "Profile Id"
+      n: "profileId"
+      r: true
+      sh: "Profile ID of the account details owner."
+      t: "`$INTEGER`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      sh: "Current state of the account details."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "account_detail"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /balances/account-details/{id}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 12345678
+                k: "param"
+                n: "id"
+                or: "id"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/balances/account-details/{id}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "balances"
+            }
+            {
+              lit: "account-details"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

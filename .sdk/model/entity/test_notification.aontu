@@ -1,0 +1,116 @@
+# Entity: test_notification
+
+main: kit: entity: test_notification: {
+
+  alias: field: {}
+
+  fields: {
+    created_at: {
+      fo: "date-time"
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Timestamp of when the test notification was created."
+      t: "`$STRING`"
+    }
+    delivery_id: {
+      fo: "uuid"
+      h: "Delivery Id"
+      n: "delivery_id"
+      r: false
+      sh: "ID of the delivery that was queued for sending."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "test_notification"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /applications/{clientKey}/subscriptions/{subscriptionId}/test-notifications"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "client_key"
+                or: "clientKey"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "subscription_id"
+                or: "subscriptionId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/applications/{clientKey}/subscriptions/{subscriptionId}/test-notifications"
+          q: {
+            exist: [
+              "client_key"
+              "subscription_id"
+            ]
+          }
+          r: {
+            param: {
+              clientKey: "client_key"
+              subscriptionId: "subscription_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "applications"
+            }
+            {
+              var: "client_key"
+            }
+            {
+              lit: "subscriptions"
+            }
+            {
+              var: "subscription_id"
+            }
+            {
+              lit: "test-notifications"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.subscription")]
+  ]
+
+}

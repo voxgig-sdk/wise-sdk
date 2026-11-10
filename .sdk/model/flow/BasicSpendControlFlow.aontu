@@ -1,0 +1,72 @@
+# BasicSpendControlFlow
+
+main: kit: flow: BasicSpendControlFlow:
+{
+  entity: "spend_control",
+  kind: "basic",
+  name: "BasicSpendControlFlow",
+  step: [
+    {
+      i: {
+        ref: "spend_control_ref01"
+      }
+
+      m: {
+        application_id: "application01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        application_id: "application01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "spend_control_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "spend_control_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        application_id: "application01",
+        id: "spend_control01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        application_id: "application01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "spend_control_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSpendControlFlow"
+}

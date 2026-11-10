@@ -1,0 +1,132 @@
+# Entity: phone_number
+
+main: kit: entity: phone_number: {
+
+  alias: field: {}
+
+  fields: {
+    clientId: {
+      h: "Client Id"
+      n: "clientId"
+      r: false
+      sh: "Client ID of which this phone number belongs to."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "ID of the phone number."
+      t: "`$INTEGER`"
+    }
+    phoneNumber: {
+      h: "Phone Number"
+      n: "phoneNumber"
+      r: false
+      sh: "A text representation of phone number."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Type of phone number when used in authentication."
+      t: "`$STRING`"
+    }
+    verified: {
+      h: "Verified"
+      n: "verified"
+      r: false
+      sh: "Indicator if phone number is verified."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "phone_number"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "phoneNumber"
+          ]
+          co: {
+            id: "POST /application/users/{userId}/phone-numbers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "user_id"
+                or: "userId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/application/users/{userId}/phone-numbers"
+          q: {
+            exist: [
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              userId: "user_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "application"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "phone-numbers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.user")]
+  ]
+
+}

@@ -1,0 +1,22 @@
+# BasicDeliveryUpdateFlow
+
+main: kit: flow: BasicDeliveryUpdateFlow:
+{
+  entity: "delivery_update",
+  kind: "basic",
+  name: "BasicDeliveryUpdateFlow",
+  step: [
+    {
+      i: {
+        ref: "delivery_update_ref01"
+      }
+
+      m: {
+        transfer_id: "transfer01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicDeliveryUpdateFlow"
+}

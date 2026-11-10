@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BankAccountDetail | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a aria-current="page" href="../api/bank_account_detail.html">BankAccountDetail</a><div class="nav-sections"><a class="nav-section" href="#post-profilesprofileidaccount-detailspaymentspaymentidreturns">POST /profiles/{profileId}/account-details/payments/{paymentId}/returns</a>
+<a class="nav-section" href="#post-profilesprofileidbank-details">POST /profiles/{profileId}/bank-details</a></div>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="bankaccountdetail">BankAccountDetail</h1>
+<p>Bank account details: create several, or create a payment return.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidaccount-detailspaymentspaymentidreturns"><code>/profiles/{profileId}/account-details/payments/{paymentId}/returns</code></a></td>
+<td><code>create</code></td>
+<td>Payment return created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidbank-details"><code>/profiles/{profileId}/bank-details</code></a></td>
+<td><code>create</code></td>
+<td>Bank account details created</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">created, err := client.BankAccountDetail(nil).Create(map[string]any{&quot;profile_id&quot;: 1, &quot;targetAccountId&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local created, err = client:BankAccountDetail():create({ profile_id = 1, targetAccountId = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$created = $client-&gt;BankAccountDetail()-&gt;create([&quot;profile_id&quot; =&gt; 1, &quot;targetAccountId&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">created = client.BankAccountDetail().create({ &quot;profile_id&quot;: 1, &quot;targetAccountId&quot;: 1 })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">created = client.BankAccountDetail.create({ &quot;profile_id&quot; =&gt; 1, &quot;targetAccountId&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const created = await client.BankAccountDetail().create({ profile_id: 1, targetAccountId: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of the account detail.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account detail currency (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account detail ID.</td>
+</tr>
+<tr>
+<td><code>internationalDetails</code></td>
+<td><code>one,object,null</code></td>
+<td>No</td>
+<td>International bank account details.</td>
+</tr>
+<tr>
+<td><code>localDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Local bank account details.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Reason for the return.</td>
+</tr>
+<tr>
+<td><code>targetAccountId</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>ID of the currency balance to create account details on.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-profilesprofileidaccount-detailspaymentspaymentidreturns" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/account-details/payments/{paymentId}/returns</h3>
+<p>Operation ID: <code>bankAccountDetailsReturnsCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that received the payment.</td>
+</tr>
+<tr>
+<td><code>paymentId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the payment to return.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>reason</code></td>
+<td><code>enum: INCORRECT_ACCOUNT_NUMBER, CLOSED_ACCOUNT, BLOCKED_ACCOUNT, CANCELLATION_REQUEST, REGULATORY, CUSTOMER_REQUEST</code></td>
+<td>No</td>
+<td>Reason for the return. Required when returning SWIFT payments.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="201-payment-return-created" class="status" data-status="2xx">201: Payment return created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>ID of the return created.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-invalid-request" class="status" data-status="4xx">400: Invalid request</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors[].arguments</code></td>
+<td><code>array of any</code></td>
+<td>No</td>
+<td>Additional context values related to the error.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error code.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error message.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-payment-not-found" class="status" data-status="4xx">404: Payment not found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors[].arguments</code></td>
+<td><code>array of any</code></td>
+<td>No</td>
+<td>Additional context values related to the error.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error code.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error message.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidbank-details" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/bank-details</h3>
+<p>Operation ID: <code>bankAccountDetailsBankDetailsCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile to create bank account details for.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>targetAccountId</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>ID of the currency balance to create account details on.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-bank-account-details-created" class="status" data-status="2xx">200: Bank account details created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of the account detail.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account detail currency (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account detail ID.</td>
+</tr>
+<tr>
+<td><code>internationalDetails</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>International bank account details. Only returned if SWIFT payments are supported for that currency.</td>
+</tr>
+<tr>
+<td><code>internationalDetails.bankAddress</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Address of the bank.</td>
+</tr>
+<tr>
+<td><code>internationalDetails.bankName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the bank.</td>
+</tr>
+<tr>
+<td><code>internationalDetails.iban</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>IBAN.</td>
+</tr>
+<tr>
+<td><code>internationalDetails.swiftCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Bank SWIFT code.</td>
+</tr>
+<tr>
+<td><code>internationalDetails.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of account detail.</td>
+</tr>
+<tr>
+<td><code>localDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Local bank account details.</td>
+</tr>
+<tr>
+<td><code>localDetails.accountNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Bank account number.</td>
+</tr>
+<tr>
+<td><code>localDetails.bankAddress</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Address of the bank.</td>
+</tr>
+<tr>
+<td><code>localDetails.bankName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the bank.</td>
+</tr>
+<tr>
+<td><code>localDetails.sortCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Sort code of the bank.</td>
+</tr>
+<tr>
+<td><code>localDetails.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of account detail.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

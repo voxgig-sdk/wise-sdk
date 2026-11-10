@@ -1,0 +1,33 @@
+# BasicPayinDepositDetailFlow
+
+main: kit: flow: BasicPayinDepositDetailFlow:
+{
+  entity: "payin_deposit_detail",
+  kind: "basic",
+  name: "BasicPayinDepositDetailFlow",
+  step: [
+    {
+      i: {
+        ref: "payin_deposit_detail_ref01",
+        srcdatavar: "payin_deposit_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "payin_deposit_detail01",
+        profile_id: "profile01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-payin_deposit_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPayinDepositDetailFlow"
+}

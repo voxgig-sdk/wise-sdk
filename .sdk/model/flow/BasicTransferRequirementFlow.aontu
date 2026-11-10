@@ -1,0 +1,18 @@
+# BasicTransferRequirementFlow
+
+main: kit: flow: BasicTransferRequirementFlow:
+{
+  entity: "transfer_requirement",
+  kind: "basic",
+  name: "BasicTransferRequirementFlow",
+  step: [
+    {
+      i: {
+        ref: "transfer_requirement_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicTransferRequirementFlow"
+}

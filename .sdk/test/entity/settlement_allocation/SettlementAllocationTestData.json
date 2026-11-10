@@ -1,0 +1,73 @@
+{
+  "existing": {
+    "settlement_allocation": {
+      "SETTLEMENT_ALLOCATION00": {
+        "command": {},
+        "createdAt": "s6f",
+        "currency": "s70",
+        "expectedTotalAmount": 113,
+        "file": "s72",
+        "id": "SETTLEMENT_ALLOCATION00",
+        "nextPageToken": "s74",
+        "paymentIntents": [],
+        "paymentReference": "s76",
+        "state": "s77",
+        "updatedAt": "s78"
+      },
+      "SETTLEMENT_ALLOCATION01": {
+        "command": {},
+        "createdAt": "sdd",
+        "currency": "sde",
+        "expectedTotalAmount": 223,
+        "file": "se0",
+        "id": "SETTLEMENT_ALLOCATION01",
+        "nextPageToken": "se2",
+        "paymentIntents": [],
+        "paymentReference": "se4",
+        "state": "se5",
+        "updatedAt": "se6"
+      },
+      "SETTLEMENT_ALLOCATION02": {
+        "command": {},
+        "createdAt": "s14b",
+        "currency": "s14c",
+        "expectedTotalAmount": 333,
+        "file": "s14e",
+        "id": "SETTLEMENT_ALLOCATION02",
+        "nextPageToken": "s150",
+        "paymentIntents": [],
+        "paymentReference": "s152",
+        "state": "s153",
+        "updatedAt": "s154"
+      }
+    }
+  },
+  "new": {
+    "settlement_allocation": {
+      "settlement_allocation_ref01": {
+        "command": {},
+        "createdAt": "s1b9",
+        "currency": "s1ba",
+        "expectedTotalAmount": 443,
+        "file": "s1bc",
+        "nextPageToken": "s1be",
+        "paymentIntents": [],
+        "paymentReference": "s1c0",
+        "state": "s1c1",
+        "updatedAt": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /settlement/allocations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /settlement/allocations/{allocationId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

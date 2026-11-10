@@ -1,0 +1,22 @@
+# BasicRateFlow
+
+main: kit: flow: BasicRateFlow:
+{
+  entity: "rate",
+  kind: "basic",
+  name: "BasicRateFlow",
+  step: [
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "rate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicRateFlow"
+}

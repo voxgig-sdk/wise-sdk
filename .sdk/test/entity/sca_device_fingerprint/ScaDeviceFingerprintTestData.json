@@ -1,0 +1,44 @@
+{
+  "existing": {
+    "sca_device_fingerprint": {
+      "SCA_DEVICE_FINGERPRINT00": {
+        "createdAt": "s1e",
+        "deviceFingerprintId": "s1f",
+        "id": "SCA_DEVICE_FINGERPRINT00",
+        "profile_id": "PROFILE01"
+      },
+      "SCA_DEVICE_FINGERPRINT01": {
+        "createdAt": "s3c",
+        "deviceFingerprintId": "s3d",
+        "id": "SCA_DEVICE_FINGERPRINT01",
+        "profile_id": "PROFILE01"
+      },
+      "SCA_DEVICE_FINGERPRINT02": {
+        "createdAt": "s5a",
+        "deviceFingerprintId": "s5b",
+        "id": "SCA_DEVICE_FINGERPRINT02",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "sca_device_fingerprint": {
+      "sca_device_fingerprint_ref01": {
+        "createdAt": "s78",
+        "deviceFingerprintId": "s79"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/device-fingerprints": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /profiles/{profileId}/device-fingerprints/{deviceFingerprintId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "spend_limit": {
+      "SPEND_LIMIT00": {
+        "aggregateWindow": {},
+        "id": "SPEND_LIMIT00",
+        "type": "s20",
+        "profile_id": "PROFILE01",
+        "card_id": "CARD01"
+      },
+      "SPEND_LIMIT01": {
+        "aggregateWindow": {},
+        "id": "SPEND_LIMIT01",
+        "type": "s3e",
+        "profile_id": "PROFILE01",
+        "card_id": "CARD01"
+      },
+      "SPEND_LIMIT02": {
+        "aggregateWindow": {},
+        "id": "SPEND_LIMIT02",
+        "type": "s5c",
+        "profile_id": "PROFILE01",
+        "card_id": "CARD01"
+      }
+    }
+  },
+  "new": {
+    "spend_limit": {
+      "spend_limit_ref01": {
+        "aggregateWindow": {},
+        "type": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /spend/profiles/{profileId}/spend-limits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /spend/profiles/{profileId}/cards/{cardToken}/spend-limits/{granularity}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /spend/profiles/{profileId}/spend-limits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

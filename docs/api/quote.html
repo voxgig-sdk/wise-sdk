@@ -1,0 +1,2732 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Quote | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a aria-current="page" href="../api/quote.html">Quote</a><div class="nav-sections"><a class="nav-section" href="#post-profilesprofileidquotes">POST /profiles/{profileId}/quotes</a>
+<a class="nav-section" href="#post-quotes">POST /quotes</a>
+<a class="nav-section" href="#get-profilesprofileidquotesquoteid">GET /profiles/{profileId}/quotes/{quoteId}</a>
+<a class="nav-section" href="#patch-profilesprofileidquotesquoteid">PATCH /profiles/{profileId}/quotes/{quoteId}</a></div>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="quote">Quote</h1>
+<p>A quote for a transfer: its exchange rate and fees.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidquotes"><code>/profiles/{profileId}/quotes</code></a></td>
+<td><code>create</code></td>
+<td>Returns a quote object</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-quotes"><code>/quotes</code></a></td>
+<td><code>create</code></td>
+<td>Returns a quote object</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileidquotesquoteid"><code>/profiles/{profileId}/quotes/{quoteId}</code></a></td>
+<td><code>load</code></td>
+<td>Returns a quote object</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-profilesprofileidquotesquoteid"><code>/profiles/{profileId}/quotes/{quoteId}</code></a></td>
+<td><code>update</code></td>
+<td>Returns a quote object</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">quote, err := client.Quote(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(quote)
+created, err := client.Quote(nil).Create(map[string]any{&quot;sourceCurrency&quot;: &quot;example&quot;, &quot;targetCurrency&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Quote(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1, &quot;payOut&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local quote, err = client:Quote():load({ id = &quot;example_id&quot;, profile_id = 1 })
+local created, err = client:Quote():create({ sourceCurrency = &quot;example&quot;, targetCurrency = &quot;example&quot; })
+local updated, err = client:Quote():update({ id = &quot;example_id&quot;, profile_id = 1, payOut = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$quote = $client-&gt;Quote()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1]);
+$created = $client-&gt;Quote()-&gt;create([&quot;sourceCurrency&quot; =&gt; &quot;example&quot;, &quot;targetCurrency&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;Quote()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1, &quot;payOut&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">quote = client.Quote().load({&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1})
+created = client.Quote().create({ &quot;sourceCurrency&quot;: &quot;example&quot;, &quot;targetCurrency&quot;: &quot;example&quot; })
+updated = client.Quote().update({&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1, &quot;payOut&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">quote = client.Quote.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1 })
+created = client.Quote.create({ &quot;sourceCurrency&quot; =&gt; &quot;example&quot;, &quot;targetCurrency&quot; =&gt; &quot;example&quot; })
+updated = client.Quote.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1, &quot;payOut&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const quote = await client.Quote().load({ id: &quot;example_id&quot;, profile_id: 1 })
+const created = await client.Quote().create({ sourceCurrency: &quot;example&quot;, targetCurrency: &quot;example&quot; })
+const updated = await client.Quote().update({ id: &quot;example_id&quot;, profile_id: 1, payOut: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>createdTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Quote created timestamp.</td>
+</tr>
+<tr>
+<td><code>creationContext</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Used to pass additional metadata about the intended transfer.</td>
+</tr>
+<tr>
+<td><code>expirationTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date and time the quote expires.</td>
+</tr>
+<tr>
+<td><code>guaranteedTargetAmount</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the target amount is guaranteed.</td>
+</tr>
+<tr>
+<td><code>guaranteedTargetAmountAllowed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether guaranteed target amount is allowed.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of this quote (GUID format).</td>
+</tr>
+<tr>
+<td><code>notices</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Messages to display to the user.</td>
+</tr>
+<tr>
+<td><code>payOut</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Mechanism Wise uses to deliver the transfer.</td>
+</tr>
+<tr>
+<td><code>paymentMetadata</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td><em>Optional</em>.</td>
+</tr>
+<tr>
+<td><code>paymentOptions</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>List of the methods available to pay for the transfer.</td>
+</tr>
+<tr>
+<td><code>preferredPayIn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred pay-in method.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Allows partners to override pricing configurations on a transfer level.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Personal or business profile ID.</td>
+</tr>
+<tr>
+<td><code>providedAmountType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Indicates whether the quote was created as source or target.</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate value used for the conversion.</td>
+</tr>
+<tr>
+<td><code>rateExpirationTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date and time the locked rate expires.</td>
+</tr>
+<tr>
+<td><code>rateType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Whether the rate is fixed or floating.</td>
+</tr>
+<tr>
+<td><code>sourceAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount in source currency to send.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source (sending) currency code.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Current status of the quote.</td>
+</tr>
+<tr>
+<td><code>targetAccount</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td><em>Optional</em>.</td>
+</tr>
+<tr>
+<td><code>targetAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount in target currency to be received by the recipient.</td>
+</tr>
+<tr>
+<td><code>targetAmountAllowed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether target amount is allowed.</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target (receive) currency code.</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>User ID that created the quote.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-profilesprofileidquotes" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/quotes</h3>
+<p>Operation ID: <code>quoteCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Personal or business profile ID of the sender.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>creationContext</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Used to pass additional metadata about the intended transfer.</td>
+</tr>
+<tr>
+<td><code>creationContext.flow</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><em>Optional</em>. Used to pass flow type for the creation flow on the quote. It should always be <code>MASS_PAY</code> for batch transfers funded via payin sessions.</td>
+</tr>
+<tr>
+<td><code>payOut</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td><em>Optional</em>. Preferred payout method. Default value is <code>BANK_TRANSFER</code>. Examples of other accepted values include <code>BALANCE</code>, <code>SWIFT</code>, <code>SWIFT_OUR</code>, <code>ALIPAY</code>, and <code>INTERAC</code>.</td>
+</tr>
+<tr>
+<td><code>paymentMetadata</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td><em>Optional</em>. Used to pass additional metadata about the intended transfer.</td>
+</tr>
+<tr>
+<td><code>paymentMetadata.transferNature</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><em>Optional</em>. Used to pass transfer nature for calculating proper tax amounts (IOF) for transfers to and from BRL. Accepted values are shown dynamically in transfer requirements.</td>
+</tr>
+<tr>
+<td><code>preferredPayIn</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td><em>Optional</em>. Preferred payin method. Use <code>BANK_TRANSFER</code> to return this method at the top of the response's results.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Required when configured for your client ID. Includes a <code>pricingConfiguration</code> to be used for pricing calculations with the quote.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.fixed</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected fixed fee that should be used in the <code>pricingConfiguration</code>. Always considered in source currency.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifies the type of fee to be configured. Options include only <code>OVERRIDE</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.variable</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected variable percentage, in decimal format, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>sourceAmount</code></td>
+<td><code>number,null</code></td>
+<td>No</td>
+<td>Amount in source currency. Either <code>sourceAmount</code> or <code>targetAmount</code> is required, never both.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Source (sending) currency code.</td>
+</tr>
+<tr>
+<td><code>targetAccount</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td><em>Optional</em>. This is the ID of transfer recipient, found in the create recipient response. If provided, can be used as an alternative to updating the quote.</td>
+</tr>
+<tr>
+<td><code>targetAmount</code></td>
+<td><code>number,null</code></td>
+<td>No</td>
+<td>Amount in target currency.</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Target (receiving) currency code.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-returns-a-quote-object" class="status" data-status="2xx">200: Returns a quote object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>createdTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Quote created timestamp.</td>
+</tr>
+<tr>
+<td><code>expirationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time the quote expires.</td>
+</tr>
+<tr>
+<td><code>guaranteedTargetAmount</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the target amount is guaranteed.</td>
+</tr>
+<tr>
+<td><code>guaranteedTargetAmountAllowed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether guaranteed target amount is allowed.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>ID of this quote (GUID format).</td>
+</tr>
+<tr>
+<td><code>notices</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Messages to display to the user. May be empty (<code>[]</code>) if there are no messages.</td>
+</tr>
+<tr>
+<td><code>notices[].link</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>URL that provides more details about the message. May be <code>null</code> if there's no URL.</td>
+</tr>
+<tr>
+<td><code>notices[].text</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The message to display.</td>
+</tr>
+<tr>
+<td><code>notices[].type</code></td>
+<td><code>enum: WARNING, INFO, BLOCKED</code></td>
+<td>No</td>
+<td>The type of message. If it is <code>BLOCKED</code>, don't allow the quote to be used to create the transfer.</td>
+</tr>
+<tr>
+<td><code>payOut</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Mechanism Wise uses to deliver the transfer. Provided for information purposes.</td>
+</tr>
+<tr>
+<td><code>paymentOptions</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of the methods available to pay for the transfer.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].allowedProfileTypes</code></td>
+<td><code>array of enum: PERSONAL, BUSINESS</code></td>
+<td>No</td>
+<td>Array of the profile types allowed to use this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this option is enabled or not for this quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Present only if a payment option is disabled.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Denotes the reason a payment method is unavailable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason.message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User-friendly message to display when a method is unavailable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDelivery</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The estimated delivery time for this combination of <code>payIn</code> and <code>payOut</code> methods (assuming <code>payIn</code> is performed now).</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDeliveryDelays</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of objects for delivery delays you can display to your customers.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDeliveryDelays[].reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Reason for the delivery delay.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Fee details for the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Any discounts that have been applied to this quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.partner</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Agreed-upon custom pricing, if applicable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.payIn</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The fee for this payment option, based on the product type of the payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.total</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total fees to be paid. Use this value when displaying fees in your app.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.transferwise</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The fee to be paid <code>_by</code> the <code>sender_</code> based on the current state of the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].feePercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Fee percentage for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].formattedEstimatedDelivery</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A customer-friendly string for the estimated delivery date, which you can pass through to your front-end.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payIn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of pay in method for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payInProduct</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Pay-in product type.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payOut</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of pay out method for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Price details for the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The amount, unrounded, that fees were calculated on and built up from.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deferred fee information from a <code>pricingConfiguration</code> override.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount of fees deferred by a <code>pricingConfiguration</code> override.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency of the deferred fee amount.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Details the different elements contained in the total price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Additional deails for a price breakdown item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation.markdown</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Formatted textual information about the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation.plainText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text details about the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text describing the price element.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the price item (for example, <code>FEE</code> or <code>DISCOUNT</code>).</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Value details for the <code>price.items</code> object.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount associated with this price. Can be negative for discounts.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency of the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text description of the price and currency.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.priceSetId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the price structure.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total fees to be paid. Use this value when displaying fees in your app.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.explanation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Provides more details about the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text describing the price structure.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the pricing element.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Value details for the <code>price.total</code> object.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount to be paid.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency of the amount to be paid.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text version of the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].sourceAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Source amount when using this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].targetAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Target amount when using this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target currency for this payment option.</td>
+</tr>
+<tr>
+<td><code>preferredPayIn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred pay-in method.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Allows partners to override pricing configurations on a transfer level.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.fixed</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected fixed fee, in source currency, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifies the type of fee to be configured. Options include only <code>OVERRIDE</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.variable</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected variable percentage, in decimal format, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Personal or business profile ID.</td>
+</tr>
+<tr>
+<td><code>providedAmountType</code></td>
+<td><code>enum: SOURCE, TARGET</code></td>
+<td>No</td>
+<td>Indicates whether the quote was created as source or target.</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate value used for the conversion.</td>
+</tr>
+<tr>
+<td><code>rateExpirationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date and time the locked rate expires.</td>
+</tr>
+<tr>
+<td><code>rateType</code></td>
+<td><code>enum: FIXED, FLOATING</code></td>
+<td>No</td>
+<td>Whether the rate is fixed or floating.</td>
+</tr>
+<tr>
+<td><code>sourceAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount in source currency to send.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source (sending) currency code.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: PENDING, ACCEPTED, FUNDED, EXPIRED</code></td>
+<td>No</td>
+<td>Current status of the quote.</td>
+</tr>
+<tr>
+<td><code>targetAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount in target currency to be received by the recipient.</td>
+</tr>
+<tr>
+<td><code>targetAmountAllowed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether target amount is allowed.</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target (receive) currency code.</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>User ID that created the quote.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-quotes" class="operation" data-method="post"><code>POST</code> /quotes</h3>
+<p>Operation ID: <code>quoteCreateUnauthenticated</code>.</p>
+<p>Authentication: not required.</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>pricingConfiguration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Required when configured for your client ID. Includes a <code>pricingConfiguration</code> to be used for pricing calculations with the quote.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.fixed</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected fixed fee that should be used in the <code>pricingConfiguration</code>. Always considered in source currency.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifies the type of fee to be configured. Options include only <code>OVERRIDE</code>.&quot;</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.variable</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected variable percentage, in decimal format, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>sourceAmount</code></td>
+<td><code>number,null</code></td>
+<td>No</td>
+<td>Amount in source currency. Either <code>sourceAmount</code> or <code>targetAmount</code> is required, never both.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Source (sending) currency code.</td>
+</tr>
+<tr>
+<td><code>targetAmount</code></td>
+<td><code>number,null</code></td>
+<td>No</td>
+<td>Amount in target currency.</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Target (receiving) currency code.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-returns-a-quote-object-1" class="status" data-status="2xx">200: Returns a quote object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>createdTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Quote created timestamp.</td>
+</tr>
+<tr>
+<td><code>expirationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time the quote expires.</td>
+</tr>
+<tr>
+<td><code>guaranteedTargetAmount</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the target amount is guaranteed.</td>
+</tr>
+<tr>
+<td><code>guaranteedTargetAmountAllowed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether guaranteed target amount is allowed.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>ID of this quote (GUID format).</td>
+</tr>
+<tr>
+<td><code>notices</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Messages to display to the user. May be empty (<code>[]</code>) if there are no messages.</td>
+</tr>
+<tr>
+<td><code>notices[].link</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>URL that provides more details about the message. May be <code>null</code> if there's no URL.</td>
+</tr>
+<tr>
+<td><code>notices[].text</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The message to display.</td>
+</tr>
+<tr>
+<td><code>notices[].type</code></td>
+<td><code>enum: WARNING, INFO, BLOCKED</code></td>
+<td>No</td>
+<td>The type of message. If it is <code>BLOCKED</code>, don't allow the quote to be used to create the transfer.</td>
+</tr>
+<tr>
+<td><code>payOut</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Mechanism Wise uses to deliver the transfer. Provided for information purposes.</td>
+</tr>
+<tr>
+<td><code>paymentOptions</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of the methods available to pay for the transfer.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].allowedProfileTypes</code></td>
+<td><code>array of enum: PERSONAL, BUSINESS</code></td>
+<td>No</td>
+<td>Array of the profile types allowed to use this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this option is enabled or not for this quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Present only if a payment option is disabled.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Denotes the reason a payment method is unavailable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason.message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User-friendly message to display when a method is unavailable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDelivery</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The estimated delivery time for this combination of <code>payIn</code> and <code>payOut</code> methods (assuming <code>payIn</code> is performed now).</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDeliveryDelays</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of objects for delivery delays you can display to your customers.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDeliveryDelays[].reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Reason for the delivery delay.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Fee details for the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Any discounts that have been applied to this quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.partner</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Agreed-upon custom pricing, if applicable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.payIn</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The fee for this payment option, based on the product type of the payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.total</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total fees to be paid. Use this value when displaying fees in your app.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.transferwise</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The fee to be paid <code>_by</code> the <code>sender_</code> based on the current state of the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].feePercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Fee percentage for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].formattedEstimatedDelivery</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A customer-friendly string for the estimated delivery date, which you can pass through to your front-end.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payIn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of pay in method for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payInProduct</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Pay-in product type.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payOut</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of pay out method for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Price details for the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The amount, unrounded, that fees were calculated on and built up from.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deferred fee information from a <code>pricingConfiguration</code> override.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount of fees deferred by a <code>pricingConfiguration</code> override.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency of the deferred fee amount.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Details the different elements contained in the total price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Additional deails for a price breakdown item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation.markdown</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Formatted textual information about the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation.plainText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text details about the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text describing the price element.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the price item (for example, <code>FEE</code> or <code>DISCOUNT</code>).</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Value details for the <code>price.items</code> object.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount associated with this price. Can be negative for discounts.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency of the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text description of the price and currency.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.priceSetId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the price structure.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total fees to be paid. Use this value when displaying fees in your app.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.explanation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Provides more details about the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text describing the price structure.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the pricing element.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Value details for the <code>price.total</code> object.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount to be paid.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency of the amount to be paid.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text version of the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].sourceAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Source amount when using this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].targetAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Target amount when using this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target currency for this payment option.</td>
+</tr>
+<tr>
+<td><code>preferredPayIn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred pay-in method.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Allows partners to override pricing configurations on a transfer level.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.fixed</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected fixed fee, in source currency, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifies the type of fee to be configured. Options include only <code>OVERRIDE</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.variable</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected variable percentage, in decimal format, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Personal or business profile ID.</td>
+</tr>
+<tr>
+<td><code>providedAmountType</code></td>
+<td><code>enum: SOURCE, TARGET</code></td>
+<td>No</td>
+<td>Indicates whether the quote was created as source or target.</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate value used for the conversion.</td>
+</tr>
+<tr>
+<td><code>rateExpirationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date and time the locked rate expires.</td>
+</tr>
+<tr>
+<td><code>rateType</code></td>
+<td><code>enum: FIXED, FLOATING</code></td>
+<td>No</td>
+<td>Whether the rate is fixed or floating.</td>
+</tr>
+<tr>
+<td><code>sourceAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount in source currency to send.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source (sending) currency code.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: PENDING, ACCEPTED, FUNDED, EXPIRED</code></td>
+<td>No</td>
+<td>Current status of the quote.</td>
+</tr>
+<tr>
+<td><code>targetAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount in target currency to be received by the recipient.</td>
+</tr>
+<tr>
+<td><code>targetAmountAllowed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether target amount is allowed.</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target (receive) currency code.</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>User ID that created the quote.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-profilesprofileidquotesquoteid" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}/quotes/{quoteId}</h3>
+<p>Operation ID: <code>quoteGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Personal or business profile ID.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The quote ID (GUID format).</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-returns-a-quote-object-2" class="status" data-status="2xx">200: Returns a quote object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>createdTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Quote created timestamp.</td>
+</tr>
+<tr>
+<td><code>expirationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time the quote expires.</td>
+</tr>
+<tr>
+<td><code>guaranteedTargetAmount</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the target amount is guaranteed.</td>
+</tr>
+<tr>
+<td><code>guaranteedTargetAmountAllowed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether guaranteed target amount is allowed.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>ID of this quote (GUID format).</td>
+</tr>
+<tr>
+<td><code>notices</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Messages to display to the user. May be empty (<code>[]</code>) if there are no messages.</td>
+</tr>
+<tr>
+<td><code>notices[].link</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>URL that provides more details about the message. May be <code>null</code> if there's no URL.</td>
+</tr>
+<tr>
+<td><code>notices[].text</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The message to display.</td>
+</tr>
+<tr>
+<td><code>notices[].type</code></td>
+<td><code>enum: WARNING, INFO, BLOCKED</code></td>
+<td>No</td>
+<td>The type of message. If it is <code>BLOCKED</code>, don't allow the quote to be used to create the transfer.</td>
+</tr>
+<tr>
+<td><code>payOut</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Mechanism Wise uses to deliver the transfer. Provided for information purposes.</td>
+</tr>
+<tr>
+<td><code>paymentOptions</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of the methods available to pay for the transfer.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].allowedProfileTypes</code></td>
+<td><code>array of enum: PERSONAL, BUSINESS</code></td>
+<td>No</td>
+<td>Array of the profile types allowed to use this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this option is enabled or not for this quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Present only if a payment option is disabled.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Denotes the reason a payment method is unavailable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason.message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User-friendly message to display when a method is unavailable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDelivery</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The estimated delivery time for this combination of <code>payIn</code> and <code>payOut</code> methods (assuming <code>payIn</code> is performed now).</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDeliveryDelays</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of objects for delivery delays you can display to your customers.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDeliveryDelays[].reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Reason for the delivery delay.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Fee details for the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Any discounts that have been applied to this quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.partner</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Agreed-upon custom pricing, if applicable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.payIn</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The fee for this payment option, based on the product type of the payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.total</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total fees to be paid. Use this value when displaying fees in your app.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.transferwise</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The fee to be paid <code>_by</code> the <code>sender_</code> based on the current state of the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].feePercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Fee percentage for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].formattedEstimatedDelivery</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A customer-friendly string for the estimated delivery date, which you can pass through to your front-end.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payIn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of pay in method for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payInProduct</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Pay-in product type.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payOut</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of pay out method for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Price details for the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The amount, unrounded, that fees were calculated on and built up from.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deferred fee information from a <code>pricingConfiguration</code> override.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount of fees deferred by a <code>pricingConfiguration</code> override.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency of the deferred fee amount.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Details the different elements contained in the total price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Additional deails for a price breakdown item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation.markdown</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Formatted textual information about the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation.plainText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text details about the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text describing the price element.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the price item (for example, <code>FEE</code> or <code>DISCOUNT</code>).</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Value details for the <code>price.items</code> object.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount associated with this price. Can be negative for discounts.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency of the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text description of the price and currency.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.priceSetId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the price structure.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total fees to be paid. Use this value when displaying fees in your app.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.explanation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Provides more details about the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text describing the price structure.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the pricing element.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Value details for the <code>price.total</code> object.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount to be paid.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency of the amount to be paid.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text version of the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].sourceAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Source amount when using this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].targetAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Target amount when using this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target currency for this payment option.</td>
+</tr>
+<tr>
+<td><code>preferredPayIn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred pay-in method.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Allows partners to override pricing configurations on a transfer level.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.fixed</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected fixed fee, in source currency, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifies the type of fee to be configured. Options include only <code>OVERRIDE</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.variable</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected variable percentage, in decimal format, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Personal or business profile ID.</td>
+</tr>
+<tr>
+<td><code>providedAmountType</code></td>
+<td><code>enum: SOURCE, TARGET</code></td>
+<td>No</td>
+<td>Indicates whether the quote was created as source or target.</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate value used for the conversion.</td>
+</tr>
+<tr>
+<td><code>rateExpirationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date and time the locked rate expires.</td>
+</tr>
+<tr>
+<td><code>rateType</code></td>
+<td><code>enum: FIXED, FLOATING</code></td>
+<td>No</td>
+<td>Whether the rate is fixed or floating.</td>
+</tr>
+<tr>
+<td><code>sourceAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount in source currency to send.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source (sending) currency code.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: PENDING, ACCEPTED, FUNDED, EXPIRED</code></td>
+<td>No</td>
+<td>Current status of the quote.</td>
+</tr>
+<tr>
+<td><code>targetAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount in target currency to be received by the recipient.</td>
+</tr>
+<tr>
+<td><code>targetAmountAllowed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether target amount is allowed.</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target (receive) currency code.</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>User ID that created the quote.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="update">update</h2>
+<h3 id="patch-profilesprofileidquotesquoteid" class="operation" data-method="patch"><code>PATCH</code> /profiles/{profileId}/quotes/{quoteId}</h3>
+<p>Operation ID: <code>quoteUpdate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Personal or business profile ID.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The quote ID (GUID format).</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/merge-patch+json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>payOut</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><em>Optional</em>. Preferred payout method. Default value is <code>BANK_TRANSFER</code>. Examples of other accepted values include <code>BALANCE</code>, <code>SWIFT</code>, <code>SWIFT_OUR</code>, <code>ALIPAY</code>, and <code>INTERAC</code>.</td>
+</tr>
+<tr>
+<td><code>paymentMetadata</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td><em>Optional</em>. Used to pass additional metadata about the intended transfer.</td>
+</tr>
+<tr>
+<td><code>paymentMetadata.transferNature</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td><em>Optional</em>. Used to pass transfer nature for calculating proper tax amounts (IOF) for transfers to and from BRL. Accepted values are shown dynamically in transfer requirements.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Required when configured for your client ID. Includes <code>pricingConfiguration</code> to be used for pricing calculations with the quote. If previously passed, the existing <code>pricingConfiguration</code> will remain and not be updated.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.fixed</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected fixed fee, in source currency, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifies the type of fee to be configured. Options include only <code>OVERRIDE</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.variable</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected variable percentage, in decimal format, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>targetAccount</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of transfer recipient, found in the create recipient response.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-returns-a-quote-object-3" class="status" data-status="2xx">200: Returns a quote object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>createdTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Quote created timestamp.</td>
+</tr>
+<tr>
+<td><code>expirationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The date and time the quote expires.</td>
+</tr>
+<tr>
+<td><code>guaranteedTargetAmount</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the target amount is guaranteed.</td>
+</tr>
+<tr>
+<td><code>guaranteedTargetAmountAllowed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether guaranteed target amount is allowed.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>ID of this quote (GUID format).</td>
+</tr>
+<tr>
+<td><code>notices</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Messages to display to the user. May be empty (<code>[]</code>) if there are no messages.</td>
+</tr>
+<tr>
+<td><code>notices[].link</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>URL that provides more details about the message. May be <code>null</code> if there's no URL.</td>
+</tr>
+<tr>
+<td><code>notices[].text</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The message to display.</td>
+</tr>
+<tr>
+<td><code>notices[].type</code></td>
+<td><code>enum: WARNING, INFO, BLOCKED</code></td>
+<td>No</td>
+<td>The type of message. If it is <code>BLOCKED</code>, don't allow the quote to be used to create the transfer.</td>
+</tr>
+<tr>
+<td><code>payOut</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Mechanism Wise uses to deliver the transfer. Provided for information purposes.</td>
+</tr>
+<tr>
+<td><code>paymentOptions</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of the methods available to pay for the transfer.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].allowedProfileTypes</code></td>
+<td><code>array of enum: PERSONAL, BUSINESS</code></td>
+<td>No</td>
+<td>Array of the profile types allowed to use this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabled</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this option is enabled or not for this quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Present only if a payment option is disabled.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Denotes the reason a payment method is unavailable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].disabledReason.message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User-friendly message to display when a method is unavailable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDelivery</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The estimated delivery time for this combination of <code>payIn</code> and <code>payOut</code> methods (assuming <code>payIn</code> is performed now).</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDeliveryDelays</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of objects for delivery delays you can display to your customers.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].estimatedDeliveryDelays[].reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Reason for the delivery delay.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Fee details for the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.discount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Any discounts that have been applied to this quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.partner</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Agreed-upon custom pricing, if applicable.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.payIn</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The fee for this payment option, based on the product type of the payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.total</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The total fees to be paid. Use this value when displaying fees in your app.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].fee.transferwise</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The fee to be paid <code>_by</code> the <code>sender_</code> based on the current state of the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].feePercentage</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Fee percentage for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].formattedEstimatedDelivery</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A customer-friendly string for the estimated delivery date, which you can pass through to your front-end.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payIn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of pay in method for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payInProduct</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Pay-in product type.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].payOut</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of pay out method for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Price details for the quote.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The amount, unrounded, that fees were calculated on and built up from.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.calculatedOn.unroundedAmountToConvert.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Deferred fee information from a <code>pricingConfiguration</code> override.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The amount of fees deferred by a <code>pricingConfiguration</code> override.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.deferredFee.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency of the deferred fee amount.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Details the different elements contained in the total price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Additional deails for a price breakdown item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation.markdown</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Formatted textual information about the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].explanation.plainText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text details about the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the item.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text describing the price element.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the price item (for example, <code>FEE</code> or <code>DISCOUNT</code>).</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Value details for the <code>price.items</code> object.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount associated with this price. Can be negative for discounts.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency of the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.items[].value.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text description of the price and currency.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.priceSetId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the price structure.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The total fees to be paid. Use this value when displaying fees in your app.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.explanation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Provides more details about the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text describing the price structure.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the pricing element.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Value details for the <code>price.total</code> object.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount to be paid.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency of the amount to be paid.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].price.total.value.label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Plain text version of the price.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].sourceAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Source amount when using this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency for this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].targetAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Target amount when using this payment option.</td>
+</tr>
+<tr>
+<td><code>paymentOptions[].targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target currency for this payment option.</td>
+</tr>
+<tr>
+<td><code>preferredPayIn</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred pay-in method.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Allows partners to override pricing configurations on a transfer level.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.fixed</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected fixed fee, in source currency, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifies the type of fee to be configured. Options include only <code>OVERRIDE</code>.</td>
+</tr>
+<tr>
+<td><code>pricingConfiguration.fee.variable</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The selected variable percentage, in decimal format, that should be used in the <code>pricingConfiguration</code>.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Personal or business profile ID.</td>
+</tr>
+<tr>
+<td><code>providedAmountType</code></td>
+<td><code>enum: SOURCE, TARGET</code></td>
+<td>No</td>
+<td>Indicates whether the quote was created as source or target.</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate value used for the conversion.</td>
+</tr>
+<tr>
+<td><code>rateExpirationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date and time the locked rate expires.</td>
+</tr>
+<tr>
+<td><code>rateType</code></td>
+<td><code>enum: FIXED, FLOATING</code></td>
+<td>No</td>
+<td>Whether the rate is fixed or floating.</td>
+</tr>
+<tr>
+<td><code>sourceAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount in source currency to send.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source (sending) currency code.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: PENDING, ACCEPTED, FUNDED, EXPIRED</code></td>
+<td>No</td>
+<td>Current status of the quote.</td>
+</tr>
+<tr>
+<td><code>targetAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount in target currency to be received by the recipient.</td>
+</tr>
+<tr>
+<td><code>targetAmountAllowed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether target amount is allowed.</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target (receive) currency code.</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>User ID that created the quote.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

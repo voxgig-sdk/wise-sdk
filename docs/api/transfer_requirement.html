@@ -1,0 +1,583 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>TransferRequirement | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a aria-current="page" href="../api/transfer_requirement.html">TransferRequirement</a><div class="nav-sections"><a class="nav-section" href="#post-transfer-requirements">POST /transfer-requirements</a></div>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="transferrequirement">TransferRequirement</h1>
+<p>The fields a transfer needs.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-transfer-requirements"><code>/transfer-requirements</code></a></td>
+<td><code>create</code></td>
+<td>Returns a list of transfer requirement objects describing the dynamic form fields</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">created, err := client.TransferRequirement(nil).Create(map[string]any{&quot;quoteUuid&quot;: &quot;example&quot;, &quot;targetAccount&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local created, err = client:TransferRequirement():create({ quoteUuid = &quot;example&quot;, targetAccount = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$created = $client-&gt;TransferRequirement()-&gt;create([&quot;quoteUuid&quot; =&gt; &quot;example&quot;, &quot;targetAccount&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">created = client.TransferRequirement().create({ &quot;quoteUuid&quot;: &quot;example&quot;, &quot;targetAccount&quot;: 1 })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">created = client.TransferRequirement.create({ &quot;quoteUuid&quot; =&gt; &quot;example&quot;, &quot;targetAccount&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const created = await client.TransferRequirement().create({ quoteUuid: &quot;example&quot;, targetAccount: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customerTransactionId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the transfer request</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Details</td>
+</tr>
+<tr>
+<td><code>originatorLegalEntityType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of sender.</td>
+</tr>
+<tr>
+<td><code>quoteUuid</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>V2 quote ID</td>
+</tr>
+<tr>
+<td><code>targetAccount</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Recipient account ID</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-transfer-requirements" class="operation" data-method="post"><code>POST</code> /transfer-requirements</h3>
+<p>Operation ID: <code>transferRequirementsValidate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customerTransactionId</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Unique identifier for the transfer request</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.sourceOfFunds</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.sourceOfFundsOther</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.transferNature</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.transferPurpose</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.transferPurposeInvoiceNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.transferPurposeSubTransferPurpose</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>originatorLegalEntityType</code></td>
+<td><code>enum: PRIVATE, BUSINESS</code></td>
+<td>No</td>
+<td>Type of sender. Required from March 2026 for Correspondent Send integrations</td>
+</tr>
+<tr>
+<td><code>quoteUuid</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>V2 quote ID</td>
+</tr>
+<tr>
+<td><code>targetAccount</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Recipient account ID</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;details&quot;: {
+    &quot;reference&quot;: &quot;Invoice 2026-001&quot;,
+    &quot;sourceOfFunds&quot;: &quot;verification.source.of.funds.salary&quot;,
+    &quot;transferPurpose&quot;: &quot;verification.transfers.purpose.pay.bills&quot;
+  },
+  &quot;originatorLegalEntityType&quot;: &quot;PRIVATE&quot;,
+  &quot;quoteUuid&quot;: &quot;8fa9be20-ba43-4b15-abbb-9424e1481050&quot;,
+  &quot;targetAccount&quot;: 8692237
+}
+</code></pre>
+<h4 id="responses">Responses</h4>
+<h5 id="200-returns-a-list-of-transfer-requirement-objects-describing-the-dynamic-form-fields" class="status" data-status="2xx">200: Returns a list of transfer requirement objects describing the dynamic form fields</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[].fields</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>[].fields[].group</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].displayFormat</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Display format pattern</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].example</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Example value</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the field to include in the JSON</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].maxLength</code></td>
+<td><code>integer,null (int32)</code></td>
+<td>No</td>
+<td>Maximum valid length of field value</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].minLength</code></td>
+<td><code>integer,null (int32)</code></td>
+<td>No</td>
+<td>Minimum valid length of field value</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Field description</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].refreshRequirementsOnChange</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether to call POST transfer-requirements again once the field value is set to discover required lower level fields</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].required</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates if the field is mandatory</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Display type of field (for example text, select)</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].validationAsync</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Deprecated. This validation will instead be performed when submitting the request</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].validationRegexp</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Regexp validation pattern</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].valuesAllowed</code></td>
+<td><code>array,null</code></td>
+<td>No</td>
+<td>List of allowed values</td>
+</tr>
+<tr>
+<td><code>[].fields[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Field description</td>
+</tr>
+<tr>
+<td><code>[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Resource type</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">[
+  {
+    &quot;fields&quot;: [
+      {
+        &quot;group&quot;: [
+          {
+            &quot;displayFormat&quot;: null,
+            &quot;example&quot;: null,
+            &quot;key&quot;: &quot;reference&quot;,
+            &quot;maxLength&quot;: 10,
+            &quot;minLength&quot;: null,
+            &quot;name&quot;: &quot;Transfer reference&quot;,
+            &quot;refreshRequirementsOnChange&quot;: false,
+            &quot;required&quot;: false,
+            &quot;type&quot;: &quot;text&quot;,
+            &quot;validationAsync&quot;: null,
+            &quot;validationRegexp&quot;: &quot;[a-zA-Z0-9- ]*&quot;,
+            &quot;valuesAllowed&quot;: null
+          }
+        ],
+        &quot;name&quot;: &quot;Transfer reference&quot;
+      },
+      {
+        &quot;group&quot;: [
+          {
+            &quot;displayFormat&quot;: null,
+            &quot;example&quot;: null,
+            &quot;key&quot;: &quot;transferPurpose&quot;,
+            &quot;maxLength&quot;: null,
+            &quot;minLength&quot;: null,
+            &quot;name&quot;: &quot;Transfer purpose&quot;,
+            &quot;refreshRequirementsOnChange&quot;: true,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;select&quot;,
+            &quot;validationAsync&quot;: null,
+            &quot;validationRegexp&quot;: null,
+            &quot;valuesAllowed&quot;: [
+              {
+                &quot;key&quot;: &quot;verification.transfers.purpose.purchase.property&quot;,
+                &quot;name&quot;: &quot;Buying property abroad&quot;
+              },
+              {
+                &quot;key&quot;: &quot;verification.transfers.purpose.pay.bills&quot;,
+                &quot;name&quot;: &quot;Rent or other property expenses&quot;
+              },
+              {
+                &quot;key&quot;: &quot;verification.transfers.purpose.mortgage&quot;,
+                &quot;name&quot;: &quot;Mortgage payment&quot;
+              },
+              {
+                &quot;key&quot;: &quot;verification.transfers.purpose.pay.tuition&quot;,
+                &quot;name&quot;: &quot;Tuition fees or studying expenses&quot;
+              },
+              {
+                &quot;key&quot;: &quot;verification.transfers.purpose.send.to.family&quot;,
+                &quot;name&quot;: &quot;Sending money home to family&quot;
+              },
+              {
+                &quot;key&quot;: &quot;verification.transfers.purpose.living.expenses&quot;,
+                &quot;name&quot;: &quot;General monthly living expenses&quot;
+              },
+              {
+                &quot;key&quot;: &quot;verification.transfers.purpose.other&quot;,
+                &quot;name&quot;: &quot;Other&quot;
+              }
+            ]
+          },
+          {
+            &quot;displayFormat&quot;: null,
+            &quot;example&quot;: null,
+            &quot;key&quot;: &quot;transferPurposeSubTransferPurpose&quot;,
+            &quot;maxLength&quot;: null,
+            &quot;minLength&quot;: null,
+            &quot;name&quot;: &quot;Please select a specific reason for your transfer&quot;,
+            &quot;refreshRequirementsOnChange&quot;: true,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;select&quot;,
+            &quot;validationAsync&quot;: null,
+            &quot;validationRegexp&quot;: null,
+            &quot;valuesAllowed&quot;: [
+              {
+                &quot;key&quot;: &quot;INTERPRETATION_SERVICE&quot;,
+                &quot;name&quot;: &quot;Interpretation service&quot;
+              },
+              {
+                &quot;key&quot;: &quot;TRANSLATION_SERVICE&quot;,
+                &quot;name&quot;: &quot;Translation service&quot;
+              },
+              {
+                &quot;key&quot;: &quot;HUMAN_RESOURCE_SERVICE&quot;,
+                &quot;name&quot;: &quot;Human resource service&quot;
+              },
+              {
+                &quot;key&quot;: &quot;SOFTWARE_DEVELOPMENT_SERVICE&quot;,
+                &quot;name&quot;: &quot;Software development service&quot;
+              }
+            ]
+          }
+        ],
+        &quot;name&quot;: &quot;Transfer purpose&quot;
+      },
+      {
+        &quot;group&quot;: [
+          {
+            &quot;displayFormat&quot;: null,
+            &quot;example&quot;: null,
+            &quot;key&quot;: &quot;sourceOfFunds&quot;,
+            &quot;maxLength&quot;: null,
+            &quot;minLength&quot;: null,
+            &quot;name&quot;: &quot;Source of funds&quot;,
+            &quot;refreshRequirementsOnChange&quot;: true,
+            &quot;required&quot;: true,
+            &quot;type&quot;: &quot;select&quot;,
+            &quot;validationAsync&quot;: null,
+            &quot;validationRegexp&quot;: null,
+            &quot;valuesAllowed&quot;: [
+              {
+                &quot;key&quot;: &quot;verification.source.of.funds.salary&quot;,
+                &quot;name&quot;: &quot;Salary&quot;
+              },
+              {
+                &quot;key&quot;: &quot;verification.source.of.funds.investment&quot;,
+                &quot;name&quot;: &quot;Investments (stocks, properties, etc.)&quot;
+              },
+              {
+                &quot;key&quot;: &quot;verification.source.of.funds.inheritance&quot;,
+                &quot;name&quot;: &quot;Inheritance&quot;
+              },
+              {
+                &quot;key&quot;: &quot;verification.source.of.funds.loan&quot;,
+                &quot;name&quot;: &quot;Loan&quot;
+              },
+              {
+                &quot;key&quot;: &quot;verification.source.of.funds.other&quot;,
+                &quot;name&quot;: &quot;Other&quot;
+              }
+            ]
+          }
+        ],
+        &quot;name&quot;: &quot;Source of funds&quot;
+      }
+    ],
+    &quot;type&quot;: &quot;transfer&quot;
+  }
+]
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

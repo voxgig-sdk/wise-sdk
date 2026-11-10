@@ -1,0 +1,90 @@
+# BasicDirectorFlow
+
+main: kit: flow: BasicDirectorFlow:
+{
+  entity: "director",
+  kind: "basic",
+  name: "BasicDirectorFlow",
+  step: [
+    {
+      i: {
+        ref: "director_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "director_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "director_ref01",
+        srcdatavar: "director_ref01_data",
+        suffix: "_up0",
+        textfield: "countryOfResidenceIso3Code"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-director_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "director_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "director01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "director_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDirectorFlow"
+}

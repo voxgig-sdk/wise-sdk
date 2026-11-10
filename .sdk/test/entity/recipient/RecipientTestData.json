@@ -1,0 +1,151 @@
+{
+  "existing": {
+    "recipient": {
+      "RECIPIENT00": {
+        "acceptedOutcomes": true,
+        "accountHolderName": "sf1",
+        "accountId": 242,
+        "accountSummary": "sf3",
+        "active": true,
+        "commonFieldMap": {},
+        "confirmations": {},
+        "country": "sf7",
+        "creatorId": 248,
+        "currency": "sf9",
+        "details": {},
+        "displayFields": [],
+        "hash": "sfc",
+        "id": "RECIPIENT00",
+        "isInternal": true,
+        "legalEntityType": "sff",
+        "longAccountSummary": "s100",
+        "name": {},
+        "ownedByCustomer": true,
+        "profile": 259,
+        "profileId": 260,
+        "quoteId": "s105",
+        "type": "s106",
+        "ultimateBeneficiary": "s107",
+        "account_id": "ACCOUNT01",
+        "quote_id": "QUOTE01"
+      },
+      "RECIPIENT01": {
+        "acceptedOutcomes": true,
+        "accountHolderName": "s1e1",
+        "accountId": 482,
+        "accountSummary": "s1e3",
+        "active": true,
+        "commonFieldMap": {},
+        "confirmations": {},
+        "country": "s1e7",
+        "creatorId": 488,
+        "currency": "s1e9",
+        "details": {},
+        "displayFields": [],
+        "hash": "s1ec",
+        "id": "RECIPIENT01",
+        "isInternal": true,
+        "legalEntityType": "s1ef",
+        "longAccountSummary": "s1f0",
+        "name": {},
+        "ownedByCustomer": true,
+        "profile": 499,
+        "profileId": 500,
+        "quoteId": "s1f5",
+        "type": "s1f6",
+        "ultimateBeneficiary": "s1f7",
+        "account_id": "ACCOUNT01",
+        "quote_id": "QUOTE01"
+      },
+      "RECIPIENT02": {
+        "acceptedOutcomes": true,
+        "accountHolderName": "s2d1",
+        "accountId": 722,
+        "accountSummary": "s2d3",
+        "active": true,
+        "commonFieldMap": {},
+        "confirmations": {},
+        "country": "s2d7",
+        "creatorId": 728,
+        "currency": "s2d9",
+        "details": {},
+        "displayFields": [],
+        "hash": "s2dc",
+        "id": "RECIPIENT02",
+        "isInternal": true,
+        "legalEntityType": "s2df",
+        "longAccountSummary": "s2e0",
+        "name": {},
+        "ownedByCustomer": true,
+        "profile": 739,
+        "profileId": 740,
+        "quoteId": "s2e5",
+        "type": "s2e6",
+        "ultimateBeneficiary": "s2e7",
+        "account_id": "ACCOUNT01",
+        "quote_id": "QUOTE01"
+      }
+    }
+  },
+  "new": {
+    "recipient": {
+      "recipient_ref01": {
+        "acceptedOutcomes": true,
+        "accountHolderName": "s3c1",
+        "accountId": 962,
+        "accountSummary": "s3c3",
+        "active": true,
+        "commonFieldMap": {},
+        "confirmations": {},
+        "country": "s3c7",
+        "creatorId": 968,
+        "currency": "s3c9",
+        "details": {},
+        "displayFields": [],
+        "hash": "s3cc",
+        "isInternal": true,
+        "legalEntityType": "s3cf",
+        "longAccountSummary": "s3d0",
+        "name": {},
+        "ownedByCustomer": true,
+        "profile": 979,
+        "profileId": 980,
+        "quoteId": "s3d5",
+        "type": "s3d6",
+        "ultimateBeneficiary": "s3d7"
+      }
+    }
+  },
+  "requests": {
+    "POST /accounts/{accountId}/quotes/{quoteId}/compatibility": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /accounts/{accountId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /accounts/{accountId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /accounts/{accountId}/confirmations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

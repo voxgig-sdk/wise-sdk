@@ -1,0 +1,447 @@
+# Entity: card_transaction
+
+main: kit: entity: card_transaction: {
+
+  alias: field: {}
+
+  fields: {
+    approvalCode: {
+      h: "Approval Code"
+      n: "approvalCode"
+      r: false
+      sh: "Also called authorization code."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    arn: {
+      h: "Arn"
+      n: "arn"
+      r: false
+      sh: "Acquirer reference number"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    authorisationMethod: {
+      h: "Authorisation Method"
+      n: "authorisationMethod"
+      r: false
+      sh: "Authorisation method"
+      t: "`$STRING`"
+    }
+    balanceChannelReferenceId: {
+      h: "Balance Channel Reference Id"
+      n: "balanceChannelReferenceId"
+      r: false
+      sh: "Balance channel reference ID associated with the card transaction"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    billingAmount: {
+      h: "Billing Amount"
+      n: "billingAmount"
+      r: false
+      sh: "Billing amount"
+      t: "`$OBJECT`"
+    }
+    cardToken: {
+      h: "Card Token"
+      n: "cardToken"
+      r: false
+      sh: "Unique identifier of the card"
+      t: "`$STRING`"
+    }
+    creationTime: {
+      fo: "date-time"
+      h: "Creation Time"
+      n: "creationTime"
+      r: false
+      sh: "When the transaction was created"
+      t: "`$STRING`"
+    }
+    credits: {
+      h: "Credits"
+      n: "credits"
+      r: false
+      sh: "Array of credits."
+      t: "`$ARRAY`"
+    }
+    debits: {
+      h: "Debits"
+      n: "debits"
+      r: false
+      sh: "Array of debits."
+      t: "`$ARRAY`"
+    }
+    declineReason: {
+      h: "Decline Reason"
+      n: "declineReason"
+      r: false
+      sh: "Code of the [decline reason](/api-reference/card-transaction#card-transaction-decline-reasons) if applicable"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    detailedDeclineReason: {
+      h: "Detailed Decline Reason"
+      n: "detailedDeclineReason"
+      r: false
+      sh: "Code of the [detailed decline reason](/api-reference/card-transaction#card-transaction-detailed-decline-reasons) if applicable"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    fees: {
+      h: "Fees"
+      n: "fees"
+      r: false
+      sh: "Array of fees"
+      t: "`$ARRAY`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "ID of the transaction"
+      t: "`$INTEGER`"
+    }
+    merchant: {
+      h: "Merchant"
+      n: "merchant"
+      r: false
+      sh: "Merchant information"
+      t: "`$OBJECT`"
+    }
+    modificationTime: {
+      fo: "date-time"
+      h: "Modification Time"
+      n: "modificationTime"
+      r: false
+      sh: "When the transaction was last updated"
+      t: "`$STRING`"
+    }
+    pinValidationResult: {
+      h: "Pin Validation Result"
+      n: "pinValidationResult"
+      r: false
+      sh: "PIN validation result."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    purgeTime: {
+      fo: "date-time"
+      h: "Purge Time"
+      n: "purgeTime"
+      r: false
+      sh: "Time at which reserved funds will be released after the authorisation hold expires"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    relayAuthorisationData: {
+      h: "Relay Authorisation Data"
+      n: "relayAuthorisationData"
+      r: false
+      sh: "Relayed authorisation response data, only available if the partner has opted in for [relayed authorisation](/guides/product/issue-cards/relayed-authorisation)"
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "The current [state](/api-reference/card-transaction#card-transaction-state) of the transaction."
+      t: "`$STRING`"
+    }
+    transactionAmount: {
+      h: "Transaction Amount"
+      n: "transactionAmount"
+      r: false
+      sh: "Transaction amount, including any embedded fees such as ATM fees that are not applied by Wise"
+      t: "`$OBJECT`"
+    }
+    transactionAmountWithFees: {
+      h: "Transaction Amount With Fees"
+      n: "transactionAmountWithFees"
+      r: false
+      sh: "Transaction amount including all fees"
+      t: "`$OBJECT`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "[Type](/api-reference/card-transaction#card-transaction-type) of the transaction."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "card_transaction"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /spend/profiles/{profileId}/cards/{cardToken}/transactions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "59123122-223d-45f9-b840-0ad4a4f80937"
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 123456
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: "2025-12-15T00:00:00Z"
+                explode: true
+                k: "query"
+                n: "from_creation_time"
+                or: "fromCreationTime"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: 342672
+                explode: true
+                k: "query"
+                n: "last_id"
+                or: "lastId"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 10
+                explode: true
+                k: "query"
+                n: "page_size"
+                or: "pageSize"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "2026-01-15T00:00:10Z"
+                explode: true
+                k: "query"
+                n: "to_creation_time"
+                or: "toCreationTime"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/transactions"
+          q: {
+            exist: [
+              "card_token"
+              "from_creation_time"
+              "profile_id"
+              "to_creation_time"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "transactions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.transactions`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /spend/profiles/{profileId}/cards/transactions/{transactionId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 342671
+                k: "param"
+                n: "id"
+                or: "transactionId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 123456
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{profileId}/cards/transactions/{transactionId}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+              transactionId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              lit: "transactions"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.card")]
+  ]
+
+}

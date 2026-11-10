@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "payment": {
+      "PAYMENT00": {
+        "amount": 70,
+        "currency": "s47",
+        "id": "PAYMENT00",
+        "method": "s49",
+        "pricingVariant": "s4a",
+        "timeCreated": "s4b",
+        "timeUpdated": "s4c",
+        "transfer_id": "TRANSFER01"
+      },
+      "PAYMENT01": {
+        "amount": 140,
+        "currency": "s8d",
+        "id": "PAYMENT01",
+        "method": "s8f",
+        "pricingVariant": "s90",
+        "timeCreated": "s91",
+        "timeUpdated": "s92",
+        "transfer_id": "TRANSFER01"
+      },
+      "PAYMENT02": {
+        "amount": 210,
+        "currency": "sd3",
+        "id": "PAYMENT02",
+        "method": "sd5",
+        "pricingVariant": "sd6",
+        "timeCreated": "sd7",
+        "timeUpdated": "sd8",
+        "transfer_id": "TRANSFER01"
+      }
+    }
+  },
+  "new": {
+    "payment": {
+      "payment_ref01": {
+        "amount": 280,
+        "currency": "s119",
+        "method": "s11b",
+        "pricingVariant": "s11c",
+        "timeCreated": "s11d",
+        "timeUpdated": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "GET /transfers/{transferId}/payments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

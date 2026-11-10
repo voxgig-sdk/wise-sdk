@@ -1,0 +1,38 @@
+# BasicBankAccountDetailsOrderFlow
+
+main: kit: flow: BasicBankAccountDetailsOrderFlow:
+{
+  entity: "bank_account_details_order",
+  kind: "basic",
+  name: "BasicBankAccountDetailsOrderFlow",
+  step: [
+    {
+      i: {
+        ref: "bank_account_details_order_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "bank_account_details_order_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBankAccountDetailsOrderFlow"
+}

@@ -1,0 +1,142 @@
+{
+  "existing": {
+    "quote": {
+      "QUOTE00": {
+        "createdTime": "sfa",
+        "creationContext": {},
+        "expirationTime": "sfc",
+        "guaranteedTargetAmount": false,
+        "guaranteedTargetAmountAllowed": true,
+        "id": "QUOTE00",
+        "notices": [],
+        "payOut": "s101",
+        "paymentMetadata": {},
+        "paymentOptions": [],
+        "preferredPayIn": "s104",
+        "pricingConfiguration": {},
+        "profile": 262,
+        "providedAmountType": "s107",
+        "rate": 264,
+        "rateExpirationTime": "s109",
+        "rateType": "s10a",
+        "sourceAmount": 267,
+        "sourceCurrency": "s10c",
+        "status": "s10d",
+        "targetAccount": 270,
+        "targetAmount": 271,
+        "targetAmountAllowed": true,
+        "targetCurrency": "s111",
+        "user": 274,
+        "profile_id": "PROFILE01"
+      },
+      "QUOTE01": {
+        "createdTime": "s1f4",
+        "creationContext": {},
+        "expirationTime": "s1f6",
+        "guaranteedTargetAmount": false,
+        "guaranteedTargetAmountAllowed": true,
+        "id": "QUOTE01",
+        "notices": [],
+        "payOut": "s1fb",
+        "paymentMetadata": {},
+        "paymentOptions": [],
+        "preferredPayIn": "s1fe",
+        "pricingConfiguration": {},
+        "profile": 512,
+        "providedAmountType": "s201",
+        "rate": 514,
+        "rateExpirationTime": "s203",
+        "rateType": "s204",
+        "sourceAmount": 517,
+        "sourceCurrency": "s206",
+        "status": "s207",
+        "targetAccount": 520,
+        "targetAmount": 521,
+        "targetAmountAllowed": true,
+        "targetCurrency": "s20b",
+        "user": 524,
+        "profile_id": "PROFILE01"
+      },
+      "QUOTE02": {
+        "createdTime": "s2ee",
+        "creationContext": {},
+        "expirationTime": "s2f0",
+        "guaranteedTargetAmount": false,
+        "guaranteedTargetAmountAllowed": true,
+        "id": "QUOTE02",
+        "notices": [],
+        "payOut": "s2f5",
+        "paymentMetadata": {},
+        "paymentOptions": [],
+        "preferredPayIn": "s2f8",
+        "pricingConfiguration": {},
+        "profile": 762,
+        "providedAmountType": "s2fb",
+        "rate": 764,
+        "rateExpirationTime": "s2fd",
+        "rateType": "s2fe",
+        "sourceAmount": 767,
+        "sourceCurrency": "s300",
+        "status": "s301",
+        "targetAccount": 770,
+        "targetAmount": 771,
+        "targetAmountAllowed": true,
+        "targetCurrency": "s305",
+        "user": 774,
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "quote": {
+      "quote_ref01": {
+        "createdTime": "s3e8",
+        "creationContext": {},
+        "expirationTime": "s3ea",
+        "guaranteedTargetAmount": false,
+        "guaranteedTargetAmountAllowed": true,
+        "notices": [],
+        "payOut": "s3ef",
+        "paymentMetadata": {},
+        "paymentOptions": [],
+        "preferredPayIn": "s3f2",
+        "pricingConfiguration": {},
+        "profile": 1012,
+        "providedAmountType": "s3f5",
+        "rate": 1014,
+        "rateExpirationTime": "s3f7",
+        "rateType": "s3f8",
+        "sourceAmount": 1017,
+        "sourceCurrency": "s3fa",
+        "status": "s3fb",
+        "targetAccount": 1020,
+        "targetAmount": 1021,
+        "targetAmountAllowed": true,
+        "targetCurrency": "s3ff",
+        "user": 1024
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/quotes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /quotes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/quotes/{quoteId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /profiles/{profileId}/quotes/{quoteId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

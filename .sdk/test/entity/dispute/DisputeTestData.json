@@ -1,0 +1,114 @@
+{
+  "existing": {
+    "dispute": {
+      "DISPUTE00": {
+        "canWithdraw": true,
+        "createdAt": "sa1",
+        "createdBy": "sa2",
+        "disclaimer": {},
+        "files": {},
+        "form": {},
+        "id": "DISPUTE00",
+        "lastUpdatedAt": "sa7",
+        "profileId": 168,
+        "reason": "sa9",
+        "receipt": "saa",
+        "status": "sab",
+        "statusMessage": "sac",
+        "subStatus": "sad",
+        "transaction": {},
+        "transactionId": 175,
+        "profile_id": "PROFILE01",
+        "scheme": "SCHEME01"
+      },
+      "DISPUTE01": {
+        "canWithdraw": true,
+        "createdAt": "s141",
+        "createdBy": "s142",
+        "disclaimer": {},
+        "files": {},
+        "form": {},
+        "id": "DISPUTE01",
+        "lastUpdatedAt": "s147",
+        "profileId": 328,
+        "reason": "s149",
+        "receipt": "s14a",
+        "status": "s14b",
+        "statusMessage": "s14c",
+        "subStatus": "s14d",
+        "transaction": {},
+        "transactionId": 335,
+        "profile_id": "PROFILE01",
+        "scheme": "SCHEME01"
+      },
+      "DISPUTE02": {
+        "canWithdraw": true,
+        "createdAt": "s1e1",
+        "createdBy": "s1e2",
+        "disclaimer": {},
+        "files": {},
+        "form": {},
+        "id": "DISPUTE02",
+        "lastUpdatedAt": "s1e7",
+        "profileId": 488,
+        "reason": "s1e9",
+        "receipt": "s1ea",
+        "status": "s1eb",
+        "statusMessage": "s1ec",
+        "subStatus": "s1ed",
+        "transaction": {},
+        "transactionId": 495,
+        "profile_id": "PROFILE01",
+        "scheme": "SCHEME01"
+      }
+    }
+  },
+  "new": {
+    "dispute": {
+      "dispute_ref01": {
+        "canWithdraw": true,
+        "createdAt": "s281",
+        "createdBy": "s282",
+        "disclaimer": {},
+        "files": {},
+        "form": {},
+        "lastUpdatedAt": "s287",
+        "profileId": 648,
+        "reason": "s289",
+        "receipt": "s28a",
+        "status": "s28b",
+        "statusMessage": "s28c",
+        "subStatus": "s28d",
+        "transaction": {},
+        "transactionId": 655
+      }
+    }
+  },
+  "requests": {
+    "POST /spend/profiles/{profileId}/dispute-form/flows/{scheme}/{reason}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /spend/profiles/{profileId}/dispute-form/file": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/profiles/{profileId}/disputes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/profiles/{profileId}/disputes/{disputeId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /spend/profiles/{profileId}/disputes/{disputeId}/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "bank_account_details_order": {
+      "BANK_ACCOUNT_DETAILS_ORDER00": {
+        "accountDetailsId": 80,
+        "balanceId": "s51",
+        "creationTime": "s52",
+        "currency": "s53",
+        "id": "BANK_ACCOUNT_DETAILS_ORDER00",
+        "modificationTime": "s55",
+        "requirements": [],
+        "status": "s57",
+        "profile_id": "PROFILE01"
+      },
+      "BANK_ACCOUNT_DETAILS_ORDER01": {
+        "accountDetailsId": 160,
+        "balanceId": "sa1",
+        "creationTime": "sa2",
+        "currency": "sa3",
+        "id": "BANK_ACCOUNT_DETAILS_ORDER01",
+        "modificationTime": "sa5",
+        "requirements": [],
+        "status": "sa7",
+        "profile_id": "PROFILE01"
+      },
+      "BANK_ACCOUNT_DETAILS_ORDER02": {
+        "accountDetailsId": 240,
+        "balanceId": "sf1",
+        "creationTime": "sf2",
+        "currency": "sf3",
+        "id": "BANK_ACCOUNT_DETAILS_ORDER02",
+        "modificationTime": "sf5",
+        "requirements": [],
+        "status": "sf7",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "bank_account_details_order": {
+      "bank_account_details_order_ref01": {
+        "accountDetailsId": 320,
+        "balanceId": "s141",
+        "creationTime": "s142",
+        "currency": "s143",
+        "modificationTime": "s145",
+        "requirements": [],
+        "status": "s147"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/account-details-orders": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/account-details-orders": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

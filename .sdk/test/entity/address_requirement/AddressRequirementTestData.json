@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "address_requirement": {
+      "ADDRESS_REQUIREMENT00": {
+        "details": {},
+        "fields": [],
+        "profile": 42,
+        "type": "s2b",
+        "id": "ADDRESS_REQUIREMENT00"
+      },
+      "ADDRESS_REQUIREMENT01": {
+        "details": {},
+        "fields": [],
+        "profile": 82,
+        "type": "s53",
+        "id": "ADDRESS_REQUIREMENT01"
+      },
+      "ADDRESS_REQUIREMENT02": {
+        "details": {},
+        "fields": [],
+        "profile": 122,
+        "type": "s7b",
+        "id": "ADDRESS_REQUIREMENT02"
+      }
+    }
+  },
+  "new": {
+    "address_requirement": {
+      "address_requirement_ref01": {
+        "details": {},
+        "fields": [],
+        "profile": 162,
+        "type": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /address-requirements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /address-requirements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

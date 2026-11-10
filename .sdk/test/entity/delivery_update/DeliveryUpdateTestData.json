@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "delivery_update": {
+      "DELIVERY_UPDATE00": {
+        "delivery_update": "s3c",
+        "delivery_update_path": [],
+        "estimated_delivery_at": "s3e",
+        "observation_id": "OBSERVATION01",
+        "occurred_at": "s40",
+        "scheme": "s41",
+        "transfer_id": "TRANSFER01",
+        "id": "DELIVERY_UPDATE00"
+      },
+      "DELIVERY_UPDATE01": {
+        "delivery_update": "s78",
+        "delivery_update_path": [],
+        "estimated_delivery_at": "s7a",
+        "observation_id": "OBSERVATION01",
+        "occurred_at": "s7c",
+        "scheme": "s7d",
+        "transfer_id": "TRANSFER01",
+        "id": "DELIVERY_UPDATE01"
+      },
+      "DELIVERY_UPDATE02": {
+        "delivery_update": "sb4",
+        "delivery_update_path": [],
+        "estimated_delivery_at": "sb6",
+        "observation_id": "OBSERVATION01",
+        "occurred_at": "sb8",
+        "scheme": "sb9",
+        "transfer_id": "TRANSFER01",
+        "id": "DELIVERY_UPDATE02"
+      }
+    }
+  },
+  "new": {
+    "delivery_update": {
+      "delivery_update_ref01": {
+        "delivery_update": "sf0",
+        "delivery_update_path": [],
+        "estimated_delivery_at": "sf2",
+        "observation_id": "OBSERVATION01",
+        "occurred_at": "sf4",
+        "scheme": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /simulation/transfers/{transferId}/delivery-update": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

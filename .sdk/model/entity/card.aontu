@@ -1,0 +1,641 @@
+# Entity: card
+
+main: kit: entity: card: {
+
+  alias: field: {}
+
+  fields: {
+    bankIdentificationNumber: {
+      h: "Bank Identification Number"
+      n: "bankIdentificationNumber"
+      r: false
+      sh: "Bank identification number (BIN) of the card."
+      t: "`$STRING`"
+    }
+    cardHolderName: {
+      h: "Card Holder Name"
+      n: "cardHolderName"
+      r: false
+      sh: "Name of the card holder."
+      t: "`$STRING`"
+    }
+    cardProgram: {
+      h: "Card Program"
+      n: "cardProgram"
+      r: false
+      sh: "Card program details."
+      t: "`$OBJECT`"
+    }
+    clientId: {
+      h: "Client Id"
+      n: "clientId"
+      r: false
+      sh: "Client ID of the partner that issued the card."
+      t: "`$STRING`"
+    }
+    creationTime: {
+      fo: "date-time"
+      h: "Creation Time"
+      n: "creationTime"
+      r: false
+      sh: "Time when the card was created."
+      t: "`$STRING`"
+    }
+    expiryDate: {
+      fo: "date-time"
+      h: "Expiry Date"
+      n: "expiryDate"
+      r: false
+      sh: "Date when the card will expire."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    lastFourDigits: {
+      h: "Last Four Digits"
+      n: "lastFourDigits"
+      r: false
+      sh: "Last 4 digits of the card number."
+      t: "`$STRING`"
+    }
+    modificationTime: {
+      fo: "date-time"
+      h: "Modification Time"
+      n: "modificationTime"
+      r: false
+      sh: "Time when the card was last modified."
+      t: "`$STRING`"
+    }
+    phoneNumber: {
+      h: "Phone Number"
+      n: "phoneNumber"
+      r: false
+      sh: "Phone number associated with the card."
+      t: "`$STRING`"
+    }
+    profileId: {
+      fo: "int64"
+      h: "Profile Id"
+      n: "profileId"
+      r: false
+      sh: "Profile ID that owns this card."
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Current status of the card."
+      t: "`$OBJECT`"
+    }
+    token: {
+      h: "Token"
+      n: "token"
+      r: false
+      sh: "Unique identifier for the card."
+      t: "`$STRING`"
+    }
+    unlockSpendingPermissions: {
+      h: "Unlock Spending Permissions"
+      n: "unlockSpendingPermissions"
+      r: false
+      sh: "Method with which physical card spending permissions can be unlocked."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "card"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /spend/profiles/{profileId}/cards/{cardToken}/reset-pin-count"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 123456
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/reset-pin-count"
+          q: {
+            "$action": "reset_pin_count"
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "reset-pin-count"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /spend/profiles/{profileId}/cards/{cardToken}/spending-permissions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 123456
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/spending-permissions"
+          q: {
+            "$action": "spending_permission"
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "spending-permissions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.permissions`"
+          }
+        }
+        {
+          co: {
+            id: "GET /spend/profiles/{profileId}/cards"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 123456
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                explode: true
+                k: "query"
+                n: "page_number"
+                or: "pageNumber"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 10
+                explode: true
+                k: "query"
+                n: "page_size"
+                or: "pageSize"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{profileId}/cards"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+          ]
+          t: {
+            page: {
+              total: "`body.totalCount`"
+            }
+            req: "`reqdata`"
+            res: "`body.cards`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /spend/profiles/{profileId}/cards/{cardToken}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+                k: "param"
+                n: "id"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 123456
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "permissions"
+          ]
+          co: {
+            id: "PATCH /spend/profiles/{profileId}/cards/{cardToken}/spending-permissions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 123456
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/spending-permissions"
+          q: {
+            "$action": "spending_permission"
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "spending-permissions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "status"
+          ]
+          co: {
+            id: "PUT /spend/profiles/{profileId}/cards/{cardToken}/status"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 123456
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/status"
+          q: {
+            "$action": "status"
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

@@ -1,0 +1,422 @@
+# Entity: payment_instrument
+
+main: kit: entity: payment_instrument: {
+
+  alias: field: {}
+
+  fields: {
+    accountHolderName: {
+      h: "Account Holder Name"
+      n: "accountHolderName"
+      r: false
+      t: "`$STRING`"
+    }
+    accountNumber: {
+      h: "Account Number"
+      n: "accountNumber"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+    accountOwnerDetails: {
+      h: "Account Owner Details"
+      n: "accountOwnerDetails"
+      r: false
+      t: "`$OBJECT`"
+    }
+    accountType: {
+      h: "Account Type"
+      n: "accountType"
+      r: false
+      t: "`$STRING`"
+    }
+    bankCode: {
+      h: "Bank Code"
+      n: "bankCode"
+      r: false
+      t: "`$STRING`"
+    }
+    bankName: {
+      h: "Bank Name"
+      n: "bankName"
+      r: false
+      t: "`$STRING`"
+    }
+    branchCode: {
+      h: "Branch Code"
+      n: "branchCode"
+      r: false
+      t: "`$STRING`"
+    }
+    disconnectReason: {
+      h: "Disconnect Reason"
+      n: "disconnectReason"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    reference: {
+      h: "Reference"
+      n: "reference"
+      r: false
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "payment_instrument"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /profiles/{profileId}/payment-instruments/{paymentInstrumentId}/manual-confirmation"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "paymentInstrumentId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}/manual-confirmation"
+          q: {
+            "$action": "manual-confirmation"
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              paymentInstrumentId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "payment-instruments"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "manual-confirmation"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "accountHolderName"
+            "accountNumber"
+            "accountOwnerDetails"
+            "accountType"
+            "bankCode"
+            "branchCode"
+            "reference"
+            "type"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/payment-instruments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/payment-instruments"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "payment-instruments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/payment-instruments/{paymentInstrumentId}/payins"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "paymentInstrumentId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}/payins"
+          q: {
+            "$action": "payin"
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              paymentInstrumentId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "payment-instruments"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "payins"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.payins`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/payment-instruments/{paymentInstrumentId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "paymentInstrumentId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              paymentInstrumentId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "payment-instruments"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

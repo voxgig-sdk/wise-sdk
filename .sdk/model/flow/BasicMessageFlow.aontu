@@ -1,0 +1,22 @@
+# BasicMessageFlow
+
+main: kit: flow: BasicMessageFlow:
+{
+  entity: "message",
+  kind: "basic",
+  name: "BasicMessageFlow",
+  step: [
+    {
+      i: {
+        ref: "message_ref01"
+      }
+
+      m: {
+        case_id: "case01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicMessageFlow"
+}

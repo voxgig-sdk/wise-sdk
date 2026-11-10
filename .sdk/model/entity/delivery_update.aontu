@@ -1,0 +1,151 @@
+# Entity: delivery_update
+
+main: kit: entity: delivery_update: {
+
+  alias: field: {}
+
+  fields: {
+    delivery_update: {
+      h: "Delivery Update"
+      n: "delivery_update"
+      r: true
+      sh: "The delivery signal to simulate."
+      t: "`$STRING`"
+    }
+    delivery_update_path: {
+      h: "Delivery Update Path"
+      n: "delivery_update_path"
+      r: true
+      sh: "Delivery signals supported by the simulated route, not a history of events."
+      t: "`$ARRAY`"
+    }
+    estimated_delivery_at: {
+      fo: "date-time"
+      h: "Estimated Delivery At"
+      n: "estimated_delivery_at"
+      r: false
+      sh: "Optional estimated delivery time."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    observation_id: {
+      fo: "uuid"
+      h: "Observation Id"
+      n: "observation_id"
+      r: true
+      sh: "Server-generated observation identifier."
+      t: "`$STRING`"
+    }
+    occurred_at: {
+      fo: "date-time"
+      h: "Occurred At"
+      n: "occurred_at"
+      r: true
+      sh: "Server-generated observation time in UTC with millisecond precision."
+      t: "`$STRING`"
+    }
+    scheme: {
+      h: "Scheme"
+      n: "scheme"
+      r: false
+      sh: "Payment scheme to include in the observation."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  name: "delivery_update"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "delivery_update"
+            "delivery_update_path"
+            "estimated_delivery_at"
+            "scheme"
+          ]
+          co: {
+            id: "POST /simulation/transfers/{transferId}/delivery-update"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "transfer_id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/transfers/{transferId}/delivery-update"
+          q: {
+            exist: [
+              "transfer_id"
+            ]
+          }
+          r: {
+            param: {
+              transferId: "transfer_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "transfers"
+            }
+            {
+              var: "transfer_id"
+            }
+            {
+              lit: "delivery-update"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.transfer")]
+  ]
+
+}

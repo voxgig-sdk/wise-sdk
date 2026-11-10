@@ -1,0 +1,132 @@
+{
+  "existing": {
+    "balance": {
+      "BALANCE00": {
+        "amount": {},
+        "cashAmount": {},
+        "creationTime": "sb6",
+        "currency": "sb7",
+        "icon": "sb8",
+        "id": "BALANCE00",
+        "investmentState": "sba",
+        "modificationTime": "sbb",
+        "name": "sbc",
+        "overdraft": {},
+        "reservedAmount": {},
+        "state": "sbf",
+        "targetRecipientId": 192,
+        "totalAvailable": {},
+        "totalCash": {},
+        "totalWorth": {},
+        "type": "sc4",
+        "visible": false,
+        "hold_limit_breach_id": "HOLD_LIMIT_BREACH01",
+        "profile_id": "PROFILE01"
+      },
+      "BALANCE01": {
+        "amount": {},
+        "cashAmount": {},
+        "creationTime": "s16a",
+        "currency": "s16b",
+        "icon": "s16c",
+        "id": "BALANCE01",
+        "investmentState": "s16e",
+        "modificationTime": "s16f",
+        "name": "s170",
+        "overdraft": {},
+        "reservedAmount": {},
+        "state": "s173",
+        "targetRecipientId": 372,
+        "totalAvailable": {},
+        "totalCash": {},
+        "totalWorth": {},
+        "type": "s178",
+        "visible": false,
+        "hold_limit_breach_id": "HOLD_LIMIT_BREACH01",
+        "profile_id": "PROFILE01"
+      },
+      "BALANCE02": {
+        "amount": {},
+        "cashAmount": {},
+        "creationTime": "s21e",
+        "currency": "s21f",
+        "icon": "s220",
+        "id": "BALANCE02",
+        "investmentState": "s222",
+        "modificationTime": "s223",
+        "name": "s224",
+        "overdraft": {},
+        "reservedAmount": {},
+        "state": "s227",
+        "targetRecipientId": 552,
+        "totalAvailable": {},
+        "totalCash": {},
+        "totalWorth": {},
+        "type": "s22c",
+        "visible": false,
+        "hold_limit_breach_id": "HOLD_LIMIT_BREACH01",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "balance": {
+      "balance_ref01": {
+        "amount": {},
+        "cashAmount": {},
+        "creationTime": "s2d2",
+        "currency": "s2d3",
+        "icon": "s2d4",
+        "investmentState": "s2d6",
+        "modificationTime": "s2d7",
+        "name": "s2d8",
+        "overdraft": {},
+        "reservedAmount": {},
+        "state": "s2db",
+        "targetRecipientId": 732,
+        "totalAvailable": {},
+        "totalCash": {},
+        "totalWorth": {},
+        "type": "s2e0",
+        "visible": false
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/balances/hold-limit-breach/{holdLimitBreachId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/balance-movements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/balances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/balances": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/total-funds/{currency}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/balances/{balanceId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /profiles/{profileId}/balances/{balanceId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

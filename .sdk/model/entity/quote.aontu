@@ -1,0 +1,510 @@
+# Entity: quote
+
+main: kit: entity: quote: {
+
+  alias: field: {}
+
+  fields: {
+    createdTime: {
+      fo: "date-time"
+      h: "Created Time"
+      n: "createdTime"
+      r: false
+      sh: "Quote created timestamp."
+      t: "`$STRING`"
+    }
+    creationContext: {
+      h: "Creation Context"
+      n: "creationContext"
+      r: false
+      sh: "Used to pass additional metadata about the intended transfer."
+      t: "`$OBJECT`"
+    }
+    expirationTime: {
+      fo: "date-time"
+      h: "Expiration Time"
+      n: "expirationTime"
+      r: false
+      sh: "The date and time the quote expires."
+      t: "`$STRING`"
+    }
+    guaranteedTargetAmount: {
+      h: "Guaranteed Target Amount"
+      n: "guaranteedTargetAmount"
+      r: false
+      sh: "Indicates whether the target amount is guaranteed."
+      t: "`$BOOLEAN`"
+    }
+    guaranteedTargetAmountAllowed: {
+      h: "Guaranteed Target Amount Allowed"
+      n: "guaranteedTargetAmountAllowed"
+      r: false
+      sh: "Indicates whether guaranteed target amount is allowed."
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "ID of this quote (GUID format)."
+      t: "`$STRING`"
+    }
+    notices: {
+      h: "Notices"
+      n: "notices"
+      r: false
+      sh: "Messages to display to the user."
+      t: "`$ARRAY`"
+    }
+    payOut: {
+      h: "Pay Out"
+      n: "payOut"
+      r: false
+      sh: "Mechanism Wise uses to deliver the transfer."
+      t: "`$STRING`"
+    }
+    paymentMetadata: {
+      h: "Payment Metadata"
+      n: "paymentMetadata"
+      r: false
+      sh: "_Optional_."
+      t: "`$OBJECT`"
+    }
+    paymentOptions: {
+      h: "Payment Options"
+      n: "paymentOptions"
+      r: false
+      sh: "List of the methods available to pay for the transfer."
+      t: "`$ARRAY`"
+    }
+    preferredPayIn: {
+      h: "Preferred Pay In"
+      n: "preferredPayIn"
+      r: false
+      sh: "Preferred pay-in method."
+      t: "`$STRING`"
+    }
+    pricingConfiguration: {
+      h: "Pricing Configuration"
+      n: "pricingConfiguration"
+      r: false
+      sh: "Allows partners to override pricing configurations on a transfer level."
+      t: "`$OBJECT`"
+    }
+    profile: {
+      fo: "int64"
+      h: "Profile"
+      n: "profile"
+      r: false
+      sh: "Personal or business profile ID."
+      t: "`$INTEGER`"
+    }
+    providedAmountType: {
+      h: "Provided Amount Type"
+      n: "providedAmountType"
+      r: false
+      sh: "Indicates whether the quote was created as source or target."
+      t: "`$STRING`"
+    }
+    rate: {
+      h: "Rate"
+      n: "rate"
+      r: false
+      sh: "Exchange rate value used for the conversion."
+      t: "`$NUMBER`"
+    }
+    rateExpirationTime: {
+      fo: "date-time"
+      h: "Rate Expiration Time"
+      n: "rateExpirationTime"
+      r: false
+      sh: "Date and time the locked rate expires."
+      t: "`$STRING`"
+    }
+    rateType: {
+      h: "Rate Type"
+      n: "rateType"
+      r: false
+      sh: "Whether the rate is fixed or floating."
+      t: "`$STRING`"
+    }
+    sourceAmount: {
+      h: "Source Amount"
+      n: "sourceAmount"
+      r: false
+      sh: "Amount in source currency to send."
+      t: "`$NUMBER`"
+    }
+    sourceCurrency: {
+      h: "Source Currency"
+      n: "sourceCurrency"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Source (sending) currency code."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Current status of the quote."
+      t: "`$STRING`"
+    }
+    targetAccount: {
+      fo: "int64"
+      h: "Target Account"
+      n: "targetAccount"
+      r: false
+      sh: "_Optional_."
+      t: "`$INTEGER`"
+    }
+    targetAmount: {
+      h: "Target Amount"
+      n: "targetAmount"
+      r: false
+      sh: "Amount in target currency to be received by the recipient."
+      t: "`$NUMBER`"
+    }
+    targetAmountAllowed: {
+      h: "Target Amount Allowed"
+      n: "targetAmountAllowed"
+      r: false
+      sh: "Indicates whether target amount is allowed."
+      t: "`$BOOLEAN`"
+    }
+    targetCurrency: {
+      h: "Target Currency"
+      n: "targetCurrency"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Target (receive) currency code."
+      t: "`$STRING`"
+    }
+    user: {
+      fo: "int64"
+      h: "User"
+      n: "user"
+      r: false
+      sh: "User ID that created the quote."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "quote"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "creationContext"
+            "payOut"
+            "paymentMetadata"
+            "preferredPayIn"
+            "pricingConfiguration"
+            "sourceAmount"
+            "sourceCurrency"
+            "targetAccount"
+            "targetAmount"
+            "targetCurrency"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/quotes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 101
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/quotes"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "quotes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "pricingConfiguration"
+            "sourceAmount"
+            "sourceCurrency"
+            "targetAmount"
+            "targetCurrency"
+          ]
+          co: {
+            id: "POST /quotes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/quotes"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "quotes"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/quotes/{quoteId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "11144c35-9fe8-4c32-b7fd-d05c2a7734bf"
+                k: "param"
+                n: "id"
+                or: "quoteId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 101
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/quotes/{quoteId}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+              quoteId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "quotes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "payOut"
+            "paymentMetadata"
+            "pricingConfiguration"
+            "targetAccount"
+          ]
+          co: {
+            id: "PATCH /profiles/{profileId}/quotes/{quoteId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "11144c35-9fe8-4c32-b7fd-d05c2a7734bf"
+                k: "param"
+                n: "id"
+                or: "quoteId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 101
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/profiles/{profileId}/quotes/{quoteId}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+              quoteId: "id"
+            }
+          }
+          rb: {
+            kind: "json"
+            media: "application/merge-patch+json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "quotes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

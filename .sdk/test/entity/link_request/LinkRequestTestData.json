@@ -1,0 +1,79 @@
+{
+  "existing": {
+    "link_request": {
+      "LINK_REQUEST00": {
+        "clientKey": "s50",
+        "email": "s51",
+        "id": "LINK_REQUEST00",
+        "metadata": {},
+        "profileId": 84,
+        "redirectUrl": "s55",
+        "transactionId": 86,
+        "type": "s57",
+        "profile_id": "PROFILE01"
+      },
+      "LINK_REQUEST01": {
+        "clientKey": "sa0",
+        "email": "sa1",
+        "id": "LINK_REQUEST01",
+        "metadata": {},
+        "profileId": 164,
+        "redirectUrl": "sa5",
+        "transactionId": 166,
+        "type": "sa7",
+        "profile_id": "PROFILE01"
+      },
+      "LINK_REQUEST02": {
+        "clientKey": "sf0",
+        "email": "sf1",
+        "id": "LINK_REQUEST02",
+        "metadata": {},
+        "profileId": 244,
+        "redirectUrl": "sf5",
+        "transactionId": 246,
+        "type": "sf7",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "link_request": {
+      "link_request_ref01": {
+        "clientKey": "s140",
+        "email": "s141",
+        "metadata": {},
+        "profileId": 324,
+        "redirectUrl": "s145",
+        "transactionId": 326,
+        "type": "s147"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/embedded-flows/link-requests/kyc-reviews": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/embedded-flows/link-requests/payment-instrument": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/embedded-flows/link-requests/recipients": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/embedded-flows/link-requests/spend/disputes": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /embedded-flows/link-requests/{embeddedLinkRequestId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,113 @@
+# API Information
+
+
+main: {
+  kit: {
+    info: {
+      description: `The Wise Platform API is a REST-based interface that enables programmatic access to Wise's payment infrastructure. All endpoints return JSON-formatted responses and use standard HTTP methods and status codes, except the browser-based [SAML](/api-reference/saml) single sign-on endpoints, which return XML metadata or redirects.
+{% admonition type="success" name="New to wise?" %}
+We strongly recommend first reading our **[Getting Started Guide](/guides/developer/index.md)** to help you set up credentials and make your first call.
+{% /admonition %}
+
+Before you begin {% .title-2 .m-t-5 %}
+
+To use this API reference effectively, you should have:
+
+- Received Valid [API credentials from Wise](/guides/developer/auth-and-security/index.md) (Client ID and Client Secret)
+- Understand OAuth 2.0 authentication
+- Be familiar with RESTful API concepts
+
+We recommend connecting to our Docs MCP Server.
+{% connect-mcp /%}
+
+Core API resources {% .title-2 .m-t-5 .m-b-0 %}
+
+| Resource | Purpose |
+|----------|---------|
+| **[Quote](/api-reference/quote)** | Exchange rate and fee calculations |
+| **[Recipient](/api-reference/recipient)** | Beneficiary account management |
+| **[Transfer](/api-reference/transfer)** | Payment creation and execution |
+| **[Balance](/api-reference/balance)** | Multi-currency account operations |
+| **[Profile](/api-reference/profile)** | Account ownership details |
+| **[Rate](/api-reference/rate)** | Current and historical exchange rates |
+
+**Not sure which workflow to build?**<br>
+Start with our [Integration Guides](/guides/product/send-money/use-cases/index.md) for step-by-step implementation examples.{% .m-t-3 .m-b-5 %}
+`
+      security: {
+        alternatives: [
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "PersonalToken"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "ClientCredentialsToken"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Basic"
+              scheme: "BasicAuth"
+              type: "http"
+            }
+          ]
+          [
+            {
+              in: "header"
+              name: "Authorization"
+              prefix: "Bearer"
+              scheme: "ClientCredentialsToken"
+              type: "http"
+            }
+            {
+              in: "header"
+              name: "X-Signature"
+              prefix: ""
+              scheme: "HmacSignature"
+              type: "apiKey"
+            }
+            {
+              in: "header"
+              name: "X-Signature-Timestamp"
+              prefix: ""
+              scheme: "HmacSignatureTimestamp"
+              type: "apiKey"
+            }
+          ]
+        ]
+        in: "header"
+        name: "Authorization"
+        prefix: "Bearer"
+        scheme: "UserToken"
+        type: "http"
+      }
+      servers: [
+        {
+          description: "Production Environment"
+          url: "https://api.wise.com/2026Q4"
+        }
+        {
+          description: "Sandbox Environment"
+          url: "https://api.wise-sandbox.com/2026Q4"
+        }
+      ]
+      summary: "The Wise Platform API is a REST-based interface that enables programmatic access to Wise's payment infrastructure."
+      title: "Wise Platform API"
+      version: "2026Q4"
+      website: "https://wise.com"
+    }
+  }
+}
+

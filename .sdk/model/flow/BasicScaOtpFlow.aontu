@@ -1,0 +1,36 @@
+# BasicScaOtpFlow
+
+main: kit: flow: BasicScaOtpFlow:
+{
+  entity: "sca_otp",
+  kind: "basic",
+  name: "BasicScaOtpFlow",
+  step: [
+    {
+      i: {
+        ref: "sca_otp_ref01"
+      }
+
+      m: {
+        user_id: "user01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "sca_otp_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "sca_otp01",
+        user_id: "user01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicScaOtpFlow"
+}

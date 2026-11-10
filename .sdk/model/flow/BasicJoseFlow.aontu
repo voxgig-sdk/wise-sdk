@@ -1,0 +1,36 @@
+# BasicJoseFlow
+
+main: kit: flow: BasicJoseFlow:
+{
+  entity: "jose",
+  kind: "basic",
+  name: "BasicJoseFlow",
+  step: [
+    {
+      i: {
+        ref: "jose_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "jose_ref01",
+        srcdatavar: "jose_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-jose_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicJoseFlow"
+}

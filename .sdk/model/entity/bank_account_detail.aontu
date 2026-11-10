@@ -1,0 +1,235 @@
+# Entity: bank_account_detail
+
+main: kit: entity: bank_account_detail: {
+
+  alias: field: {}
+
+  fields: {
+    active: {
+      h: "Active"
+      n: "active"
+      r: false
+      sh: "Status of the account detail."
+      t: "`$BOOLEAN`"
+    }
+    currency: {
+      h: "Currency"
+      n: "currency"
+      r: false
+      sh: "Account detail currency (ISO 4217 Alphabetic Code)."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Account detail ID."
+      t: "`$STRING`"
+    }
+    internationalDetails: {
+      h: "International Details"
+      n: "internationalDetails"
+      r: false
+      sh: "International bank account details."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    localDetails: {
+      h: "Local Details"
+      n: "localDetails"
+      r: false
+      sh: "Local bank account details."
+      t: "`$OBJECT`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: false
+      sh: "Reason for the return."
+      t: "`$STRING`"
+    }
+    targetAccountId: {
+      fo: "int64"
+      h: "Target Account Id"
+      n: "targetAccountId"
+      r: true
+      sh: "ID of the currency balance to create account details on."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "bank_account_detail"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "reason"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/account-details/payments/{paymentId}/returns"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 987654321
+                k: "param"
+                n: "payment_id"
+                or: "paymentId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/account-details/payments/{paymentId}/returns"
+          q: {
+            exist: [
+              "payment_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              paymentId: "payment_id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "account-details"
+            }
+            {
+              lit: "payments"
+            }
+            {
+              var: "payment_id"
+            }
+            {
+              lit: "returns"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "targetAccountId"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/bank-details"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/bank-details"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "bank-details"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.payment")]
+  ]
+
+}

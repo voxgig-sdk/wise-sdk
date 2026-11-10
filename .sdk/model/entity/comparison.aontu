@@ -1,0 +1,323 @@
+# Entity: comparison
+
+main: kit: entity: comparison: {
+
+  alias: field: {}
+
+  fields: {
+    amount: {
+      h: "Amount"
+      n: "amount"
+      r: false
+      sh: "The comparison amount"
+      t: "`$NUMBER`"
+    }
+    amountType: {
+      h: "Amount Type"
+      n: "amountType"
+      r: false
+      sh: "Whether the amount represents a send amount or recipient gets amount"
+      t: "`$STRING`"
+    }
+    providerCountry: {
+      h: "Provider Country"
+      n: "providerCountry"
+      r: false
+      sh: "Provider country (ISO 3166-1 Alpha-2 code)"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    providerTypes: {
+      h: "Provider Types"
+      n: "providerTypes"
+      r: false
+      sh: "List of provider types included in the response"
+      t: "`$ARRAY`"
+    }
+    providers: {
+      h: "Providers"
+      n: "providers"
+      r: false
+      sh: "List of providers with their estimated quotes"
+      t: "`$ARRAY`"
+    }
+    sourceCountry: {
+      h: "Source Country"
+      n: "sourceCountry"
+      r: false
+      sh: "Source country (ISO 3166-1 Alpha-2 code)"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    sourceCurrency: {
+      h: "Source Currency"
+      n: "sourceCurrency"
+      r: false
+      sh: "ISO 4217 source currency code"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    targetCountry: {
+      h: "Target Country"
+      n: "targetCountry"
+      r: false
+      sh: "Target country (ISO 3166-1 Alpha-2 code)"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    targetCurrency: {
+      h: "Target Currency"
+      n: "targetCurrency"
+      r: false
+      sh: "ISO 4217 target currency code"
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  name: "comparison"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /comparisons"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "exclude_partner"
+                or: "excludePartners"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "filter"
+                or: "filter"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "include_wise"
+                or: "includeWise"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "mid_market_rate"
+                or: "midMarketRate"
+                r: false
+                style: "form"
+                t: "`$NUMBER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "number_of_provider"
+                or: "numberOfProviders"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "pay_in_method"
+                or: "payInMethod"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "provider"
+                or: "providers"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "provider_country"
+                or: "providerCountry"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "provider_type"
+                or: "providerTypes"
+                r: false
+                style: "form"
+                t: "`$ARRAY`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "recipient_gets_amount"
+                or: "recipientGetsAmount"
+                r: false
+                style: "form"
+                t: "`$NUMBER`"
+              }
+              {
+                ex: 10000
+                explode: true
+                k: "query"
+                n: "send_amount"
+                or: "sendAmount"
+                r: false
+                style: "form"
+                t: "`$NUMBER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "source_country"
+                or: "sourceCountry"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "GBP"
+                explode: true
+                k: "query"
+                n: "source_currency"
+                or: "sourceCurrency"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "target_country"
+                or: "targetCountry"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "EUR"
+                explode: true
+                k: "query"
+                n: "target_currency"
+                or: "targetCurrency"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "wise_estimated_delivery"
+                or: "wiseEstimatedDelivery"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "wise_fee"
+                or: "wiseFee"
+                r: false
+                style: "form"
+                t: "`$NUMBER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "wise_quote_created_time"
+                or: "wiseQuoteCreatedTime"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/comparisons"
+          q: {
+            exist: [
+              "source_currency"
+              "target_currency"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "comparisons"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

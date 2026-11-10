@@ -1,0 +1,45 @@
+# BasicThirdPartyTransferFlow
+
+main: kit: flow: BasicThirdPartyTransferFlow:
+{
+  entity: "third_party_transfer",
+  kind: "basic",
+  name: "BasicThirdPartyTransferFlow",
+  step: [
+    {
+      i: {
+        ref: "third_party_transfer_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "third_party_transfer_ref01",
+        srcdatavar: "third_party_transfer_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "third_party_transfer01",
+        profile_id: "profile01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-third_party_transfer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicThirdPartyTransferFlow"
+}

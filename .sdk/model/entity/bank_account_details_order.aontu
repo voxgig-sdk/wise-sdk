@@ -1,0 +1,245 @@
+# Entity: bank_account_details_order
+
+main: kit: entity: bank_account_details_order: {
+
+  alias: field: {}
+
+  fields: {
+    accountDetailsId: {
+      h: "Account Details Id"
+      n: "accountDetailsId"
+      r: false
+      sh: "Unique ID of the issued account details."
+      t: "`$INTEGER`"
+    }
+    balanceId: {
+      h: "Balance Id"
+      n: "balanceId"
+      r: false
+      sh: "ID of the balance the order is for."
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    creationTime: {
+      fo: "date-time"
+      h: "Creation Time"
+      n: "creationTime"
+      r: false
+      sh: "Timestamp of when the order was created."
+      t: "`$STRING`"
+    }
+    currency: {
+      h: "Currency"
+      n: "currency"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Currency code (ISO 4217 Alphabetic Code)."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique ID of the order."
+      t: "`$STRING`"
+    }
+    modificationTime: {
+      fo: "date-time"
+      h: "Modification Time"
+      n: "modificationTime"
+      r: false
+      sh: "Timestamp of the last modification to the order."
+      t: "`$STRING`"
+    }
+    requirements: {
+      h: "Requirements"
+      n: "requirements"
+      r: false
+      sh: "List of requirements to fulfill the order."
+      t: "`$ARRAY`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Order status."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "bank_account_details_order"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "currency"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/account-details-orders"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/account-details-orders"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "account-details-orders"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/account-details-orders"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: "GBP"
+                explode: true
+                k: "query"
+                n: "currency"
+                or: "currency"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/account-details-orders"
+          q: {
+            exist: [
+              "currency"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "account-details-orders"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

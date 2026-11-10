@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "card_limit": {
+      "CARD_LIMIT00": {
+        "daily": "s28",
+        "lifetime": "s29",
+        "monthly": "s2a",
+        "transaction": "s2b",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01",
+        "id": "CARD_LIMIT00"
+      },
+      "CARD_LIMIT01": {
+        "daily": "s50",
+        "lifetime": "s51",
+        "monthly": "s52",
+        "transaction": "s53",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01",
+        "id": "CARD_LIMIT01"
+      },
+      "CARD_LIMIT02": {
+        "daily": "s78",
+        "lifetime": "s79",
+        "monthly": "s7a",
+        "transaction": "s7b",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01",
+        "id": "CARD_LIMIT02"
+      }
+    }
+  },
+  "new": {
+    "card_limit": {
+      "card_limit_ref01": {
+        "daily": "sa0",
+        "lifetime": "sa1",
+        "monthly": "sa2",
+        "transaction": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /spend/profiles/{profileId}/cards/{cardToken}/spend-limits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /spend/profiles/{profileId}/cards/{cardToken}/spend-limits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,110 @@
+{
+  "existing": {
+    "batch_group": {
+      "BATCH_GROUP00": {
+        "alreadyPaid": true,
+        "fileName": "s97",
+        "groupType": "s98",
+        "id": "BATCH_GROUP00",
+        "name": "s9a",
+        "payInDetails": [],
+        "payinSessionId": "s9c",
+        "profileId": 157,
+        "shortId": 158,
+        "sourceCurrency": "s9f",
+        "status": "sa0",
+        "transferIds": [],
+        "type": "sa2",
+        "userId": 163,
+        "version": 164,
+        "batch_payment_id": "BATCH_PAYMENT01",
+        "profile_id": "PROFILE01"
+      },
+      "BATCH_GROUP01": {
+        "alreadyPaid": true,
+        "fileName": "s12d",
+        "groupType": "s12e",
+        "id": "BATCH_GROUP01",
+        "name": "s130",
+        "payInDetails": [],
+        "payinSessionId": "s132",
+        "profileId": 307,
+        "shortId": 308,
+        "sourceCurrency": "s135",
+        "status": "s136",
+        "transferIds": [],
+        "type": "s138",
+        "userId": 313,
+        "version": 314,
+        "batch_payment_id": "BATCH_PAYMENT01",
+        "profile_id": "PROFILE01"
+      },
+      "BATCH_GROUP02": {
+        "alreadyPaid": true,
+        "fileName": "s1c3",
+        "groupType": "s1c4",
+        "id": "BATCH_GROUP02",
+        "name": "s1c6",
+        "payInDetails": [],
+        "payinSessionId": "s1c8",
+        "profileId": 457,
+        "shortId": 458,
+        "sourceCurrency": "s1cb",
+        "status": "s1cc",
+        "transferIds": [],
+        "type": "s1ce",
+        "userId": 463,
+        "version": 464,
+        "batch_payment_id": "BATCH_PAYMENT01",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "batch_group": {
+      "batch_group_ref01": {
+        "alreadyPaid": true,
+        "fileName": "s259",
+        "groupType": "s25a",
+        "name": "s25c",
+        "payInDetails": [],
+        "payinSessionId": "s25e",
+        "profileId": 607,
+        "shortId": 608,
+        "sourceCurrency": "s261",
+        "status": "s262",
+        "transferIds": [],
+        "type": "s264",
+        "userId": 613,
+        "version": 614
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/batch-payments/{batchGroupId}/payments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/batch-groups/{batchGroupId}/transfers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/batch-groups": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/batch-groups/{batchGroupId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /profiles/{profileId}/batch-groups/{batchGroupId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

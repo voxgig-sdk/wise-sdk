@@ -1,0 +1,574 @@
+# Entity: batch_group
+
+main: kit: entity: batch_group: {
+
+  alias: field: {}
+
+  fields: {
+    alreadyPaid: {
+      h: "Already Paid"
+      n: "alreadyPaid"
+      r: false
+      sh: "Not applicable to this use case."
+      t: "`$BOOLEAN`"
+    }
+    fileName: {
+      h: "File Name"
+      n: "fileName"
+      r: false
+      sh: "If this batch was submitted as a file, this is the given file name."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    groupType: {
+      h: "Group Type"
+      n: "groupType"
+      r: false
+      sh: "Whether this batch was submitted over the API or as a file."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "uuid"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Batch group ID."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Descriptive name for the batch group."
+      t: "`$STRING`"
+    }
+    payInDetails: {
+      h: "Pay In Details"
+      n: "payInDetails"
+      r: false
+      sh: "List of pay-in details describing how the batch group can be funded."
+      t: "`$ARRAY`"
+    }
+    payinSessionId: {
+      fo: "uuid"
+      h: "Payin Session Id"
+      n: "payinSessionId"
+      r: false
+      sh: "Optional ID of the payin session."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    profileId: {
+      fo: "int64"
+      h: "Profile Id"
+      n: "profileId"
+      r: false
+      sh: "The ID of the profile this payment belongs to."
+      t: "`$INTEGER`"
+    }
+    shortId: {
+      fo: "int64"
+      h: "Short Id"
+      n: "shortId"
+      r: false
+      sh: "Not applicable to this use case."
+      t: "`$INTEGER`"
+    }
+    sourceCurrency: {
+      h: "Source Currency"
+      n: "sourceCurrency"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Source currency code (ISO 4217 Alphabetic Code)."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      op: {
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Current batch group status: - `NEW` — New batch group with zero or more transfers."
+      t: "`$STRING`"
+    }
+    transferIds: {
+      h: "Transfer Ids"
+      n: "transferIds"
+      r: false
+      sh: "The IDs of all transfers successfully added to the group."
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The method of payment to use."
+      t: "`$STRING`"
+    }
+    userId: {
+      fo: "int64"
+      h: "User Id"
+      n: "userId"
+      r: false
+      sh: "The ID of the user who initiated this payment."
+      t: "`$INTEGER`"
+    }
+    version: {
+      fo: "int64"
+      h: "Version"
+      n: "version"
+      op: {
+        update: {
+          req: true
+          type: "`$INTEGER`"
+        }
+      }
+      r: false
+      sh: "Batch version, used for concurrency control."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "batch_group"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "type"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/batch-payments/{batchGroupId}/payments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "54a6bc09-cef9-49a8-9041-f1f0c654cd88"
+                k: "param"
+                n: "batch_payment_id"
+                or: "batchGroupId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/batch-payments/{batchGroupId}/payments"
+          q: {
+            exist: [
+              "batch_payment_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              batchGroupId: "batch_payment_id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "batch-payments"
+            }
+            {
+              var: "batch_payment_id"
+            }
+            {
+              lit: "payments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "customerTransactionId"
+            "details"
+            "quoteUuid"
+            "sourceAccount"
+            "targetAccount"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/batch-groups/{batchGroupId}/transfers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "54a6bc09-cef9-49a8-9041-f1f0c654cd88"
+                k: "param"
+                n: "id"
+                or: "batchGroupId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/batch-groups/{batchGroupId}/transfers"
+          q: {
+            "$action": "transfer"
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              batchGroupId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "batch-groups"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "transfers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "name"
+            "sourceCurrency"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/batch-groups"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/batch-groups"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "batch-groups"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/batch-groups/{batchGroupId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "54a6bc09-cef9-49a8-9041-f1f0c654cd88"
+                k: "param"
+                n: "id"
+                or: "batchGroupId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/batch-groups/{batchGroupId}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              batchGroupId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "batch-groups"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "status"
+            "version"
+          ]
+          co: {
+            id: "PATCH /profiles/{profileId}/batch-groups/{batchGroupId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "54a6bc09-cef9-49a8-9041-f1f0c654cd88"
+                k: "param"
+                n: "id"
+                or: "batchGroupId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/profiles/{profileId}/batch-groups/{batchGroupId}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              batchGroupId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "batch-groups"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

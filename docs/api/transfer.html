@@ -1,0 +1,986 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Transfer | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a aria-current="page" href="../api/transfer.html">Transfer</a><div class="nav-sections"><a class="nav-section" href="#post-transfers">POST /transfers</a>
+<a class="nav-section" href="#get-transfers">GET /transfers</a>
+<a class="nav-section" href="#get-transferstransferid">GET /transfers/{transferId}</a>
+<a class="nav-section" href="#get-transferstransferiddocumentsnoc">GET /transfers/{transferId}/documents/noc</a>
+<a class="nav-section" href="#get-transferstransferidinvoicesbankingpartner">GET /transfers/{transferId}/invoices/bankingpartner</a>
+<a class="nav-section" href="#get-transferstransferidreceiptpdf">GET /transfers/{transferId}/receipt.pdf</a>
+<a class="nav-section" href="#get-transferstransferidus-combined-receiptpdf">GET /transfers/{transferId}/us-combined-receipt.pdf</a>
+<a class="nav-section" href="#put-transferstransferidcancel">PUT /transfers/{transferId}/cancel</a></div>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="transfer">Transfer</h1>
+<p>A transfer: create, list, get or cancel one, and its receipts and payout information.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-transfers"><code>/transfers</code></a></td>
+<td><code>create</code></td>
+<td>Transfer successfully created</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-transfers"><code>/transfers</code></a></td>
+<td><code>list</code></td>
+<td>Returns an array of transfer objects, with or without an <code>originator</code> block depending on the type of each transfer</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-transferstransferid"><code>/transfers/{transferId}</code></a></td>
+<td><code>load</code></td>
+<td>Returns the transfer object, with or without an <code>originator</code> block depending on the type of transfer</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-transferstransferiddocumentsnoc"><code>/transfers/{transferId}/documents/noc</code></a></td>
+<td><code>load</code></td>
+<td>Non objection certificate in PDF format</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-transferstransferidinvoicesbankingpartner"><code>/transfers/{transferId}/invoices/bankingpartner</code></a></td>
+<td><code>load</code></td>
+<td>Returns payout information for the transfer</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-transferstransferidreceiptpdf"><code>/transfers/{transferId}/receipt.pdf</code></a></td>
+<td><code>load</code></td>
+<td>Transfer confirmation receipt in Wise branded PDF format</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-transferstransferidus-combined-receiptpdf"><code>/transfers/{transferId}/us-combined-receipt.pdf</code></a></td>
+<td><code>load</code></td>
+<td>The US Combined Receipt in Wise branded PDF format</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-transferstransferidcancel"><code>/transfers/{transferId}/cancel</code></a></td>
+<td><code>update</code></td>
+<td>Returns the cancelled transfer object, with or without an <code>originator</code> block depending on the type of transfer</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">transfers, err := client.Transfer(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(transfers)
+transfer, err := client.Transfer(nil).Load(map[string]any{&quot;id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(transfer)
+created, err := client.Transfer(nil).Create(map[string]any{&quot;customerTransactionId&quot;: &quot;example&quot;, &quot;quoteUuid&quot;: &quot;example&quot;, &quot;targetAccount&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Transfer(nil).Update(map[string]any{&quot;id&quot;: 1, &quot;business&quot;: 1, &quot;created&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local transfers, err = client:Transfer():list()
+local transfer, err = client:Transfer():load({ id = 1 })
+local created, err = client:Transfer():create({ customerTransactionId = &quot;example&quot;, quoteUuid = &quot;example&quot;, targetAccount = 1 })
+local updated, err = client:Transfer():update({ id = 1, business = 1, created = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$transfers = $client-&gt;Transfer()-&gt;list();
+$transfer = $client-&gt;Transfer()-&gt;load([&quot;id&quot; =&gt; 1]);
+$created = $client-&gt;Transfer()-&gt;create([&quot;customerTransactionId&quot; =&gt; &quot;example&quot;, &quot;quoteUuid&quot; =&gt; &quot;example&quot;, &quot;targetAccount&quot; =&gt; 1]);
+$updated = $client-&gt;Transfer()-&gt;update([&quot;id&quot; =&gt; 1, &quot;business&quot; =&gt; 1, &quot;created&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">transfers = client.Transfer().list()
+transfer = client.Transfer().load({&quot;id&quot;: 1})
+created = client.Transfer().create({ &quot;customerTransactionId&quot;: &quot;example&quot;, &quot;quoteUuid&quot;: &quot;example&quot;, &quot;targetAccount&quot;: 1 })
+updated = client.Transfer().update({&quot;id&quot;: 1, &quot;business&quot;: 1, &quot;created&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">transfers = client.Transfer.list()
+transfer = client.Transfer.load({ &quot;id&quot; =&gt; 1 })
+created = client.Transfer.create({ &quot;customerTransactionId&quot; =&gt; &quot;example&quot;, &quot;quoteUuid&quot; =&gt; &quot;example&quot;, &quot;targetAccount&quot; =&gt; 1 })
+updated = client.Transfer.update({ &quot;id&quot; =&gt; 1, &quot;business&quot; =&gt; 1, &quot;created&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const transfers = await client.Transfer().list()
+const transfer = await client.Transfer().load({ id: 1 })
+const created = await client.Transfer().create({ customerTransactionId: &quot;example&quot;, quoteUuid: &quot;example&quot;, targetAccount: 1 })
+const updated = await client.Transfer().update({ id: 1, business: 1, created: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>business</code></td>
+<td><code>one,integer,null</code></td>
+<td>No</td>
+<td>Your business profile ID</td>
+</tr>
+<tr>
+<td><code>created</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Timestamp when transfer was created</td>
+</tr>
+<tr>
+<td><code>customerTransactionId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier randomly generated per transfer request by the calling client</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Details</td>
+</tr>
+<tr>
+<td><code>hasActiveIssues</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Are there any pending issues which stop executing the transfer?</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Transfer ID</td>
+</tr>
+<tr>
+<td><code>payinSessionId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the Payin Session generated for the transfer, which can be used for certain payin methods when funding the transfer</td>
+</tr>
+<tr>
+<td><code>quote</code></td>
+<td><code>one,integer,null</code></td>
+<td>No</td>
+<td>V1 quote ID</td>
+</tr>
+<tr>
+<td><code>quoteUuid</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>V2 quote ID</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate value</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated, use <code>details.reference</code> instead</td>
+</tr>
+<tr>
+<td><code>sourceAccount</code></td>
+<td><code>one,integer,null</code></td>
+<td>No</td>
+<td>Refund recipient account ID</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency code</td>
+</tr>
+<tr>
+<td><code>sourceValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transfer amount in source currency</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Transfer current status.</td>
+</tr>
+<tr>
+<td><code>targetAccount</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Recipient account ID</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target currency code</td>
+</tr>
+<tr>
+<td><code>targetValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transfer amount in target currency</td>
+</tr>
+<tr>
+<td><code>transferRequest</code></td>
+<td><code>one,integer,null</code></td>
+<td>No</td>
+<td>Deprecated</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Your user ID</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-transfers" class="operation" data-method="post"><code>POST</code> /transfers</h3>
+<p>Operation ID: <code>transferCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customerTransactionId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Required to perform idempotency check to avoid duplicate transfers in case of network failures or timeouts</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient will see this reference text in their bank statement. Maximum allowed characters depends on the currency route. See <a href="https://wise.com/help/articles/2932870/tips-for-paying-invoices">Business Payments Tips</a> for a full list</td>
+</tr>
+<tr>
+<td><code>details.sourceOfFunds</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Conditionally required. For example when target currency is USD and transfer amount exceeds 80k. See Transfer Requirements for conditions</td>
+</tr>
+<tr>
+<td><code>details.transferPurpose</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Conditionally required. For example when target currency is THB. See Transfer Requirements for conditions</td>
+</tr>
+<tr>
+<td><code>details.transferPurposeInvoiceNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Conditionally required. For example when target currency is INR. See Transfer Requirements for conditions</td>
+</tr>
+<tr>
+<td><code>details.transferPurposeSubTransferPurpose</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Conditionally required. For example when target currency is CNY. See Transfer Requirements for conditions</td>
+</tr>
+<tr>
+<td><code>quoteUuid</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>V2 quote ID. You can only create one transfer per one quote. You cannot use same quote ID to create multiple transfers</td>
+</tr>
+<tr>
+<td><code>sourceAccount</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Refund recipient account ID</td>
+</tr>
+<tr>
+<td><code>targetAccount</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Recipient account ID. You can create multiple transfers to same recipient account</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-transfer-successfully-created" class="status" data-status="2xx">200: Transfer successfully created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>business</code></td>
+<td><code>integer,null (int64)</code></td>
+<td>No</td>
+<td>Your business profile ID</td>
+</tr>
+<tr>
+<td><code>created</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp when transfer was created</td>
+</tr>
+<tr>
+<td><code>customerTransactionId</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Unique identifier randomly generated per transfer request by the calling client</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Payment reference text</td>
+</tr>
+<tr>
+<td><code>hasActiveIssues</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Are there any pending issues which stop executing the transfer?</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Transfer ID</td>
+</tr>
+<tr>
+<td><code>payinSessionId</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>ID of the Payin Session generated for the transfer, which can be used for certain payin methods when funding the transfer</td>
+</tr>
+<tr>
+<td><code>quote</code></td>
+<td><code>integer,null (int64)</code></td>
+<td>No</td>
+<td>V1 quote ID</td>
+</tr>
+<tr>
+<td><code>quoteUuid</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>V2 quote ID</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate value</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated, use <code>details.reference</code> instead</td>
+</tr>
+<tr>
+<td><code>sourceAccount</code></td>
+<td><code>integer,null (int64)</code></td>
+<td>No</td>
+<td>Refund recipient account ID</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency code</td>
+</tr>
+<tr>
+<td><code>sourceValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transfer amount in source currency</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Transfer current status. See Transfer statuses for all possible statuses.</td>
+</tr>
+<tr>
+<td><code>targetAccount</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Recipient account ID</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target currency code</td>
+</tr>
+<tr>
+<td><code>targetValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transfer amount in target currency</td>
+</tr>
+<tr>
+<td><code>transferRequest</code></td>
+<td><code>integer,null</code></td>
+<td>No</td>
+<td>Deprecated</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Your user ID</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-transfers" class="operation" data-method="get"><code>GET</code> /transfers</h3>
+<p>Operation ID: <code>transferList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profile</code></td>
+<td><code>query</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>User profile ID. If parameter is omitted, defaults to user's personal profile</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Comma separated list of one or more status codes to filter transfers. See Transfer statuses for complete list of statuses.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency code</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target currency code</td>
+</tr>
+<tr>
+<td><code>createdDateStart</code></td>
+<td><code>query</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Starting date to filter transfers, inclusive of the provided date</td>
+</tr>
+<tr>
+<td><code>createdDateEnd</code></td>
+<td><code>query</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Ending date to filter transfers, inclusive of the provided date</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>Maximum number of records to be returned in response</td>
+</tr>
+<tr>
+<td><code>offset</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>Starting record number</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-returns-an-array-of-transfer-objects-with-or-without-an-originator-block-depending-on-the-type-of-each-transfer" class="status" data-status="2xx">200: Returns an array of transfer objects, with or without an <code>originator</code> block depending on the type of each transfer</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>array of object or object</code>.</p>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-transferstransferid" class="operation" data-method="get"><code>GET</code> /transfers/{transferId}</h3>
+<p>Operation ID: <code>transferGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transferId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The transfer ID</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-returns-the-transfer-object-with-or-without-an-originator-block-depending-on-the-type-of-transfer" class="status" data-status="2xx">200: Returns the transfer object, with or without an <code>originator</code> block depending on the type of transfer</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object or object</code>.</p>
+<h5 id="404-transfer-not-found" class="status" data-status="4xx">404: Transfer not found</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-transferstransferiddocumentsnoc" class="operation" data-method="get"><code>GET</code> /transfers/{transferId}/documents/noc</h3>
+<p>Operation ID: <code>transferNocGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transferId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The transfer ID</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-non-objection-certificate-in-pdf-format" class="status" data-status="2xx">200: Non objection certificate in PDF format</h5>
+<p><code>application/pdf</code></p>
+<p>The response is <code>string (binary)</code>.</p>
+<h5 id="404-transfer-not-found-1" class="status" data-status="4xx">404: Transfer not found</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-transferstransferidinvoicesbankingpartner" class="operation" data-method="get"><code>GET</code> /transfers/{transferId}/invoices/bankingpartner</h3>
+<p>Operation ID: <code>transferPayoutInfoGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transferId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The transfer ID</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-returns-payout-information-for-the-transfer" class="status" data-status="2xx">200: Returns payout information for the transfer</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bankingPartnerName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the sending bank to the recipient's bank</td>
+</tr>
+<tr>
+<td><code>bankingPartnerReference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The reference used by the partner bank to identify and track the transfer</td>
+</tr>
+<tr>
+<td><code>deliveryMode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The delivery mode for the payment (for example SWIFT)</td>
+</tr>
+<tr>
+<td><code>mt103</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>The MT103 of the transfer, if available</td>
+</tr>
+<tr>
+<td><code>processorName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The legal entity that processed the transfer on behalf of the customer</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;bankingPartnerName&quot;: &quot;Global Bank Corp.&quot;,
+  &quot;bankingPartnerReference&quot;: &quot;ABCD1234&quot;,
+  &quot;deliveryMode&quot;: &quot;SWIFT&quot;,
+  &quot;mt103&quot;: &quot;{1:F01XXXXGBXXAXXX0000000000}{2:I103XXXXGBXXXXXXN}{3:{108:1234567}{111:001}{121:00000000-0000-0000-0000-000000000000}}{4:\n:20:1234567\n:23B:CRED\n:32A:221212USD12345,\n:33B:USD12345,\n:50K:/11111111\nSOME COMPANY INC.\n1 SOME STREET MIAMI 33132 US\n:59:/GB00000000000000\nCOMPANY NAME LTD\nUK LONDON 1234 GB\n:70:REFERENCE\n:71A:OUR\n:71G:USD11,\n-}\n&quot;,
+  &quot;processorName&quot;: &quot;Acme Bank Ltd.&quot;
+}
+</code></pre>
+<h5 id="404-transfer-not-found-this-error-can-also-occur-if-querying-the-endpoint-before-the-transfer-has-finished-processing" class="status" data-status="4xx">404: Transfer not found (this error can also occur if querying the endpoint before the transfer has finished processing)</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-transferstransferidreceiptpdf" class="operation" data-method="get"><code>GET</code> /transfers/{transferId}/receipt.pdf</h3>
+<p>Operation ID: <code>transferReceiptGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transferId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The transfer ID</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-transfer-confirmation-receipt-in-wise-branded-pdf-format" class="status" data-status="2xx">200: Transfer confirmation receipt in Wise branded PDF format</h5>
+<p><code>application/pdf</code></p>
+<p>The response is <code>string (binary)</code>.</p>
+<h5 id="404-transfer-not-found-2" class="status" data-status="4xx">404: Transfer not found</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-5" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-transferstransferidus-combined-receiptpdf" class="operation" data-method="get"><code>GET</code> /transfers/{transferId}/us-combined-receipt.pdf</h3>
+<p>Operation ID: <code>transferUsCombinedReceiptGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transferId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The transfer ID</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-the-us-combined-receipt-in-wise-branded-pdf-format" class="status" data-status="2xx">200: The US Combined Receipt in Wise branded PDF format</h5>
+<p><code>application/pdf</code></p>
+<p>The response is <code>string (binary)</code>.</p>
+<h5 id="404-transfer-not-found-3" class="status" data-status="4xx">404: Transfer not found</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-6" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="update">update</h2>
+<h3 id="put-transferstransferidcancel" class="operation" data-method="put"><code>PUT</code> /transfers/{transferId}/cancel</h3>
+<p>Operation ID: <code>transferCancel</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transferId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The transfer ID</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-returns-the-cancelled-transfer-object-with-or-without-an-originator-block-depending-on-the-type-of-transfer" class="status" data-status="2xx">200: Returns the cancelled transfer object, with or without an <code>originator</code> block depending on the type of transfer</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object or object</code>.</p>
+<h5 id="404-transfer-not-found-4" class="status" data-status="4xx">404: Transfer not found</h5>
+<h5 id="409-transfer-cannot-be-cancelled-because-it-is-in-a-non-cancellable-state-or-has-other-restrictions-the-error-response-will-include-the-code-transfercancellationnotallowed" class="status" data-status="4xx">409: Transfer cannot be cancelled because it is in a non-cancellable state or has other restrictions. The error response will include the code <code>transfer.cancellation.not.allowed</code></h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-7" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

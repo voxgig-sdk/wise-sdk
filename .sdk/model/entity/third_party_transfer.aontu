@@ -1,0 +1,329 @@
+# Entity: third_party_transfer
+
+main: kit: entity: third_party_transfer: {
+
+  alias: field: {}
+
+  fields: {
+    created: {
+      fo: "date-time"
+      h: "Created"
+      n: "created"
+      r: false
+      sh: "Timestamp when transfer was created."
+      t: "`$STRING`"
+    }
+    details: {
+      h: "Details"
+      n: "details"
+      op: {
+        create: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "Payment Details"
+      t: "`$OBJECT`"
+    }
+    hasActiveIssues: {
+      h: "Has Active Issues"
+      n: "hasActiveIssues"
+      r: false
+      sh: "Are there any pending issues which stop executing the transfer?"
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Transfer ID"
+      t: "`$INTEGER`"
+    }
+    originalTransferId: {
+      h: "Original Transfer Id"
+      n: "originalTransferId"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Unique identifier randomly generated per transfer request by the calling client"
+      t: "`$STRING`"
+    }
+    originator: {
+      h: "Originator"
+      n: "originator"
+      op: {
+        create: {
+          req: true
+          type: "`$ANY`"
+        }
+      }
+      r: false
+      sh: "Data block to capture payment originator details"
+      t: "`$OBJECT`"
+    }
+    quote: {
+      h: "Quote"
+      n: "quote"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Quote ID"
+      t: "`$STRING`"
+    }
+    rate: {
+      fo: "decimal"
+      h: "Rate"
+      n: "rate"
+      r: false
+      sh: "Exchange rate value"
+      t: "`$NUMBER`"
+    }
+    sourceAccount: {
+      fo: "int64"
+      h: "Source Account"
+      n: "sourceAccount"
+      r: false
+      sh: "Refund recipient account ID"
+      t: "`$INTEGER`"
+    }
+    sourceCurrency: {
+      h: "Source Currency"
+      n: "sourceCurrency"
+      r: false
+      sh: "Source currency code"
+      t: "`$STRING`"
+    }
+    sourceValue: {
+      fo: "decimal"
+      h: "Source Value"
+      n: "sourceValue"
+      r: false
+      sh: "Transfer amount in source currency"
+      t: "`$NUMBER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Transfer current status."
+      t: "`$STRING`"
+    }
+    targetAccount: {
+      fo: "int64"
+      h: "Target Account"
+      n: "targetAccount"
+      op: {
+        create: {
+          req: true
+          type: "`$INTEGER`"
+        }
+      }
+      r: false
+      sh: "Recipient account ID"
+      t: "`$INTEGER`"
+    }
+    targetCurrency: {
+      h: "Target Currency"
+      n: "targetCurrency"
+      r: false
+      sh: "Target currency code"
+      t: "`$STRING`"
+    }
+    targetValue: {
+      fo: "decimal"
+      h: "Target Value"
+      n: "targetValue"
+      r: false
+      sh: "Transfer amount in target currency"
+      t: "`$NUMBER`"
+    }
+    user: {
+      fo: "int64"
+      h: "User"
+      n: "user"
+      r: false
+      sh: "Your user ID"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "third_party_transfer"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "details"
+            "originalTransferId"
+            "originator"
+            "quote"
+            "sourceAccount"
+            "targetAccount"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/third-party-transfers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 123456789
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/third-party-transfers"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "third-party-transfers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/third-party-transfers/{transferId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 16521632
+                k: "param"
+                n: "id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 123456789
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/third-party-transfers/{transferId}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+              transferId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "third-party-transfers"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "phone_number": {
+      "PHONE_NUMBER00": {
+        "clientId": "s32",
+        "id": "PHONE_NUMBER00",
+        "phoneNumber": "s34",
+        "type": "s35",
+        "verified": true,
+        "user_id": "USER01"
+      },
+      "PHONE_NUMBER01": {
+        "clientId": "s64",
+        "id": "PHONE_NUMBER01",
+        "phoneNumber": "s66",
+        "type": "s67",
+        "verified": true,
+        "user_id": "USER01"
+      },
+      "PHONE_NUMBER02": {
+        "clientId": "s96",
+        "id": "PHONE_NUMBER02",
+        "phoneNumber": "s98",
+        "type": "s99",
+        "verified": true,
+        "user_id": "USER01"
+      }
+    }
+  },
+  "new": {
+    "phone_number": {
+      "phone_number_ref01": {
+        "clientId": "sc8",
+        "phoneNumber": "sca",
+        "type": "scb",
+        "verified": true
+      }
+    }
+  },
+  "requests": {
+    "POST /application/users/{userId}/phone-numbers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

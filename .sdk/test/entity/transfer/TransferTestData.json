@@ -1,0 +1,139 @@
+{
+  "existing": {
+    "transfer": {
+      "TRANSFER00": {
+        "business": "sc8",
+        "created": "sc9",
+        "customerTransactionId": "sca",
+        "details": {},
+        "hasActiveIssues": true,
+        "id": "TRANSFER00",
+        "payinSessionId": "sce",
+        "quote": "scf",
+        "quoteUuid": "sd0",
+        "rate": 209,
+        "reference": "sd2",
+        "sourceAccount": "sd3",
+        "sourceCurrency": "sd4",
+        "sourceValue": 213,
+        "status": "sd6",
+        "targetAccount": 215,
+        "targetCurrency": "sd8",
+        "targetValue": 217,
+        "transferRequest": "sda",
+        "user": 219
+      },
+      "TRANSFER01": {
+        "business": "s190",
+        "created": "s191",
+        "customerTransactionId": "s192",
+        "details": {},
+        "hasActiveIssues": true,
+        "id": "TRANSFER01",
+        "payinSessionId": "s196",
+        "quote": "s197",
+        "quoteUuid": "s198",
+        "rate": 409,
+        "reference": "s19a",
+        "sourceAccount": "s19b",
+        "sourceCurrency": "s19c",
+        "sourceValue": 413,
+        "status": "s19e",
+        "targetAccount": 415,
+        "targetCurrency": "s1a0",
+        "targetValue": 417,
+        "transferRequest": "s1a2",
+        "user": 419
+      },
+      "TRANSFER02": {
+        "business": "s258",
+        "created": "s259",
+        "customerTransactionId": "s25a",
+        "details": {},
+        "hasActiveIssues": true,
+        "id": "TRANSFER02",
+        "payinSessionId": "s25e",
+        "quote": "s25f",
+        "quoteUuid": "s260",
+        "rate": 609,
+        "reference": "s262",
+        "sourceAccount": "s263",
+        "sourceCurrency": "s264",
+        "sourceValue": 613,
+        "status": "s266",
+        "targetAccount": 615,
+        "targetCurrency": "s268",
+        "targetValue": 617,
+        "transferRequest": "s26a",
+        "user": 619
+      }
+    }
+  },
+  "new": {
+    "transfer": {
+      "transfer_ref01": {
+        "business": "s320",
+        "created": "s321",
+        "customerTransactionId": "s322",
+        "details": {},
+        "hasActiveIssues": true,
+        "payinSessionId": "s326",
+        "quote": "s327",
+        "quoteUuid": "s328",
+        "rate": 809,
+        "reference": "s32a",
+        "sourceAccount": "s32b",
+        "sourceCurrency": "s32c",
+        "sourceValue": 813,
+        "status": "s32e",
+        "targetAccount": 815,
+        "targetCurrency": "s330",
+        "targetValue": 817,
+        "transferRequest": "s332",
+        "user": 819
+      }
+    }
+  },
+  "requests": {
+    "POST /transfers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /transfers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /transfers/{transferId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /transfers/{transferId}/documents/noc": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /transfers/{transferId}/invoices/bankingpartner": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /transfers/{transferId}/receipt.pdf": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /transfers/{transferId}/us-combined-receipt.pdf": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /transfers/{transferId}/cancel": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,37 @@
+# BasicBusinessProfileFlow
+
+main: kit: flow: BasicBusinessProfileFlow:
+{
+  entity: "business_profile",
+  kind: "basic",
+  name: "BasicBusinessProfileFlow",
+  step: [
+    {
+      i: {
+        ref: "business_profile_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "business_profile_ref01",
+        srcdatavar: "business_profile_ref01_data",
+        suffix: "_up0",
+        textfield: "abn"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-business_profile_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBusinessProfileFlow"
+}

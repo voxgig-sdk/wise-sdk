@@ -1,0 +1,30 @@
+# BasicAddressRequirementFlow
+
+main: kit: flow: BasicAddressRequirementFlow:
+{
+  entity: "address_requirement",
+  kind: "basic",
+  name: "BasicAddressRequirementFlow",
+  step: [
+    {
+      i: {
+        ref: "address_requirement_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "address_requirement_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAddressRequirementFlow"
+}

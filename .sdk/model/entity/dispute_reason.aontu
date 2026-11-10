@@ -1,0 +1,134 @@
+# Entity: dispute_reason
+
+main: kit: entity: dispute_reason: {
+
+  alias: field: {}
+
+  fields: {
+    code: {
+      h: "Code"
+      n: "code"
+      r: false
+      sh: "The type of reasons available for the dispute."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "The description of the dispute reason."
+      t: "`$STRING`"
+    }
+    isFraud: {
+      h: "Is Fraud"
+      n: "isFraud"
+      r: false
+      sh: "Flag indicating that the dispute reason is fraud-related."
+      t: "`$BOOLEAN`"
+    }
+    subOptions: {
+      h: "Sub Options"
+      n: "subOptions"
+      r: false
+      sh: "Optional list of sub-reasons that should be used as the dispute reason."
+      t: "`$ARRAY`"
+    }
+    supportsMultipleTransactions: {
+      h: "Supports Multiple Transactions"
+      n: "supportsMultipleTransactions"
+      r: false
+      sh: "Whether the dispute supports multiple transactions."
+      t: "`$BOOLEAN`"
+    }
+    tooltip: {
+      h: "Tooltip"
+      n: "tooltip"
+      r: false
+      sh: "Text to display when showing the dispute form to your users."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "dispute_reason"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /spend/profiles/{profileId}/dispute-form/reasons"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 14547572
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{profileId}/dispute-form/reasons"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "dispute-form"
+            }
+            {
+              lit: "reasons"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

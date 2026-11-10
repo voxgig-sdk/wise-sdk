@@ -1,0 +1,84 @@
+# BasicKycReviewFlow
+
+main: kit: flow: BasicKycReviewFlow:
+{
+  entity: "kyc_review",
+  kind: "basic",
+  name: "BasicKycReviewFlow",
+  step: [
+    {
+      i: {
+        ref: "kyc_review_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "kyc_review_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        profile_id: "profile01"
+      }
+
+      i: {
+        ref: "kyc_review_ref01",
+        srcdatavar: "kyc_review_ref01_data",
+        suffix: "_up0",
+        textfield: "createdAt"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-kyc_review_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "kyc_review_ref01",
+        srcdatavar: "kyc_review_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "kyc_review01",
+        profile_id: "profile01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-kyc_review_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicKycReviewFlow"
+}

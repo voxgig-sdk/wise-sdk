@@ -1,0 +1,22 @@
+# BasicContactFlow
+
+main: kit: flow: BasicContactFlow:
+{
+  entity: "contact",
+  kind: "basic",
+  name: "BasicContactFlow",
+  step: [
+    {
+      i: {
+        ref: "contact_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicContactFlow"
+}

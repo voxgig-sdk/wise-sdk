@@ -1,0 +1,40 @@
+# BasicSettlementAllocationFlow
+
+main: kit: flow: BasicSettlementAllocationFlow:
+{
+  entity: "settlement_allocation",
+  kind: "basic",
+  name: "BasicSettlementAllocationFlow",
+  step: [
+    {
+      i: {
+        ref: "settlement_allocation_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "settlement_allocation_ref01",
+        srcdatavar: "settlement_allocation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "settlement_allocation01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-settlement_allocation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSettlementAllocationFlow"
+}

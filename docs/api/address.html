@@ -1,0 +1,695 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Address | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a aria-current="page" href="../api/address.html">Address</a><div class="nav-sections"><a class="nav-section" href="#post-addresses">POST /addresses</a>
+<a class="nav-section" href="#get-addresses">GET /addresses</a>
+<a class="nav-section" href="#get-addressesaddressid">GET /addresses/{addressId}</a></div>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="address">Address</h1>
+<p>A profile's address: create or update, list, or get one.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-addresses"><code>/addresses</code></a></td>
+<td><code>create</code></td>
+<td>OK - Address successfully created or updated</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-addresses"><code>/addresses</code></a></td>
+<td><code>list</code></td>
+<td>OK - Successfully retrieved addresses</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-addressesaddressid"><code>/addresses/{addressId}</code></a></td>
+<td><code>load</code></td>
+<td>OK - Successfully retrieved the address</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">addresss, err := client.Address(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(addresss)
+address, err := client.Address(nil).Load(map[string]any{&quot;id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(address)
+created, err := client.Address(nil).Create(map[string]any{&quot;details&quot;: map[string]any{}, &quot;profile&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local addresss, err = client:Address():list()
+local address, err = client:Address():load({ id = 1 })
+local created, err = client:Address():create({ details = {}, profile = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$addresss = $client-&gt;Address()-&gt;list();
+$address = $client-&gt;Address()-&gt;load([&quot;id&quot; =&gt; 1]);
+$created = $client-&gt;Address()-&gt;create([&quot;details&quot; =&gt; [], &quot;profile&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">addresss = client.Address().list()
+address = client.Address().load({&quot;id&quot;: 1})
+created = client.Address().create({ &quot;details&quot;: {}, &quot;profile&quot;: 1 })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">addresss = client.Address.list()
+address = client.Address.load({ &quot;id&quot; =&gt; 1 })
+created = client.Address.create({ &quot;details&quot; =&gt; {}, &quot;profile&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const addresss = await client.Address().list()
+const address = await client.Address().load({ id: 1 })
+const created = await client.Address().create({ details: {}, profile: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address details.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Address ID.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>User profile ID.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-addresses" class="operation" data-method="post"><code>POST</code> /addresses</h3>
+<p>Operation ID: <code>addressCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Address details.</td>
+</tr>
+<tr>
+<td><code>details.city</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>City name.</td>
+</tr>
+<tr>
+<td><code>details.country</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Country code (ISO 3166-1 alpha-2).</td>
+</tr>
+<tr>
+<td><code>details.firstLine</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Address line: street, house, apartment.</td>
+</tr>
+<tr>
+<td><code>details.occupations</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>User occupations. Required for CA, IN, JP, ID, IL, MX, and within the US for state NM.</td>
+</tr>
+<tr>
+<td><code>details.occupations[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User occupation - any value permitted.</td>
+</tr>
+<tr>
+<td><code>details.occupations[].format</code></td>
+<td><code>enum: FREE_FORM</code></td>
+<td>No</td>
+<td>Occupation type - always <code>FREE_FORM</code>.</td>
+</tr>
+<tr>
+<td><code>details.postCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Postal / zip code (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>details.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code. Required if country is US, CA, BR, or AU.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>User profile ID.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-ok---address-successfully-created-or-updated" class="status" data-status="2xx">200: OK - Address successfully created or updated</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address details.</td>
+</tr>
+<tr>
+<td><code>details.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City name.</td>
+</tr>
+<tr>
+<td><code>details.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country code (ISO 3166-2 Country Code).</td>
+</tr>
+<tr>
+<td><code>details.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Address line: street, house, apartment.</td>
+</tr>
+<tr>
+<td><code>details.occupations</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>User occupations. Required for CA, IN, JP, ID, IL, MX, and within the US for state NM.</td>
+</tr>
+<tr>
+<td><code>details.occupations[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User occupation - any value permitted.</td>
+</tr>
+<tr>
+<td><code>details.occupations[].format</code></td>
+<td><code>enum: FREE_FORM</code></td>
+<td>No</td>
+<td>Occupation type - always <code>FREE_FORM</code>.</td>
+</tr>
+<tr>
+<td><code>details.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal or zip code (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>details.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code. Required if country is US, CA, BR, or AU.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Address ID.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>User profile ID.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;details&quot;: {
+    &quot;city&quot;: &quot;Phoenix&quot;,
+    &quot;country&quot;: &quot;US&quot;,
+    &quot;firstLine&quot;: &quot;50 Sunflower Ave&quot;,
+    &quot;occupations&quot;: [
+      {
+        &quot;code&quot;: &quot;Software Engineer&quot;,
+        &quot;format&quot;: &quot;FREE_FORM&quot;
+      }
+    ],
+    &quot;postCode&quot;: &quot;10025&quot;,
+    &quot;state&quot;: &quot;AZ&quot;
+  },
+  &quot;id&quot;: 10000001,
+  &quot;profile&quot;: 12345678
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-addresses" class="operation" data-method="get"><code>GET</code> /addresses</h3>
+<p>Operation ID: <code>addressList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profile</code></td>
+<td><code>query</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The profile ID to list addresses for.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-addresses" class="status" data-status="2xx">200: OK - Successfully retrieved addresses</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[].details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address details.</td>
+</tr>
+<tr>
+<td><code>[].details.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City name.</td>
+</tr>
+<tr>
+<td><code>[].details.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country code (ISO 3166-2 Country Code).</td>
+</tr>
+<tr>
+<td><code>[].details.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Address line: street, house, apartment.</td>
+</tr>
+<tr>
+<td><code>[].details.occupations</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>User occupations. Required for CA, IN, JP, ID, IL, MX, and within the US for state NM.</td>
+</tr>
+<tr>
+<td><code>[].details.occupations[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User occupation - any value permitted.</td>
+</tr>
+<tr>
+<td><code>[].details.occupations[].format</code></td>
+<td><code>enum: FREE_FORM</code></td>
+<td>No</td>
+<td>Occupation type - always <code>FREE_FORM</code>.</td>
+</tr>
+<tr>
+<td><code>[].details.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal or zip code (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>[].details.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code. Required if country is US, CA, BR, or AU.</td>
+</tr>
+<tr>
+<td><code>[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Address ID.</td>
+</tr>
+<tr>
+<td><code>[].profile</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>User profile ID.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">[
+  {
+    &quot;details&quot;: {
+      &quot;city&quot;: &quot;Phoenix&quot;,
+      &quot;country&quot;: &quot;US&quot;,
+      &quot;firstLine&quot;: &quot;50 Sunflower Ave&quot;,
+      &quot;occupations&quot;: [
+        {
+          &quot;code&quot;: &quot;Software Engineer&quot;,
+          &quot;format&quot;: &quot;FREE_FORM&quot;
+        }
+      ],
+      &quot;postCode&quot;: &quot;10025&quot;,
+      &quot;state&quot;: &quot;AZ&quot;
+    },
+    &quot;id&quot;: 10000001,
+    &quot;profile&quot;: 12345678
+  }
+]
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-addressesaddressid" class="operation" data-method="get"><code>GET</code> /addresses/{addressId}</h3>
+<p>Operation ID: <code>addressGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>addressId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The unique identifier of the address.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-the-address" class="status" data-status="2xx">200: OK - Successfully retrieved the address</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address details.</td>
+</tr>
+<tr>
+<td><code>details.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City name.</td>
+</tr>
+<tr>
+<td><code>details.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country code (ISO 3166-2 Country Code).</td>
+</tr>
+<tr>
+<td><code>details.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Address line: street, house, apartment.</td>
+</tr>
+<tr>
+<td><code>details.occupations</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>User occupations. Required for CA, IN, JP, ID, IL, MX, and within the US for state NM.</td>
+</tr>
+<tr>
+<td><code>details.occupations[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>User occupation - any value permitted.</td>
+</tr>
+<tr>
+<td><code>details.occupations[].format</code></td>
+<td><code>enum: FREE_FORM</code></td>
+<td>No</td>
+<td>Occupation type - always <code>FREE_FORM</code>.</td>
+</tr>
+<tr>
+<td><code>details.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal or zip code (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>details.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code. Required if country is US, CA, BR, or AU.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Address ID.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>User profile ID.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;details&quot;: {
+    &quot;city&quot;: &quot;Phoenix&quot;,
+    &quot;country&quot;: &quot;US&quot;,
+    &quot;firstLine&quot;: &quot;50 Sunflower Ave&quot;,
+    &quot;occupations&quot;: [
+      {
+        &quot;code&quot;: &quot;Software Engineer&quot;,
+        &quot;format&quot;: &quot;FREE_FORM&quot;
+      }
+    ],
+    &quot;postCode&quot;: &quot;10025&quot;,
+    &quot;state&quot;: &quot;AZ&quot;
+  },
+  &quot;id&quot;: 10000001,
+  &quot;profile&quot;: 12345678
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

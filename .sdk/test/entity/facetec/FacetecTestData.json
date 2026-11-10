@@ -1,0 +1,27 @@
+{
+  "existing": {
+    "facetec": {
+      "FACETEC00": {
+        "id": "FACETEC00"
+      },
+      "FACETEC01": {
+        "id": "FACETEC01"
+      },
+      "FACETEC02": {
+        "id": "FACETEC02"
+      }
+    }
+  },
+  "new": {
+    "facetec": {
+      "facetec_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /facetec/public-key": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

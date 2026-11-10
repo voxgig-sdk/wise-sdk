@@ -1,0 +1,81 @@
+{
+  "existing": {
+    "case": {
+      "CASE00": {
+        "createdAt": "s82",
+        "description": "s83",
+        "details": {},
+        "externalId": "s85",
+        "id": "CASE00",
+        "messages": [],
+        "profileId": 136,
+        "reference": {},
+        "status": "s8a",
+        "subType": "s8b",
+        "subject": "s8c",
+        "type": "s8d",
+        "updatedAt": "s8e"
+      },
+      "CASE01": {
+        "createdAt": "s104",
+        "description": "s105",
+        "details": {},
+        "externalId": "s107",
+        "id": "CASE01",
+        "messages": [],
+        "profileId": 266,
+        "reference": {},
+        "status": "s10c",
+        "subType": "s10d",
+        "subject": "s10e",
+        "type": "s10f",
+        "updatedAt": "s110"
+      },
+      "CASE02": {
+        "createdAt": "s186",
+        "description": "s187",
+        "details": {},
+        "externalId": "s189",
+        "id": "CASE02",
+        "messages": [],
+        "profileId": 396,
+        "reference": {},
+        "status": "s18e",
+        "subType": "s18f",
+        "subject": "s190",
+        "type": "s191",
+        "updatedAt": "s192"
+      }
+    }
+  },
+  "new": {
+    "case": {
+      "case_ref01": {
+        "createdAt": "s208",
+        "description": "s209",
+        "details": {},
+        "externalId": "s20b",
+        "messages": [],
+        "profileId": 526,
+        "reference": {},
+        "status": "s210",
+        "subType": "s211",
+        "subject": "s212",
+        "type": "s213",
+        "updatedAt": "s214"
+      }
+    }
+  },
+  "requests": {
+    "POST /cases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /cases/{caseId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

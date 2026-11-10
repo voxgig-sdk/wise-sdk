@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "sca_facemap": {
+      "SCA_FACEMAP00": {
+        "faceMap": "sa",
+        "profile_id": "PROFILE01",
+        "id": "SCA_FACEMAP00"
+      },
+      "SCA_FACEMAP01": {
+        "faceMap": "s14",
+        "profile_id": "PROFILE01",
+        "id": "SCA_FACEMAP01"
+      },
+      "SCA_FACEMAP02": {
+        "faceMap": "s1e",
+        "profile_id": "PROFILE01",
+        "id": "SCA_FACEMAP02"
+      }
+    }
+  },
+  "new": {
+    "sca_facemap": {
+      "sca_facemap_ref01": {
+        "faceMap": "s28"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/facemaps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /profiles/{profileId}/facemaps": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

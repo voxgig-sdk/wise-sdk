@@ -1,0 +1,96 @@
+# BasicSubscriptionFlow
+
+main: kit: flow: BasicSubscriptionFlow:
+{
+  entity: "subscription",
+  kind: "basic",
+  name: "BasicSubscriptionFlow",
+  step: [
+    {
+      i: {
+        ref: "subscription_ref01"
+      }
+
+      m: {
+        client_key: "client_key01",
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "subscription_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "subscription_ref01",
+        srcdatavar: "subscription_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "subscription01",
+        profile_id: "profile01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-subscription_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "subscription_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "subscription01",
+        profile_id: "profile01"
+      }
+
+      o: "remove"
+    }
+
+    {
+      i: {
+        suffix: "_rt0"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemNotExists",
+          def: {
+            ref: "subscription_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSubscriptionFlow"
+}

@@ -1,0 +1,688 @@
+# Entity: recipient
+
+main: kit: entity: recipient: {
+
+  alias: field: {}
+
+  fields: {
+    acceptedOutcomes: {
+      h: "Accepted Outcomes"
+      n: "acceptedOutcomes"
+      r: true
+      sh: "Set to `true` to indicate the customer accepted the confirmation outcome."
+      t: "`$BOOLEAN`"
+    }
+    accountHolderName: {
+      h: "Account Holder Name"
+      n: "accountHolderName"
+      r: false
+      sh: "Recipient full name."
+      t: "`$STRING`"
+    }
+    accountId: {
+      fo: "int64"
+      h: "Account Id"
+      n: "accountId"
+      r: false
+      sh: "Recipient account ID."
+      t: "`$INTEGER`"
+    }
+    accountSummary: {
+      h: "Account Summary"
+      n: "accountSummary"
+      r: false
+      sh: "Summary of account details for ease of lookup."
+      t: "`$STRING`"
+    }
+    active: {
+      h: "Active"
+      n: "active"
+      r: false
+      sh: "Status of the recipient account."
+      t: "`$BOOLEAN`"
+    }
+    commonFieldMap: {
+      h: "Common Field Map"
+      n: "commonFieldMap"
+      r: false
+      sh: "Map of key lookup fields for the account."
+      t: "`$OBJECT`"
+    }
+    confirmations: {
+      h: "Confirmations"
+      n: "confirmations"
+      r: false
+      sh: "Contains verification results for the recipient's details."
+      t: "`$OBJECT`"
+    }
+    country: {
+      h: "Country"
+      n: "country"
+      r: false
+      sh: "2-character country code."
+      t: "`$STRING`"
+    }
+    creatorId: {
+      fo: "int64"
+      h: "Creator Id"
+      n: "creatorId"
+      r: false
+      sh: "Account entity that owns the recipient account."
+      t: "`$INTEGER`"
+    }
+    currency: {
+      h: "Currency"
+      n: "currency"
+      r: false
+      sh: "3-character currency code."
+      t: "`$STRING`"
+    }
+    details: {
+      h: "Details"
+      n: "details"
+      r: false
+      sh: "Contains the details of the recipient account specific to its currency and type."
+      t: "`$OBJECT`"
+    }
+    displayFields: {
+      h: "Display Fields"
+      n: "displayFields"
+      r: false
+      sh: "Lookup fields (key/label/value) for rendering in your front-end."
+      t: "`$ARRAY`"
+    }
+    hash: {
+      h: "Hash"
+      n: "hash"
+      r: false
+      sh: "Account hash for tracking changes to recipient details."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "ID of the recipient."
+      t: "`$INTEGER`"
+    }
+    isInternal: {
+      h: "Is Internal"
+      n: "isInternal"
+      r: false
+      sh: "Indicates whether recipient is internal."
+      t: "`$BOOLEAN`"
+    }
+    legalEntityType: {
+      h: "Legal Entity Type"
+      n: "legalEntityType"
+      r: false
+      sh: "Entity type of recipient account."
+      t: "`$STRING`"
+    }
+    longAccountSummary: {
+      h: "Long Account Summary"
+      n: "longAccountSummary"
+      r: false
+      sh: "Longer account details summary."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Recipient name details."
+      t: "`$OBJECT`"
+    }
+    ownedByCustomer: {
+      h: "Owned By Customer"
+      n: "ownedByCustomer"
+      r: false
+      sh: "Inidicates if recipient account belongs to profile owner."
+      t: "`$BOOLEAN`"
+    }
+    profile: {
+      fo: "int64"
+      h: "Profile"
+      n: "profile"
+      r: false
+      sh: "Personal or business profile ID of the sender."
+      t: "`$INTEGER`"
+    }
+    profileId: {
+      fo: "int64"
+      h: "Profile Id"
+      n: "profileId"
+      r: false
+      sh: "Specific profile that owns the recipient account."
+      t: "`$INTEGER`"
+    }
+    quoteId: {
+      h: "Quote Id"
+      n: "quoteId"
+      r: false
+      sh: "Quote ID."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Recipient account type."
+      t: "`$STRING`"
+    }
+    ultimateBeneficiary: {
+      h: "Ultimate Beneficiary"
+      n: "ultimateBeneficiary"
+      r: true
+      sh: "The details for the ultimate beneficiary of this recipient."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "recipient"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /accounts/{accountId}/quotes/{quoteId}/compatibility"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "account_id"
+                or: "accountId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "quote_id"
+                or: "quoteId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/accounts/{accountId}/quotes/{quoteId}/compatibility"
+          q: {
+            exist: [
+              "account_id"
+              "quote_id"
+            ]
+          }
+          r: {
+            param: {
+              accountId: "account_id"
+              quoteId: "quote_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "accounts"
+            }
+            {
+              var: "account_id"
+            }
+            {
+              lit: "quotes"
+            }
+            {
+              var: "quote_id"
+            }
+            {
+              lit: "compatibility"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "accountHolderName"
+            "currency"
+            "details"
+            "ownedByCustomer"
+            "profile"
+            "type"
+            "ultimateBeneficiary"
+          ]
+          co: {
+            id: "POST /accounts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: false
+                explode: true
+                k: "query"
+                n: "refund"
+                or: "refund"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/accounts"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "accounts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /accounts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: true
+                explode: true
+                k: "query"
+                n: "active"
+                or: "active"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "creator_id"
+                or: "creatorId"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "currency"
+                or: "currency"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "owned_by_customer"
+                or: "ownedByCustomer"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "profile"
+                or: "profile"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "profile_id"
+                or: "profileId"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "seek_position"
+                or: "seekPosition"
+                r: false
+                style: "form"
+                t: [
+                  "`$ONE`"
+                  [
+                    "`$INTEGER`"
+                    "`$NULL`"
+                  ]
+                ]
+              }
+              {
+                explode: true
+                k: "query"
+                n: "size"
+                or: "size"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "id,asc"
+                explode: true
+                k: "query"
+                n: "sort"
+                or: "sort"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/accounts"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "accounts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.content`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /accounts/{accountId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "account_id"
+                or: "accountId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/accounts/{accountId}"
+          q: {
+            exist: [
+              "account_id"
+            ]
+          }
+          r: {
+            param: {
+              accountId: "account_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "accounts"
+            }
+            {
+              var: "account_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /accounts/{accountId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "account_id"
+                or: "accountId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/accounts/{accountId}"
+          q: {
+            exist: [
+              "account_id"
+            ]
+          }
+          r: {
+            param: {
+              accountId: "account_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "accounts"
+            }
+            {
+              var: "account_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "acceptedOutcomes"
+          ]
+          co: {
+            id: "PATCH /accounts/{accountId}/confirmations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "account_id"
+                or: "accountId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "quote_id"
+                or: "quoteId"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/accounts/{accountId}/confirmations"
+          q: {
+            exist: [
+              "account_id"
+            ]
+          }
+          r: {
+            param: {
+              accountId: "account_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "accounts"
+            }
+            {
+              var: "account_id"
+            }
+            {
+              lit: "confirmations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.quote")]
+  ]
+
+}

@@ -1,0 +1,84 @@
+# BasicDisputeFlow
+
+main: kit: flow: BasicDisputeFlow:
+{
+  entity: "dispute",
+  kind: "basic",
+  name: "BasicDisputeFlow",
+  step: [
+    {
+      i: {
+        ref: "dispute_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dispute_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        profile_id: "profile01"
+      }
+
+      i: {
+        ref: "dispute_ref01",
+        srcdatavar: "dispute_ref01_data",
+        suffix: "_up0",
+        textfield: "createdAt"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dispute_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "dispute_ref01",
+        srcdatavar: "dispute_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "dispute01",
+        profile_id: "profile01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-dispute_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDisputeFlow"
+}

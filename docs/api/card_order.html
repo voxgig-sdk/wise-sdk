@@ -1,0 +1,1630 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CardOrder | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a aria-current="page" href="../api/card_order.html">CardOrder</a><div class="nav-sections"><a class="nav-section" href="#post-spendprofilesprofileidcard-orders">POST /spend/profiles/{profileId}/card-orders</a>
+<a class="nav-section" href="#post-spendaddressvalidate">POST /spend/address/validate</a>
+<a class="nav-section" href="#get-spendprofilesprofileidcard-orderscardorderidrequirements">GET /spend/profiles/{profileId}/card-orders/{cardOrderId}/requirements</a>
+<a class="nav-section" href="#get-spendprofilesprofileidcard-orders">GET /spend/profiles/{profileId}/card-orders</a>
+<a class="nav-section" href="#get-spendprofilesprofileidcard-ordersavailability">GET /spend/profiles/{profileId}/card-orders/availability</a>
+<a class="nav-section" href="#get-spendprofilesprofileidcard-orderscardorderid">GET /spend/profiles/{profileId}/card-orders/{cardOrderId}</a>
+<a class="nav-section" href="#put-spendprofilesprofileidcard-orderscardorderidstatus">PUT /spend/profiles/{profileId}/card-orders/{cardOrderId}/status</a></div>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="cardorder">CardOrder</h1>
+<p>A card order: create one, list or get them, update its status, and check requirements, programs and addresses.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-spendprofilesprofileidcard-orders"><code>/spend/profiles/{profileId}/card-orders</code></a></td>
+<td><code>create</code></td>
+<td>OK - Card order created successfully</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-spendaddressvalidate"><code>/spend/address/validate</code></a></td>
+<td><code>create</code></td>
+<td>OK - Validation result returned. An empty errors collection means the address is valid</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileidcard-orderscardorderidrequirements"><code>/spend/profiles/{profileId}/card-orders/{cardOrderId}/requirements</code></a></td>
+<td><code>list</code></td>
+<td>OK - Successfully retrieved card order requirements</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileidcard-orders"><code>/spend/profiles/{profileId}/card-orders</code></a></td>
+<td><code>list</code></td>
+<td>OK - Successfully retrieved card orders</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileidcard-ordersavailability"><code>/spend/profiles/{profileId}/card-orders/availability</code></a></td>
+<td><code>list</code></td>
+<td>OK - Successfully retrieved available card programs</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileidcard-orderscardorderid"><code>/spend/profiles/{profileId}/card-orders/{cardOrderId}</code></a></td>
+<td><code>load</code></td>
+<td>OK - Successfully retrieved card order</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-spendprofilesprofileidcard-orderscardorderidstatus"><code>/spend/profiles/{profileId}/card-orders/{cardOrderId}/status</code></a></td>
+<td><code>update</code></td>
+<td>Accepted - Card order status update has been accepted</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">card_orders, err := client.CardOrder(nil).List(map[string]any{&quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(card_orders)
+card_order, err := client.CardOrder(nil).Load(map[string]any{&quot;id&quot;: 1, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(card_order)
+created, err := client.CardOrder(nil).Create(map[string]any{&quot;cardHolderName&quot;: &quot;example&quot;, &quot;program&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.CardOrder(nil).Update(map[string]any{&quot;id&quot;: 1, &quot;profile_id&quot;: 1, &quot;status&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local card_orders, err = client:CardOrder():list({ profile_id = 1 })
+local card_order, err = client:CardOrder():load({ id = 1, profile_id = 1 })
+local created, err = client:CardOrder():create({ cardHolderName = &quot;example&quot;, program = &quot;example&quot; })
+local updated, err = client:CardOrder():update({ id = 1, profile_id = 1, status = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$card_orders = $client-&gt;CardOrder()-&gt;list([&quot;profile_id&quot; =&gt; 1]);
+$card_order = $client-&gt;CardOrder()-&gt;load([&quot;id&quot; =&gt; 1, &quot;profile_id&quot; =&gt; 1]);
+$created = $client-&gt;CardOrder()-&gt;create([&quot;cardHolderName&quot; =&gt; &quot;example&quot;, &quot;program&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;CardOrder()-&gt;update([&quot;id&quot; =&gt; 1, &quot;profile_id&quot; =&gt; 1, &quot;status&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">card_orders = client.CardOrder().list({&quot;profile_id&quot;: 1})
+card_order = client.CardOrder().load({&quot;id&quot;: 1, &quot;profile_id&quot;: 1})
+created = client.CardOrder().create({ &quot;cardHolderName&quot;: &quot;example&quot;, &quot;program&quot;: &quot;example&quot; })
+updated = client.CardOrder().update({&quot;id&quot;: 1, &quot;profile_id&quot;: 1, &quot;status&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">card_orders = client.CardOrder.list({ &quot;profile_id&quot; =&gt; 1 })
+card_order = client.CardOrder.load({ &quot;id&quot; =&gt; 1, &quot;profile_id&quot; =&gt; 1 })
+created = client.CardOrder.create({ &quot;cardHolderName&quot; =&gt; &quot;example&quot;, &quot;program&quot; =&gt; &quot;example&quot; })
+updated = client.CardOrder.update({ &quot;id&quot; =&gt; 1, &quot;profile_id&quot; =&gt; 1, &quot;status&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const card_orders = await client.CardOrder().list({ profile_id: 1 })
+const card_order = await client.CardOrder().load({ id: 1, profile_id: 1 })
+const created = await client.CardOrder().create({ cardHolderName: &quot;example&quot;, program: &quot;example&quot; })
+const updated = await client.CardOrder().update({ id: 1, profile_id: 1, status: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address set during card order.</td>
+</tr>
+<tr>
+<td><code>cardHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card holder.</td>
+</tr>
+<tr>
+<td><code>cardHolderProfileId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The cardholder profile for this card.</td>
+</tr>
+<tr>
+<td><code>cardProgram</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The card program associated with this card order.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Token of the card associated with card order.</td>
+</tr>
+<tr>
+<td><code>city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's city (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Client ID.</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's country (ISO 3166-1 alpha-2, max 2 characters).</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Time when the card order is created.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Delivery details of a physical card order.</td>
+</tr>
+<tr>
+<td><code>deliveryEstimate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The estimated time when the card will be delivered.</td>
+</tr>
+<tr>
+<td><code>deliveryOption</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The delivery method for the card order.</td>
+</tr>
+<tr>
+<td><code>embossedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The cardholder's name to print on the card (physical card only).</td>
+</tr>
+<tr>
+<td><code>errors</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Collection of validation errors.</td>
+</tr>
+<tr>
+<td><code>firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's address (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>ID of the card order.</td>
+</tr>
+<tr>
+<td><code>lifetimeLimit</code></td>
+<td><code>one,number,null</code></td>
+<td>No</td>
+<td>Maximum amount of spending on the card once issued.</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Time when the card order was last modified.</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Phone number associated with the card order.</td>
+</tr>
+<tr>
+<td><code>postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's postal code (max 10 characters).</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>program</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the card program.</td>
+</tr>
+<tr>
+<td><code>replacementDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The replacement details for this card.</td>
+</tr>
+<tr>
+<td><code>replacesCard</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Token of the card being replaced by this replacement card order.</td>
+</tr>
+<tr>
+<td><code>secondLine</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Card holder's address (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Card holder's state (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Status of the card order.</td>
+</tr>
+<tr>
+<td><code>thirdLine</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Card holder's address (max 30 characters).</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-spendprofilesprofileidcard-orders" class="operation" data-method="post"><code>POST</code> /spend/profiles/{profileId}/card-orders</h3>
+<p>Operation ID: <code>cardOrderCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID (personal or business).</td>
+</tr>
+<tr>
+<td><code>X-idempotence-uuid</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Idempotency key. Should be generated and used for any subsequent retries.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The cardholder's billing address or delivery address. <strong>Required</strong> for physical cards. <strong>Optional</strong> for virtual cards (defaults to the profile address, if omitted). Fields vary by country. See the card address validation guide.</td>
+</tr>
+<tr>
+<td><code>address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ISO 3166-1 alpha-2 country code.</td>
+</tr>
+<tr>
+<td><code>address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address.secondLine</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address.state</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address.thirdLine</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>cardHolderName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The cardholder's name.</td>
+</tr>
+<tr>
+<td><code>cardHolderProfileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The cardholder profile for this card. This is used for business profiles.</td>
+</tr>
+<tr>
+<td><code>deliveryOption</code></td>
+<td><code>enum: POSTAL_SERVICE_STANDARD, POSTAL_SERVICE_WITH_TRACKING, KIOSK_COLLECTION</code></td>
+<td>No</td>
+<td>The delivery method for the card order. The delivery method will be defined during scoping phase. Please reach out to your Implementation Manager for more information. Only specify this field for <code>KIOSK_COLLECTION</code>. If not specified, the default delivery method for your region will be used. - <code>POSTAL_SERVICE_STANDARD</code> - Default delivery method. Not traceable. - <code>POSTAL_SERVICE_WITH_TRACKING</code> - Available in certain regions. Default in Brazil. - <code>KIOSK_COLLECTION</code> - Available in select regions. See the kiosk collection guide.</td>
+</tr>
+<tr>
+<td><code>embossedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The cardholder's name to print on the card (physical card only). The field length should be between 1 and 22 characters (spaces included).</td>
+</tr>
+<tr>
+<td><code>lifetimeLimit</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Optionally sets a lifetime spending limit on the card. A lifetime limit of 0 means that a card cannot be used until the lifetime limit is updated.</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>For partners onboarded after 1/3/2025, we will use the profile phone number for any Card-related One-Time Password (OTP) requests. See 3ds. Ensure that the phone number is valid and starts with a &quot;+&quot; followed by the country code.</td>
+</tr>
+<tr>
+<td><code>program</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The name of the card program.</td>
+</tr>
+<tr>
+<td><code>replacementDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The replacement details for this card.</td>
+</tr>
+<tr>
+<td><code>replacementDetails.cardToken</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Token of the card to replace.</td>
+</tr>
+<tr>
+<td><code>replacementDetails.reason</code></td>
+<td><code>enum: CARD_DAMAGED, CARD_EXPIRING</code></td>
+<td>No</td>
+<td>Reason for replacing the card: - <code>CARD_DAMAGED</code> - <code>CARD_EXPIRING</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-ok---card-order-created-successfully" class="status" data-status="2xx">200: OK - Card order created successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address set during card order. <strong>Required</strong> for physical cards. <strong>Optional</strong> for virtual cards (defaults to the profile address, if omitted). Fields vary by country. See the card address validation guide for country-specific fields and validation rules.</td>
+</tr>
+<tr>
+<td><code>address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's city.</td>
+</tr>
+<tr>
+<td><code>address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's country (ISO 3166-1 alpha-2).</td>
+</tr>
+<tr>
+<td><code>address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's address.</td>
+</tr>
+<tr>
+<td><code>address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's postal code.</td>
+</tr>
+<tr>
+<td><code>address.secondLine</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's address.</td>
+</tr>
+<tr>
+<td><code>address.state</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's state.</td>
+</tr>
+<tr>
+<td><code>address.thirdLine</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's address.</td>
+</tr>
+<tr>
+<td><code>cardHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card holder.</td>
+</tr>
+<tr>
+<td><code>cardProgram</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The card program associated with this card order. A Card Program is what Wise refers to all the cards that you will be issuing with us, grouped by product type and by issuing country.</td>
+</tr>
+<tr>
+<td><code>cardProgram.cardType</code></td>
+<td><code>enum: VIRTUAL_NON_UPGRADEABLE, PHYSICAL</code></td>
+<td>No</td>
+<td>The type of the card: - <code>VIRTUAL_NON_UPGRADEABLE</code> - <code>PHYSICAL</code></td>
+</tr>
+<tr>
+<td><code>cardProgram.defaultCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The default currency assigned to the card program.</td>
+</tr>
+<tr>
+<td><code>cardProgram.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the card program.</td>
+</tr>
+<tr>
+<td><code>cardProgram.scheme</code></td>
+<td><code>enum: MASTERCARD, VISA</code></td>
+<td>No</td>
+<td>The network of the card program: - <code>MASTERCARD</code> - <code>VISA</code></td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Token of the card associated with card order. Nullable.</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Client ID.</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card order is created.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Delivery details of a physical card order. For virtual cards, this value is null.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails.deliveryOption</code></td>
+<td><code>enum: POSTAL_SERVICE_STANDARD, POSTAL_SERVICE_WITH_TRACKING, KIOSK_COLLECTION</code></td>
+<td>No</td>
+<td>The delivery option used on the card order.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails.deliveryVendor</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>The name of the delivery vendor.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails.trackingNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>The tracking number of the card delivery.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails.trackingUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>The URL to track the card delivery.</td>
+</tr>
+<tr>
+<td><code>deliveryEstimate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The estimated time when the card will be delivered. There are few scenarios to be mindful of: 1. For virtual card the delivery estimate will be close to the creationTime, as it does not require delivery. 2. For physical card in <code>PLACED</code> status, the delivery estimate is calculated assuming that the order requirements will be fulfilled today (refreshed daily). 3. For physical card after <code>PLACED</code> status, we provide a best effort estimation, and it should not be used as delivery timing as we will have separate delivery tracking (subject to region availability) for physical card that is coming soon.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the card order.</td>
+</tr>
+<tr>
+<td><code>lifetimeLimit</code></td>
+<td><code>number,null</code></td>
+<td>No</td>
+<td>Maximum amount of spending on the card once issued. Nullable.</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card order was last modified.</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Phone number associated with the card order.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>replacesCard</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Token of the card being replaced by this replacement card order. Nullable.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: PLACED, REQUIREMENTS_FULFILLED, CARD_DETAILS_CREATED, PRODUCED, COMPLETED, CANCELLED, ...</code></td>
+<td>No</td>
+<td>Status of the card order. See card order status flow for details.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-spendaddressvalidate" class="operation" data-method="post"><code>POST</code> /spend/address/validate</h3>
+<p>Operation ID: <code>cardOrderValidateAddress</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's city (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's country (ISO 3166-1 alpha-2, max 2 characters).</td>
+</tr>
+<tr>
+<td><code>firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's address (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's postal code (max 10 characters).</td>
+</tr>
+<tr>
+<td><code>secondLine</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's address (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's state (max 30 characters).</td>
+</tr>
+<tr>
+<td><code>thirdLine</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's address (max 30 characters).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-ok---validation-result-returned-an-empty-errors-collection-means-the-address-is-valid" class="status" data-status="2xx">200: OK - Validation result returned. An empty errors collection means the address is valid</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Collection of validation errors. Empty if address is valid.</td>
+</tr>
+<tr>
+<td><code>errors[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The field that failed validation.</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Description of the validation error.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;errors&quot;: [
+    {
+      &quot;field&quot;: &quot;city&quot;,
+      &quot;message&quot;: &quot;Required Field&quot;
+    },
+    {
+      &quot;field&quot;: &quot;postCode&quot;,
+      &quot;message&quot;: &quot;Please enter a valid postcode&quot;
+    },
+    {
+      &quot;field&quot;: &quot;firstLine&quot;,
+      &quot;message&quot;: &quot;Must be less than 30 characters&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-spendprofilesprofileidcard-orderscardorderidrequirements" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/card-orders/{cardOrderId}/requirements</h3>
+<p>Operation ID: <code>cardOrderRequirementsGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID (personal or business).</td>
+</tr>
+<tr>
+<td><code>cardOrderId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The card order ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-card-order-requirements" class="status" data-status="2xx">200: OK - Successfully retrieved card order requirements</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requirements</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>requirements[].status</code></td>
+<td><code>enum: NOT_INITIATED, NEEDS_ACTION, PENDING, COMPLETED, FAILED</code></td>
+<td>No</td>
+<td>The status of the requirement: - <code>NOT_INITIATED</code> - <code>NEEDS_ACTION</code> - <code>PENDING</code> - <code>COMPLETED</code> - <code>FAILED</code></td>
+</tr>
+<tr>
+<td><code>requirements[].type</code></td>
+<td><code>enum: PIN, VERIFICATION, ADDRESS</code></td>
+<td>No</td>
+<td>The type of requirement: - <code>PIN</code> - Set a PIN on the card order - <code>VERIFICATION</code> - Verify customer by providing KYC evidences - <code>ADDRESS</code> - Provide a valid address for the card order</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;requirements&quot;: [
+    {
+      &quot;status&quot;: &quot;NOT_INITIATED&quot;,
+      &quot;type&quot;: &quot;PIN&quot;
+    },
+    {
+      &quot;status&quot;: &quot;PENDING&quot;,
+      &quot;type&quot;: &quot;VERIFICATION&quot;
+    },
+    {
+      &quot;status&quot;: &quot;COMPLETED&quot;,
+      &quot;type&quot;: &quot;ADDRESS&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-spendprofilesprofileidcard-orders" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/card-orders</h3>
+<p>Operation ID: <code>cardOrderList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID (personal or business).</td>
+</tr>
+<tr>
+<td><code>pageSize</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum number of card orders to return per page. This number can be between 10 - 100, and will default to 10.</td>
+</tr>
+<tr>
+<td><code>pageNumber</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The page number to retrieve the next set of card orders. The number has to be greater or equal to 1, and will default to 1.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-card-orders" class="status" data-status="2xx">200: OK - Successfully retrieved card orders</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cardOrders</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>cardOrders[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address set during card order. <strong>Required</strong> for physical cards. <strong>Optional</strong> for virtual cards (defaults to the profile address, if omitted). Fields vary by country. See the card address validation guide for country-specific fields and validation rules.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's city.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's country (ISO 3166-1 alpha-2).</td>
+</tr>
+<tr>
+<td><code>cardOrders[].address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's address.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's postal code.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].address.secondLine</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's address.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].address.state</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's state.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].address.thirdLine</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's address.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].cardHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card holder.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].cardProgram</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The card program associated with this card order. A Card Program is what Wise refers to all the cards that you will be issuing with us, grouped by product type and by issuing country.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].cardProgram.cardType</code></td>
+<td><code>enum: VIRTUAL_NON_UPGRADEABLE, PHYSICAL</code></td>
+<td>No</td>
+<td>The type of the card: - <code>VIRTUAL_NON_UPGRADEABLE</code> - <code>PHYSICAL</code></td>
+</tr>
+<tr>
+<td><code>cardOrders[].cardProgram.defaultCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The default currency assigned to the card program.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].cardProgram.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the card program.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].cardProgram.scheme</code></td>
+<td><code>enum: MASTERCARD, VISA</code></td>
+<td>No</td>
+<td>The network of the card program: - <code>MASTERCARD</code> - <code>VISA</code></td>
+</tr>
+<tr>
+<td><code>cardOrders[].cardToken</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Token of the card associated with card order. Nullable.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].clientId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Client ID.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card order is created.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].deliveryDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Delivery details of a physical card order. For virtual cards, this value is null.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].deliveryDetails.deliveryOption</code></td>
+<td><code>enum: POSTAL_SERVICE_STANDARD, POSTAL_SERVICE_WITH_TRACKING, KIOSK_COLLECTION</code></td>
+<td>No</td>
+<td>The delivery option used on the card order.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].deliveryDetails.deliveryVendor</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>The name of the delivery vendor.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].deliveryDetails.trackingNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>The tracking number of the card delivery.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].deliveryDetails.trackingUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>The URL to track the card delivery.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].deliveryEstimate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The estimated time when the card will be delivered. There are few scenarios to be mindful of: 1. For virtual card the delivery estimate will be close to the creationTime, as it does not require delivery. 2. For physical card in <code>PLACED</code> status, the delivery estimate is calculated assuming that the order requirements will be fulfilled today (refreshed daily). 3. For physical card after <code>PLACED</code> status, we provide a best effort estimation, and it should not be used as delivery timing as we will have separate delivery tracking (subject to region availability) for physical card that is coming soon.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the card order.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].lifetimeLimit</code></td>
+<td><code>number,null</code></td>
+<td>No</td>
+<td>Maximum amount of spending on the card once issued. Nullable.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card order was last modified.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Phone number associated with the card order.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].replacesCard</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Token of the card being replaced by this replacement card order. Nullable.</td>
+</tr>
+<tr>
+<td><code>cardOrders[].status</code></td>
+<td><code>enum: PLACED, REQUIREMENTS_FULFILLED, CARD_DETAILS_CREATED, PRODUCED, COMPLETED, CANCELLED, ...</code></td>
+<td>No</td>
+<td>Status of the card order. See card order status flow for details.</td>
+</tr>
+<tr>
+<td><code>totalCount</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The total number of card orders for this profile.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-spendprofilesprofileidcard-ordersavailability" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/card-orders/availability</h3>
+<p>Operation ID: <code>cardOrderProgramsGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID (personal or business).</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-available-card-programs" class="status" data-status="2xx">200: OK - Successfully retrieved available card programs</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cardPrograms</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of available card programs. A Card Program is what Wise refers to all the cards that you will be issuing with us, grouped by product type and by issuing country.</td>
+</tr>
+<tr>
+<td><code>cardPrograms[].cardType</code></td>
+<td><code>enum: VIRTUAL_NON_UPGRADEABLE, PHYSICAL</code></td>
+<td>No</td>
+<td>The type of the card: - <code>VIRTUAL_NON_UPGRADEABLE</code> - <code>PHYSICAL</code></td>
+</tr>
+<tr>
+<td><code>cardPrograms[].defaultCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The default currency assigned to the card program.</td>
+</tr>
+<tr>
+<td><code>cardPrograms[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the card program.</td>
+</tr>
+<tr>
+<td><code>cardPrograms[].scheme</code></td>
+<td><code>enum: MASTERCARD, VISA</code></td>
+<td>No</td>
+<td>The network of the card program: - <code>MASTERCARD</code> - <code>VISA</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-spendprofilesprofileidcard-orderscardorderid" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/card-orders/{cardOrderId}</h3>
+<p>Operation ID: <code>cardOrderGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID (personal or business).</td>
+</tr>
+<tr>
+<td><code>cardOrderId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The card order ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-card-order" class="status" data-status="2xx">200: OK - Successfully retrieved card order</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address set during card order. <strong>Required</strong> for physical cards. <strong>Optional</strong> for virtual cards (defaults to the profile address, if omitted). Fields vary by country. See the card address validation guide for country-specific fields and validation rules.</td>
+</tr>
+<tr>
+<td><code>address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's city.</td>
+</tr>
+<tr>
+<td><code>address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's country (ISO 3166-1 alpha-2).</td>
+</tr>
+<tr>
+<td><code>address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's address.</td>
+</tr>
+<tr>
+<td><code>address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Card holder's postal code.</td>
+</tr>
+<tr>
+<td><code>address.secondLine</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's address.</td>
+</tr>
+<tr>
+<td><code>address.state</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's state.</td>
+</tr>
+<tr>
+<td><code>address.thirdLine</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Card holder's address.</td>
+</tr>
+<tr>
+<td><code>cardHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card holder.</td>
+</tr>
+<tr>
+<td><code>cardProgram</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The card program associated with this card order. A Card Program is what Wise refers to all the cards that you will be issuing with us, grouped by product type and by issuing country.</td>
+</tr>
+<tr>
+<td><code>cardProgram.cardType</code></td>
+<td><code>enum: VIRTUAL_NON_UPGRADEABLE, PHYSICAL</code></td>
+<td>No</td>
+<td>The type of the card: - <code>VIRTUAL_NON_UPGRADEABLE</code> - <code>PHYSICAL</code></td>
+</tr>
+<tr>
+<td><code>cardProgram.defaultCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The default currency assigned to the card program.</td>
+</tr>
+<tr>
+<td><code>cardProgram.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the card program.</td>
+</tr>
+<tr>
+<td><code>cardProgram.scheme</code></td>
+<td><code>enum: MASTERCARD, VISA</code></td>
+<td>No</td>
+<td>The network of the card program: - <code>MASTERCARD</code> - <code>VISA</code></td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Token of the card associated with card order. Nullable.</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Client ID.</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card order is created.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Delivery details of a physical card order. For virtual cards, this value is null.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails.deliveryOption</code></td>
+<td><code>enum: POSTAL_SERVICE_STANDARD, POSTAL_SERVICE_WITH_TRACKING, KIOSK_COLLECTION</code></td>
+<td>No</td>
+<td>The delivery option used on the card order.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails.deliveryVendor</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>The name of the delivery vendor.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails.trackingNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>The tracking number of the card delivery.</td>
+</tr>
+<tr>
+<td><code>deliveryDetails.trackingUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>The URL to track the card delivery.</td>
+</tr>
+<tr>
+<td><code>deliveryEstimate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>The estimated time when the card will be delivered. There are few scenarios to be mindful of: 1. For virtual card the delivery estimate will be close to the creationTime, as it does not require delivery. 2. For physical card in <code>PLACED</code> status, the delivery estimate is calculated assuming that the order requirements will be fulfilled today (refreshed daily). 3. For physical card after <code>PLACED</code> status, we provide a best effort estimation, and it should not be used as delivery timing as we will have separate delivery tracking (subject to region availability) for physical card that is coming soon.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the card order.</td>
+</tr>
+<tr>
+<td><code>lifetimeLimit</code></td>
+<td><code>number,null</code></td>
+<td>No</td>
+<td>Maximum amount of spending on the card once issued. Nullable.</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card order was last modified.</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Phone number associated with the card order.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>replacesCard</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Token of the card being replaced by this replacement card order. Nullable.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: PLACED, REQUIREMENTS_FULFILLED, CARD_DETAILS_CREATED, PRODUCED, COMPLETED, CANCELLED, ...</code></td>
+<td>No</td>
+<td>Status of the card order. See card order status flow for details.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-5" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="update">update</h2>
+<h3 id="put-spendprofilesprofileidcard-orderscardorderidstatus" class="operation" data-method="put"><code>PUT</code> /spend/profiles/{profileId}/card-orders/{cardOrderId}/status</h3>
+<p>Operation ID: <code>cardOrderStatusUpdate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID (personal or business).</td>
+</tr>
+<tr>
+<td><code>cardOrderId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The card order ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: CANCELLED, COMPLETED</code></td>
+<td>Yes</td>
+<td>The intended new status of the card order: - <code>CANCELLED</code> - <code>COMPLETED</code> (deprecated)</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="202-accepted---card-order-status-update-has-been-accepted" class="status" data-status="2xx">202: Accepted - Card order status update has been accepted</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-6" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

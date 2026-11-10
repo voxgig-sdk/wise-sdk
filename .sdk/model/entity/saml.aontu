@@ -1,0 +1,186 @@
+# Entity: saml
+
+main: kit: entity: saml: {
+
+  alias: field: {}
+
+  fields: {
+    RelayState: {
+      h: "Relay State"
+      n: "RelayState"
+      r: false
+      sh: "Opaque state value."
+      t: "`$STRING`"
+    }
+    SAMLResponse: {
+      h: "Saml Response"
+      n: "SAMLResponse"
+      r: true
+      sh: "Base64-encoded SAML `<samlp:Response>` message issued by the identity provider."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "saml"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /login/saml2/sso"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/login/saml2/sso"
+          rb: {
+            fields: [
+              {
+                name: "RelayState"
+              }
+              {
+                name: "SAMLResponse"
+              }
+            ]
+            kind: "form"
+            media: "application/x-www-form-urlencoded"
+          }
+          s: [
+            {
+              lit: "login"
+            }
+            {
+              lit: "saml2"
+            }
+            {
+              lit: "sso"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /saml2/authenticate/{registrationId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "registration_id"
+                or: "registrationId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/saml2/authenticate/{registrationId}"
+          q: {
+            exist: [
+              "registration_id"
+            ]
+          }
+          r: {
+            param: {
+              registrationId: "registration_id"
+            }
+          }
+          s: [
+            {
+              lit: "saml2"
+            }
+            {
+              lit: "authenticate"
+            }
+            {
+              var: "registration_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /saml2/metadata"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/saml2/metadata"
+          rs: {
+            kind: "raw"
+            media: "application/samlmetadata+xml"
+          }
+          s: [
+            {
+              lit: "saml2"
+            }
+            {
+              lit: "metadata"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,22 @@
+# BasicPhoneNumberFlow
+
+main: kit: flow: BasicPhoneNumberFlow:
+{
+  entity: "phone_number",
+  kind: "basic",
+  name: "BasicPhoneNumberFlow",
+  step: [
+    {
+      i: {
+        ref: "phone_number_ref01"
+      }
+
+      m: {
+        user_id: "user01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPhoneNumberFlow"
+}

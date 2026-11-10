@@ -1,0 +1,126 @@
+# Entity: funding
+
+main: kit: entity: funding: {
+
+  alias: field: {}
+
+  fields: {
+    balanceTransactionId: {
+      h: "Balance Transaction Id"
+      n: "balanceTransactionId"
+      r: false
+      t: "`$INTEGER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      t: "`$STRING`"
+    }
+  }
+
+  name: "funding"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "balanceId"
+            "partnerReference"
+            "status"
+            "type"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/transfers/{transferId}/payments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 123456789
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 16521632
+                k: "param"
+                n: "transfer_id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/transfers/{transferId}/payments"
+          q: {
+            exist: [
+              "profile_id"
+              "transfer_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+              transferId: "transfer_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "transfers"
+            }
+            {
+              var: "transfer_id"
+            }
+            {
+              lit: "payments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.transfer")]
+  ]
+
+}

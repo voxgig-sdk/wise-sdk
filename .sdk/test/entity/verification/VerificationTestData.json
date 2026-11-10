@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "verification": {
+      "VERIFICATION00": {
+        "required_evidences": [],
+        "profile_id": "PROFILE01",
+        "id": "VERIFICATION00"
+      },
+      "VERIFICATION01": {
+        "required_evidences": [],
+        "profile_id": "PROFILE01",
+        "id": "VERIFICATION01"
+      },
+      "VERIFICATION02": {
+        "required_evidences": [],
+        "profile_id": "PROFILE01",
+        "id": "VERIFICATION02"
+      }
+    }
+  },
+  "new": {
+    "verification": {
+      "verification_ref01": {
+        "required_evidences": []
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/additional-verification/upload-evidences": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/verification-status/required-evidences": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

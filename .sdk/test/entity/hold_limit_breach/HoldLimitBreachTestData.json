@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "hold_limit_breach": {
+      "HOLD_LIMIT_BREACH00": {
+        "amount": 80,
+        "closingReason": "s51",
+        "createdAt": "s52",
+        "currency": "s53",
+        "id": "HOLD_LIMIT_BREACH00",
+        "profileId": 85,
+        "state": "s56",
+        "updatedAt": "s57",
+        "profile_id": "PROFILE01"
+      },
+      "HOLD_LIMIT_BREACH01": {
+        "amount": 160,
+        "closingReason": "sa1",
+        "createdAt": "sa2",
+        "currency": "sa3",
+        "id": "HOLD_LIMIT_BREACH01",
+        "profileId": 165,
+        "state": "sa6",
+        "updatedAt": "sa7",
+        "profile_id": "PROFILE01"
+      },
+      "HOLD_LIMIT_BREACH02": {
+        "amount": 240,
+        "closingReason": "sf1",
+        "createdAt": "sf2",
+        "currency": "sf3",
+        "id": "HOLD_LIMIT_BREACH02",
+        "profileId": 245,
+        "state": "sf6",
+        "updatedAt": "sf7",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "hold_limit_breach": {
+      "hold_limit_breach_ref01": {
+        "amount": 320,
+        "closingReason": "s141",
+        "createdAt": "s142",
+        "currency": "s143",
+        "profileId": 325,
+        "state": "s146",
+        "updatedAt": "s147"
+      }
+    }
+  },
+  "requests": {
+    "GET /profiles/{profileId}/balances/hold-limit-breach": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

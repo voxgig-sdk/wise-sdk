@@ -1,0 +1,44 @@
+# BasicMultiCurrencyAccountFlow
+
+main: kit: flow: BasicMultiCurrencyAccountFlow:
+{
+  entity: "multi_currency_account",
+  kind: "basic",
+  name: "BasicMultiCurrencyAccountFlow",
+  step: [
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "multi_currency_account_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "multi_currency_account_ref01",
+        srcdatavar: "multi_currency_account_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-multi_currency_account_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicMultiCurrencyAccountFlow"
+}

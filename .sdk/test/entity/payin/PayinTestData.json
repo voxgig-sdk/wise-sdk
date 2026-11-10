@@ -1,0 +1,78 @@
+{
+  "existing": {
+    "payin": {
+      "PAYIN00": {
+        "amount": 100,
+        "currency": "s65",
+        "details": {},
+        "failureReason": "s67",
+        "id": "PAYIN00",
+        "payinSessionId": "s69",
+        "paymentInstrumentId": "s6a",
+        "qrCodeInBase64": "s6b",
+        "reference": "s6c",
+        "status": "s6d",
+        "payin_session_id": "PAYIN_SESSION01",
+        "profile_id": "PROFILE01",
+        "payment_instrument_id": "PAYMENT_INSTRUMENT01"
+      },
+      "PAYIN01": {
+        "amount": 200,
+        "currency": "sc9",
+        "details": {},
+        "failureReason": "scb",
+        "id": "PAYIN01",
+        "payinSessionId": "scd",
+        "paymentInstrumentId": "sce",
+        "qrCodeInBase64": "scf",
+        "reference": "sd0",
+        "status": "sd1",
+        "payin_session_id": "PAYIN_SESSION01",
+        "profile_id": "PROFILE01",
+        "payment_instrument_id": "PAYMENT_INSTRUMENT01"
+      },
+      "PAYIN02": {
+        "amount": 300,
+        "currency": "s12d",
+        "details": {},
+        "failureReason": "s12f",
+        "id": "PAYIN02",
+        "payinSessionId": "s131",
+        "paymentInstrumentId": "s132",
+        "qrCodeInBase64": "s133",
+        "reference": "s134",
+        "status": "s135",
+        "payin_session_id": "PAYIN_SESSION01",
+        "profile_id": "PROFILE01",
+        "payment_instrument_id": "PAYMENT_INSTRUMENT01"
+      }
+    }
+  },
+  "new": {
+    "payin": {
+      "payin_ref01": {
+        "amount": 400,
+        "currency": "s191",
+        "details": {},
+        "failureReason": "s193",
+        "payinSessionId": "s195",
+        "paymentInstrumentId": "s196",
+        "qrCodeInBase64": "s197",
+        "reference": "s198",
+        "status": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/payin-sessions/{payinSessionId}/paynow": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/payment-instruments/{paymentInstrumentId}/payins": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

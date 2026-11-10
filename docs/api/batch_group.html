@@ -1,0 +1,1492 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BatchGroup | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a aria-current="page" href="../api/batch_group.html">BatchGroup</a><div class="nav-sections"><a class="nav-section" href="#post-profilesprofileidbatch-paymentsbatchgroupidpayments">POST /profiles/{profileId}/batch-payments/{batchGroupId}/payments</a>
+<a class="nav-section" href="#post-profilesprofileidbatch-groupsbatchgroupidtransfers">POST /profiles/{profileId}/batch-groups/{batchGroupId}/transfers</a>
+<a class="nav-section" href="#post-profilesprofileidbatch-groups">POST /profiles/{profileId}/batch-groups</a>
+<a class="nav-section" href="#get-profilesprofileidbatch-groupsbatchgroupid">GET /profiles/{profileId}/batch-groups/{batchGroupId}</a>
+<a class="nav-section" href="#patch-profilesprofileidbatch-groupsbatchgroupid">PATCH /profiles/{profileId}/batch-groups/{batchGroupId}</a></div>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="batchgroup">BatchGroup</h1>
+<p>A batch group of transfers: create, get or update one, add a transfer, or fund it from a balance.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidbatch-paymentsbatchgroupidpayments"><code>/profiles/{profileId}/batch-payments/{batchGroupId}/payments</code></a></td>
+<td><code>create</code></td>
+<td>Batch group funded successfully</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidbatch-groupsbatchgroupidtransfers"><code>/profiles/{profileId}/batch-groups/{batchGroupId}/transfers</code></a></td>
+<td><code>create</code></td>
+<td>Transfer created successfully. Returns a transfer object</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidbatch-groups"><code>/profiles/{profileId}/batch-groups</code></a></td>
+<td><code>create</code></td>
+<td>Batch group created successfully. Note that <code>payInDetails</code> is empty for newly created batch groups.</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileidbatch-groupsbatchgroupid"><code>/profiles/{profileId}/batch-groups/{batchGroupId}</code></a></td>
+<td><code>load</code></td>
+<td>Batch group retrieved successfully</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-profilesprofileidbatch-groupsbatchgroupid"><code>/profiles/{profileId}/batch-groups/{batchGroupId}</code></a></td>
+<td><code>update</code></td>
+<td>Batch group updated successfully</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">batch_group, err := client.BatchGroup(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(batch_group)
+created, err := client.BatchGroup(nil).Create(map[string]any{&quot;profile_id&quot;: 1, &quot;name&quot;: &quot;example&quot;, &quot;sourceCurrency&quot;: &quot;example&quot;, &quot;type&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.BatchGroup(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1, &quot;status&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local batch_group, err = client:BatchGroup():load({ id = &quot;example_id&quot;, profile_id = 1 })
+local created, err = client:BatchGroup():create({ profile_id = 1, name = &quot;example&quot;, sourceCurrency = &quot;example&quot;, type = &quot;example&quot; })
+local updated, err = client:BatchGroup():update({ id = &quot;example_id&quot;, profile_id = 1, status = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$batch_group = $client-&gt;BatchGroup()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1]);
+$created = $client-&gt;BatchGroup()-&gt;create([&quot;profile_id&quot; =&gt; 1, &quot;name&quot; =&gt; &quot;example&quot;, &quot;sourceCurrency&quot; =&gt; &quot;example&quot;, &quot;type&quot; =&gt; &quot;example&quot;]);
+$updated = $client-&gt;BatchGroup()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1, &quot;status&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">batch_group = client.BatchGroup().load({&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1})
+created = client.BatchGroup().create({ &quot;profile_id&quot;: 1, &quot;name&quot;: &quot;example&quot;, &quot;sourceCurrency&quot;: &quot;example&quot;, &quot;type&quot;: &quot;example&quot; })
+updated = client.BatchGroup().update({&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1, &quot;status&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">batch_group = client.BatchGroup.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1 })
+created = client.BatchGroup.create({ &quot;profile_id&quot; =&gt; 1, &quot;name&quot; =&gt; &quot;example&quot;, &quot;sourceCurrency&quot; =&gt; &quot;example&quot;, &quot;type&quot; =&gt; &quot;example&quot; })
+updated = client.BatchGroup.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1, &quot;status&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const batch_group = await client.BatchGroup().load({ id: &quot;example_id&quot;, profile_id: 1 })
+const created = await client.BatchGroup().create({ profile_id: 1, name: &quot;example&quot;, sourceCurrency: &quot;example&quot;, type: &quot;example&quot; })
+const updated = await client.BatchGroup().update({ id: &quot;example_id&quot;, profile_id: 1, status: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alreadyPaid</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Not applicable to this use case.</td>
+</tr>
+<tr>
+<td><code>fileName</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>If this batch was submitted as a file, this is the given file name.</td>
+</tr>
+<tr>
+<td><code>groupType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Whether this batch was submitted over the API or as a file.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Batch group ID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Descriptive name for the batch group.</td>
+</tr>
+<tr>
+<td><code>payInDetails</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>List of pay-in details describing how the batch group can be funded.</td>
+</tr>
+<tr>
+<td><code>payinSessionId</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Optional ID of the payin session.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the profile this payment belongs to.</td>
+</tr>
+<tr>
+<td><code>shortId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Not applicable to this use case.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Current batch group status: - <code>NEW</code> , New batch group with zero or more transfers.</td>
+</tr>
+<tr>
+<td><code>transferIds</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>The IDs of all transfers successfully added to the group.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The method of payment to use.</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user who initiated this payment.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Batch version, used for concurrency control.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-profilesprofileidbatch-paymentsbatchgroupidpayments" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/batch-payments/{batchGroupId}/payments</h3>
+<p>Operation ID: <code>batchGroupFund</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that the batch group is associated with.</td>
+</tr>
+<tr>
+<td><code>batchGroupId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The batch group ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: BALANCE</code></td>
+<td>Yes</td>
+<td>The method of payment to use.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-batch-group-funded-successfully" class="status" data-status="2xx">200: Batch group funded successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>alreadyPaid</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Not applicable to this use case.</td>
+</tr>
+<tr>
+<td><code>fileName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>If this batch was submitted as a file, this is the given file name.</td>
+</tr>
+<tr>
+<td><code>groupType</code></td>
+<td><code>enum: API, FILE</code></td>
+<td>No</td>
+<td>Whether this batch was submitted over the API or as a file.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Unique batch group ID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Descriptive name.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The ID of the profile this payment belongs to.</td>
+</tr>
+<tr>
+<td><code>shortId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Not applicable to this use case.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The source currency of the batch. Note that if there are insufficient funds, an automatic conversion from another currency can occur.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: NEW, COMPLETED, MARKED_FOR_CANCELLATION, PROCESSING_CANCEL, CANCELLED</code></td>
+<td>No</td>
+<td>Current batch group status.</td>
+</tr>
+<tr>
+<td><code>transferIds</code></td>
+<td><code>array of integer (int64)</code></td>
+<td>No</td>
+<td>The IDs of all transfers in the group.</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The ID of the user who initiated this payment.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidbatch-groupsbatchgroupidtransfers" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/batch-groups/{batchGroupId}/transfers</h3>
+<p>Operation ID: <code>batchGroupTransferCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that the batch group is associated with.</td>
+</tr>
+<tr>
+<td><code>batchGroupId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The batch group ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>customerTransactionId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Unique identifier you generate for this transfer attempt.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient-facing reference (payment narrative).</td>
+</tr>
+<tr>
+<td><code>details.sourceOfFunds</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source of funds code.</td>
+</tr>
+<tr>
+<td><code>details.transferPurpose</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Transfer purpose code.</td>
+</tr>
+<tr>
+<td><code>details.transferPurposeSubTransferPurpose</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Sub-purpose code for the transfer.</td>
+</tr>
+<tr>
+<td><code>quoteUuid</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Quote ID.</td>
+</tr>
+<tr>
+<td><code>sourceAccount</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Refund recipient account ID.</td>
+</tr>
+<tr>
+<td><code>targetAccount</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Recipient account ID.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-transfer-created-successfully-returns-a-transfer-object" class="status" data-status="2xx">200: Transfer created successfully. Returns a transfer object</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidbatch-groups" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/batch-groups</h3>
+<p>Operation ID: <code>batchGroupCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile to create the batch group for.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Descriptive name for display purposes. Recommended to use a name that uniquely represents this batch. Maximum length of 100 characters.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Source currency code (ISO 4217 Alphabetic Code). This currency is expected to be used for funding the batch group.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-batch-group-created-successfully-note-that-payindetails-is-empty-for-newly-created-batch-groups" class="status" data-status="2xx">201: Batch group created successfully. Note that <code>payInDetails</code> is empty for newly created batch groups.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Batch group ID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Descriptive name for the batch group.</td>
+</tr>
+<tr>
+<td><code>payInDetails</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of pay-in details describing how the batch group can be funded. Provided only when the batch group is in the <code>COMPLETED</code> state. Currently supported types: <code>bank_transfer</code>.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].accountNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Bank account number.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].accountType</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Bank account type. Provided only when the currency route requires it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].amount</code></td>
+<td><code>number (decimal)</code></td>
+<td>No</td>
+<td>The total pay-in amount for all transactions in the batch when paying in with this reference and method.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Address for the receiving bank. Provided only when the currency route requires it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street address.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Bank name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postcode or ZIP code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.stateCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State, province, or region code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Bank identifier or routing number, depending on pay-in type and currency.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bban</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Basic Bank Account Number (BBAN). Provided only when the currency route requires it (such as NOK).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].beneficiaryBankBIC</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Beneficiary Bank Business Identifier Code (BIC). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].branchName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Name of the bank branch. Provided only when the currency route requires it (such as JPY).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].clearingNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Clearing number. Provided only when the currency route requires it (such as SEK).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Three-character ISO 4217 currency code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].fpsIdentifier</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Faster Payment System identifier. Provided only when the currency route requires it (such as HKD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].iban</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>ISO 13616 International Bank Account Number (when available).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].institutionNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Financial Institution number (3 digits). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].intermediaryBankBIC</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Intermediary Bank Business Identifier Code (BIC). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the bank account holder.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The reference that should be used when funding the transfers in the batch group. This reference should be treated as an opaque value and there should be no attempt to decode or decompose it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Wise's address. Provided only when the currency route requires it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street address.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Wise's company name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postcode or ZIP code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.stateCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State, province, or region code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transitNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Branch Transit Number (5 digits). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].type</code></td>
+<td><code>enum: bank_transfer</code></td>
+<td>No</td>
+<td>Method of payment.</td>
+</tr>
+<tr>
+<td><code>payinSessionId</code></td>
+<td><code>string,null (uuid)</code></td>
+<td>No</td>
+<td>Optional ID of the payin session. Required if batch group funding is done using Payin Funding API.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency code (ISO 4217 Alphabetic Code). This currency is expected to be used for funding the batch group.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: NEW, COMPLETED, MARKED_FOR_CANCELLATION, PROCESSING_CANCEL, CANCELLED</code></td>
+<td>No</td>
+<td>Current batch group status: - <code>NEW</code> , New batch group with zero or more transfers. Able to have more transfers added to it. Transfers in a <code>NEW</code> group cannot yet be funded and paid out. - <code>COMPLETED</code> , The batch group has had all desired transfers added and is now closed to further changes. Transfers in the group can now be funded and paid out. Note: <code>COMPLETED</code> does not imply payouts have been successfully completed. - <code>MARKED_FOR_CANCELLATION</code> , Cancellation of the transfers in the batch group was requested. - <code>PROCESSING_CANCEL</code> , Transfers in the group are being cancelled. - <code>CANCELLED</code> , Transfers in the group have been cancelled.</td>
+</tr>
+<tr>
+<td><code>transferIds</code></td>
+<td><code>array of integer (int64)</code></td>
+<td>No</td>
+<td>The IDs of all transfers successfully added to the group.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Batch version, used for concurrency control. This number is updated whenever there is a change to the batch group state (its status, the identity of the transfers in the batch, etc). Some API operations require this version in requests, and operations may be rejected when the requested version does not match the server's version. The version is a signed integer and is not ordered with respect to any previous version.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;id&quot;: &quot;54a6bc09-cef9-49a8-9041-f1f0c654cd88&quot;,
+  &quot;name&quot;: &quot;My batch group&quot;,
+  &quot;payInDetails&quot;: [],
+  &quot;payinSessionId&quot;: null,
+  &quot;sourceCurrency&quot;: &quot;GBP&quot;,
+  &quot;status&quot;: &quot;NEW&quot;,
+  &quot;transferIds&quot;: [],
+  &quot;version&quot;: 0
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-profilesprofileidbatch-groupsbatchgroupid" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}/batch-groups/{batchGroupId}</h3>
+<p>Operation ID: <code>batchGroupGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that the batch group is associated with.</td>
+</tr>
+<tr>
+<td><code>batchGroupId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The batch group ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-batch-group-retrieved-successfully" class="status" data-status="2xx">200: Batch group retrieved successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Batch group ID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Descriptive name for the batch group.</td>
+</tr>
+<tr>
+<td><code>payInDetails</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of pay-in details describing how the batch group can be funded. Provided only when the batch group is in the <code>COMPLETED</code> state. Currently supported types: <code>bank_transfer</code>.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].accountNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Bank account number.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].accountType</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Bank account type. Provided only when the currency route requires it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].amount</code></td>
+<td><code>number (decimal)</code></td>
+<td>No</td>
+<td>The total pay-in amount for all transactions in the batch when paying in with this reference and method.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Address for the receiving bank. Provided only when the currency route requires it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street address.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Bank name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postcode or ZIP code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.stateCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State, province, or region code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Bank identifier or routing number, depending on pay-in type and currency.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bban</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Basic Bank Account Number (BBAN). Provided only when the currency route requires it (such as NOK).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].beneficiaryBankBIC</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Beneficiary Bank Business Identifier Code (BIC). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].branchName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Name of the bank branch. Provided only when the currency route requires it (such as JPY).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].clearingNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Clearing number. Provided only when the currency route requires it (such as SEK).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Three-character ISO 4217 currency code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].fpsIdentifier</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Faster Payment System identifier. Provided only when the currency route requires it (such as HKD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].iban</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>ISO 13616 International Bank Account Number (when available).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].institutionNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Financial Institution number (3 digits). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].intermediaryBankBIC</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Intermediary Bank Business Identifier Code (BIC). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the bank account holder.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The reference that should be used when funding the transfers in the batch group. This reference should be treated as an opaque value and there should be no attempt to decode or decompose it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Wise's address. Provided only when the currency route requires it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street address.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Wise's company name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postcode or ZIP code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.stateCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State, province, or region code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transitNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Branch Transit Number (5 digits). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].type</code></td>
+<td><code>enum: bank_transfer</code></td>
+<td>No</td>
+<td>Method of payment.</td>
+</tr>
+<tr>
+<td><code>payinSessionId</code></td>
+<td><code>string,null (uuid)</code></td>
+<td>No</td>
+<td>Optional ID of the payin session. Required if batch group funding is done using Payin Funding API.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency code (ISO 4217 Alphabetic Code). This currency is expected to be used for funding the batch group.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: NEW, COMPLETED, MARKED_FOR_CANCELLATION, PROCESSING_CANCEL, CANCELLED</code></td>
+<td>No</td>
+<td>Current batch group status: - <code>NEW</code> , New batch group with zero or more transfers. Able to have more transfers added to it. Transfers in a <code>NEW</code> group cannot yet be funded and paid out. - <code>COMPLETED</code> , The batch group has had all desired transfers added and is now closed to further changes. Transfers in the group can now be funded and paid out. Note: <code>COMPLETED</code> does not imply payouts have been successfully completed. - <code>MARKED_FOR_CANCELLATION</code> , Cancellation of the transfers in the batch group was requested. - <code>PROCESSING_CANCEL</code> , Transfers in the group are being cancelled. - <code>CANCELLED</code> , Transfers in the group have been cancelled.</td>
+</tr>
+<tr>
+<td><code>transferIds</code></td>
+<td><code>array of integer (int64)</code></td>
+<td>No</td>
+<td>The IDs of all transfers successfully added to the group.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Batch version, used for concurrency control. This number is updated whenever there is a change to the batch group state (its status, the identity of the transfers in the batch, etc). Some API operations require this version in requests, and operations may be rejected when the requested version does not match the server's version. The version is a signed integer and is not ordered with respect to any previous version.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="update">update</h2>
+<h3 id="patch-profilesprofileidbatch-groupsbatchgroupid" class="operation" data-method="patch"><code>PATCH</code> /profiles/{profileId}/batch-groups/{batchGroupId}</h3>
+<p>Operation ID: <code>batchGroupUpdate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that the batch group is associated with.</td>
+</tr>
+<tr>
+<td><code>batchGroupId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The batch group ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: COMPLETED, CANCELLED</code></td>
+<td>Yes</td>
+<td>Status to update to: - <code>COMPLETED</code> , Close the group and allow funding - <code>CANCELLED</code> , Cancel the group and all transfers</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The expected batch group version for concurrency control. Must match the server's current version.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-batch-group-updated-successfully" class="status" data-status="2xx">200: Batch group updated successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Batch group ID.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Descriptive name for the batch group.</td>
+</tr>
+<tr>
+<td><code>payInDetails</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of pay-in details describing how the batch group can be funded. Provided only when the batch group is in the <code>COMPLETED</code> state. Currently supported types: <code>bank_transfer</code>.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].accountNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Bank account number.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].accountType</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Bank account type. Provided only when the currency route requires it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].amount</code></td>
+<td><code>number (decimal)</code></td>
+<td>No</td>
+<td>The total pay-in amount for all transactions in the batch when paying in with this reference and method.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Address for the receiving bank. Provided only when the currency route requires it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street address.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Bank name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postcode or ZIP code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankAddress.stateCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State, province, or region code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bankCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Bank identifier or routing number, depending on pay-in type and currency.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].bban</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Basic Bank Account Number (BBAN). Provided only when the currency route requires it (such as NOK).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].beneficiaryBankBIC</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Beneficiary Bank Business Identifier Code (BIC). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].branchName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Name of the bank branch. Provided only when the currency route requires it (such as JPY).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].clearingNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Clearing number. Provided only when the currency route requires it (such as SEK).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Three-character ISO 4217 currency code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].fpsIdentifier</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Faster Payment System identifier. Provided only when the currency route requires it (such as HKD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].iban</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>ISO 13616 International Bank Account Number (when available).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].institutionNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Financial Institution number (3 digits). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].intermediaryBankBIC</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Intermediary Bank Business Identifier Code (BIC). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the bank account holder.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The reference that should be used when funding the transfers in the batch group. This reference should be treated as an opaque value and there should be no attempt to decode or decompose it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Wise's address. Provided only when the currency route requires it.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street address.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Wise's company name.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postcode or ZIP code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transferWiseAddress.stateCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State, province, or region code.</td>
+</tr>
+<tr>
+<td><code>payInDetails[].transitNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Branch Transit Number (5 digits). Provided only when the currency route requires it (such as CAD).</td>
+</tr>
+<tr>
+<td><code>payInDetails[].type</code></td>
+<td><code>enum: bank_transfer</code></td>
+<td>No</td>
+<td>Method of payment.</td>
+</tr>
+<tr>
+<td><code>payinSessionId</code></td>
+<td><code>string,null (uuid)</code></td>
+<td>No</td>
+<td>Optional ID of the payin session. Required if batch group funding is done using Payin Funding API.</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency code (ISO 4217 Alphabetic Code). This currency is expected to be used for funding the batch group.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: NEW, COMPLETED, MARKED_FOR_CANCELLATION, PROCESSING_CANCEL, CANCELLED</code></td>
+<td>No</td>
+<td>Current batch group status: - <code>NEW</code> , New batch group with zero or more transfers. Able to have more transfers added to it. Transfers in a <code>NEW</code> group cannot yet be funded and paid out. - <code>COMPLETED</code> , The batch group has had all desired transfers added and is now closed to further changes. Transfers in the group can now be funded and paid out. Note: <code>COMPLETED</code> does not imply payouts have been successfully completed. - <code>MARKED_FOR_CANCELLATION</code> , Cancellation of the transfers in the batch group was requested. - <code>PROCESSING_CANCEL</code> , Transfers in the group are being cancelled. - <code>CANCELLED</code> , Transfers in the group have been cancelled.</td>
+</tr>
+<tr>
+<td><code>transferIds</code></td>
+<td><code>array of integer (int64)</code></td>
+<td>No</td>
+<td>The IDs of all transfers successfully added to the group.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Batch version, used for concurrency control. This number is updated whenever there is a change to the batch group state (its status, the identity of the transfers in the batch, etc). Some API operations require this version in requests, and operations may be rejected when the requested version does not match the server's version. The version is a signed integer and is not ordered with respect to any previous version.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

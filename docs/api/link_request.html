@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>LinkRequest | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a aria-current="page" href="../api/link_request.html">LinkRequest</a><div class="nav-sections"><a class="nav-section" href="#post-profilesprofileidembedded-flowslink-requestskyc-reviews">POST /profiles/{profileId}/embedded-flows/link-requests/kyc-reviews</a>
+<a class="nav-section" href="#post-profilesprofileidembedded-flowslink-requestspayment-instrument">POST /profiles/{profileId}/embedded-flows/link-requests/payment-instrument</a>
+<a class="nav-section" href="#post-profilesprofileidembedded-flowslink-requestsrecipients">POST /profiles/{profileId}/embedded-flows/link-requests/recipients</a>
+<a class="nav-section" href="#post-profilesprofileidembedded-flowslink-requestsspenddisputes">POST /profiles/{profileId}/embedded-flows/link-requests/spend/disputes</a>
+<a class="nav-section" href="#get-embedded-flowslink-requestsembeddedlinkrequestid">GET /embedded-flows/link-requests/{embeddedLinkRequestId}</a></div>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="linkrequest">LinkRequest</h1>
+<p>An embedded-flow link request, for KYC, payment instruments, recipients or disputes.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidembedded-flowslink-requestskyc-reviews"><code>/profiles/{profileId}/embedded-flows/link-requests/kyc-reviews</code></a></td>
+<td><code>create</code></td>
+<td>Embedded link request created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidembedded-flowslink-requestspayment-instrument"><code>/profiles/{profileId}/embedded-flows/link-requests/payment-instrument</code></a></td>
+<td><code>create</code></td>
+<td>Embedded link request created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidembedded-flowslink-requestsrecipients"><code>/profiles/{profileId}/embedded-flows/link-requests/recipients</code></a></td>
+<td><code>create</code></td>
+<td>Embedded link request created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidembedded-flowslink-requestsspenddisputes"><code>/profiles/{profileId}/embedded-flows/link-requests/spend/disputes</code></a></td>
+<td><code>create</code></td>
+<td>Embedded link request created</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-embedded-flowslink-requestsembeddedlinkrequestid"><code>/embedded-flows/link-requests/{embeddedLinkRequestId}</code></a></td>
+<td><code>load</code></td>
+<td>Embedded link request found</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">link_request, err := client.LinkRequest(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(link_request)
+created, err := client.LinkRequest(nil).Create(map[string]any{&quot;profile_id&quot;: 1, &quot;email&quot;: &quot;example&quot;, &quot;redirectUrl&quot;: &quot;example&quot;, &quot;transactionId&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local link_request, err = client:LinkRequest():load({ id = &quot;example_id&quot; })
+local created, err = client:LinkRequest():create({ profile_id = 1, email = &quot;example&quot;, redirectUrl = &quot;example&quot;, transactionId = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$link_request = $client-&gt;LinkRequest()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;LinkRequest()-&gt;create([&quot;profile_id&quot; =&gt; 1, &quot;email&quot; =&gt; &quot;example&quot;, &quot;redirectUrl&quot; =&gt; &quot;example&quot;, &quot;transactionId&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">link_request = client.LinkRequest().load({&quot;id&quot;: &quot;example_id&quot;})
+created = client.LinkRequest().create({ &quot;profile_id&quot;: 1, &quot;email&quot;: &quot;example&quot;, &quot;redirectUrl&quot;: &quot;example&quot;, &quot;transactionId&quot;: 1 })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">link_request = client.LinkRequest.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.LinkRequest.create({ &quot;profile_id&quot; =&gt; 1, &quot;email&quot; =&gt; &quot;example&quot;, &quot;redirectUrl&quot; =&gt; &quot;example&quot;, &quot;transactionId&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const link_request = await client.LinkRequest().load({ id: &quot;example_id&quot; })
+const created = await client.LinkRequest().create({ profile_id: 1, email: &quot;example&quot;, redirectUrl: &quot;example&quot;, transactionId: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientKey</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Client key that created the embedded link request.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The end user's email address, to receive dispute updates.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Embedded link request ID.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Flow-specific metadata.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Profile that owns the embedded flow.</td>
+</tr>
+<tr>
+<td><code>redirectUrl</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>URL where Wise redirects the user after the flow resolves.</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>The ID of the card transaction to dispute.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Embedded Flow type.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-profilesprofileidembedded-flowslink-requestskyc-reviews" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/embedded-flows/link-requests/kyc-reviews</h3>
+<p>Operation ID: <code>kycReviewsEmbeddedLinkRequestCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kycReviewId</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The UUID for the KYC review to be completed.</td>
+</tr>
+<tr>
+<td><code>redirectUrl</code></td>
+<td><code>string (uri)</code></td>
+<td>Yes</td>
+<td>URL where the user is redirected when the flow resolves. This also includes query parameters based on flow completion state and completed KYC review ID. For more information, see our Embedded Flows - KYC Review guide.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;kycReviewId&quot;: &quot;f47ac10b-58cc-4372-a567-0e02b2c3d479&quot;,
+  &quot;redirectUrl&quot;: &quot;https://example.com/return&quot;
+}
+</code></pre>
+<h4 id="responses">Responses</h4>
+<h5 id="201-embedded-link-request-created" class="status" data-status="2xx">201: Embedded link request created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expiresAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Timestamp when the returned flow URL expires.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string (uri)</code></td>
+<td>Yes</td>
+<td>Unique URL to open or embed for the user.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;expiresAt&quot;: &quot;2026-06-15T13:23:20.265Z&quot;,
+  &quot;url&quot;: &quot;https://wise-sandbox.com/embedded-flows?embeddedLinkRequestId=9f5f5812-2609-4e48-8418-b64437c0c7cd#token=0d0bdc88-bcf4-43dd-85be-7ca65441db20&quot;
+}
+</code></pre>
+<h5 id="400-invalid-request-such-as-an-invalid-redirect-url" class="status" data-status="4xx">400: Invalid request, such as an invalid redirect URL</h5>
+<h5 id="401-user-is-not-authorised-to-access-the-resource" class="status" data-status="4xx">401: User is not authorised to access the resource</h5>
+<h5 id="404-profile-not-found" class="status" data-status="4xx">404: Profile not found</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidembedded-flowslink-requestspayment-instrument" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/embedded-flows/link-requests/payment-instrument</h3>
+<p>Operation ID: <code>paymentInstrumentEmbeddedLinkRequestCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>method</code></td>
+<td><code>enum: BACS, SEPA, ACH, EFT</code></td>
+<td>Yes</td>
+<td>The method the payment instrument is created for.</td>
+</tr>
+<tr>
+<td><code>redirectUrl</code></td>
+<td><code>string (uri)</code></td>
+<td>Yes</td>
+<td>URL where the user is redirected when the flow resolves. This also includes query parameters based on flow completion state and created payment instrument ID. For more information, see our Embedded Flows - Payment Instruments guide.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;method&quot;: &quot;BACS&quot;,
+  &quot;redirectUrl&quot;: &quot;https://example.com/return&quot;
+}
+</code></pre>
+<h4 id="responses-1">Responses</h4>
+<h5 id="201-embedded-link-request-created-1" class="status" data-status="2xx">201: Embedded link request created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expiresAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Timestamp when the returned flow URL expires.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string (uri)</code></td>
+<td>Yes</td>
+<td>Unique URL to open or embed for the user.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;expiresAt&quot;: &quot;2026-06-15T13:23:20.265Z&quot;,
+  &quot;url&quot;: &quot;https://wise-sandbox.com/embedded-flows?embeddedLinkRequestId=9f5f5812-2609-4e48-8418-b64437c0c7cd#token=0d0bdc88-bcf4-43dd-85be-7ca65441db20&quot;
+}
+</code></pre>
+<h5 id="400-invalid-request-such-as-an-invalid-redirect-url-1" class="status" data-status="4xx">400: Invalid request, such as an invalid redirect URL</h5>
+<h5 id="401-user-is-not-authorised-to-access-the-resource-1" class="status" data-status="4xx">401: User is not authorised to access the resource</h5>
+<h5 id="404-profile-not-found-1" class="status" data-status="4xx">404: Profile not found</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidembedded-flowslink-requestsrecipients" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/embedded-flows/link-requests/recipients</h3>
+<p>Operation ID: <code>recipientEmbeddedLinkRequestCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>redirectUrl</code></td>
+<td><code>string (uri)</code></td>
+<td>Yes</td>
+<td>URL where the user is redirected when the flow resolves. This also includes query parameters based on flow completion state and created recipient ID. For more information, see our Embedded Flows - Recipient Creation guide.</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional target currency used to start recipient requirements for a specific currency.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;redirectUrl&quot;: &quot;https://example.com/return&quot;,
+  &quot;targetCurrency&quot;: &quot;USD&quot;
+}
+</code></pre>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-embedded-link-request-created-2" class="status" data-status="2xx">201: Embedded link request created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expiresAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Timestamp when the returned flow URL expires.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string (uri)</code></td>
+<td>Yes</td>
+<td>Unique URL to open or embed for the user.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;expiresAt&quot;: &quot;2026-06-15T13:23:20.265Z&quot;,
+  &quot;url&quot;: &quot;https://wise-sandbox.com/embedded-flows?embeddedLinkRequestId=9f5f5812-2609-4e48-8418-b64437c0c7cd#token=0d0bdc88-bcf4-43dd-85be-7ca65441db20&quot;
+}
+</code></pre>
+<h5 id="400-invalid-request-such-as-an-invalid-redirect-url-2" class="status" data-status="4xx">400: Invalid request, such as an invalid redirect URL</h5>
+<h5 id="401-user-is-not-authorised-to-access-the-resource-2" class="status" data-status="4xx">401: User is not authorised to access the resource</h5>
+<h5 id="404-profile-not-found-2" class="status" data-status="4xx">404: Profile not found</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidembedded-flowslink-requestsspenddisputes" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/embedded-flows/link-requests/spend/disputes</h3>
+<p>Operation ID: <code>disputeEmbeddedLinkRequestCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>email</code></td>
+<td><code>string (email)</code></td>
+<td>Yes</td>
+<td>The end user's email address, to receive dispute updates.</td>
+</tr>
+<tr>
+<td><code>redirectUrl</code></td>
+<td><code>string (uri)</code></td>
+<td>Yes</td>
+<td>URL where the user is redirected when the flow resolves. This also includes query parameters based on flow completion state and disputed transaction IDs. For more information, see our Embedded Flows - Dispute Creation guide.</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the card transaction to dispute. It must belong to the given profile.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;email&quot;: &quot;user@example.com&quot;,
+  &quot;redirectUrl&quot;: &quot;https://example.com/return&quot;,
+  &quot;transactionId&quot;: 625327
+}
+</code></pre>
+<h4 id="responses-3">Responses</h4>
+<h5 id="201-embedded-link-request-created-3" class="status" data-status="2xx">201: Embedded link request created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>expiresAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Timestamp when the returned flow URL expires.</td>
+</tr>
+<tr>
+<td><code>url</code></td>
+<td><code>string (uri)</code></td>
+<td>Yes</td>
+<td>Short-lived URL to start the embedded dispute flow.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;expiresAt&quot;: &quot;2026-06-15T13:23:20.265Z&quot;,
+  &quot;url&quot;: &quot;https://wise-sandbox.com/embedded-flows?embeddedLinkRequestId=9f5f5812-2609-4e48-8418-b64437c0c7cd#token=0d0bdc88-bcf4-43dd-85be-7ca65441db20&quot;
+}
+</code></pre>
+<h5 id="400-invalid-request-such-as-an-invalid-redirect-url-or-a-transaction-that-doesn39t-exist" class="status" data-status="4xx">400: Invalid request, such as an invalid redirect URL or a transaction that doesn't exist</h5>
+<h5 id="401-user-is-not-authorised-to-access-the-resource-3" class="status" data-status="4xx">401: User is not authorised to access the resource</h5>
+<h5 id="403-the-dispute-creation-flow-is-not-enabled-for-the-profile" class="status" data-status="4xx">403: The dispute creation flow is not enabled for the profile</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-embedded-flowslink-requestsembeddedlinkrequestid" class="operation" data-method="get"><code>GET</code> /embedded-flows/link-requests/{embeddedLinkRequestId}</h3>
+<p>Operation ID: <code>embeddedLinkRequestGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>embeddedLinkRequestId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The embedded link request ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-embedded-link-request-found" class="status" data-status="2xx">200: Embedded link request found</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientKey</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Client key that created the embedded link request.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Embedded link request ID.</td>
+</tr>
+<tr>
+<td><code>metadata</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Flow-specific metadata.</td>
+</tr>
+<tr>
+<td><code>metadata.targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional target currency for hosted recipient creation.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Profile that owns the embedded flow.</td>
+</tr>
+<tr>
+<td><code>redirectUrl</code></td>
+<td><code>string (uri)</code></td>
+<td>Yes</td>
+<td>URL where Wise redirects the user after the flow resolves.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: RECIPIENT, KYC</code></td>
+<td>Yes</td>
+<td>Embedded Flow type.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;clientKey&quot;: &quot;partner-client-key&quot;,
+  &quot;id&quot;: &quot;ea5eb6ca-3af7-4e88-a2e2-6a68dd92f198&quot;,
+  &quot;metadata&quot;: {
+    &quot;targetCurrency&quot;: &quot;USD&quot;
+  },
+  &quot;profileId&quot;: 12345,
+  &quot;redirectUrl&quot;: &quot;https://example.com/return&quot;,
+  &quot;type&quot;: &quot;RECIPIENT&quot;
+}
+</code></pre>
+<h5 id="401-user-is-not-authorised-to-access-the-resource-4" class="status" data-status="4xx">401: User is not authorised to access the resource</h5>
+<h5 id="404-embedded-link-request-not-found" class="status" data-status="4xx">404: Embedded link request not found</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

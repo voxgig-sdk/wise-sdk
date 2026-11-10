@@ -1,0 +1,22 @@
+# BasicCreateThirdPartyTransferResponseContentFlow
+
+main: kit: flow: BasicCreateThirdPartyTransferResponseContentFlow:
+{
+  entity: "create_third_party_transfer_response_content",
+  kind: "basic",
+  name: "BasicCreateThirdPartyTransferResponseContentFlow",
+  step: [
+    {
+      i: {
+        ref: "create_third_party_transfer_response_content_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicCreateThirdPartyTransferResponseContentFlow"
+}

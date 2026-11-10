@@ -1,0 +1,111 @@
+{
+  "existing": {
+    "card": {
+      "CARD00": {
+        "bankIdentificationNumber": "s8c",
+        "cardHolderName": "s8d",
+        "cardProgram": {},
+        "clientId": "s8f",
+        "creationTime": "s90",
+        "expiryDate": "s91",
+        "id": "CARD00",
+        "lastFourDigits": "s93",
+        "modificationTime": "s94",
+        "phoneNumber": "s95",
+        "profileId": 150,
+        "status": {},
+        "token": "s98",
+        "unlockSpendingPermissions": "s99",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01"
+      },
+      "CARD01": {
+        "bankIdentificationNumber": "s118",
+        "cardHolderName": "s119",
+        "cardProgram": {},
+        "clientId": "s11b",
+        "creationTime": "s11c",
+        "expiryDate": "s11d",
+        "id": "CARD01",
+        "lastFourDigits": "s11f",
+        "modificationTime": "s120",
+        "phoneNumber": "s121",
+        "profileId": 290,
+        "status": {},
+        "token": "s124",
+        "unlockSpendingPermissions": "s125",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01"
+      },
+      "CARD02": {
+        "bankIdentificationNumber": "s1a4",
+        "cardHolderName": "s1a5",
+        "cardProgram": {},
+        "clientId": "s1a7",
+        "creationTime": "s1a8",
+        "expiryDate": "s1a9",
+        "id": "CARD02",
+        "lastFourDigits": "s1ab",
+        "modificationTime": "s1ac",
+        "phoneNumber": "s1ad",
+        "profileId": 430,
+        "status": {},
+        "token": "s1b0",
+        "unlockSpendingPermissions": "s1b1",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "card": {
+      "card_ref01": {
+        "bankIdentificationNumber": "s230",
+        "cardHolderName": "s231",
+        "cardProgram": {},
+        "clientId": "s233",
+        "creationTime": "s234",
+        "expiryDate": "s235",
+        "lastFourDigits": "s237",
+        "modificationTime": "s238",
+        "phoneNumber": "s239",
+        "profileId": 570,
+        "status": {},
+        "token": "s23c",
+        "unlockSpendingPermissions": "s23d"
+      }
+    }
+  },
+  "requests": {
+    "POST /spend/profiles/{profileId}/cards/{cardToken}/reset-pin-count": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/profiles/{profileId}/cards/{cardToken}/spending-permissions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/profiles/{profileId}/cards": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/profiles/{profileId}/cards/{cardToken}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /spend/profiles/{profileId}/cards/{cardToken}/spending-permissions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /spend/profiles/{profileId}/cards/{cardToken}/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

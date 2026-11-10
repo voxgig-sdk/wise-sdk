@@ -1,0 +1,759 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Comparison | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a aria-current="page" href="../api/comparison.html">Comparison</a><div class="nav-sections"><a class="nav-section" href="#get-comparisons">GET /comparisons</a></div>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="comparison">Comparison</h1>
+<p>A comparison of what providers charge for a transfer.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-comparisons"><code>/comparisons</code></a></td>
+<td><code>load</code></td>
+<td>Comparison data retrieved successfully</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">comparison, err := client.Comparison(nil).Load(map[string]any{&quot;source_currency&quot;: &quot;example&quot;, &quot;target_currency&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(comparison)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local comparison, err = client:Comparison():load({ source_currency = &quot;example&quot;, target_currency = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$comparison = $client-&gt;Comparison()-&gt;load([&quot;source_currency&quot; =&gt; &quot;example&quot;, &quot;target_currency&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">comparison = client.Comparison().load({&quot;source_currency&quot;: &quot;example&quot;, &quot;target_currency&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">comparison = client.Comparison.load({ &quot;source_currency&quot; =&gt; &quot;example&quot;, &quot;target_currency&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const comparison = await client.Comparison().load({ source_currency: &quot;example&quot;, target_currency: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The comparison amount</td>
+</tr>
+<tr>
+<td><code>amountType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Whether the amount represents a send amount or recipient gets amount</td>
+</tr>
+<tr>
+<td><code>providerCountry</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Provider country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>providerTypes</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>List of provider types included in the response</td>
+</tr>
+<tr>
+<td><code>providers</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>List of providers with their estimated quotes</td>
+</tr>
+<tr>
+<td><code>sourceCountry</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Source country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>ISO 4217 source currency code</td>
+</tr>
+<tr>
+<td><code>targetCountry</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Target country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>ISO 4217 target currency code</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-comparisons" class="operation" data-method="get"><code>GET</code> /comparisons</h3>
+<p>Operation ID: <code>comparisonGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>) or bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 4217 source currency code</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 4217 target currency code</td>
+</tr>
+<tr>
+<td><code>sendAmount</code></td>
+<td><code>query</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount to send in source currency. Must provide either <code>sendAmount</code> or <code>recipientGetsAmount</code>.</td>
+</tr>
+<tr>
+<td><code>recipientGetsAmount</code></td>
+<td><code>query</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount to be received in target currency. Must provide either <code>sendAmount</code> or <code>recipientGetsAmount</code>.</td>
+</tr>
+<tr>
+<td><code>midMarketRate</code></td>
+<td><code>query</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Current mid-market rate between the source and target currency</td>
+</tr>
+<tr>
+<td><code>wiseFee</code></td>
+<td><code>query</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Wise's fee, if the Wise quote is known</td>
+</tr>
+<tr>
+<td><code>wiseEstimatedDelivery</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Wise's estimated delivery timestamp, if the Wise quote is known</td>
+</tr>
+<tr>
+<td><code>wiseQuoteCreatedTime</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Timestamp when the Wise quote was created</td>
+</tr>
+<tr>
+<td><code>payInMethod</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Change the pay-in method of the Wise quote only (all other quotes will remain as bank transfer)</td>
+</tr>
+<tr>
+<td><code>sourceCountry</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Filter by source country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>targetCountry</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Filter by target country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>providerCountry</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Filter by provider country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>filter</code></td>
+<td><code>query</code></td>
+<td><code>enum: POPULAR</code></td>
+<td>No</td>
+<td>Filter by most popular competitors</td>
+</tr>
+<tr>
+<td><code>numberOfProviders</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>Number of popular competitors to return if <code>filter</code> is set to <code>POPULAR</code> - default value is 4</td>
+</tr>
+<tr>
+<td><code>providerTypes</code></td>
+<td><code>query</code></td>
+<td><code>array of enum: bank, moneytransferprovider, travelMoney</code></td>
+<td>No</td>
+<td>Filter by provider type</td>
+</tr>
+<tr>
+<td><code>providers</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Filter by specific provider aliases</td>
+</tr>
+<tr>
+<td><code>excludePartners</code></td>
+<td><code>query</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Exclude Wise's partner banks - default true</td>
+</tr>
+<tr>
+<td><code>includeWise</code></td>
+<td><code>query</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Overrides filters to ensure Wise data is returned, even if exclusionary filters are applied</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-comparison-data-retrieved-successfully" class="status" data-status="2xx">200: Comparison data retrieved successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The comparison amount</td>
+</tr>
+<tr>
+<td><code>amountType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Whether the amount represents a send amount or recipient gets amount</td>
+</tr>
+<tr>
+<td><code>providerCountry</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Provider country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>providerTypes</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>List of provider types included in the response</td>
+</tr>
+<tr>
+<td><code>providers</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of providers with their estimated quotes</td>
+</tr>
+<tr>
+<td><code>providers[].alias</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Provider alias (lowercase slug name)</td>
+</tr>
+<tr>
+<td><code>providers[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Provider ID</td>
+</tr>
+<tr>
+<td><code>providers[].logos</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>URLs pointing to provider logos (svg, png)</td>
+</tr>
+<tr>
+<td><code>providers[].logos.altText</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Alt text for the provider logo</td>
+</tr>
+<tr>
+<td><code>providers[].logos.circle</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.circle.pngUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.circle.svgUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.inverse</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.inverse.pngUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.inverse.svgUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.normal</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.normal.pngUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.normal.svgUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.white</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.white.pngUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].logos.white.svgUrl</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>providers[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Provider name (presentational / formal name)</td>
+</tr>
+<tr>
+<td><code>providers[].partner</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether a partner of Wise or not</td>
+</tr>
+<tr>
+<td><code>providers[].quotes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An array of estimated quotes per provider</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].dateCollected</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The date of collection for the original quote</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].deliveryEstimation</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Delivery estimation details - that is a speed estimate</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].deliveryEstimation.duration</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Duration range</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].deliveryEstimation.duration.max</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Maximum quoted time for transaction delivery (ISO 8601 duration format)</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].deliveryEstimation.duration.min</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Minimum quoted time for transaction delivery (ISO 8601 duration format)</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].deliveryEstimation.providerGivesEstimate</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether a provider publicly surfaces a speed estimate or not</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].fee</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The estimated fee for the provider for this quote</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].isConsideredMidMarketRate</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the provider's rate is close enough to the true mid-market rate to be classified as a mid-market rate</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].markup</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Percentage markup on the quoted rate compared to the mid-market rate</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The live estimated exchange rate for the provider for this quote</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].receivedAmount</code></td>
+<td><code>number,null</code></td>
+<td>No</td>
+<td>The total estimated received amount for the provider for this quote (non-null only if a send amount request was made)</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].sendAmount</code></td>
+<td><code>number,null</code></td>
+<td>No</td>
+<td>The total estimated send amount for the provider for this quote (non-null only if a recipient gets amount request was made)</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].sourceCountry</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Source country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>providers[].quotes[].targetCountry</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Target country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>providers[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Provider type: bank, money transfer provider, or travel money</td>
+</tr>
+<tr>
+<td><code>sourceCountry</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Source country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>ISO 4217 source currency code</td>
+</tr>
+<tr>
+<td><code>targetCountry</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Target country (ISO 3166-1 Alpha-2 code)</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>ISO 4217 target currency code</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;amount&quot;: 10000,
+  &quot;amountType&quot;: &quot;SEND&quot;,
+  &quot;providerCountry&quot;: null,
+  &quot;providerTypes&quot;: [
+    &quot;bank&quot;,
+    &quot;moneyTransferProvider&quot;
+  ],
+  &quot;providers&quot;: [
+    {
+      &quot;alias&quot;: &quot;wise&quot;,
+      &quot;id&quot;: 39,
+      &quot;logos&quot;: {
+        &quot;altText&quot;: &quot;Wise&quot;,
+        &quot;circle&quot;: {
+          &quot;pngUrl&quot;: null,
+          &quot;svgUrl&quot;: &quot;https://dq8dwmysp7hk1.cloudfront.net/logos/wise-mark.svg&quot;
+        },
+        &quot;inverse&quot;: {
+          &quot;pngUrl&quot;: &quot;https://wise.com/public-resources/assets/logos/wise-personal/logo_inverse.png&quot;,
+          &quot;svgUrl&quot;: &quot;https://wise.com/public-resources/assets/logos/wise-personal/logo_inverse.svg&quot;
+        },
+        &quot;normal&quot;: {
+          &quot;pngUrl&quot;: &quot;https://wise.com/public-resources/assets/logos/wise-personal/logo.png&quot;,
+          &quot;svgUrl&quot;: &quot;https://wise.com/public-resources/assets/logos/wise-personal/logo.svg&quot;
+        },
+        &quot;white&quot;: {
+          &quot;pngUrl&quot;: &quot;https://wise.com/public-resources/assets/logos/wise-personal/logo_white.png&quot;,
+          &quot;svgUrl&quot;: &quot;https://wise.com/public-resources/assets/logos/wise-personal/logo_white.svg&quot;
+        }
+      },
+      &quot;name&quot;: &quot;Wise&quot;,
+      &quot;partner&quot;: false,
+      &quot;quotes&quot;: [
+        {
+          &quot;dateCollected&quot;: &quot;2019-10-22T14:36:43Z&quot;,
+          &quot;deliveryEstimation&quot;: {
+            &quot;duration&quot;: {
+              &quot;max&quot;: &quot;PT20H8M16.305111S&quot;,
+              &quot;min&quot;: &quot;PT20H8M16.305111S&quot;
+            },
+            &quot;providerGivesEstimate&quot;: true
+          },
+          &quot;fee&quot;: 37.12,
+          &quot;isConsideredMidMarketRate&quot;: true,
+          &quot;markup&quot;: 0,
+          &quot;rate&quot;: 1.15989,
+          &quot;receivedAmount&quot;: 11555.84,
+          &quot;sendAmount&quot;: null,
+          &quot;sourceCountry&quot;: null,
+          &quot;targetCountry&quot;: null
+        }
+      ],
+      &quot;type&quot;: &quot;moneyTransferProvider&quot;
+    },
+    {
+      &quot;alias&quot;: &quot;barclays&quot;,
+      &quot;id&quot;: 1,
+      &quot;logos&quot;: {
+        &quot;altText&quot;: &quot;Barclays&quot;,
+        &quot;circle&quot;: {
+          &quot;pngUrl&quot;: null,
+          &quot;svgUrl&quot;: &quot;https://dq8dwmysp7hk1.cloudfront.net/logos/barclays-mark.svg&quot;
+        },
+        &quot;inverse&quot;: {
+          &quot;pngUrl&quot;: null,
+          &quot;svgUrl&quot;: null
+        },
+        &quot;normal&quot;: {
+          &quot;pngUrl&quot;: &quot;https://dq8dwmysp7hk1.cloudfront.net/logos/barclays.png&quot;,
+          &quot;svgUrl&quot;: &quot;https://dq8dwmysp7hk1.cloudfront.net/logos/barclays.svg&quot;
+        },
+        &quot;white&quot;: {
+          &quot;pngUrl&quot;: &quot;https://dq8dwmysp7hk1.cloudfront.net/logos/barclays--white.png&quot;,
+          &quot;svgUrl&quot;: &quot;https://dq8dwmysp7hk1.cloudfront.net/logos/barclays--white.svg&quot;
+        }
+      },
+      &quot;name&quot;: &quot;Barclays&quot;,
+      &quot;partner&quot;: false,
+      &quot;quotes&quot;: [
+        {
+          &quot;dateCollected&quot;: &quot;2019-10-22T14:00:04Z&quot;,
+          &quot;deliveryEstimation&quot;: {
+            &quot;duration&quot;: {
+              &quot;max&quot;: &quot;PT24H&quot;,
+              &quot;min&quot;: &quot;PT24H&quot;
+            },
+            &quot;providerGivesEstimate&quot;: true
+          },
+          &quot;fee&quot;: 0,
+          &quot;isConsideredMidMarketRate&quot;: false,
+          &quot;markup&quot;: 2.75592858,
+          &quot;rate&quot;: 1.12792426,
+          &quot;receivedAmount&quot;: 11279.24,
+          &quot;sendAmount&quot;: null,
+          &quot;sourceCountry&quot;: &quot;GB&quot;,
+          &quot;targetCountry&quot;: &quot;ES&quot;
+        }
+      ],
+      &quot;type&quot;: &quot;bank&quot;
+    }
+  ],
+  &quot;sourceCountry&quot;: null,
+  &quot;sourceCurrency&quot;: &quot;GBP&quot;,
+  &quot;targetCountry&quot;: null,
+  &quot;targetCurrency&quot;: &quot;EUR&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

@@ -1,0 +1,237 @@
+# Entity: card_limit
+
+main: kit: entity: card_limit: {
+
+  alias: field: {}
+
+  fields: {
+    daily: {
+      h: "Daily"
+      n: "daily"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    lifetime: {
+      h: "Lifetime"
+      n: "lifetime"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    monthly: {
+      h: "Monthly"
+      n: "monthly"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    transaction: {
+      h: "Transaction"
+      n: "transaction"
+      r: false
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+  }
+
+  name: "card_limit"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /spend/profiles/{profileId}/cards/{cardToken}/spend-limits"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/spend-limits"
+          q: {
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "spend-limits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "daily"
+            "lifetime"
+            "monthly"
+            "transaction"
+          ]
+          co: {
+            id: "PATCH /spend/profiles/{profileId}/cards/{cardToken}/spend-limits"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/spend-limits"
+          q: {
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "spend-limits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.card")]
+  ]
+
+}

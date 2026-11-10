@@ -1,0 +1,287 @@
+# Entity: account_requirement
+
+main: kit: entity: account_requirement: {
+
+  alias: field: {}
+
+  fields: {
+    accountHolderName: {
+      h: "Account Holder Name"
+      n: "accountHolderName"
+      r: false
+      sh: "Recipient full name."
+      t: "`$STRING`"
+    }
+    currency: {
+      h: "Currency"
+      n: "currency"
+      r: false
+      sh: "3-character currency code."
+      t: "`$STRING`"
+    }
+    details: {
+      h: "Details"
+      n: "details"
+      r: false
+      sh: "Contains the details of the recipient account specific to its currency and type."
+      t: "`$OBJECT`"
+    }
+    fields: {
+      h: "Fields"
+      n: "fields"
+      r: false
+      sh: "List of UI field groups to collect required data."
+      t: "`$ARRAY`"
+    }
+    ownedByCustomer: {
+      h: "Owned By Customer"
+      n: "ownedByCustomer"
+      r: false
+      sh: "Indicates whether the recipient account is owned by the profile owner."
+      t: "`$BOOLEAN`"
+    }
+    profile: {
+      fo: "int64"
+      h: "Profile"
+      n: "profile"
+      r: false
+      sh: "Personal or business profile ID of the sender."
+      t: "`$INTEGER`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Human-readable title for the requirement group."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Recipient account type."
+      t: "`$STRING`"
+    }
+    ultimateBeneficiary: {
+      h: "Ultimate Beneficiary"
+      n: "ultimateBeneficiary"
+      r: true
+      sh: "The details about the ultimate beneficiary for this recipient, if present."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    usageInfo: {
+      h: "Usage Info"
+      n: "usageInfo"
+      r: false
+      sh: "Optional usage/help text."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "account_requirement"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "accountHolderName"
+            "currency"
+            "details"
+            "ownedByCustomer"
+            "profile"
+            "type"
+            "ultimateBeneficiary"
+          ]
+          co: {
+            id: "POST /quotes/{quoteId}/account-requirements"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "accept_minor_version"
+                or: "Accept-Minor-Version"
+                r: false
+                style: "simple"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "quote_id"
+                or: "quoteId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "originator_legal_entity_type"
+                or: "originatorLegalEntityType"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/quotes/{quoteId}/account-requirements"
+          q: {
+            exist: [
+              "quote_id"
+            ]
+          }
+          r: {
+            param: {
+              quoteId: "quote_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "quotes"
+            }
+            {
+              var: "quote_id"
+            }
+            {
+              lit: "account-requirements"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /quotes/{quoteId}/account-requirements"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "accept_minor_version"
+                or: "Accept-Minor-Version"
+                r: false
+                style: "simple"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "quote_id"
+                or: "quoteId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: false
+                explode: true
+                k: "query"
+                n: "address_required"
+                or: "addressRequired"
+                r: false
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "originator_legal_entity_type"
+                or: "originatorLegalEntityType"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/quotes/{quoteId}/account-requirements"
+          q: {
+            exist: [
+              "quote_id"
+            ]
+          }
+          r: {
+            param: {
+              quoteId: "quote_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "quotes"
+            }
+            {
+              var: "quote_id"
+            }
+            {
+              lit: "account-requirements"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.quote")]
+  ]
+
+}

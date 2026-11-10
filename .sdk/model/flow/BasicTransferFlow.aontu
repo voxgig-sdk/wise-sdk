@@ -1,0 +1,71 @@
+# BasicTransferFlow
+
+main: kit: flow: BasicTransferFlow:
+{
+  entity: "transfer",
+  kind: "basic",
+  name: "BasicTransferFlow",
+  step: [
+    {
+      i: {
+        ref: "transfer_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "transfer_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "transfer_ref01",
+        srcdatavar: "transfer_ref01_data",
+        suffix: "_up0",
+        textfield: "created"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-transfer_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "transfer_ref01",
+        srcdatavar: "transfer_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "transfer01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-transfer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicTransferFlow"
+}

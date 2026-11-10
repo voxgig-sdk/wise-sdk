@@ -1,0 +1,22 @@
+# BasicThreeDSecureFlow
+
+main: kit: flow: BasicThreeDSecureFlow:
+{
+  entity: "three_d_secure",
+  kind: "basic",
+  name: "BasicThreeDSecureFlow",
+  step: [
+    {
+      i: {
+        ref: "three_d_secure_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicThreeDSecureFlow"
+}

@@ -1,0 +1,33 @@
+# BasicPaymentIntentFlow
+
+main: kit: flow: BasicPaymentIntentFlow:
+{
+  entity: "payment_intent",
+  kind: "basic",
+  name: "BasicPaymentIntentFlow",
+  step: [
+    {
+      i: {
+        ref: "payment_intent_ref01",
+        srcdatavar: "payment_intent_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        allocation_id: "allocation01",
+        id: "payment_intent01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-payment_intent_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaymentIntentFlow"
+}

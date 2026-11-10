@@ -1,0 +1,148 @@
+# Entity: payment
+
+main: kit: entity: payment: {
+
+  alias: field: {}
+
+  fields: {
+    amount: {
+      h: "Amount"
+      n: "amount"
+      r: false
+      sh: "Transfer source amount"
+      t: "`$NUMBER`"
+    }
+    currency: {
+      h: "Currency"
+      n: "currency"
+      r: false
+      sh: "Transfer source currency"
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Payment ID"
+      t: "`$INTEGER`"
+    }
+    method: {
+      h: "Method"
+      n: "method"
+      r: false
+      sh: "The payment method used to pay for the transfer"
+      t: "`$STRING`"
+    }
+    pricingVariant: {
+      h: "Pricing Variant"
+      n: "pricingVariant"
+      r: false
+      sh: "The qualifier that allows to apply different pricing policy within the same payment method."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    timeCreated: {
+      fo: "date-time"
+      h: "Time Created"
+      n: "timeCreated"
+      r: false
+      sh: "Date of when payment was created"
+      t: "`$STRING`"
+    }
+    timeUpdated: {
+      fo: "date-time"
+      h: "Time Updated"
+      n: "timeUpdated"
+      r: false
+      sh: "Date of when payment was updated"
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "payment"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /transfers/{transferId}/payments"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "transfer_id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/transfers/{transferId}/payments"
+          q: {
+            exist: [
+              "transfer_id"
+            ]
+          }
+          r: {
+            param: {
+              transferId: "transfer_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "transfers"
+            }
+            {
+              var: "transfer_id"
+            }
+            {
+              lit: "payments"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.transfer")]
+  ]
+
+}

@@ -1,0 +1,67 @@
+{
+  "existing": {
+    "activity": {
+      "ACTIVITY00": {
+        "createdOn": "s64",
+        "description": "s65",
+        "id": "ACTIVITY00",
+        "primaryAmount": "s67",
+        "resource": {},
+        "secondaryAmount": "s69",
+        "status": "s6a",
+        "title": "s6b",
+        "type": "s6c",
+        "updatedOn": "s6d",
+        "profile_id": "PROFILE01"
+      },
+      "ACTIVITY01": {
+        "createdOn": "sc8",
+        "description": "sc9",
+        "id": "ACTIVITY01",
+        "primaryAmount": "scb",
+        "resource": {},
+        "secondaryAmount": "scd",
+        "status": "sce",
+        "title": "scf",
+        "type": "sd0",
+        "updatedOn": "sd1",
+        "profile_id": "PROFILE01"
+      },
+      "ACTIVITY02": {
+        "createdOn": "s12c",
+        "description": "s12d",
+        "id": "ACTIVITY02",
+        "primaryAmount": "s12f",
+        "resource": {},
+        "secondaryAmount": "s131",
+        "status": "s132",
+        "title": "s133",
+        "type": "s134",
+        "updatedOn": "s135",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "activity": {
+      "activity_ref01": {
+        "createdOn": "s190",
+        "description": "s191",
+        "primaryAmount": "s193",
+        "resource": {},
+        "secondaryAmount": "s195",
+        "status": "s196",
+        "title": "s197",
+        "type": "s198",
+        "updatedOn": "s199"
+      }
+    }
+  },
+  "requests": {
+    "GET /profiles/{profileId}/activities": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "existing": {
+    "test_notification": {
+      "TEST_NOTIFICATION00": {
+        "created_at": "s14",
+        "delivery_id": "DELIVERY01",
+        "client_key": "CLIENT_KEY01",
+        "subscription_id": "SUBSCRIPTION01",
+        "id": "TEST_NOTIFICATION00"
+      },
+      "TEST_NOTIFICATION01": {
+        "created_at": "s28",
+        "delivery_id": "DELIVERY01",
+        "client_key": "CLIENT_KEY01",
+        "subscription_id": "SUBSCRIPTION01",
+        "id": "TEST_NOTIFICATION01"
+      },
+      "TEST_NOTIFICATION02": {
+        "created_at": "s3c",
+        "delivery_id": "DELIVERY01",
+        "client_key": "CLIENT_KEY01",
+        "subscription_id": "SUBSCRIPTION01",
+        "id": "TEST_NOTIFICATION02"
+      }
+    }
+  },
+  "new": {
+    "test_notification": {
+      "test_notification_ref01": {
+        "created_at": "s50",
+        "delivery_id": "DELIVERY01"
+      }
+    }
+  },
+  "requests": {
+    "POST /applications/{clientKey}/subscriptions/{subscriptionId}/test-notifications": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

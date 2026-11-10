@@ -1,0 +1,40 @@
+{
+  "existing": {
+    "multi_currency_account": {
+      "MULTI_CURRENCY_ACCOUNT00": {
+        "profile_id": "PROFILE01",
+        "id": "MULTI_CURRENCY_ACCOUNT00"
+      },
+      "MULTI_CURRENCY_ACCOUNT01": {
+        "profile_id": "PROFILE01",
+        "id": "MULTI_CURRENCY_ACCOUNT01"
+      },
+      "MULTI_CURRENCY_ACCOUNT02": {
+        "profile_id": "PROFILE01",
+        "id": "MULTI_CURRENCY_ACCOUNT02"
+      }
+    }
+  },
+  "new": {
+    "multi_currency_account": {
+      "multi_currency_account_ref01": {}
+    }
+  },
+  "requests": {
+    "GET /borderless-accounts-configuration/profiles/{profileId}/available-currencies": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /borderless-accounts-configuration/profiles/{profileId}/payin-currencies": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /multi-currency-account/eligibility": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

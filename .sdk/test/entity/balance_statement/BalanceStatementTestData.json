@@ -1,0 +1,55 @@
+{
+  "existing": {
+    "balance_statement": {
+      "BALANCE_STATEMENT00": {
+        "accountHolder": {},
+        "bankDetails": "s47",
+        "endOfStatementBalance": {},
+        "id": "BALANCE_STATEMENT00",
+        "issuer": {},
+        "query": {},
+        "transactions": [],
+        "profile_id": "PROFILE01"
+      },
+      "BALANCE_STATEMENT01": {
+        "accountHolder": {},
+        "bankDetails": "s8d",
+        "endOfStatementBalance": {},
+        "id": "BALANCE_STATEMENT01",
+        "issuer": {},
+        "query": {},
+        "transactions": [],
+        "profile_id": "PROFILE01"
+      },
+      "BALANCE_STATEMENT02": {
+        "accountHolder": {},
+        "bankDetails": "sd3",
+        "endOfStatementBalance": {},
+        "id": "BALANCE_STATEMENT02",
+        "issuer": {},
+        "query": {},
+        "transactions": [],
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "balance_statement": {
+      "balance_statement_ref01": {
+        "accountHolder": {},
+        "bankDetails": "s119",
+        "endOfStatementBalance": {},
+        "issuer": {},
+        "query": {},
+        "transactions": []
+      }
+    }
+  },
+  "requests": {
+    "GET /profiles/{profileId}/balance-statements/{balanceId}/statement.json": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

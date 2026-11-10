@@ -1,0 +1,1465 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>CardTransaction | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a aria-current="page" href="../api/card_transaction.html">CardTransaction</a><div class="nav-sections"><a class="nav-section" href="#get-spendprofilesprofileidcardscardtokentransactions">GET /spend/profiles/{profileId}/cards/{cardToken}/transactions</a>
+<a class="nav-section" href="#get-spendprofilesprofileidcardstransactionstransactionid">GET /spend/profiles/{profileId}/cards/transactions/{transactionId}</a></div>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="cardtransaction">CardTransaction</h1>
+<p>A card transaction.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileidcardscardtokentransactions"><code>/spend/profiles/{profileId}/cards/{cardToken}/transactions</code></a></td>
+<td><code>list</code></td>
+<td>Card transactions retrieved successfully</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileidcardstransactionstransactionid"><code>/spend/profiles/{profileId}/cards/transactions/{transactionId}</code></a></td>
+<td><code>load</code></td>
+<td>Card transaction retrieved successfully</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">card_transactions, err := client.CardTransaction(nil).List(map[string]any{&quot;card_token&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1, &quot;from_creation_time&quot;: &quot;example&quot;, &quot;to_creation_time&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(card_transactions)
+card_transaction, err := client.CardTransaction(nil).Load(map[string]any{&quot;id&quot;: 1, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(card_transaction)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local card_transactions, err = client:CardTransaction():list({ card_token = &quot;example&quot;, profile_id = 1, from_creation_time = &quot;example&quot;, to_creation_time = &quot;example&quot; })
+local card_transaction, err = client:CardTransaction():load({ id = 1, profile_id = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$card_transactions = $client-&gt;CardTransaction()-&gt;list([&quot;card_token&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1, &quot;from_creation_time&quot; =&gt; &quot;example&quot;, &quot;to_creation_time&quot; =&gt; &quot;example&quot;]);
+$card_transaction = $client-&gt;CardTransaction()-&gt;load([&quot;id&quot; =&gt; 1, &quot;profile_id&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">card_transactions = client.CardTransaction().list({&quot;card_token&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1, &quot;from_creation_time&quot;: &quot;example&quot;, &quot;to_creation_time&quot;: &quot;example&quot;})
+card_transaction = client.CardTransaction().load({&quot;id&quot;: 1, &quot;profile_id&quot;: 1})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">card_transactions = client.CardTransaction.list({ &quot;card_token&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1, &quot;from_creation_time&quot; =&gt; &quot;example&quot;, &quot;to_creation_time&quot; =&gt; &quot;example&quot; })
+card_transaction = client.CardTransaction.load({ &quot;id&quot; =&gt; 1, &quot;profile_id&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const card_transactions = await client.CardTransaction().list({ card_token: &quot;example&quot;, profile_id: 1, from_creation_time: &quot;example&quot;, to_creation_time: &quot;example&quot; })
+const card_transaction = await client.CardTransaction().load({ id: 1, profile_id: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>approvalCode</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Also called authorization code.</td>
+</tr>
+<tr>
+<td><code>arn</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Acquirer reference number</td>
+</tr>
+<tr>
+<td><code>authorisationMethod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Authorisation method</td>
+</tr>
+<tr>
+<td><code>balanceChannelReferenceId</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Balance channel reference ID associated with the card transaction</td>
+</tr>
+<tr>
+<td><code>billingAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Billing amount</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of the card</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>When the transaction was created</td>
+</tr>
+<tr>
+<td><code>credits</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of credits.</td>
+</tr>
+<tr>
+<td><code>debits</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of debits.</td>
+</tr>
+<tr>
+<td><code>declineReason</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Code of the decline reason if applicable</td>
+</tr>
+<tr>
+<td><code>detailedDeclineReason</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Code of the detailed decline reason if applicable</td>
+</tr>
+<tr>
+<td><code>fees</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of fees</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>ID of the transaction</td>
+</tr>
+<tr>
+<td><code>merchant</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Merchant information</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>When the transaction was last updated</td>
+</tr>
+<tr>
+<td><code>pinValidationResult</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>PIN validation result.</td>
+</tr>
+<tr>
+<td><code>purgeTime</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Time at which reserved funds will be released after the authorisation hold expires</td>
+</tr>
+<tr>
+<td><code>relayAuthorisationData</code></td>
+<td><code>one,object,null</code></td>
+<td>No</td>
+<td>Relayed authorisation response data, only available if the partner has opted in for relayed authorisation</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The current state of the transaction.</td>
+</tr>
+<tr>
+<td><code>transactionAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Transaction amount, including any embedded fees such as ATM fees that are not applied by Wise</td>
+</tr>
+<tr>
+<td><code>transactionAmountWithFees</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Transaction amount including all fees</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of the transaction.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="list">list</h2>
+<h3 id="get-spendprofilesprofileidcardscardtokentransactions" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/cards/{cardToken}/transactions</h3>
+<p>Operation ID: <code>cardTransactionList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that owns the card.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The unique token identifying the card.</td>
+</tr>
+<tr>
+<td><code>fromCreationTime</code></td>
+<td><code>query</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Start of range for transaction creation time in UTC, in ISO-8601 format.</td>
+</tr>
+<tr>
+<td><code>toCreationTime</code></td>
+<td><code>query</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>End of range for transaction creation time in UTC, in ISO-8601 format.</td>
+</tr>
+<tr>
+<td><code>pageSize</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>Page size of query between 10 and 100 inclusive, defaults to 20.</td>
+</tr>
+<tr>
+<td><code>lastId</code></td>
+<td><code>query</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>A pagination cursor that marks your position in the list. Include the ID of the last transaction from the previous page to retrieve the next page (transactions with IDs less than the provided value).</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-card-transactions-retrieved-successfully" class="status" data-status="2xx">200: Card transactions retrieved successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transactions</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>transactions[].approvalCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Also called authorization code. This can be used to prove ownership of a customer's card/account to a merchant</td>
+</tr>
+<tr>
+<td><code>transactions[].arn</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Acquirer reference number</td>
+</tr>
+<tr>
+<td><code>transactions[].authorisationMethod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Authorisation method</td>
+</tr>
+<tr>
+<td><code>transactions[].balanceChannelReferenceId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Balance channel reference ID associated with the card transaction</td>
+</tr>
+<tr>
+<td><code>transactions[].billingAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Billing amount</td>
+</tr>
+<tr>
+<td><code>transactions[].billingAmount.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Billing amount</td>
+</tr>
+<tr>
+<td><code>transactions[].billingAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>transactions[].cardToken</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of the card</td>
+</tr>
+<tr>
+<td><code>transactions[].creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the transaction was created</td>
+</tr>
+<tr>
+<td><code>transactions[].credits</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of credits. Only present when retrieving a single transaction by ID</td>
+</tr>
+<tr>
+<td><code>transactions[].credits[].balanceId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Balance ID</td>
+</tr>
+<tr>
+<td><code>transactions[].credits[].creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Creation time of credit</td>
+</tr>
+<tr>
+<td><code>transactions[].credits[].creditedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount credited to the balance</td>
+</tr>
+<tr>
+<td><code>transactions[].credits[].creditedAmount.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td><code>transactions[].credits[].creditedAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>transactions[].debits</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of debits. Only present when retrieving a single transaction by ID. The debits list is a non-aggregated list of debit movements, meaning that the <code>balanceId</code> is not unique in the list. For example, a cancelled transaction may have a list of 2 debits where the absolute values of <code>debitedAmount.amount</code>, <code>forAmount.amount</code> and <code>fee.amount</code> are the same, but one is the negation of the other due to a reservation (first debit) which was then released (second debit with negated amounts). You can choose to perform the aggregation in your system or display the full list of debits to the end customer.</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].balanceId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Balance ID</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Creation time of debit</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].debitedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount taken from the balance</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].debitedAmount.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].debitedAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Conversion fee</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].fee.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Conversion fee amount</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].fee.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].forAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount converted to</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].forAmount.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].forAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>transactions[].debits[].rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate of debitedAmount to forAmount</td>
+</tr>
+<tr>
+<td><code>transactions[].declineReason</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Code of the decline reason if applicable</td>
+</tr>
+<tr>
+<td><code>transactions[].detailedDeclineReason</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Code of the detailed decline reason if applicable</td>
+</tr>
+<tr>
+<td><code>transactions[].fees</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of fees</td>
+</tr>
+<tr>
+<td><code>transactions[].fees[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Fee amount</td>
+</tr>
+<tr>
+<td><code>transactions[].fees[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>transactions[].fees[].fee_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Fee type</td>
+</tr>
+<tr>
+<td><code>transactions[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the transaction</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Merchant information</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.category</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Merchant category</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.category.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>MCC code of the merchant</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.category.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Description of the merchant category</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.category.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Category of the merchant</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.location</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Merchant location</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.location.city</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>City where merchant is located</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.location.country</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Country where merchant is located</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.location.region</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Region where merchant is located</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.location.state</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State where merchant is located</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.location.zipCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Zip code where merchant is located</td>
+</tr>
+<tr>
+<td><code>transactions[].merchant.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the merchant</td>
+</tr>
+<tr>
+<td><code>transactions[].modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the transaction was last updated</td>
+</tr>
+<tr>
+<td><code>transactions[].pinValidationResult</code></td>
+<td><code>enum: ONLINE_PIN_VALIDATED, ONLINE_PIN_INVALID, OFFLINE_PIN_VALIDATED, OFFLINE_PIN_INVALID, NOT_RECEIVED</code></td>
+<td>No</td>
+<td>PIN validation result. One of: - <code>ONLINE_PIN_VALIDATED</code> - <code>ONLINE_PIN_INVALID</code> - <code>OFFLINE_PIN_VALIDATED</code> - <code>OFFLINE_PIN_INVALID</code> - <code>NOT_RECEIVED</code></td>
+</tr>
+<tr>
+<td><code>transactions[].purgeTime</code></td>
+<td><code>string,null (date-time)</code></td>
+<td>No</td>
+<td>Time at which reserved funds will be released after the authorisation hold expires</td>
+</tr>
+<tr>
+<td><code>transactions[].relayAuthorisationData</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Relayed authorisation response data, only available if the partner has opted in for relayed authorisation</td>
+</tr>
+<tr>
+<td><code>transactions[].relayAuthorisationData.fallback</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicating whether there was a fallback applied by Wise</td>
+</tr>
+<tr>
+<td><code>transactions[].relayAuthorisationData.responseCode</code></td>
+<td><code>enum: APPROVED, PROCESSING_ERROR, NON_SUPPORTED_CURRENCY, NON_SUPPORTED_MCC_FOR_COUNTRY, BLOCKED_COUNTRY, TRANSACTION_TYPE_NOT_SUPPORTED, ...</code></td>
+<td>No</td>
+<td>ResponseCode of the relayed authorisation. One of: - <code>APPROVED</code> - <code>PROCESSING_ERROR</code> - <code>NON_SUPPORTED_CURRENCY</code> - <code>NON_SUPPORTED_MCC_FOR_COUNTRY</code> - <code>BLOCKED_COUNTRY</code> - <code>TRANSACTION_TYPE_NOT_SUPPORTED</code> - <code>SUSPECTED_FRAUD</code></td>
+</tr>
+<tr>
+<td><code>transactions[].state</code></td>
+<td><code>enum: IN_PROGRESS, COMPLETED, DECLINED, CANCELLED, UNKNOWN</code></td>
+<td>No</td>
+<td>The current state of the transaction. One of: - <code>IN_PROGRESS</code> - <code>COMPLETED</code> - <code>DECLINED</code> - <code>CANCELLED</code> - <code>UNKNOWN</code></td>
+</tr>
+<tr>
+<td><code>transactions[].transactionAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Transaction amount, including any embedded fees such as ATM fees that are not applied by Wise</td>
+</tr>
+<tr>
+<td><code>transactions[].transactionAmount.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transaction amount</td>
+</tr>
+<tr>
+<td><code>transactions[].transactionAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>transactions[].transactionAmountWithFees</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Transaction amount including all fees</td>
+</tr>
+<tr>
+<td><code>transactions[].transactionAmountWithFees.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transaction amount including all fees</td>
+</tr>
+<tr>
+<td><code>transactions[].transactionAmountWithFees.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>transactions[].type</code></td>
+<td><code>enum: ACCOUNT_CREDIT, ACCOUNT_FUNDING, CASH_ADVANCE, CASH_WITHDRAWAL, CHARGEBACK, CREDIT_TRANSACTION, ...</code></td>
+<td>No</td>
+<td>Type of the transaction. One of: - <code>ACCOUNT_CREDIT</code> - <code>ACCOUNT_FUNDING</code> - <code>CASH_ADVANCE</code> - <code>CASH_WITHDRAWAL</code> - <code>CHARGEBACK</code> - <code>CREDIT_TRANSACTION</code> - <code>ECOM_PURCHASE</code> - <code>POS_PURCHASE</code> - <code>REFUND</code></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;transactions&quot;: [
+    {
+      &quot;approvalCode&quot;: &quot;913647&quot;,
+      &quot;arn&quot;: &quot;04300014127798385983852&quot;,
+      &quot;authorisationMethod&quot;: &quot;MANUAL_ENTRY&quot;,
+      &quot;balanceChannelReferenceId&quot;: &quot;6e71018d-2f4d-4fc3-6711-f517f4664712&quot;,
+      &quot;billingAmount&quot;: {
+        &quot;amount&quot;: 1.1,
+        &quot;currency&quot;: &quot;EUR&quot;
+      },
+      &quot;cardToken&quot;: &quot;59123122-223d-45f9-b840-0ad4a4f80937&quot;,
+      &quot;creationTime&quot;: &quot;2022-11-28T08:17:54.241Z&quot;,
+      &quot;declineReason&quot;: null,
+      &quot;fees&quot;: [
+        {
+          &quot;amount&quot;: 0.1,
+          &quot;currency&quot;: &quot;SGD&quot;,
+          &quot;fee_type&quot;: &quot;ATM_MACHINE&quot;
+        }
+      ],
+      &quot;id&quot;: 342671,
+      &quot;merchant&quot;: {
+        &quot;category&quot;: {
+          &quot;code&quot;: &quot;5999&quot;,
+          &quot;description&quot;: &quot;5999 R Miscellaneous and Special&quot;,
+          &quot;name&quot;: &quot;MISCELLANEOUS_FOOD_STORES_CONVEN&quot;
+        },
+        &quot;location&quot;: {
+          &quot;city&quot;: &quot;Rouen&quot;,
+          &quot;country&quot;: &quot;France&quot;,
+          &quot;region&quot;: null,
+          &quot;state&quot;: null,
+          &quot;zipCode&quot;: &quot;00000&quot;
+        },
+        &quot;name&quot;: &quot;Test Payment&quot;
+      },
+      &quot;modificationTime&quot;: &quot;2022-11-28T08:17:54.241Z&quot;,
+      &quot;pinValidationResult&quot;: &quot;ONLINE_PIN_VALIDATED&quot;,
+      &quot;purgeTime&quot;: &quot;2022-11-28T08:17:54.241Z&quot;,
+      &quot;state&quot;: &quot;IN_PROGRESS&quot;,
+      &quot;transactionAmount&quot;: {
+        &quot;amount&quot;: 1.4,
+        &quot;currency&quot;: &quot;SGD&quot;
+      },
+      &quot;transactionAmountWithFees&quot;: {
+        &quot;amount&quot;: 1.5,
+        &quot;currency&quot;: &quot;SGD&quot;
+      },
+      &quot;type&quot;: &quot;ECOM_PURCHASE&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="400-invalid-request" class="status" data-status="4xx">400: Invalid request</h5>
+<p><code>application/problem+json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>A list of specific validation failures</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific code for the validation failure type</td>
+</tr>
+<tr>
+<td><code>errors[].detail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A detailed description of the validation failure</td>
+</tr>
+<tr>
+<td><code>errors[].ref</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A reference to the field that failed validation</td>
+</tr>
+<tr>
+<td><code>instance</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>The URI that triggered the validation error</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status error code</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the error</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>The type of validation error (must be /errors/types/validation for this error type)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="422-unprocessable-request" class="status" data-status="4xx">422: Unprocessable request</h5>
+<p><code>application/problem+json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error code of the request</td>
+</tr>
+<tr>
+<td><code>detail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A detailed description of the failure</td>
+</tr>
+<tr>
+<td><code>instance</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>The URI that triggered the error</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status error code</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the error</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>A domain type exception (must be /errors/types/domain for this error type)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-spendprofilesprofileidcardstransactionstransactionid" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/cards/transactions/{transactionId}</h3>
+<p>Operation ID: <code>cardTransactionGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that owns the card.</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the transaction.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-card-transaction-retrieved-successfully" class="status" data-status="2xx">200: Card transaction retrieved successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>approvalCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Also called authorization code. This can be used to prove ownership of a customer's card/account to a merchant</td>
+</tr>
+<tr>
+<td><code>arn</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Acquirer reference number</td>
+</tr>
+<tr>
+<td><code>authorisationMethod</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Authorisation method</td>
+</tr>
+<tr>
+<td><code>balanceChannelReferenceId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Balance channel reference ID associated with the card transaction</td>
+</tr>
+<tr>
+<td><code>billingAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Billing amount</td>
+</tr>
+<tr>
+<td><code>billingAmount.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Billing amount</td>
+</tr>
+<tr>
+<td><code>billingAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of the card</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the transaction was created</td>
+</tr>
+<tr>
+<td><code>credits</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of credits. Only present when retrieving a single transaction by ID</td>
+</tr>
+<tr>
+<td><code>credits[].balanceId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Balance ID</td>
+</tr>
+<tr>
+<td><code>credits[].creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Creation time of credit</td>
+</tr>
+<tr>
+<td><code>credits[].creditedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount credited to the balance</td>
+</tr>
+<tr>
+<td><code>credits[].creditedAmount.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td><code>credits[].creditedAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>debits</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of debits. Only present when retrieving a single transaction by ID. The debits list is a non-aggregated list of debit movements, meaning that the <code>balanceId</code> is not unique in the list. For example, a cancelled transaction may have a list of 2 debits where the absolute values of <code>debitedAmount.amount</code>, <code>forAmount.amount</code> and <code>fee.amount</code> are the same, but one is the negation of the other due to a reservation (first debit) which was then released (second debit with negated amounts). You can choose to perform the aggregation in your system or display the full list of debits to the end customer.</td>
+</tr>
+<tr>
+<td><code>debits[].balanceId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Balance ID</td>
+</tr>
+<tr>
+<td><code>debits[].creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Creation time of debit</td>
+</tr>
+<tr>
+<td><code>debits[].debitedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount taken from the balance</td>
+</tr>
+<tr>
+<td><code>debits[].debitedAmount.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td><code>debits[].debitedAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>debits[].fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Conversion fee</td>
+</tr>
+<tr>
+<td><code>debits[].fee.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Conversion fee amount</td>
+</tr>
+<tr>
+<td><code>debits[].fee.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>debits[].forAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount converted to</td>
+</tr>
+<tr>
+<td><code>debits[].forAmount.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount</td>
+</tr>
+<tr>
+<td><code>debits[].forAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>debits[].rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate of debitedAmount to forAmount</td>
+</tr>
+<tr>
+<td><code>declineReason</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Code of the decline reason if applicable</td>
+</tr>
+<tr>
+<td><code>detailedDeclineReason</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Code of the detailed decline reason if applicable</td>
+</tr>
+<tr>
+<td><code>fees</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of fees</td>
+</tr>
+<tr>
+<td><code>fees[].amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Fee amount</td>
+</tr>
+<tr>
+<td><code>fees[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>fees[].fee_type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Fee type</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the transaction</td>
+</tr>
+<tr>
+<td><code>merchant</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Merchant information</td>
+</tr>
+<tr>
+<td><code>merchant.category</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Merchant category</td>
+</tr>
+<tr>
+<td><code>merchant.category.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>MCC code of the merchant</td>
+</tr>
+<tr>
+<td><code>merchant.category.description</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Description of the merchant category</td>
+</tr>
+<tr>
+<td><code>merchant.category.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Category of the merchant</td>
+</tr>
+<tr>
+<td><code>merchant.location</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Merchant location</td>
+</tr>
+<tr>
+<td><code>merchant.location.city</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>City where merchant is located</td>
+</tr>
+<tr>
+<td><code>merchant.location.country</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Country where merchant is located</td>
+</tr>
+<tr>
+<td><code>merchant.location.region</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Region where merchant is located</td>
+</tr>
+<tr>
+<td><code>merchant.location.state</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State where merchant is located</td>
+</tr>
+<tr>
+<td><code>merchant.location.zipCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Zip code where merchant is located</td>
+</tr>
+<tr>
+<td><code>merchant.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the merchant</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the transaction was last updated</td>
+</tr>
+<tr>
+<td><code>pinValidationResult</code></td>
+<td><code>enum: ONLINE_PIN_VALIDATED, ONLINE_PIN_INVALID, OFFLINE_PIN_VALIDATED, OFFLINE_PIN_INVALID, NOT_RECEIVED</code></td>
+<td>No</td>
+<td>PIN validation result. One of: - <code>ONLINE_PIN_VALIDATED</code> - <code>ONLINE_PIN_INVALID</code> - <code>OFFLINE_PIN_VALIDATED</code> - <code>OFFLINE_PIN_INVALID</code> - <code>NOT_RECEIVED</code></td>
+</tr>
+<tr>
+<td><code>purgeTime</code></td>
+<td><code>string,null (date-time)</code></td>
+<td>No</td>
+<td>Time at which reserved funds will be released after the authorisation hold expires</td>
+</tr>
+<tr>
+<td><code>relayAuthorisationData</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Relayed authorisation response data, only available if the partner has opted in for relayed authorisation</td>
+</tr>
+<tr>
+<td><code>relayAuthorisationData.fallback</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicating whether there was a fallback applied by Wise</td>
+</tr>
+<tr>
+<td><code>relayAuthorisationData.responseCode</code></td>
+<td><code>enum: APPROVED, PROCESSING_ERROR, NON_SUPPORTED_CURRENCY, NON_SUPPORTED_MCC_FOR_COUNTRY, BLOCKED_COUNTRY, TRANSACTION_TYPE_NOT_SUPPORTED, ...</code></td>
+<td>No</td>
+<td>ResponseCode of the relayed authorisation. One of: - <code>APPROVED</code> - <code>PROCESSING_ERROR</code> - <code>NON_SUPPORTED_CURRENCY</code> - <code>NON_SUPPORTED_MCC_FOR_COUNTRY</code> - <code>BLOCKED_COUNTRY</code> - <code>TRANSACTION_TYPE_NOT_SUPPORTED</code> - <code>SUSPECTED_FRAUD</code></td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>enum: IN_PROGRESS, COMPLETED, DECLINED, CANCELLED, UNKNOWN</code></td>
+<td>No</td>
+<td>The current state of the transaction. One of: - <code>IN_PROGRESS</code> - <code>COMPLETED</code> - <code>DECLINED</code> - <code>CANCELLED</code> - <code>UNKNOWN</code></td>
+</tr>
+<tr>
+<td><code>transactionAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Transaction amount, including any embedded fees such as ATM fees that are not applied by Wise</td>
+</tr>
+<tr>
+<td><code>transactionAmount.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transaction amount</td>
+</tr>
+<tr>
+<td><code>transactionAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>transactionAmountWithFees</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Transaction amount including all fees</td>
+</tr>
+<tr>
+<td><code>transactionAmountWithFees.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transaction amount including all fees</td>
+</tr>
+<tr>
+<td><code>transactionAmountWithFees.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: ACCOUNT_CREDIT, ACCOUNT_FUNDING, CASH_ADVANCE, CASH_WITHDRAWAL, CHARGEBACK, CREDIT_TRANSACTION, ...</code></td>
+<td>No</td>
+<td>Type of the transaction. One of: - <code>ACCOUNT_CREDIT</code> - <code>ACCOUNT_FUNDING</code> - <code>CASH_ADVANCE</code> - <code>CASH_WITHDRAWAL</code> - <code>CHARGEBACK</code> - <code>CREDIT_TRANSACTION</code> - <code>ECOM_PURCHASE</code> - <code>POS_PURCHASE</code> - <code>REFUND</code></td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-not-found" class="status" data-status="4xx">404: Not found</h5>
+<p><code>application/problem+json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Specific application-level error code</td>
+</tr>
+<tr>
+<td><code>detail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A detailed description of the failure</td>
+</tr>
+<tr>
+<td><code>instance</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>The URI that triggered the error</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status error code</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the exception</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>A domain type exception</td>
+</tr>
+</tbody>
+</table>
+<h5 id="422-unprocessable-request-1" class="status" data-status="4xx">422: Unprocessable request</h5>
+<p><code>application/problem+json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error code of the request</td>
+</tr>
+<tr>
+<td><code>detail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A detailed description of the failure</td>
+</tr>
+<tr>
+<td><code>instance</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>The URI that triggered the error</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The HTTP status error code</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The title of the error</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>A domain type exception (must be /errors/types/domain for this error type)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

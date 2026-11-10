@@ -1,0 +1,45 @@
+{
+  "existing": {
+    "currency": {
+      "CURRENCY00": {
+        "code": "s32",
+        "countryKeywords": [],
+        "name": "s34",
+        "supportsDecimals": false,
+        "symbol": "s36"
+      },
+      "CURRENCY01": {
+        "code": "s64",
+        "countryKeywords": [],
+        "name": "s66",
+        "supportsDecimals": false,
+        "symbol": "s68"
+      },
+      "CURRENCY02": {
+        "code": "s96",
+        "countryKeywords": [],
+        "name": "s98",
+        "supportsDecimals": false,
+        "symbol": "s9a"
+      }
+    }
+  },
+  "new": {
+    "currency": {
+      "currency_ref01": {
+        "code": "sc8",
+        "countryKeywords": [],
+        "name": "sca",
+        "supportsDecimals": false,
+        "symbol": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /currencies": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,36 @@
+# BasicOttFlow
+
+main: kit: flow: BasicOttFlow:
+{
+  entity: "ott",
+  kind: "basic",
+  name: "BasicOttFlow",
+  step: [
+    {
+      i: {
+        ref: "ott_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "ott_ref01",
+        srcdatavar: "ott_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ott_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicOttFlow"
+}

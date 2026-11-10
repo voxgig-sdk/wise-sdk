@@ -1,0 +1,362 @@
+# Entity: digital_wallet
+
+main: kit: entity: digital_wallet: {
+
+  alias: field: {}
+
+  fields: {
+    activation: {
+      h: "Activation"
+      n: "activation"
+      r: true
+      sh: "Approve or decline a payment token activation"
+      t: "`$STRING`"
+    }
+    paymentTokens: {
+      h: "Payment Tokens"
+      n: "paymentTokens"
+      r: false
+      t: "`$ARRAY`"
+    }
+    walletNames: {
+      h: "Wallet Names"
+      n: "walletNames"
+      r: false
+      sh: "List of supported wallet types."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "digital_wallet"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "activation"
+          ]
+          co: {
+            id: "POST /spend/profiles/{profileId}/cards/{cardToken}/payment-tokens/{paymentTokenUniqueReference}/activation"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "a3f90c98-1cd1-4488-9050-2e32c696f8fa"
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "DNITHE382607223583426199"
+                k: "param"
+                n: "payment_token_unique_reference"
+                or: "paymentTokenUniqueReference"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 12345
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/payment-tokens/{paymentTokenUniqueReference}/activation"
+          q: {
+            exist: [
+              "card_token"
+              "payment_token_unique_reference"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              paymentTokenUniqueReference: "payment_token_unique_reference"
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "payment-tokens"
+            }
+            {
+              var: "payment_token_unique_reference"
+            }
+            {
+              lit: "activation"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "walletNames"
+          ]
+          co: {
+            id: "POST /spend/profiles/{profileId}/cards/{cardToken}/payment-tokens"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "a3f90c98-1cd1-4488-9050-2e32c696f8fa"
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 12345
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/payment-tokens"
+          q: {
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "payment-tokens"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "certificates"
+            "nonce"
+            "nonceSignature"
+          ]
+          co: {
+            id: "POST /twcard-data/v1/push-provisioning/encrypted-payload/apple-pay"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "a3f90c98-1cd1-4488-9050-2e32c696f8fa"
+                explode: false
+                k: "header"
+                n: "x_tw_twcard_card_token"
+                or: "x-tw-twcard-card-token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/twcard-data/v1/push-provisioning/encrypted-payload/apple-pay"
+          q: {
+            "$action": "apple-pay"
+            exist: [
+              "x_tw_twcard_card_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "twcard-data"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "push-provisioning"
+            }
+            {
+              lit: "encrypted-payload"
+            }
+            {
+              lit: "apple-pay"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "clientDeviceId"
+            "clientWalletAccountId"
+          ]
+          co: {
+            id: "POST /twcard-data/v1/push-provisioning/encrypted-payload/google-pay"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "a3f90c98-1cd1-4488-9050-2e32c696f8fa"
+                explode: false
+                k: "header"
+                n: "x_tw_twcard_card_token"
+                or: "x-tw-twcard-card-token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/twcard-data/v1/push-provisioning/encrypted-payload/google-pay"
+          q: {
+            "$action": "google-pay"
+            exist: [
+              "x_tw_twcard_card_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "twcard-data"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "push-provisioning"
+            }
+            {
+              lit: "encrypted-payload"
+            }
+            {
+              lit: "google-pay"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.card")]
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.card")]
+  ]
+
+}

@@ -1,0 +1,327 @@
+# Entity: spend_control
+
+main: kit: entity: spend_control: {
+
+  alias: field: {}
+
+  fields: {
+    ruleId: {
+      fo: "int64"
+      h: "Rule Id"
+      n: "ruleId"
+      r: false
+      sh: "The ID of the applied authorisation rule."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "spend_control"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "ruleId"
+          ]
+          co: {
+            id: "POST /spend/applications/{clientId}/spend-controls/rules/apply"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "application_id"
+                or: "clientId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/spend/applications/{clientId}/spend-controls/rules/apply"
+          q: {
+            "$action": "apply"
+            exist: [
+              "application_id"
+            ]
+          }
+          r: {
+            param: {
+              clientId: "application_id"
+            }
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "applications"
+            }
+            {
+              var: "application_id"
+            }
+            {
+              lit: "spend-controls"
+            }
+            {
+              lit: "rules"
+            }
+            {
+              lit: "apply"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "ruleId"
+          ]
+          co: {
+            id: "POST /spend/applications/{clientId}/spend-controls/rules/unapply"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "application_id"
+                or: "clientId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/spend/applications/{clientId}/spend-controls/rules/unapply"
+          q: {
+            "$action": "unapply"
+            exist: [
+              "application_id"
+            ]
+          }
+          r: {
+            param: {
+              clientId: "application_id"
+            }
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "applications"
+            }
+            {
+              var: "application_id"
+            }
+            {
+              lit: "spend-controls"
+            }
+            {
+              lit: "rules"
+            }
+            {
+              lit: "unapply"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /spend/applications/{clientId}/spend-controls/rules/applied"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "application_id"
+                or: "clientId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/applications/{clientId}/spend-controls/rules/applied"
+          q: {
+            exist: [
+              "application_id"
+            ]
+          }
+          r: {
+            param: {
+              clientId: "application_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "applications"
+            }
+            {
+              var: "application_id"
+            }
+            {
+              lit: "spend-controls"
+            }
+            {
+              lit: "rules"
+            }
+            {
+              lit: "applied"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /spend/applications/{clientId}/spend-controls/rules/{ruleId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "application_id"
+                or: "clientId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "rule_id"
+                or: "ruleId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/spend/applications/{clientId}/spend-controls/rules/{ruleId}"
+          q: {
+            exist: [
+              "application_id"
+              "rule_id"
+            ]
+          }
+          r: {
+            param: {
+              clientId: "application_id"
+              ruleId: "rule_id"
+            }
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "applications"
+            }
+            {
+              var: "application_id"
+            }
+            {
+              lit: "spend-controls"
+            }
+            {
+              lit: "rules"
+            }
+            {
+              var: "rule_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.rule")]
+  ]
+
+}

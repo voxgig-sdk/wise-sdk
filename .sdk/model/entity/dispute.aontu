@@ -1,0 +1,611 @@
+# Entity: dispute
+
+main: kit: entity: dispute: {
+
+  alias: field: {}
+
+  fields: {
+    canWithdraw: {
+      h: "Can Withdraw"
+      n: "canWithdraw"
+      r: false
+      sh: "Whether the dispute can be withdrawn."
+      t: "`$BOOLEAN`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "Time when the dispute was created."
+      t: "`$STRING`"
+    }
+    createdBy: {
+      h: "Created By"
+      n: "createdBy"
+      r: false
+      sh: "Creator of the dispute."
+      t: "`$STRING`"
+    }
+    disclaimer: {
+      h: "Disclaimer"
+      n: "disclaimer"
+      r: false
+      sh: "Acknowledgement fields."
+      t: "`$OBJECT`"
+    }
+    files: {
+      h: "Files"
+      n: "files"
+      r: false
+      sh: "Key-value pairs mapping file field names to file IDs obtained from the [file upload endpoint](/api-reference/disputes/disputefileupload)."
+      t: "`$OBJECT`"
+    }
+    form: {
+      h: "Form"
+      n: "form"
+      r: false
+      sh: "Form fields required to submit this dispute."
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier of the dispute."
+      t: "`$STRING`"
+    }
+    lastUpdatedAt: {
+      fo: "date-time"
+      h: "Last Updated At"
+      n: "lastUpdatedAt"
+      r: false
+      sh: "Time when the dispute was last updated."
+      t: "`$STRING`"
+    }
+    profileId: {
+      fo: "int64"
+      h: "Profile Id"
+      n: "profileId"
+      r: false
+      sh: "Profile ID."
+      t: "`$INTEGER`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: false
+      sh: "Dispute reason code."
+      t: "`$STRING`"
+    }
+    receipt: {
+      fo: "binary"
+      h: "Receipt"
+      n: "receipt"
+      r: false
+      sh: "The file to upload."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Dispute overall status."
+      t: "`$STRING`"
+    }
+    statusMessage: {
+      h: "Status Message"
+      n: "statusMessage"
+      r: false
+      sh: "Explanation for `subStatus`."
+      t: "`$STRING`"
+    }
+    subStatus: {
+      h: "Sub Status"
+      n: "subStatus"
+      r: false
+      sh: "Dispute detailed status."
+      t: "`$STRING`"
+    }
+    transaction: {
+      h: "Transaction"
+      n: "transaction"
+      r: false
+      sh: "Transaction details for the dispute."
+      t: "`$OBJECT`"
+    }
+    transactionId: {
+      fo: "int64"
+      h: "Transaction Id"
+      n: "transactionId"
+      r: false
+      sh: "Card transaction ID."
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "dispute"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "disclaimer"
+            "files"
+            "form"
+            "transaction"
+          ]
+          co: {
+            id: "POST /spend/profiles/{profileId}/dispute-form/flows/{scheme}/{reason}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 14547572
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "WRONG_AMOUNT"
+                k: "param"
+                n: "reason"
+                or: "reason"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "VISA"
+                k: "param"
+                n: "scheme"
+                or: "scheme"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/spend/profiles/{profileId}/dispute-form/flows/{scheme}/{reason}"
+          q: {
+            exist: [
+              "profile_id"
+              "reason"
+              "scheme"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "dispute-form"
+            }
+            {
+              lit: "flows"
+            }
+            {
+              var: "scheme"
+            }
+            {
+              var: "reason"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /spend/profiles/{profileId}/dispute-form/file"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 14547572
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/spend/profiles/{profileId}/dispute-form/file"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rb: {
+            fields: [
+              {
+                binary: true
+                name: "receipt"
+              }
+            ]
+            kind: "multipart"
+            media: "multipart/form-data"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "dispute-form"
+            }
+            {
+              lit: "file"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /spend/profiles/{profileId}/disputes"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 16605997
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                explode: true
+                k: "query"
+                n: "page_number"
+                or: "pageNumber"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 10
+                explode: true
+                k: "query"
+                n: "page_size"
+                or: "pageSize"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "ACTIVE"
+                explode: true
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: 2040
+                explode: true
+                k: "query"
+                n: "transaction_id"
+                or: "transactionId"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{profileId}/disputes"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "disputes"
+            }
+          ]
+          t: {
+            page: {
+              total: "`body.totalCount`"
+            }
+            req: "`reqdata`"
+            res: "`body.disputes`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /spend/profiles/{profileId}/disputes/{disputeId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "51e2dc60-9e4b-4ff5-b917-b90cc5e1ecfb"
+                k: "param"
+                n: "id"
+                or: "disputeId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 16605997
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{profileId}/disputes/{disputeId}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              disputeId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "disputes"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "status"
+          ]
+          co: {
+            id: "PUT /spend/profiles/{profileId}/disputes/{disputeId}/status"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "51e2dc60-9e4b-4ff5-b917-b90cc5e1ecfb"
+                k: "param"
+                n: "id"
+                or: "disputeId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 16605997
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/spend/profiles/{profileId}/disputes/{disputeId}/status"
+          q: {
+            "$action": "status"
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              disputeId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "disputes"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

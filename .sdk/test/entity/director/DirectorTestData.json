@@ -1,0 +1,66 @@
+{
+  "existing": {
+    "director": {
+      "DIRECTOR00": {
+        "countryOfResidenceIso3Code": "s3c",
+        "dateOfBirth": "s3d",
+        "directors": [],
+        "firstName": "s3f",
+        "id": "DIRECTOR00",
+        "lastName": "s41",
+        "profile_id": "PROFILE01"
+      },
+      "DIRECTOR01": {
+        "countryOfResidenceIso3Code": "s78",
+        "dateOfBirth": "s79",
+        "directors": [],
+        "firstName": "s7b",
+        "id": "DIRECTOR01",
+        "lastName": "s7d",
+        "profile_id": "PROFILE01"
+      },
+      "DIRECTOR02": {
+        "countryOfResidenceIso3Code": "sb4",
+        "dateOfBirth": "sb5",
+        "directors": [],
+        "firstName": "sb7",
+        "id": "DIRECTOR02",
+        "lastName": "sb9",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "director": {
+      "director_ref01": {
+        "countryOfResidenceIso3Code": "sf0",
+        "dateOfBirth": "sf1",
+        "directors": [],
+        "firstName": "sf3",
+        "lastName": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/directors": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/directors": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /profiles/{profileId}/directors": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /profiles/{profileId}/directors": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

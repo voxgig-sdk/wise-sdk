@@ -1,0 +1,57 @@
+{
+  "existing": {
+    "one_time_token": {
+      "ONE_TIME_TOKEN00": {
+        "challenges": [],
+        "faceMap": "s29",
+        "oneTimeToken": "s2a",
+        "validity": 43,
+        "profile_id": "PROFILE01",
+        "id": "ONE_TIME_TOKEN00"
+      },
+      "ONE_TIME_TOKEN01": {
+        "challenges": [],
+        "faceMap": "s51",
+        "oneTimeToken": "s52",
+        "validity": 83,
+        "profile_id": "PROFILE01",
+        "id": "ONE_TIME_TOKEN01"
+      },
+      "ONE_TIME_TOKEN02": {
+        "challenges": [],
+        "faceMap": "s79",
+        "oneTimeToken": "s7a",
+        "validity": 123,
+        "profile_id": "PROFILE01",
+        "id": "ONE_TIME_TOKEN02"
+      }
+    }
+  },
+  "new": {
+    "one_time_token": {
+      "one_time_token_ref01": {
+        "challenges": [],
+        "faceMap": "sa1",
+        "oneTimeToken": "sa2",
+        "validity": 163
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/device-fingerprints/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/pin/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/facemaps/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

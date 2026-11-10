@@ -1,0 +1,169 @@
+{
+  "existing": {
+    "card_order": {
+      "CARD_ORDER00": {
+        "address": {},
+        "cardHolderName": "s119",
+        "cardHolderProfileId": 282,
+        "cardProgram": {},
+        "cardToken": "s11c",
+        "city": "s11d",
+        "clientId": "s11e",
+        "country": "s11f",
+        "creationTime": "s120",
+        "deliveryDetails": {},
+        "deliveryEstimate": "s122",
+        "deliveryOption": "s123",
+        "embossedName": "s124",
+        "errors": [],
+        "firstLine": "s126",
+        "id": "CARD_ORDER00",
+        "lifetimeLimit": "s128",
+        "modificationTime": "s129",
+        "phoneNumber": "s12a",
+        "postCode": "s12b",
+        "profileId": 300,
+        "program": "s12d",
+        "replacementDetails": {},
+        "replacesCard": "s12f",
+        "secondLine": "s130",
+        "state": "s131",
+        "status": "s132",
+        "thirdLine": "s133",
+        "profile_id": "PROFILE01"
+      },
+      "CARD_ORDER01": {
+        "address": {},
+        "cardHolderName": "s231",
+        "cardHolderProfileId": 562,
+        "cardProgram": {},
+        "cardToken": "s234",
+        "city": "s235",
+        "clientId": "s236",
+        "country": "s237",
+        "creationTime": "s238",
+        "deliveryDetails": {},
+        "deliveryEstimate": "s23a",
+        "deliveryOption": "s23b",
+        "embossedName": "s23c",
+        "errors": [],
+        "firstLine": "s23e",
+        "id": "CARD_ORDER01",
+        "lifetimeLimit": "s240",
+        "modificationTime": "s241",
+        "phoneNumber": "s242",
+        "postCode": "s243",
+        "profileId": 580,
+        "program": "s245",
+        "replacementDetails": {},
+        "replacesCard": "s247",
+        "secondLine": "s248",
+        "state": "s249",
+        "status": "s24a",
+        "thirdLine": "s24b",
+        "profile_id": "PROFILE01"
+      },
+      "CARD_ORDER02": {
+        "address": {},
+        "cardHolderName": "s349",
+        "cardHolderProfileId": 842,
+        "cardProgram": {},
+        "cardToken": "s34c",
+        "city": "s34d",
+        "clientId": "s34e",
+        "country": "s34f",
+        "creationTime": "s350",
+        "deliveryDetails": {},
+        "deliveryEstimate": "s352",
+        "deliveryOption": "s353",
+        "embossedName": "s354",
+        "errors": [],
+        "firstLine": "s356",
+        "id": "CARD_ORDER02",
+        "lifetimeLimit": "s358",
+        "modificationTime": "s359",
+        "phoneNumber": "s35a",
+        "postCode": "s35b",
+        "profileId": 860,
+        "program": "s35d",
+        "replacementDetails": {},
+        "replacesCard": "s35f",
+        "secondLine": "s360",
+        "state": "s361",
+        "status": "s362",
+        "thirdLine": "s363",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "card_order": {
+      "card_order_ref01": {
+        "address": {},
+        "cardHolderName": "s461",
+        "cardHolderProfileId": 1122,
+        "cardProgram": {},
+        "cardToken": "s464",
+        "city": "s465",
+        "clientId": "s466",
+        "country": "s467",
+        "creationTime": "s468",
+        "deliveryDetails": {},
+        "deliveryEstimate": "s46a",
+        "deliveryOption": "s46b",
+        "embossedName": "s46c",
+        "errors": [],
+        "firstLine": "s46e",
+        "lifetimeLimit": "s470",
+        "modificationTime": "s471",
+        "phoneNumber": "s472",
+        "postCode": "s473",
+        "profileId": 1140,
+        "program": "s475",
+        "replacementDetails": {},
+        "replacesCard": "s477",
+        "secondLine": "s478",
+        "state": "s479",
+        "status": "s47a",
+        "thirdLine": "s47b"
+      }
+    }
+  },
+  "requests": {
+    "POST /spend/profiles/{profileId}/card-orders": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /spend/address/validate": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/profiles/{profileId}/card-orders/{cardOrderId}/requirements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/profiles/{profileId}/card-orders": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/profiles/{profileId}/card-orders/availability": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/profiles/{profileId}/card-orders/{cardOrderId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /spend/profiles/{profileId}/card-orders/{cardOrderId}/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

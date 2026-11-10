@@ -1,0 +1,18 @@
+# BasicGpiTrackingFlow
+
+main: kit: flow: BasicGpiTrackingFlow:
+{
+  entity: "gpi_tracking",
+  kind: "basic",
+  name: "BasicGpiTrackingFlow",
+  step: [
+    {
+      i: {
+        ref: "gpi_tracking_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicGpiTrackingFlow"
+}

@@ -1,0 +1,91 @@
+{
+  "existing": {
+    "payment_intent": {
+      "PAYMENT_INTENT00": {
+        "allocationId": "sa0",
+        "allocationType": "sa1",
+        "createdAt": "sa2",
+        "fundingSource": "sa3",
+        "id": "PAYMENT_INTENT00",
+        "partnerEntityId": "sa5",
+        "paymentReference": "sa6",
+        "profileId": "sa7",
+        "reason": "sa8",
+        "recipientType": "sa9",
+        "sourceAmount": 170,
+        "sourceCurrency": "sab",
+        "state": "sac",
+        "targetAmount": 173,
+        "targetCurrency": "sae",
+        "updatedAt": "saf",
+        "allocation_id": "ALLOCATION01"
+      },
+      "PAYMENT_INTENT01": {
+        "allocationId": "s140",
+        "allocationType": "s141",
+        "createdAt": "s142",
+        "fundingSource": "s143",
+        "id": "PAYMENT_INTENT01",
+        "partnerEntityId": "s145",
+        "paymentReference": "s146",
+        "profileId": "s147",
+        "reason": "s148",
+        "recipientType": "s149",
+        "sourceAmount": 330,
+        "sourceCurrency": "s14b",
+        "state": "s14c",
+        "targetAmount": 333,
+        "targetCurrency": "s14e",
+        "updatedAt": "s14f",
+        "allocation_id": "ALLOCATION01"
+      },
+      "PAYMENT_INTENT02": {
+        "allocationId": "s1e0",
+        "allocationType": "s1e1",
+        "createdAt": "s1e2",
+        "fundingSource": "s1e3",
+        "id": "PAYMENT_INTENT02",
+        "partnerEntityId": "s1e5",
+        "paymentReference": "s1e6",
+        "profileId": "s1e7",
+        "reason": "s1e8",
+        "recipientType": "s1e9",
+        "sourceAmount": 490,
+        "sourceCurrency": "s1eb",
+        "state": "s1ec",
+        "targetAmount": 493,
+        "targetCurrency": "s1ee",
+        "updatedAt": "s1ef",
+        "allocation_id": "ALLOCATION01"
+      }
+    }
+  },
+  "new": {
+    "payment_intent": {
+      "payment_intent_ref01": {
+        "allocationId": "s280",
+        "allocationType": "s281",
+        "createdAt": "s282",
+        "fundingSource": "s283",
+        "partnerEntityId": "s285",
+        "paymentReference": "s286",
+        "profileId": "s287",
+        "reason": "s288",
+        "recipientType": "s289",
+        "sourceAmount": 650,
+        "sourceCurrency": "s28b",
+        "state": "s28c",
+        "targetAmount": 653,
+        "targetCurrency": "s28e",
+        "updatedAt": "s28f"
+      }
+    }
+  },
+  "requests": {
+    "GET /settlement/allocations/{allocationId}/payment-intents/{paymentIntentId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,818 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Ott | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a aria-current="page" href="../api/ott.html">Ott</a><div class="nav-sections"><a class="nav-section" href="#post-one-time-tokensmsverify">POST /one-time-token/sms/verify</a>
+<a class="nav-section" href="#post-one-time-tokenvoiceverify">POST /one-time-token/voice/verify</a>
+<a class="nav-section" href="#post-one-time-tokenwhatsappverify">POST /one-time-token/whatsapp/verify</a>
+<a class="nav-section" href="#get-one-time-tokenstatus">GET /one-time-token/status</a></div>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="ott">Ott</h1>
+<p>A one-time token: verify its SMS, voice or WhatsApp challenge, or get its status.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-one-time-tokensmsverify"><code>/one-time-token/sms/verify</code></a></td>
+<td><code>create</code></td>
+<td>One time token status</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-one-time-tokenvoiceverify"><code>/one-time-token/voice/verify</code></a></td>
+<td><code>create</code></td>
+<td>One time token status</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-one-time-tokenwhatsappverify"><code>/one-time-token/whatsapp/verify</code></a></td>
+<td><code>create</code></td>
+<td>One time token status</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-one-time-tokenstatus"><code>/one-time-token/status</code></a></td>
+<td><code>load</code></td>
+<td>One time token status</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">ott, err := client.Ott(nil).Load(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(ott)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local ott, err = client:Ott():load()
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$ott = $client-&gt;Ott()-&gt;load();
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">ott = client.Ott().load()
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">ott = client.Ott.load()
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const ott = await client.Ott().load()
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>actionType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The action bound to the one time token.</td>
+</tr>
+<tr>
+<td><code>challenges</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Array of challenge objects.</td>
+</tr>
+<tr>
+<td><code>oneTimeToken</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of a one time token.</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Creator of this one time token.</td>
+</tr>
+<tr>
+<td><code>validity</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Seconds until the one time token becomes expired.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-one-time-tokensmsverify" class="operation" data-method="post"><code>POST</code> /one-time-token/sms/verify</h3>
+<p>Operation ID: <code>ottSmsVerify</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>One-Time-Token</code></td>
+<td><code>header</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Text value of a OTT.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>otpCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>6 digit OTP code in text format.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-one-time-token-status" class="status" data-status="2xx">200: One time token status</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>oneTimeTokenProperties</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Properties of the one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.actionType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The action bound to the one time token. For example, <code>BALANCE__GET_STATEMENT</code> when we want to retrieve a balance account statement.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of challenge objects.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].alternatives</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Alternative challenges that user can do instead.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].passed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of this challenge.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Type of challenge user can do.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of the challenge (PIN, <code>FACE_MAP</code>, SMS, WHATSAPP, VOICE, <code>PARTNER_DEVICE_FINGERPRINT</code>).</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge.viewData</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object that provides data required to present a challenge window. It can be messages, IDs, or other attributes.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].required</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Required (or not) to pass the OTT.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.oneTimeToken</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of a one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.userId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Creator of this one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.validity</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Seconds until the one time token becomes expired.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;oneTimeTokenProperties&quot;: {
+    &quot;challenges&quot;: [],
+    &quot;oneTimeToken&quot;: &quot;9f5f5812-2609-4e48-8418-b64437c0c7cd&quot;,
+    &quot;validity&quot;: 3600
+  }
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-one-time-tokenvoiceverify" class="operation" data-method="post"><code>POST</code> /one-time-token/voice/verify</h3>
+<p>Operation ID: <code>ottVoiceVerify</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>One-Time-Token</code></td>
+<td><code>header</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Text value of a OTT.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>otpCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>6 digit OTP code in text format.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-one-time-token-status-1" class="status" data-status="2xx">200: One time token status</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>oneTimeTokenProperties</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Properties of the one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.actionType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The action bound to the one time token. For example, <code>BALANCE__GET_STATEMENT</code> when we want to retrieve a balance account statement.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of challenge objects.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].alternatives</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Alternative challenges that user can do instead.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].passed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of this challenge.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Type of challenge user can do.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of the challenge (PIN, <code>FACE_MAP</code>, SMS, WHATSAPP, VOICE, <code>PARTNER_DEVICE_FINGERPRINT</code>).</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge.viewData</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object that provides data required to present a challenge window. It can be messages, IDs, or other attributes.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].required</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Required (or not) to pass the OTT.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.oneTimeToken</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of a one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.userId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Creator of this one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.validity</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Seconds until the one time token becomes expired.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;oneTimeTokenProperties&quot;: {
+    &quot;challenges&quot;: [],
+    &quot;oneTimeToken&quot;: &quot;9f5f5812-2609-4e48-8418-b64437c0c7cd&quot;,
+    &quot;validity&quot;: 3600
+  }
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-one-time-tokenwhatsappverify" class="operation" data-method="post"><code>POST</code> /one-time-token/whatsapp/verify</h3>
+<p>Operation ID: <code>ottWhatsappVerify</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>One-Time-Token</code></td>
+<td><code>header</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Text value of a OTT.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>otpCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>6 digit OTP code in text format.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-one-time-token-status-2" class="status" data-status="2xx">200: One time token status</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>oneTimeTokenProperties</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Properties of the one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.actionType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The action bound to the one time token. For example, <code>BALANCE__GET_STATEMENT</code> when we want to retrieve a balance account statement.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of challenge objects.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].alternatives</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Alternative challenges that user can do instead.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].passed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of this challenge.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Type of challenge user can do.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of the challenge (PIN, <code>FACE_MAP</code>, SMS, WHATSAPP, VOICE, <code>PARTNER_DEVICE_FINGERPRINT</code>).</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge.viewData</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object that provides data required to present a challenge window. It can be messages, IDs, or other attributes.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].required</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Required (or not) to pass the OTT.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.oneTimeToken</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of a one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.userId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Creator of this one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.validity</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Seconds until the one time token becomes expired.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;oneTimeTokenProperties&quot;: {
+    &quot;challenges&quot;: [],
+    &quot;oneTimeToken&quot;: &quot;9f5f5812-2609-4e48-8418-b64437c0c7cd&quot;,
+    &quot;validity&quot;: 3600
+  }
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-one-time-tokenstatus" class="operation" data-method="get"><code>GET</code> /one-time-token/status</h3>
+<p>Operation ID: <code>ottStatusGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>One-Time-Token</code></td>
+<td><code>header</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Text value of a OTT.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-one-time-token-status-3" class="status" data-status="2xx">200: One time token status</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>oneTimeTokenProperties</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Properties of the one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.actionType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The action bound to the one time token. For example, <code>BALANCE__GET_STATEMENT</code> when we want to retrieve a balance account statement.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of challenge objects.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].alternatives</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Alternative challenges that user can do instead.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].passed</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of this challenge.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Type of challenge user can do.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of the challenge (PIN, <code>FACE_MAP</code>, SMS, WHATSAPP, VOICE, <code>PARTNER_DEVICE_FINGERPRINT</code>).</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].primaryChallenge.viewData</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>An object that provides data required to present a challenge window. It can be messages, IDs, or other attributes.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.challenges[].required</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Required (or not) to pass the OTT.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.oneTimeToken</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of a one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.userId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Creator of this one time token.</td>
+</tr>
+<tr>
+<td><code>oneTimeTokenProperties.validity</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Seconds until the one time token becomes expired.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;oneTimeTokenProperties&quot;: {
+    &quot;actionType&quot;: &quot;BALANCE__GET_STATEMENT&quot;,
+    &quot;challenges&quot;: [
+      {
+        &quot;alternatives&quot;: [],
+        &quot;passed&quot;: false,
+        &quot;primaryChallenge&quot;: {
+          &quot;type&quot;: &quot;PIN&quot;,
+          &quot;viewData&quot;: {
+            &quot;attributes&quot;: {
+              &quot;userId&quot;: 6146956
+            }
+          }
+        },
+        &quot;required&quot;: true
+      }
+    ],
+    &quot;oneTimeToken&quot;: &quot;9f5f5812-2609-4e48-8418-b64437c0c7cd&quot;,
+    &quot;userId&quot;: 6146956,
+    &quot;validity&quot;: 3600
+  }
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

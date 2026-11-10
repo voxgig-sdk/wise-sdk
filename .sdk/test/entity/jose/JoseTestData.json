@@ -1,0 +1,91 @@
+{
+  "existing": {
+    "jose": {
+      "JOSE00": {
+        "keyId": "s46",
+        "keyMaterial": {},
+        "publicKeyMaterial": {},
+        "scope": "s49",
+        "validFrom": "s4a",
+        "validTill": "s4b",
+        "version": 76,
+        "id": "JOSE00"
+      },
+      "JOSE01": {
+        "keyId": "s8c",
+        "keyMaterial": {},
+        "publicKeyMaterial": {},
+        "scope": "s8f",
+        "validFrom": "s90",
+        "validTill": "s91",
+        "version": 146,
+        "id": "JOSE01"
+      },
+      "JOSE02": {
+        "keyId": "sd2",
+        "keyMaterial": {},
+        "publicKeyMaterial": {},
+        "scope": "sd5",
+        "validFrom": "sd6",
+        "validTill": "sd7",
+        "version": 216,
+        "id": "JOSE02"
+      }
+    }
+  },
+  "new": {
+    "jose": {
+      "jose_ref01": {
+        "keyId": "s118",
+        "keyMaterial": {},
+        "publicKeyMaterial": {},
+        "scope": "s11b",
+        "validFrom": "s11c",
+        "validTill": "s11d",
+        "version": 286
+      }
+    }
+  },
+  "requests": {
+    "POST /auth/jose/playground/jwsjwe": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /auth/jose/playground/jwe": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /auth/jose/playground/jwe-direct-encryption": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /auth/jose/playground/jws": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /auth/jose/request/public-keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /auth/jose/response/public-keys": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /auth/jose/playground/jwe": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /auth/jose/playground/jwsjwe": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

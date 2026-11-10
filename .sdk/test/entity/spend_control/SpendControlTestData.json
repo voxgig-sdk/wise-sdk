@@ -1,0 +1,53 @@
+{
+  "existing": {
+    "spend_control": {
+      "SPEND_CONTROL00": {
+        "ruleId": 10,
+        "application_id": "APPLICATION01",
+        "rule_id": "RULE01",
+        "id": "SPEND_CONTROL00"
+      },
+      "SPEND_CONTROL01": {
+        "ruleId": 20,
+        "application_id": "APPLICATION01",
+        "rule_id": "RULE01",
+        "id": "SPEND_CONTROL01"
+      },
+      "SPEND_CONTROL02": {
+        "ruleId": 30,
+        "application_id": "APPLICATION01",
+        "rule_id": "RULE01",
+        "id": "SPEND_CONTROL02"
+      }
+    }
+  },
+  "new": {
+    "spend_control": {
+      "spend_control_ref01": {
+        "ruleId": 40
+      }
+    }
+  },
+  "requests": {
+    "POST /spend/applications/{clientId}/spend-controls/rules/apply": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /spend/applications/{clientId}/spend-controls/rules/unapply": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/applications/{clientId}/spend-controls/rules/applied": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /spend/applications/{clientId}/spend-controls/rules/{ruleId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

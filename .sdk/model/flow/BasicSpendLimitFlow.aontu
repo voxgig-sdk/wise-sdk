@@ -1,0 +1,45 @@
+# BasicSpendLimitFlow
+
+main: kit: flow: BasicSpendLimitFlow:
+{
+  entity: "spend_limit",
+  kind: "basic",
+  name: "BasicSpendLimitFlow",
+  step: [
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "spend_limit_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "spend_limit_ref01",
+        srcdatavar: "spend_limit_ref01_data",
+        suffix: "_up0",
+        textfield: "type"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-spend_limit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSpendLimitFlow"
+}

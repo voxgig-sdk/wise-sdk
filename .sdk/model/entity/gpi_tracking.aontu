@@ -1,0 +1,82 @@
+# Entity: gpi_tracking
+
+main: kit: entity: gpi_tracking: {
+
+  alias: field: {}
+
+  fields: {
+    identifier: {
+      h: "Identifier"
+      n: "identifier"
+      r: true
+      sh: "The UETR or Wise transfer ID of the transfer to look up, matching `identifierType`."
+      t: "`$STRING`"
+    }
+    identifierType: {
+      h: "Identifier Type"
+      n: "identifierType"
+      r: true
+      sh: "The type of identifier used to look up the transfer."
+      t: "`$STRING`"
+    }
+    transactions: {
+      h: "Transactions"
+      n: "transactions"
+      r: false
+      sh: "The matching GPI tracking transactions."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "gpi_tracking"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "identifier"
+            "identifierType"
+          ]
+          co: {
+            id: "POST /gpi-tracking"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/gpi-tracking"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "gpi-tracking"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

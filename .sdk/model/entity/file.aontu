@@ -1,0 +1,202 @@
+# Entity: file
+
+main: kit: entity: file: {
+
+  alias: field: {}
+
+  fields: {
+    createdAt: {
+      h: "Created At"
+      n: "createdAt"
+      r: true
+      sh: "Timestamp when the file was uploaded."
+      t: "`$STRING`"
+    }
+    file: {
+      h: "File"
+      n: "file"
+      r: true
+      sh: "The file to upload."
+      t: "`$STRING`"
+    }
+    fileId: {
+      fo: "uuid"
+      h: "File Id"
+      n: "fileId"
+      r: true
+      sh: "Unique identifier of the uploaded file."
+      t: "`$STRING`"
+    }
+    fileName: {
+      h: "File Name"
+      n: "fileName"
+      r: true
+      sh: "The name of the uploaded file."
+      t: "`$STRING`"
+    }
+    profileId: {
+      fo: "int64"
+      h: "Profile Id"
+      n: "profileId"
+      r: true
+      sh: "The ID of the profile this file belongs to."
+      t: "`$INTEGER`"
+    }
+    purpose: {
+      h: "Purpose"
+      n: "purpose"
+      r: true
+      sh: "The purpose of the file upload."
+      t: "`$STRING`"
+    }
+    submissionData: {
+      h: "Submission Data"
+      n: "submissionData"
+      r: true
+      sh: "Metadata for the file upload, sent as the `submissionData` part of the multipart request."
+      t: "`$OBJECT`"
+    }
+  }
+
+  name: "file"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /cases/files"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/cases/files"
+          rb: {
+            fields: [
+              {
+                binary: true
+                media: "application/pdf, image/jpeg, image/png"
+                name: "file"
+              }
+              {
+                media: "application/json"
+                name: "submissionData"
+              }
+            ]
+            kind: "multipart"
+            media: "multipart/form-data"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "cases"
+            }
+            {
+              lit: "files"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /cases/files"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: 1
+                explode: true
+                k: "query"
+                n: "page_number"
+                or: "pageNumber"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 2
+                explode: true
+                k: "query"
+                n: "page_size"
+                or: "pageSize"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 14556049
+                explode: true
+                k: "query"
+                n: "profile_id"
+                or: "profileId"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/cases/files"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "cases"
+            }
+            {
+              lit: "files"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.files`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

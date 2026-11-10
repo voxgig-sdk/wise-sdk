@@ -1,0 +1,215 @@
+# Entity: payment_initiation
+
+main: kit: entity: payment_initiation: {
+
+  alias: field: {}
+
+  fields: {
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "payment_initiation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "accountId"
+            "reference"
+            "type"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/batch-groups/{batchGroupId}/payment-initiations"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "54a6bc09-cef9-49a8-9041-f1f0c654cd88"
+                k: "param"
+                n: "batch_group_id"
+                or: "batchGroupId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/batch-groups/{batchGroupId}/payment-initiations"
+          q: {
+            exist: [
+              "batch_group_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              batchGroupId: "batch_group_id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "batch-groups"
+            }
+            {
+              var: "batch_group_id"
+            }
+            {
+              lit: "payment-initiations"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/batch-groups/{batchGroupId}/payment-initiations/{paymentInitiationId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "54a6bc09-cef9-49a8-9041-f1f0c654cd88"
+                k: "param"
+                n: "batch_group_id"
+                or: "batchGroupId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 12345
+                k: "param"
+                n: "id"
+                or: "paymentInitiationId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/batch-groups/{batchGroupId}/payment-initiations/{paymentInitiationId}"
+          q: {
+            exist: [
+              "batch_group_id"
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              batchGroupId: "batch_group_id"
+              paymentInitiationId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "batch-groups"
+            }
+            {
+              var: "batch_group_id"
+            }
+            {
+              lit: "payment-initiations"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.batch_group")]
+  ]
+
+}

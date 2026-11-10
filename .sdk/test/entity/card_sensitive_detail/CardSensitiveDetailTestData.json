@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "card_sensitive_detail": {
+      "CARD_SENSITIVE_DETAIL00": {
+        "encryptedPayload": "s28",
+        "key": "s29",
+        "keyVersion": 42,
+        "version": 43,
+        "id": "CARD_SENSITIVE_DETAIL00"
+      },
+      "CARD_SENSITIVE_DETAIL01": {
+        "encryptedPayload": "s50",
+        "key": "s51",
+        "keyVersion": 82,
+        "version": 83,
+        "id": "CARD_SENSITIVE_DETAIL01"
+      },
+      "CARD_SENSITIVE_DETAIL02": {
+        "encryptedPayload": "s78",
+        "key": "s79",
+        "keyVersion": 122,
+        "version": 123,
+        "id": "CARD_SENSITIVE_DETAIL02"
+      }
+    }
+  },
+  "new": {
+    "card_sensitive_detail": {
+      "card_sensitive_detail_ref01": {
+        "encryptedPayload": "sa0",
+        "key": "sa1",
+        "keyVersion": 162,
+        "version": 163
+      }
+    }
+  },
+  "requests": {
+    "POST /twcard-data/v1/sensitive-card-data/details": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /twcard-data/v1/sensitive-card-data/pin": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /twcard-data/v1/sensitive-card-data/preset-pin": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /twcard-data/v1/clientSideEncryption/fetchEncryptingKey": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

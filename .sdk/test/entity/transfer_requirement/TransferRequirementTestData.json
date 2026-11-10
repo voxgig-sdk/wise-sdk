@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "transfer_requirement": {
+      "TRANSFER_REQUIREMENT00": {
+        "customerTransactionId": "s32",
+        "details": {},
+        "originatorLegalEntityType": "s34",
+        "quoteUuid": "s35",
+        "targetAccount": 54,
+        "id": "TRANSFER_REQUIREMENT00"
+      },
+      "TRANSFER_REQUIREMENT01": {
+        "customerTransactionId": "s64",
+        "details": {},
+        "originatorLegalEntityType": "s66",
+        "quoteUuid": "s67",
+        "targetAccount": 104,
+        "id": "TRANSFER_REQUIREMENT01"
+      },
+      "TRANSFER_REQUIREMENT02": {
+        "customerTransactionId": "s96",
+        "details": {},
+        "originatorLegalEntityType": "s98",
+        "quoteUuid": "s99",
+        "targetAccount": 154,
+        "id": "TRANSFER_REQUIREMENT02"
+      }
+    }
+  },
+  "new": {
+    "transfer_requirement": {
+      "transfer_requirement_ref01": {
+        "customerTransactionId": "sc8",
+        "details": {},
+        "originatorLegalEntityType": "sca",
+        "quoteUuid": "scb",
+        "targetAccount": 204
+      }
+    }
+  },
+  "requests": {
+    "POST /transfer-requirements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

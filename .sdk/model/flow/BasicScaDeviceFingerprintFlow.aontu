@@ -1,0 +1,36 @@
+# BasicScaDeviceFingerprintFlow
+
+main: kit: flow: BasicScaDeviceFingerprintFlow:
+{
+  entity: "sca_device_fingerprint",
+  kind: "basic",
+  name: "BasicScaDeviceFingerprintFlow",
+  step: [
+    {
+      i: {
+        ref: "sca_device_fingerprint_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "sca_device_fingerprint_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "sca_device_fingerprint01",
+        profile_id: "profile01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicScaDeviceFingerprintFlow"
+}

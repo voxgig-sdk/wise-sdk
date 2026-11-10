@@ -1,0 +1,1751 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Balance | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a aria-current="page" href="../api/balance.html">Balance</a><div class="nav-sections"><a class="nav-section" href="#post-profilesprofileidbalanceshold-limit-breachholdlimitbreachid">POST /profiles/{profileId}/balances/hold-limit-breach/{holdLimitBreachId}</a>
+<a class="nav-section" href="#post-profilesprofileidbalance-movements">POST /profiles/{profileId}/balance-movements</a>
+<a class="nav-section" href="#post-profilesprofileidbalances">POST /profiles/{profileId}/balances</a>
+<a class="nav-section" href="#get-profilesprofileidbalances">GET /profiles/{profileId}/balances</a>
+<a class="nav-section" href="#get-profilesprofileidtotal-fundscurrency">GET /profiles/{profileId}/total-funds/{currency}</a>
+<a class="nav-section" href="#get-profilesprofileidbalancesbalanceid">GET /profiles/{profileId}/balances/{balanceId}</a>
+<a class="nav-section" href="#delete-profilesprofileidbalancesbalanceid">DELETE /profiles/{profileId}/balances/{balanceId}</a></div>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="balance">Balance</h1>
+<p>A balance account: create, list, get or remove one, convert or move money between balances, and get total funds.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidbalanceshold-limit-breachholdlimitbreachid"><code>/profiles/{profileId}/balances/hold-limit-breach/{holdLimitBreachId}</code></a></td>
+<td><code>create</code></td>
+<td>Returns 204 No Content on success</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidbalance-movements"><code>/profiles/{profileId}/balance-movements</code></a></td>
+<td><code>create</code></td>
+<td>Created - Movement completed successfully</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidbalances"><code>/profiles/{profileId}/balances</code></a></td>
+<td><code>create</code></td>
+<td>Created - Balance successfully created</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileidbalances"><code>/profiles/{profileId}/balances</code></a></td>
+<td><code>list</code></td>
+<td>OK - Successfully retrieved balances</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileidtotal-fundscurrency"><code>/profiles/{profileId}/total-funds/{currency}</code></a></td>
+<td><code>load</code></td>
+<td>OK - Successfully retrieved total funds</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileidbalancesbalanceid"><code>/profiles/{profileId}/balances/{balanceId}</code></a></td>
+<td><code>load</code></td>
+<td>OK - Successfully retrieved the balance</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-profilesprofileidbalancesbalanceid"><code>/profiles/{profileId}/balances/{balanceId}</code></a></td>
+<td><code>remove</code></td>
+<td>No Content - Balance successfully removed</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">balances, err := client.Balance(nil).List(map[string]any{&quot;profile_id&quot;: 1, &quot;type&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(balances)
+balance, err := client.Balance(nil).Load(map[string]any{&quot;currency&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(balance)
+created, err := client.Balance(nil).Create(map[string]any{&quot;profile_id&quot;: 1, &quot;currency&quot;: &quot;example&quot;, &quot;state&quot;: &quot;example&quot;, &quot;targetRecipientId&quot;: 1, &quot;type&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+removed, err := client.Balance(nil).Remove(map[string]any{&quot;id&quot;: 1, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local balances, err = client:Balance():list({ profile_id = 1, type = &quot;example&quot; })
+local balance, err = client:Balance():load({ currency = &quot;example&quot;, profile_id = 1 })
+local created, err = client:Balance():create({ profile_id = 1, currency = &quot;example&quot;, state = &quot;example&quot;, targetRecipientId = 1, type = &quot;example&quot; })
+local removed, err = client:Balance():remove({ id = 1, profile_id = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$balances = $client-&gt;Balance()-&gt;list([&quot;profile_id&quot; =&gt; 1, &quot;type&quot; =&gt; &quot;example&quot;]);
+$balance = $client-&gt;Balance()-&gt;load([&quot;currency&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1]);
+$created = $client-&gt;Balance()-&gt;create([&quot;profile_id&quot; =&gt; 1, &quot;currency&quot; =&gt; &quot;example&quot;, &quot;state&quot; =&gt; &quot;example&quot;, &quot;targetRecipientId&quot; =&gt; 1, &quot;type&quot; =&gt; &quot;example&quot;]);
+$client-&gt;Balance()-&gt;remove([&quot;id&quot; =&gt; 1, &quot;profile_id&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">balances = client.Balance().list({&quot;profile_id&quot;: 1, &quot;type&quot;: &quot;example&quot;})
+balance = client.Balance().load({&quot;currency&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1})
+created = client.Balance().create({ &quot;profile_id&quot;: 1, &quot;currency&quot;: &quot;example&quot;, &quot;state&quot;: &quot;example&quot;, &quot;targetRecipientId&quot;: 1, &quot;type&quot;: &quot;example&quot; })
+client.Balance().remove({&quot;id&quot;: 1, &quot;profile_id&quot;: 1})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">balances = client.Balance.list({ &quot;profile_id&quot; =&gt; 1, &quot;type&quot; =&gt; &quot;example&quot; })
+balance = client.Balance.load({ &quot;currency&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1 })
+created = client.Balance.create({ &quot;profile_id&quot; =&gt; 1, &quot;currency&quot; =&gt; &quot;example&quot;, &quot;state&quot; =&gt; &quot;example&quot;, &quot;targetRecipientId&quot; =&gt; 1, &quot;type&quot; =&gt; &quot;example&quot; })
+client.Balance.remove({ &quot;id&quot; =&gt; 1, &quot;profile_id&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const balances = await client.Balance().list({ profile_id: 1, type: &quot;example&quot; })
+const balance = await client.Balance().load({ currency: &quot;example&quot;, profile_id: 1 })
+const created = await client.Balance().create({ profile_id: 1, currency: &quot;example&quot;, state: &quot;example&quot;, targetRecipientId: 1, type: &quot;example&quot; })
+await client.Balance().remove({ id: 1, profile_id: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Available balance that can be used to fund transfers.</td>
+</tr>
+<tr>
+<td><code>cashAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Cash amount in the account.</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date when the balance was created.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td><code>one,object,null</code></td>
+<td>No</td>
+<td>Icon for the balance.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Balance ID.</td>
+</tr>
+<tr>
+<td><code>investmentState</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Investment state of the balance.</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date when the balance was last modified.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Name of the balance.</td>
+</tr>
+<tr>
+<td><code>overdraft</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Overdraft details for the account.</td>
+</tr>
+<tr>
+<td><code>reservedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount reserved for transactions.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Must be <code>CLOSED</code>.</td>
+</tr>
+<tr>
+<td><code>targetRecipientId</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>ID of the recipient to receive the refund of the excess funds.</td>
+</tr>
+<tr>
+<td><code>totalAvailable</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Total available balance, which is the sum of cash ledger balance and any approved overdraft limit.</td>
+</tr>
+<tr>
+<td><code>totalCash</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Total cash balance across all balances, including group balances but excluding asset portfolios.</td>
+</tr>
+<tr>
+<td><code>totalWorth</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Total worth of the account, including cash ledger balance and valuation of any asset portfolio if invested.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of balance account.</td>
+</tr>
+<tr>
+<td><code>visible</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the balance is visible to the user.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-profilesprofileidbalanceshold-limit-breachholdlimitbreachid" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/balances/hold-limit-breach/{holdLimitBreachId}</h3>
+<p>Operation ID: <code>holdLimitBreachClose</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>holdLimitBreachId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The hold limit breach ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Must be <code>CLOSED</code>. This is the only supported value.</td>
+</tr>
+<tr>
+<td><code>targetRecipientId</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>ID of the recipient to receive the refund of the excess funds.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="204-returns-204-no-content-on-success" class="status" data-status="2xx">204: Returns 204 No Content on success</h5>
+<h5 id="400-invalid-state-used" class="status" data-status="4xx">400: Invalid state used</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>A list of specific validation failures.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A specific code for the validation failure type.</td>
+</tr>
+<tr>
+<td><code>errors[].detail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A detailed description of the validation failure.</td>
+</tr>
+<tr>
+<td><code>errors[].ref</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A reference to the field that failed validation.</td>
+</tr>
+<tr>
+<td><code>instance</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The uri that triggered the error</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Bad request error</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Validation Error</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>Must be /errors/types/validation for this error type</td>
+</tr>
+</tbody>
+</table>
+<h5 id="403-caller-attempts-to-close-a-holdlimitbreach-that-does-not-belong-to-them" class="status" data-status="4xx">403: Caller attempts to close a holdLimitBreach that does not belong to them</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error code of the request</td>
+</tr>
+<tr>
+<td><code>detail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Detail of the error</td>
+</tr>
+<tr>
+<td><code>instance</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The uri that triggered the error</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Forbidden error</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Forbidden</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>Must be /errors/types/access for this error type</td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-caller-attempts-to-close-a-holdlimitbreach-that-does-not-exist" class="status" data-status="4xx">404: Caller attempts to close a holdLimitBreach that does not exist</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error code of the request</td>
+</tr>
+<tr>
+<td><code>detail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Detail of the error</td>
+</tr>
+<tr>
+<td><code>instance</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The uri that triggered the error</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Validation error</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Validation Error</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string (uri-reference)</code></td>
+<td>No</td>
+<td>Must be /errors/types/validation for this error type</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidbalance-movements" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/balance-movements</h3>
+<p>Operation ID: <code>balanceMovement</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>X-idempotence-uuid</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Unique identifier assigned by you. Used for idempotency check purposes. Should your call fail for technical reasons then you can use the same value again for making a retry call.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount to move. Required for same-currency movements. Either <code>amount</code> or <code>quoteId</code> must be provided.</td>
+</tr>
+<tr>
+<td><code>amount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>amount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Quote ID. Required for cross-currency movements. Quote must be created with <code>payOut: BALANCE</code>.</td>
+</tr>
+<tr>
+<td><code>sourceBalanceId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Source balance ID. Required when moving between balances (with targetBalanceId).</td>
+</tr>
+<tr>
+<td><code>targetBalanceId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Target balance ID. Required when moving between balances (with sourceBalanceId).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="201-created---movement-completed-successfully" class="status" data-status="2xx">201: Created - Movement completed successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>balancesAfter</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Balance states after the movement.</td>
+</tr>
+<tr>
+<td><code>balancesAfter[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code.</td>
+</tr>
+<tr>
+<td><code>balancesAfter[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Balance ID.</td>
+</tr>
+<tr>
+<td><code>balancesAfter[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Balance value after movement.</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the movement was created.</td>
+</tr>
+<tr>
+<td><code>feeAmounts</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Fee amounts charged for the movement.</td>
+</tr>
+<tr>
+<td><code>feeAmounts[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>feeAmounts[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Movement transaction ID.</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate applied to the conversion.</td>
+</tr>
+<tr>
+<td><code>sourceAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Source amount of the movement.</td>
+</tr>
+<tr>
+<td><code>sourceAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sourceAmount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>enum: PENDING, COMPLETED, CANCELLED, REVERSED</code></td>
+<td>No</td>
+<td>State of the movement.</td>
+</tr>
+<tr>
+<td><code>steps</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Steps involved in the movement.</td>
+</tr>
+<tr>
+<td><code>steps[].balancesAfter</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].balancesAfter[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].balancesAfter[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the step was created.</td>
+</tr>
+<tr>
+<td><code>steps[].fee</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].fee.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].fee.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Step ID.</td>
+</tr>
+<tr>
+<td><code>steps[].rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Exchange rate applied.</td>
+</tr>
+<tr>
+<td><code>steps[].sourceAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].sourceAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].sourceAmount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].targetAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].targetAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].targetAmount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>steps[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Step type.</td>
+</tr>
+<tr>
+<td><code>targetAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Target amount of the movement.</td>
+</tr>
+<tr>
+<td><code>targetAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>targetAmount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: DEPOSIT, WITHDRAWAL, CONVERSION</code></td>
+<td>No</td>
+<td>Type of movement.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidbalances" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/balances</h3>
+<p>Operation ID: <code>balanceCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>X-idempotence-uuid</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Unique identifier assigned by you. Used for idempotency check purposes. Should your call fail for technical reasons then you can use the same value again for making a retry call.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the balance. Required for SAVINGS type balances.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: STANDARD, SAVINGS</code></td>
+<td>Yes</td>
+<td>Type of balance account. - <code>STANDARD</code> - Standard balance account. Only one per currency per profile. - <code>SAVINGS</code> - Savings balance (Jar). Multiple allowed per currency.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;type&quot;: &quot;STANDARD&quot;
+}
+</code></pre>
+<h4 id="responses-2">Responses</h4>
+<h5 id="201-created---balance-successfully-created" class="status" data-status="2xx">201: Created - Balance successfully created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Available balance that can be used to fund transfers.</td>
+</tr>
+<tr>
+<td><code>amount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>amount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>cashAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Cash amount in the account.</td>
+</tr>
+<tr>
+<td><code>cashAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>cashAmount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date when the balance was created.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Icon for the balance.</td>
+</tr>
+<tr>
+<td><code>icon.type</code></td>
+<td><code>enum: EMOJI</code></td>
+<td>No</td>
+<td>Icon type.</td>
+</tr>
+<tr>
+<td><code>icon.value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Icon value (for example, emoji character).</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Balance ID.</td>
+</tr>
+<tr>
+<td><code>investmentState</code></td>
+<td><code>enum: NOT_INVESTED, INVESTED, INVESTING, DIVESTING, UNKNOWN</code></td>
+<td>No</td>
+<td>Investment state of the balance. - <code>NOT_INVESTED</code> - Balance is not invested. - <code>INVESTED</code> - Balance is invested in assets. - <code>INVESTING</code> - Balance is being invested into assets. - <code>DIVESTING</code> - Balance is being divested from assets. - <code>UNKNOWN</code> - Investment state is unknown.</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date when the balance was last modified.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Name of the balance. Required for SAVINGS balances.</td>
+</tr>
+<tr>
+<td><code>reservedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount reserved for transactions.</td>
+</tr>
+<tr>
+<td><code>reservedAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>reservedAmount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>totalWorth</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Current total worth.</td>
+</tr>
+<tr>
+<td><code>totalWorth.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>totalWorth.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: STANDARD, SAVINGS</code></td>
+<td>No</td>
+<td>Type of balance account. - <code>STANDARD</code> - Standard balance account. Only one per currency per profile. - <code>SAVINGS</code> - Savings balance (Jar). Multiple allowed per currency.</td>
+</tr>
+<tr>
+<td><code>visible</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the balance is visible to the user.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-profilesprofileidbalances" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}/balances</h3>
+<p>Operation ID: <code>balanceList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>types</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Comma-separated list of balance types to return. Acceptable values are <code>STANDARD</code> and <code>SAVINGS</code>.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-balances" class="status" data-status="2xx">200: OK - Successfully retrieved balances</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[].amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Available balance that can be used to fund transfers.</td>
+</tr>
+<tr>
+<td><code>[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>[].amount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>[].cashAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Cash amount in the account.</td>
+</tr>
+<tr>
+<td><code>[].cashAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>[].cashAmount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>[].creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date when the balance was created.</td>
+</tr>
+<tr>
+<td><code>[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>[].icon</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Icon for the balance.</td>
+</tr>
+<tr>
+<td><code>[].icon.type</code></td>
+<td><code>enum: EMOJI</code></td>
+<td>No</td>
+<td>Icon type.</td>
+</tr>
+<tr>
+<td><code>[].icon.value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Icon value (for example, emoji character).</td>
+</tr>
+<tr>
+<td><code>[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Balance ID.</td>
+</tr>
+<tr>
+<td><code>[].investmentState</code></td>
+<td><code>enum: NOT_INVESTED, INVESTED, INVESTING, DIVESTING, UNKNOWN</code></td>
+<td>No</td>
+<td>Investment state of the balance. - <code>NOT_INVESTED</code> - Balance is not invested. - <code>INVESTED</code> - Balance is invested in assets. - <code>INVESTING</code> - Balance is being invested into assets. - <code>DIVESTING</code> - Balance is being divested from assets. - <code>UNKNOWN</code> - Investment state is unknown.</td>
+</tr>
+<tr>
+<td><code>[].modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date when the balance was last modified.</td>
+</tr>
+<tr>
+<td><code>[].name</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Name of the balance. Required for SAVINGS balances.</td>
+</tr>
+<tr>
+<td><code>[].reservedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount reserved for transactions.</td>
+</tr>
+<tr>
+<td><code>[].reservedAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>[].reservedAmount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>[].totalWorth</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Current total worth.</td>
+</tr>
+<tr>
+<td><code>[].totalWorth.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>[].totalWorth.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>[].type</code></td>
+<td><code>enum: STANDARD, SAVINGS</code></td>
+<td>No</td>
+<td>Type of balance account. - <code>STANDARD</code> - Standard balance account. Only one per currency per profile. - <code>SAVINGS</code> - Savings balance (Jar). Multiple allowed per currency.</td>
+</tr>
+<tr>
+<td><code>[].visible</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the balance is visible to the user.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-profilesprofileidtotal-fundscurrency" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}/total-funds/{currency}</h3>
+<p>Operation ID: <code>totalFunds</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Currency code (ISO 4217 Alphabetic Code). All values will be converted to this currency.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-total-funds" class="status" data-status="2xx">200: OK - Successfully retrieved total funds</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>overdraft</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Overdraft details for the account.</td>
+</tr>
+<tr>
+<td><code>overdraft.available</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount of overdraft currently available (limit minus used).</td>
+</tr>
+<tr>
+<td><code>overdraft.available.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>overdraft.available.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>overdraft.availableByCurrency</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Available overdraft amounts converted to each currency the customer has a balance in.</td>
+</tr>
+<tr>
+<td><code>overdraft.availableByCurrency[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>overdraft.availableByCurrency[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>overdraft.limit</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Maximum overdraft available through an overdraft program. Zero if no approved overdraft.</td>
+</tr>
+<tr>
+<td><code>overdraft.limit.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>overdraft.limit.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>overdraft.used</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Portion of the approved overdraft limit currently being utilized.</td>
+</tr>
+<tr>
+<td><code>overdraft.used.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>overdraft.used.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>totalAvailable</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Total available balance, which is the sum of cash ledger balance and any approved overdraft limit.</td>
+</tr>
+<tr>
+<td><code>totalAvailable.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>totalAvailable.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>totalCash</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Total cash balance across all balances, including group balances but excluding asset portfolios.</td>
+</tr>
+<tr>
+<td><code>totalCash.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>totalCash.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>totalWorth</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Total worth of the account, including cash ledger balance and valuation of any asset portfolio if invested.</td>
+</tr>
+<tr>
+<td><code>totalWorth.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>totalWorth.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-profilesprofileidbalancesbalanceid" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}/balances/{balanceId}</h3>
+<p>Operation ID: <code>balanceGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>balanceId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The balance ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-the-balance" class="status" data-status="2xx">200: OK - Successfully retrieved the balance</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Available balance that can be used to fund transfers.</td>
+</tr>
+<tr>
+<td><code>amount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>amount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>cashAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Cash amount in the account.</td>
+</tr>
+<tr>
+<td><code>cashAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>cashAmount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date when the balance was created.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>icon</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Icon for the balance.</td>
+</tr>
+<tr>
+<td><code>icon.type</code></td>
+<td><code>enum: EMOJI</code></td>
+<td>No</td>
+<td>Icon type.</td>
+</tr>
+<tr>
+<td><code>icon.value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Icon value (for example, emoji character).</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Balance ID.</td>
+</tr>
+<tr>
+<td><code>investmentState</code></td>
+<td><code>enum: NOT_INVESTED, INVESTED, INVESTING, DIVESTING, UNKNOWN</code></td>
+<td>No</td>
+<td>Investment state of the balance. - <code>NOT_INVESTED</code> - Balance is not invested. - <code>INVESTED</code> - Balance is invested in assets. - <code>INVESTING</code> - Balance is being invested into assets. - <code>DIVESTING</code> - Balance is being divested from assets. - <code>UNKNOWN</code> - Investment state is unknown.</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date when the balance was last modified.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Name of the balance. Required for SAVINGS balances.</td>
+</tr>
+<tr>
+<td><code>reservedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount reserved for transactions.</td>
+</tr>
+<tr>
+<td><code>reservedAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>reservedAmount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>totalWorth</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Current total worth.</td>
+</tr>
+<tr>
+<td><code>totalWorth.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>totalWorth.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount value.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: STANDARD, SAVINGS</code></td>
+<td>No</td>
+<td>Type of balance account. - <code>STANDARD</code> - Standard balance account. Only one per currency per profile. - <code>SAVINGS</code> - Savings balance (Jar). Multiple allowed per currency.</td>
+</tr>
+<tr>
+<td><code>visible</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the balance is visible to the user.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-5" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="remove">remove</h2>
+<h3 id="delete-profilesprofileidbalancesbalanceid" class="operation" data-method="delete"><code>DELETE</code> /profiles/{profileId}/balances/{balanceId}</h3>
+<p>Operation ID: <code>balanceDelete</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>balanceId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The balance ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="204-no-content---balance-successfully-removed" class="status" data-status="2xx">204: No Content - Balance successfully removed</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-6" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

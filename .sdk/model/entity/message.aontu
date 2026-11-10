@@ -1,0 +1,109 @@
+# Entity: message
+
+main: kit: entity: message: {
+
+  alias: field: {}
+
+  fields: {
+    submissionData: {
+      h: "Submission Data"
+      n: "submissionData"
+      r: true
+      sh: "The data for the message submission."
+      t: "`$OBJECT`"
+      union: {
+        branches: 5
+        count: 3
+        depth: 2
+      }
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "The type of message submission."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "message"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "submissionData"
+            "type"
+          ]
+          co: {
+            id: "POST /cases/{caseId}/messages"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 12345678
+                k: "param"
+                n: "case_id"
+                or: "caseId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/cases/{caseId}/messages"
+          q: {
+            exist: [
+              "case_id"
+            ]
+          }
+          r: {
+            param: {
+              caseId: "case_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "cases"
+            }
+            {
+              var: "case_id"
+            }
+            {
+              lit: "messages"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.case")]
+  ]
+
+}

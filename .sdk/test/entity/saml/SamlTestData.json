@@ -1,0 +1,49 @@
+{
+  "existing": {
+    "saml": {
+      "SAML00": {
+        "RelayState": "s14",
+        "SAMLResponse": "s15",
+        "registration_id": "REGISTRATION01",
+        "id": "SAML00"
+      },
+      "SAML01": {
+        "RelayState": "s28",
+        "SAMLResponse": "s29",
+        "registration_id": "REGISTRATION01",
+        "id": "SAML01"
+      },
+      "SAML02": {
+        "RelayState": "s3c",
+        "SAMLResponse": "s3d",
+        "registration_id": "REGISTRATION01",
+        "id": "SAML02"
+      }
+    }
+  },
+  "new": {
+    "saml": {
+      "saml_ref01": {
+        "RelayState": "s50",
+        "SAMLResponse": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /login/saml2/sso": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /saml2/authenticate/{registrationId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /saml2/metadata": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

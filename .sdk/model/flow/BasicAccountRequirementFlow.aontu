@@ -1,0 +1,38 @@
+# BasicAccountRequirementFlow
+
+main: kit: flow: BasicAccountRequirementFlow:
+{
+  entity: "account_requirement",
+  kind: "basic",
+  name: "BasicAccountRequirementFlow",
+  step: [
+    {
+      i: {
+        ref: "account_requirement_ref01"
+      }
+
+      m: {
+        quote_id: "quote01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        quote_id: "quote01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "account_requirement_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAccountRequirementFlow"
+}

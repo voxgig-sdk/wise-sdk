@@ -1,0 +1,139 @@
+# README wording — YOURS. The scaffold creates this file once and never
+# overwrites it.
+#
+# A slot set here words the generated README files over the same slot of
+# main.kit.info, where apidef puts the spec's metadata. A slot left out keeps
+# the spec's wording. Text edited into a generated README is lost on the next
+# generate; text here is not.
+#
+# The slots are title, summary, website, tagline, about_md, homepage,
+# docs_url, meta_source and entity_desc. Any other key fails the model build.
+
+# The summary is the first sentence of the definition's own description. It
+# also stands in for info.description on the documentation site, which is
+# written in Redocly's Markdoc ({% admonition %}, {% connect-mcp /%}) and
+# links pages of docs.wise.com by site-relative path, neither of which
+# renders anywhere else. Entity descriptions follow Wise's operation
+# summaries.
+main: kit: text: {
+  title: 'Wise Platform API'
+  summary: "The Wise Platform API is a REST-based interface that enables programmatic access to Wise's payment infrastructure: quotes, recipients, transfers, balances, cards and the profiles that own them."
+  website: 'https://wise.com'
+  about_md: `**Versions.** Wise versions the whole API by quarter, in the URL. This SDK is
+generated from version \`2026Q4\`: Production is \`https://api.wise.com/2026Q4\`, the default,
+and the Sandbox is \`https://api.wise-sandbox.com/2026Q4\`.
+
+**Credentials.** Most calls take a bearer token, passed as the \`apikey\` option: a
+personal API token (Wise.com > Settings > Connect and manage apps > API tokens), a user
+access token, or a client-credentials token for a Wise Platform partner. A partner's client
+ID and secret come from Wise when the partnership begins. Each operation's own
+documentation says which tokens it accepts.
+
+\`\`\`ts
+import { WiseSDK } from '@voxgig-sdk/wise-sdk'
+
+// The Sandbox. Without \`base\` the SDK calls Production.
+const base = 'https://api.wise-sandbox.com/2026Q4'
+
+// The currencies Wise supports. The live API answers this one without a token.
+const open = new WiseSDK({ base })
+const currencies = await open.Currency().list()
+console.log(currencies.map((currency) => currency.data().code))
+
+// Every other call sends the token as \`Authorization: Bearer <token>\`.
+const client = new WiseSDK({ base, apikey: process.env.WISE_API_TOKEN ?? '' })
+const profiles = await client.Profile().list()
+for (const profile of profiles) {
+  console.log(profile.data())
+}
+\`\`\`
+
+**Scope.** Every one of the 229 operations in Wise's published definition is here. Where
+one entity has several routes for the same operation, an action tells them apart, selected
+with \`$action\` in the request data: a card PIN is \`$action: 'pin'\` on
+\`CardSensitiveDetail\`, a one-time-token challenge is \`'sms'\`, \`'voice'\` or
+\`'whatsapp'\`, and each sandbox \`Simulation\` is named for what it simulates, such as
+\`'balance-topup'\`. Two signing schemes the definition declares, HMAC request signatures
+and JOSE payload encryption, are not applied for you: the operations that need them say so
+in Wise's documentation.
+
+**No MCP server.** Wise runs its own hosted MCP server for its API, so this SDK does not
+generate one. The SDKs and the CLI are all here.`
+  entity_desc: {
+    account_detail: 'Bank account details by id.'
+    account_requirement: "The fields a recipient account needs, for a quote's route."
+    activity: "A profile's activities."
+    address: "A profile's address: create or update, list, or get one."
+    address_requirement: 'The fields an address needs.'
+    balance: 'A balance account: create, list, get or remove one, convert or move money between balances, and get total funds.'
+    balance_statement: 'A balance statement.'
+    bank_account_detail: 'Bank account details: create several, or create a payment return.'
+    bank_account_details_order: 'An order for bank account details: create one, or list them.'
+    batch_group: 'A batch group of transfers: create, get or update one, add a transfer, or fund it from a balance.'
+    bulk_settlement: 'A settlement journal.'
+    business_profile: 'A business profile: create or update one.'
+    card: "A card: list a profile's cards, get one, update its status or permissions, or reset its PIN count."
+    card_holder_limit: "A cardholder's spending limits."
+    card_limit: "A card's spending limits."
+    card_order: 'A card order: create one, list or get them, update its status, and check requirements, programs and addresses.'
+    card_sensitive_detail: "A card's sensitive details and PIN, read or set with client-side encryption."
+    card_transaction: 'A card transaction.'
+    case: 'A support case.'
+    claim_account: 'A claim account code.'
+    comparison: 'A comparison of what providers charge for a transfer.'
+    contact: 'A contact, created from an identifier.'
+    currency: 'A currency Wise allows for transfers.'
+    delivery_estimate: 'The delivery estimate for a transfer.'
+    delivery_update: 'A simulated transfer delivery update (Sandbox).'
+    digital_wallet: 'A card in a digital wallet: Apple Pay and Google Pay provisioning, and payment tokens.'
+    direct_debit_account: 'A direct debit account.'
+    director: "A business profile's directors."
+    dispute: 'A card transaction dispute: submit, list, get or withdraw one, or upload a file for it.'
+    dispute_reason: 'The reasons a dispute can give.'
+    facetec: "Wise's FaceTec public key."
+    file: 'A file for a case.'
+    funding: 'The funding of a transfer.'
+    gpi_tracking: 'A SWIFT gpi tracking lookup.'
+    hold_limit_breach: 'A breach of a balance hold limit.'
+    incoming_transfer: 'An incoming transfer.'
+    jose: 'JOSE keys, and a playground for testing JWS and JWE signing and encryption.'
+    kyc_review: 'A KYC review: create, list, get or update one, or submit a requirement.'
+    link_request: 'An embedded-flow link request, for KYC, payment instruments, recipients or disputes.'
+    message: 'A message on a case.'
+    multi_currency_account: 'The multi-currency account: eligibility, and its available and payin currencies.'
+    one_time_token: 'A strong customer authentication check: a device fingerprint, PIN or facemap.'
+    ott: 'A one-time token: verify its SMS, voice or WhatsApp challenge, or get its status.'
+    payin: 'A payin.'
+    payin_deposit_detail: "The bank transfer details for paying in to a transfer."
+    payment: "A transfer's completed payments."
+    payment_initiation: 'A payment initiation.'
+    payment_instrument: 'A payment instrument: create, get or confirm one, or list its payins.'
+    payment_intent: 'A payment intent.'
+    phone_number: "A user's phone number."
+    production: "A card's production status."
+    profile: 'A personal or business profile, the owner of balances, recipients and transfers.'
+    quote: 'A quote for a transfer: its exchange rate and fees.'
+    rate: 'Current and historical exchange rates.'
+    recipient: 'A recipient account: create, list, get or deactivate one.'
+    rule: 'An authorisation rule for card spend.'
+    saml: 'SAML single sign-on.'
+    sca_device_fingerprint: 'A device fingerprint, for strong customer authentication.'
+    sca_facemap: 'A facemap, for strong customer authentication.'
+    sca_otp: 'A one-time-password challenge by SMS, voice or WhatsApp, for strong customer authentication.'
+    sca_session: 'A strong customer authentication session.'
+    settlement_allocation: 'A settlement allocation request.'
+    simulation: 'Sandbox simulations: transfers, cards, KYC reviews, top-ups and incoming payments.'
+    spend_control: 'The authorisation rules applied to an application.'
+    spend_limit: "A profile's spending limits."
+    subscription: 'A webhook subscription, for an application or a profile.'
+    test_notification: 'A test notification to an application webhook subscription.'
+    third_party_transfer: 'A third party transfer.'
+    three_d_secure: 'The result of a 3-D Secure challenge.'
+    token: 'An OAuth token.'
+    transfer: 'A transfer: create, list, get or cancel one, and its receipts and payout information.'
+    transfer_requirement: 'The fields a transfer needs.'
+    ubo: "A business profile's ultimate beneficial owners."
+    user: 'A user: create one, check one exists, get one, or set its contact email.'
+    verification: 'Verification evidence for a profile.'
+  }
+}

@@ -1,0 +1,1106 @@
+# Generated from the API definition and overwritten on every build: do not
+# edit this file. Put customizations in the guide entry file, which includes
+# this one and overrides its defaults:
+#   guide.aontu
+
+guide: {
+  metrics: count: entity: 76
+  metrics: count: path: 188
+  metrics: count: method: 229
+
+  entity: account_detail: {
+    path: "/balances/account-details/{id}": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: account_requirement: {
+    path: "/quotes/{quoteId}/account-requirements": {
+      rename: param: "quoteId": *"quote_id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+  }
+
+  entity: activity: {
+    path: "/profiles/{profileId}/activities": {
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.activities`")|top
+      op: list: transform: page: cursor: *("`body.cursor`")|top
+    }
+  }
+
+  entity: address: {
+    path: "/addresses": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/addresses/{addressId}": {
+      rename: param: "addressId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: address_requirement: {
+    path: "/address-requirements": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+  }
+
+  entity: balance: {
+    path: "/profiles/{profileId}/balance-movements": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/balances": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/profiles/{profileId}/balances/hold-limit-breach/{holdLimitBreachId}": {
+      rename: param: "holdLimitBreachId": *"hold_limit_breach_id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/balances/{balanceId}": {
+      rename: param: "balanceId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+    }
+    path: "/profiles/{profileId}/total-funds/{currency}": {
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: balance_statement: {
+    path: "/profiles/{profileId}/balance-statements/{balanceId}/statement.json": {
+      rename: param: "balanceId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.transactions`")|top
+    }
+  }
+
+  entity: bank_account_detail: {
+    path: "/profiles/{profileId}/account-details-orders": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/profiles/{profileId}/account-details/payments/{paymentId}/returns": {
+      rename: param: "paymentId": *"payment_id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/bank-details": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: batch_group: {
+    path: "/profiles/{profileId}/batch-groups": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/batch-groups/{batchGroupId}": {
+      rename: param: "batchGroupId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+    path: "/profiles/{profileId}/batch-groups/{batchGroupId}/transfers": {
+      action: "transfer": {}
+      rename: param: "batchGroupId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/batch-payments/{batchGroupId}/payments": {
+      rename: param: "batchGroupId": *"batch_payment_id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: bulk_settlement: {
+    path: "/settlements": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: business_profile: {
+    path: "/profiles/business-profile": {
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/business-profile": {
+      rename: param: "profileId": *"profile_id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: card: {
+    path: "/spend/profiles/{profileId}/cards": {
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.cards`")|top
+      op: list: transform: page: total: *("`body.totalCount`")|top
+    }
+    path: "/spend/profiles/{profileId}/cards/{cardToken}": {
+      rename: param: "cardToken": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+    }
+    path: "/spend/profiles/{profileId}/cards/{cardToken}/reset-pin-count": {
+      action: "reset_pin_count": {}
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/spend/profiles/{profileId}/cards/{cardToken}/spending-permissions": {
+      action: "spending_permission": {}
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.permissions`")|top
+      op: patch: method: *PATCH
+    }
+    path: "/spend/profiles/{profileId}/cards/{cardToken}/status": {
+      action: "status": {}
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: card_holder_limit: {
+    path: "/spend/profiles/{businessProfileId}/card-holder-profiles/{cardHolderProfileId}/spend-limits": {
+      rename: param: "businessProfileId": *"profile_id"
+      rename: param: "cardHolderProfileId": *"card_holder_profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.spendLimits`")|top
+      op: patch: method: *PATCH
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: card_limit: {
+    path: "/spend/profiles/{profileId}/cards/{cardToken}/spend-limits": {
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: card_order: {
+    path: "/spend/address/validate": {
+      op: create: method: *POST
+    }
+    path: "/spend/profiles/{profileId}/card-orders": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.cardOrders`")|top
+      op: list: transform: page: total: *("`body.totalCount`")|top
+    }
+    path: "/spend/profiles/{profileId}/card-orders/availability": {
+      action: "availability": {}
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.cardPrograms`")|top
+    }
+    path: "/spend/profiles/{profileId}/card-orders/{cardOrderId}": {
+      rename: param: "cardOrderId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+    }
+    path: "/spend/profiles/{profileId}/card-orders/{cardOrderId}/requirements": {
+      action: "requirement": {}
+      rename: param: "cardOrderId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.requirements`")|top
+    }
+    path: "/spend/profiles/{profileId}/card-orders/{cardOrderId}/status": {
+      action: "status": {}
+      rename: param: "cardOrderId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: card_sensitive_detail: {
+    path: "/twcard-data/v1/clientSideEncryption/fetchEncryptingKey": {
+      op: load: method: *GET
+    }
+    path: "/twcard-data/v1/sensitive-card-data/details": {
+      op: create: method: *POST
+    }
+    path: "/twcard-data/v1/sensitive-card-data/pin": {
+      op: create: method: *POST
+    }
+    path: "/twcard-data/v1/sensitive-card-data/preset-pin": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: card_transaction: {
+    path: "/spend/profiles/{profileId}/cards/transactions/{transactionId}": {
+      rename: param: "profileId": *"profile_id"
+      rename: param: "transactionId": *"id"
+      op: load: method: *GET
+    }
+    path: "/spend/profiles/{profileId}/cards/{cardToken}/transactions": {
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.transactions`")|top
+    }
+  }
+
+  entity: case: {
+    path: "/cases": {
+      op: create: method: *POST
+    }
+    path: "/cases/{caseId}": {
+      rename: param: "caseId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: claim_account: {
+    path: "/user/claim-account": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: comparison: {
+    path: "/comparisons": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: contact: {
+    path: "/profiles/{profileId}/contacts": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: create_third_party_transfer_response_content: {
+    path: "/profiles/{profileId}/third-party-transfers": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: currency: {
+    path: "/currencies": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: delivery_estimate: {
+    path: "/delivery-estimates/{transferId}": {
+      rename: param: "transferId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: delivery_update: {
+    path: "/simulation/transfers/{transferId}/delivery-update": {
+      rename: param: "transferId": *"transfer_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: digital_wallet: {
+    path: "/spend/profiles/{profileId}/cards/{cardToken}/payment-tokens": {
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/spend/profiles/{profileId}/cards/{cardToken}/payment-tokens/{paymentTokenUniqueReference}/activation": {
+      rename: param: "cardToken": *"card_token"
+      rename: param: "paymentTokenUniqueReference": *"payment_token_unique_reference"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/twcard-data/v1/push-provisioning/encrypted-payload/apple-pay": {
+      op: create: method: *POST
+    }
+    path: "/twcard-data/v1/push-provisioning/encrypted-payload/google-pay": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: direct_debit_account: {
+    path: "/profiles/{profileId}/direct-debit-accounts": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+  }
+
+  entity: director: {
+    path: "/profiles/{profileId}/directors": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: remove: method: *DELETE
+      op: update: method: *PUT
+    }
+  }
+
+  entity: dispute: {
+    path: "/spend/profiles/{profileId}/dispute-form/file": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/spend/profiles/{profileId}/dispute-form/flows/{scheme}/{reason}": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/spend/profiles/{profileId}/disputes": {
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.disputes`")|top
+      op: list: transform: page: total: *("`body.totalCount`")|top
+    }
+    path: "/spend/profiles/{profileId}/disputes/{disputeId}": {
+      rename: param: "disputeId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+    }
+    path: "/spend/profiles/{profileId}/disputes/{disputeId}/status": {
+      action: "status": {}
+      rename: param: "disputeId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: update: method: *PUT
+    }
+  }
+
+  entity: dispute_reason: {
+    path: "/spend/profiles/{profileId}/dispute-form/reasons": {
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: facetec: {
+    path: "/facetec/public-key": {
+      action: "public_key": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: file: {
+    path: "/cases/files": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.files`")|top
+    }
+  }
+
+  entity: funding: {
+    path: "/profiles/{profileId}/transfers/{transferId}/payments": {
+      rename: param: "profileId": *"profile_id"
+      rename: param: "transferId": *"transfer_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: hold_limit_breach: {
+    path: "/profiles/{profileId}/balances/hold-limit-breach": {
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: incoming_transfer: {
+    path: "/incoming-transfers/{incomingTransferId}": {
+      rename: param: "incomingTransferId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: jose: {
+    path: "/auth/jose/playground/jwe": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+    path: "/auth/jose/playground/jwe-direct-encryption": {
+      op: create: method: *POST
+    }
+    path: "/auth/jose/playground/jws": {
+      op: create: method: *POST
+    }
+    path: "/auth/jose/playground/jwsjwe": {
+      op: create: method: *POST
+      op: load: method: *GET
+    }
+    path: "/auth/jose/request/public-keys": {
+      op: create: method: *POST
+    }
+    path: "/auth/jose/response/public-keys": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: kyc_review: {
+    path: "/profiles/{profileId}/kyc-requirements/{requirementKey}": {
+      rename: param: "profileId": *"profile_id"
+      rename: param: "requirementKey": *"requirement_key"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/kyc-reviews": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/profiles/{profileId}/kyc-reviews/{kycReviewId}": {
+      rename: param: "kycReviewId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: link_request: {
+    path: "/embedded-flows/link-requests/{embeddedLinkRequestId}": {
+      rename: param: "embeddedLinkRequestId": *"id"
+      op: load: method: *GET
+    }
+    path: "/profiles/{profileId}/embedded-flows/link-requests/kyc-reviews": {
+      action: "kyc_review": {}
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/embedded-flows/link-requests/payment-instrument": {
+      action: "payment_instrument": {}
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/embedded-flows/link-requests/recipients": {
+      action: "recipient": {}
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/embedded-flows/link-requests/spend/disputes": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: lookup_gpi_tracking_response_content: {
+    path: "/gpi-tracking": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: message: {
+    path: "/cases/{caseId}/messages": {
+      rename: param: "caseId": *"case_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: multi_currency_account: {
+    path: "/borderless-accounts-configuration/profiles/{profileId}/available-currencies": {
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+    }
+    path: "/borderless-accounts-configuration/profiles/{profileId}/payin-currencies": {
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+    }
+    path: "/multi-currency-account/eligibility": {
+      action: "eligibility": {}
+      op: load: method: *GET
+    }
+  }
+
+  entity: n3ds: {
+    path: "/spend/profiles/{profileId}/3dsecure/challenge-result": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: one_time_token: {
+    path: "/profiles/{profileId}/device-fingerprints/verify": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/facemaps/verify": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/pin/verify": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: ott: {
+    path: "/one-time-token/sms/verify": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.oneTimeTokenProperties`")|top
+    }
+    path: "/one-time-token/status": {
+      op: load: method: *GET
+      op: load: transform: res: *("`body.oneTimeTokenProperties`")|top
+    }
+    path: "/one-time-token/voice/verify": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.oneTimeTokenProperties`")|top
+    }
+    path: "/one-time-token/whatsapp/verify": {
+      op: create: method: *POST
+      op: create: transform: res: *("`body.oneTimeTokenProperties`")|top
+    }
+  }
+
+  entity: payin: {
+    path: "/profiles/{profileId}/payin-sessions/{payinSessionId}/paynow": {
+      rename: param: "payinSessionId": *"payin_session_id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}/payins": {
+      rename: param: "paymentInstrumentId": *"payment_instrument_id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: payin_deposit_detail: {
+    path: "/profiles/{profileId}/transfers/{transferId}/deposit-details/bank-transfer": {
+      rename: param: "profileId": *"profile_id"
+      rename: param: "transferId": *"transfer_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: payment: {
+    path: "/transfers/{transferId}/payments": {
+      rename: param: "transferId": *"transfer_id"
+      op: list: method: *GET
+    }
+  }
+
+  entity: payment_initiation: {
+    path: "/profiles/{profileId}/batch-groups/{batchGroupId}/payment-initiations": {
+      rename: param: "batchGroupId": *"batch_group_id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/batch-groups/{batchGroupId}/payment-initiations/{paymentInitiationId}": {
+      rename: param: "batchGroupId": *"batch_group_id"
+      rename: param: "paymentInitiationId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: payment_instrument: {
+    path: "/profiles/{profileId}/payment-instruments": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}": {
+      rename: param: "paymentInstrumentId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+    }
+    path: "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}/payins": {
+      action: "payin": {}
+      rename: param: "paymentInstrumentId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.payins`")|top
+    }
+  }
+
+  entity: payment_instrument_details_resource: {
+    path: "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}/manual-confirmation": {
+      action: "manual-confirmation": {}
+      rename: param: "paymentInstrumentId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: payment_intent: {
+    path: "/settlement/allocations/{allocationId}/payment-intents/{paymentIntentId}": {
+      rename: param: "allocationId": *"allocation_id"
+      rename: param: "paymentIntentId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: phone_number: {
+    path: "/application/users/{userId}/phone-numbers": {
+      rename: param: "userId": *"user_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: production: {
+    path: "/spend/profiles/{profileId}/cards/{cardToken}/production": {
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: profile: {
+    path: "/profiles": {
+      op: list: method: *GET
+    }
+    path: "/profiles/personal-profile": {
+      action: "personal_profile": {}
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}": {
+      rename: param: "profileId": *"id"
+      op: load: method: *GET
+    }
+    path: "/profiles/{profileId}/balance-capacity": {
+      action: "balance_capacity": {}
+      rename: param: "profileId": *"id"
+      op: load: method: *GET
+    }
+    path: "/profiles/{profileId}/business-profile/business-representative": {
+      action: "business_profile_business_representative": {}
+      rename: param: "profileId": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+    path: "/profiles/{profileId}/excess-money-account": {
+      action: "excess_money_account": {}
+      rename: param: "profileId": *"id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/multi-currency-account": {
+      action: "multi_currency_account": {}
+      rename: param: "profileId": *"id"
+      op: load: method: *GET
+    }
+    path: "/profiles/{profileId}/personal-profile": {
+      action: "personal_profile": {}
+      rename: param: "profileId": *"id"
+      op: update: method: *PUT
+    }
+    path: "/profiles/{profileId}/pin": {
+      action: "pin": {}
+      rename: param: "profileId": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/profiles/{profileId}/update-window": {
+      action: "update_window": {}
+      rename: param: "profileId": *"id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+    path: "/profiles/{profileId}/verification-documents": {
+      action: "verification_document": {}
+      rename: param: "profileId": *"id"
+      op: create: method: *POST
+      op: update: method: *PUT
+    }
+    path: "/profiles/{profileId}/verification-status/bank-transfer": {
+      action: "verification_status_bank_transfer": {}
+      rename: param: "profileId": *"id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/verification-status/upload-document": {
+      action: "verification_status_upload_document": {}
+      rename: param: "profileId": *"id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: quote: {
+    path: "/profiles/{profileId}/quotes": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/quotes/{quoteId}": {
+      rename: param: "profileId": *"profile_id"
+      rename: param: "quoteId": *"id"
+      op: load: method: *GET
+      op: patch: method: *PATCH
+    }
+    path: "/quotes": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: rate: {
+    path: "/rates": {
+      op: list: method: *GET
+    }
+  }
+
+  entity: recipient: {
+    path: "/accounts": {
+      op: create: method: *POST
+      op: list: method: *GET
+      op: list: transform: res: *("`body.content`")|top
+    }
+    path: "/accounts/{accountId}": {
+      rename: param: "accountId": *"account_id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+    }
+    path: "/accounts/{accountId}/confirmations": {
+      rename: param: "accountId": *"account_id"
+      op: patch: method: *PATCH
+    }
+    path: "/accounts/{accountId}/quotes/{quoteId}/compatibility": {
+      rename: param: "accountId": *"account_id"
+      rename: param: "quoteId": *"quote_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: rule: {
+    path: "/spend/applications/{clientId}/spend-controls/rules": {
+      rename: param: "clientId": *"application_id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+  }
+
+  entity: saml: {
+    path: "/login/saml2/sso": {
+      op: create: method: *POST
+    }
+    path: "/saml2/authenticate/{registrationId}": {
+      rename: param: "registrationId": *"registration_id"
+      op: load: method: *GET
+    }
+    path: "/saml2/metadata": {
+      op: load: method: *GET
+    }
+  }
+
+  entity: sca_device_fingerprint: {
+    path: "/profiles/{profileId}/device-fingerprints": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/device-fingerprints/{deviceFingerprintId}": {
+      rename: param: "deviceFingerprintId": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: sca_facemap: {
+    path: "/profiles/{profileId}/facemaps": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: sca_otp: {
+    path: "/application/users/{userId}/phone-numbers/{phoneNumberId}": {
+      rename: param: "phoneNumberId": *"phone_number_id"
+      rename: param: "userId": *"user_id"
+      op: remove: method: *DELETE
+    }
+    path: "/one-time-token/sms/trigger": {
+      op: create: method: *POST
+    }
+    path: "/one-time-token/voice/trigger": {
+      op: create: method: *POST
+    }
+    path: "/one-time-token/whatsapp/trigger": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: sca_session: {
+    path: "/profiles/{profileId}/sca-sessions/authorise": {
+      action: "authorise": {}
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.oneTimeTokenProperties`")|top
+    }
+  }
+
+  entity: settlement_allocation_response_content: {
+    path: "/settlement/allocations": {
+      action: "allocation": {}
+      op: create: method: *POST
+    }
+    path: "/settlement/allocations/{allocationId}": {
+      rename: param: "allocationId": *"allocation_id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: simulation: {
+    path: "/simulation/balance/topup": {
+      op: create: method: *POST
+    }
+    path: "/simulation/profiles/{profileId}/bank-transactions/import": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements": {
+      rename: param: "kycReviewId": *"kyc_review_id"
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.requirements`")|top
+    }
+    path: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/add": {
+      rename: param: "kycReviewId": *"kyc_review_id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/submit": {
+      rename: param: "kycReviewId": *"kyc_review_id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/verify": {
+      rename: param: "kycReviewId": *"kyc_review_id"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/simulation/profiles/{profileId}/swift-in": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/simulation/profiles/{profileId}/verifications": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/simulation/sanction-cases": {
+      action: "sanction_case": {}
+      op: create: method: *POST
+    }
+    path: "/simulation/settlement/funds": {
+      op: create: method: *POST
+    }
+    path: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/production": {
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions": {
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+    }
+    path: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/authorisation": {
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.reference`")|top
+    }
+    path: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/clearing": {
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.reference`")|top
+    }
+    path: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/reversal": {
+      rename: param: "cardToken": *"card_token"
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: create: transform: res: *("`body.reference`")|top
+    }
+    path: "/simulation/transfers/{transferId}/payout-failure": {
+      rename: param: "transferId": *"transfer_id"
+      op: create: method: *POST
+    }
+    path: "/simulation/transfers/{transferId}/{status}": {
+      rename: param: "transferId": *"transfer_id"
+      op: load: method: *GET
+    }
+    path: "/simulation/verify-profile": {
+      action: "verify_profile": {}
+      op: create: method: *POST
+    }
+  }
+
+  entity: spend_control: {
+    path: "/spend/applications/{clientId}/spend-controls/rules/applied": {
+      rename: param: "clientId": *"application_id"
+      op: list: method: *GET
+    }
+    path: "/spend/applications/{clientId}/spend-controls/rules/apply": {
+      rename: param: "clientId": *"application_id"
+      op: create: method: *POST
+    }
+    path: "/spend/applications/{clientId}/spend-controls/rules/unapply": {
+      rename: param: "clientId": *"application_id"
+      op: create: method: *POST
+    }
+    path: "/spend/applications/{clientId}/spend-controls/rules/{ruleId}": {
+      rename: param: "clientId": *"application_id"
+      rename: param: "ruleId": *"rule_id"
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: spend_limit: {
+    path: "/spend/profiles/{profileId}/cards/{cardToken}/spend-limits/{granularity}": {
+      rename: param: "cardToken": *"card_id"
+      rename: param: "granularity": *"id"
+      rename: param: "profileId": *"profile_id"
+      op: remove: method: *DELETE
+    }
+    path: "/spend/profiles/{profileId}/spend-limits": {
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.spendLimits`")|top
+      op: patch: method: *PATCH
+    }
+  }
+
+  entity: subscription: {
+    path: "/applications/{clientKey}/subscriptions": {
+      rename: param: "clientKey": *"client_key"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/applications/{clientKey}/subscriptions/{subscriptionId}": {
+      rename: param: "clientKey": *"client_key"
+      rename: param: "subscriptionId": *"id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+    }
+    path: "/profiles/{profileId}/subscriptions": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/profiles/{profileId}/subscriptions/{subscriptionId}": {
+      rename: param: "profileId": *"profile_id"
+      rename: param: "subscriptionId": *"id"
+      op: load: method: *GET
+      op: remove: method: *DELETE
+    }
+  }
+
+  entity: test_notification: {
+    path: "/applications/{clientKey}/subscriptions/{subscriptionId}/test-notifications": {
+      rename: param: "clientKey": *"client_key"
+      rename: param: "subscriptionId": *"subscription_id"
+      op: create: method: *POST
+    }
+  }
+
+  entity: third_party_transfer: {
+    path: "/profiles/{profileId}/third-party-transfers/{transferId}": {
+      rename: param: "profileId": *"profile_id"
+      rename: param: "transferId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: token: {
+    path: "/oauth/token": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: transfer: {
+    path: "/transfers": {
+      op: create: method: *POST
+      op: list: method: *GET
+    }
+    path: "/transfers/{transferId}": {
+      rename: param: "transferId": *"id"
+      op: load: method: *GET
+    }
+    path: "/transfers/{transferId}/cancel": {
+      action: "cancel": {}
+      rename: param: "transferId": *"id"
+      op: update: method: *PUT
+    }
+    path: "/transfers/{transferId}/documents/noc": {
+      action: "document_noc": {}
+      rename: param: "transferId": *"id"
+      op: load: method: *GET
+    }
+    path: "/transfers/{transferId}/invoices/bankingpartner": {
+      action: "invoice_bankingpartner": {}
+      rename: param: "transferId": *"id"
+      op: load: method: *GET
+    }
+    path: "/transfers/{transferId}/receipt.pdf": {
+      action: "receiptpdf": {}
+      rename: param: "transferId": *"id"
+      op: load: method: *GET
+    }
+    path: "/transfers/{transferId}/us-combined-receipt.pdf": {
+      action: "us_combined_receiptpdf": {}
+      rename: param: "transferId": *"id"
+      op: load: method: *GET
+    }
+  }
+
+  entity: transfer_requirement: {
+    path: "/transfer-requirements": {
+      op: create: method: *POST
+    }
+  }
+
+  entity: ubo: {
+    path: "/profiles/{profileId}/ubos": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+      op: list: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: user: {
+    path: "/me": {
+      op: load: method: *GET
+    }
+    path: "/user/signup/registration_code": {
+      op: create: method: *POST
+    }
+    path: "/users/exists": {
+      action: "exist": {}
+      op: create: method: *POST
+    }
+    path: "/users/{userId}": {
+      rename: param: "userId": *"id"
+      op: load: method: *GET
+    }
+    path: "/users/{userId}/contact-email": {
+      action: "contact_email": {}
+      rename: param: "userId": *"id"
+      op: load: method: *GET
+      op: update: method: *PUT
+    }
+  }
+
+  entity: verification: {
+    path: "/profiles/{profileId}/additional-verification/upload-evidences": {
+      rename: param: "profileId": *"profile_id"
+      op: create: method: *POST
+    }
+    path: "/profiles/{profileId}/verification-status/required-evidences": {
+      rename: param: "profileId": *"profile_id"
+      op: list: method: *GET
+      op: list: transform: res: *("`body.required_evidences`")|top
+    }
+  }
+
+}

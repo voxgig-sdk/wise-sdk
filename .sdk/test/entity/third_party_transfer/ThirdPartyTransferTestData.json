@@ -1,0 +1,96 @@
+{
+  "existing": {
+    "third_party_transfer": {
+      "THIRD_PARTY_TRANSFER00": {
+        "created": "sa0",
+        "details": {},
+        "hasActiveIssues": true,
+        "id": "THIRD_PARTY_TRANSFER00",
+        "originalTransferId": "sa4",
+        "originator": {},
+        "quote": "sa6",
+        "rate": 167,
+        "sourceAccount": 168,
+        "sourceCurrency": "sa9",
+        "sourceValue": 170,
+        "status": "sab",
+        "targetAccount": 172,
+        "targetCurrency": "sad",
+        "targetValue": 174,
+        "user": 175,
+        "profile_id": "PROFILE01"
+      },
+      "THIRD_PARTY_TRANSFER01": {
+        "created": "s140",
+        "details": {},
+        "hasActiveIssues": true,
+        "id": "THIRD_PARTY_TRANSFER01",
+        "originalTransferId": "s144",
+        "originator": {},
+        "quote": "s146",
+        "rate": 327,
+        "sourceAccount": 328,
+        "sourceCurrency": "s149",
+        "sourceValue": 330,
+        "status": "s14b",
+        "targetAccount": 332,
+        "targetCurrency": "s14d",
+        "targetValue": 334,
+        "user": 335,
+        "profile_id": "PROFILE01"
+      },
+      "THIRD_PARTY_TRANSFER02": {
+        "created": "s1e0",
+        "details": {},
+        "hasActiveIssues": true,
+        "id": "THIRD_PARTY_TRANSFER02",
+        "originalTransferId": "s1e4",
+        "originator": {},
+        "quote": "s1e6",
+        "rate": 487,
+        "sourceAccount": 488,
+        "sourceCurrency": "s1e9",
+        "sourceValue": 490,
+        "status": "s1eb",
+        "targetAccount": 492,
+        "targetCurrency": "s1ed",
+        "targetValue": 494,
+        "user": 495,
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "third_party_transfer": {
+      "third_party_transfer_ref01": {
+        "created": "s280",
+        "details": {},
+        "hasActiveIssues": true,
+        "originalTransferId": "s284",
+        "originator": {},
+        "quote": "s286",
+        "rate": 647,
+        "sourceAccount": 648,
+        "sourceCurrency": "s289",
+        "sourceValue": 650,
+        "status": "s28b",
+        "targetAccount": 652,
+        "targetCurrency": "s28d",
+        "targetValue": 654,
+        "user": 655
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/third-party-transfers": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/third-party-transfers/{transferId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,301 @@
+# Entity: ubo
+
+main: kit: entity: ubo: {
+
+  alias: field: {}
+
+  fields: {
+    addressFirstLine: {
+      h: "Address First Line"
+      n: "addressFirstLine"
+      r: false
+      sh: "First line of address."
+      t: "`$STRING`"
+    }
+    city: {
+      h: "City"
+      n: "city"
+      r: false
+      sh: "City of residential address."
+      t: "`$STRING`"
+    }
+    countryOfResidenceIso3Code: {
+      h: "Country Of Residence Iso3 Code"
+      n: "countryOfResidenceIso3Code"
+      r: false
+      sh: "3 character country code."
+      t: "`$STRING`"
+    }
+    dateOfBirth: {
+      h: "Date Of Birth"
+      n: "dateOfBirth"
+      r: false
+      sh: "Date of birth."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "ID of the ultimate beneficial owner."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Owner full name."
+      t: "`$STRING`"
+    }
+    ownershipPercentage: {
+      fo: "int32"
+      h: "Ownership Percentage"
+      n: "ownershipPercentage"
+      r: false
+      sh: "Percentage of ownership."
+      t: "`$INTEGER`"
+    }
+    postCode: {
+      h: "Post Code"
+      n: "postCode"
+      r: false
+      sh: "Address post code."
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "State or region of residential address."
+      t: "`$STRING`"
+    }
+    ubos: {
+      h: "Ubos"
+      n: "ubos"
+      r: false
+      syn: true
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "ubo"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "ubos"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/ubos"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/ubos"
+          q: {
+            exist: [
+              "profile_id"
+              "ubos"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "ubos"
+            }
+          ]
+          t: {
+            req: "`reqdata.ubos`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/ubos"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/ubos"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "ubos"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "ubos"
+          ]
+          co: {
+            id: "PUT /profiles/{profileId}/ubos"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/profiles/{profileId}/ubos"
+          q: {
+            exist: [
+              "profile_id"
+              "ubos"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "ubos"
+            }
+          ]
+          t: {
+            req: "`reqdata.ubos`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

@@ -1,0 +1,32 @@
+# BasicIncomingTransferFlow
+
+main: kit: flow: BasicIncomingTransferFlow:
+{
+  entity: "incoming_transfer",
+  kind: "basic",
+  name: "BasicIncomingTransferFlow",
+  step: [
+    {
+      i: {
+        ref: "incoming_transfer_ref01",
+        srcdatavar: "incoming_transfer_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "incoming_transfer01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-incoming_transfer_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicIncomingTransferFlow"
+}

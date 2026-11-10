@@ -1,0 +1,76 @@
+{
+  "existing": {
+    "account_requirement": {
+      "ACCOUNT_REQUIREMENT00": {
+        "accountHolderName": "s64",
+        "currency": "s65",
+        "details": {},
+        "fields": [],
+        "ownedByCustomer": true,
+        "profile": 105,
+        "title": "s6a",
+        "type": "s6b",
+        "ultimateBeneficiary": "s6c",
+        "usageInfo": "s6d",
+        "quote_id": "QUOTE01",
+        "id": "ACCOUNT_REQUIREMENT00"
+      },
+      "ACCOUNT_REQUIREMENT01": {
+        "accountHolderName": "sc8",
+        "currency": "sc9",
+        "details": {},
+        "fields": [],
+        "ownedByCustomer": true,
+        "profile": 205,
+        "title": "sce",
+        "type": "scf",
+        "ultimateBeneficiary": "sd0",
+        "usageInfo": "sd1",
+        "quote_id": "QUOTE01",
+        "id": "ACCOUNT_REQUIREMENT01"
+      },
+      "ACCOUNT_REQUIREMENT02": {
+        "accountHolderName": "s12c",
+        "currency": "s12d",
+        "details": {},
+        "fields": [],
+        "ownedByCustomer": true,
+        "profile": 305,
+        "title": "s132",
+        "type": "s133",
+        "ultimateBeneficiary": "s134",
+        "usageInfo": "s135",
+        "quote_id": "QUOTE01",
+        "id": "ACCOUNT_REQUIREMENT02"
+      }
+    }
+  },
+  "new": {
+    "account_requirement": {
+      "account_requirement_ref01": {
+        "accountHolderName": "s190",
+        "currency": "s191",
+        "details": {},
+        "fields": [],
+        "ownedByCustomer": true,
+        "profile": 405,
+        "title": "s196",
+        "type": "s197",
+        "ultimateBeneficiary": "s198",
+        "usageInfo": "s199"
+      }
+    }
+  },
+  "requests": {
+    "POST /quotes/{quoteId}/account-requirements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /quotes/{quoteId}/account-requirements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

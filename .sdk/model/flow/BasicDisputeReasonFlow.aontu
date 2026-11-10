@@ -1,0 +1,26 @@
+# BasicDisputeReasonFlow
+
+main: kit: flow: BasicDisputeReasonFlow:
+{
+  entity: "dispute_reason",
+  kind: "basic",
+  name: "BasicDisputeReasonFlow",
+  step: [
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "dispute_reason_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDisputeReasonFlow"
+}

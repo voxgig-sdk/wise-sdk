@@ -1,0 +1,32 @@
+# BasicAccountDetailFlow
+
+main: kit: flow: BasicAccountDetailFlow:
+{
+  entity: "account_detail",
+  kind: "basic",
+  name: "BasicAccountDetailFlow",
+  step: [
+    {
+      i: {
+        ref: "account_detail_ref01",
+        srcdatavar: "account_detail_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "account_detail01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-account_detail_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicAccountDetailFlow"
+}

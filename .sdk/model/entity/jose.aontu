@@ -1,0 +1,638 @@
+# Entity: jose
+
+main: kit: entity: jose: {
+
+  alias: field: {}
+
+  fields: {
+    keyId: {
+      fo: "UUID"
+      h: "Key Id"
+      n: "keyId"
+      r: false
+      sh: "ID of the key in UUID format."
+      t: "`$STRING`"
+    }
+    keyMaterial: {
+      h: "Key Material"
+      n: "keyMaterial"
+      r: false
+      t: "`$OBJECT`"
+    }
+    publicKeyMaterial: {
+      h: "Public Key Material"
+      n: "publicKeyMaterial"
+      r: false
+      t: "`$OBJECT`"
+    }
+    scope: {
+      h: "Scope"
+      n: "scope"
+      r: false
+      sh: "Scope of the key."
+      t: "`$STRING`"
+    }
+    validFrom: {
+      h: "Valid From"
+      n: "validFrom"
+      r: false
+      sh: "The key is valid from this date."
+      t: "`$STRING`"
+    }
+    validTill: {
+      h: "Valid Till"
+      n: "validTill"
+      r: false
+      sh: "The key is valid until this date."
+      t: "`$STRING`"
+    }
+    version: {
+      fo: "int32"
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "Version of the public key issued."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "jose"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /auth/jose/playground/jwsjwe"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "identity"
+                explode: false
+                k: "header"
+                n: "accept_encoding"
+                or: "Accept-Encoding"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "2333836d-2e1c-4acd-8b52-234d379260aa"
+                explode: false
+                k: "header"
+                n: "x_tw_jose_encryption_kid"
+                or: "X-TW-JOSE-Encryption-kid"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "jws+jwe"
+                explode: false
+                k: "header"
+                n: "x_tw_jose_method"
+                or: "x-tw-jose-method"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/auth/jose/playground/jwsjwe"
+          q: {
+            "$action": "jwsjwe"
+            exist: [
+              "x_tw_jose_encryption_kid"
+              "x_tw_jose_method"
+            ]
+          }
+          rb: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          s: [
+            {
+              lit: "auth"
+            }
+            {
+              lit: "jose"
+            }
+            {
+              lit: "playground"
+            }
+            {
+              lit: "jwsjwe"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /auth/jose/playground/jwe"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "jwe"
+                explode: false
+                k: "header"
+                n: "x_tw_jose_method"
+                or: "x-tw-jose-method"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/auth/jose/playground/jwe"
+          q: {
+            "$action": "jwe"
+            exist: [
+              "x_tw_jose_method"
+            ]
+          }
+          rb: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          s: [
+            {
+              lit: "auth"
+            }
+            {
+              lit: "jose"
+            }
+            {
+              lit: "playground"
+            }
+            {
+              lit: "jwe"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /auth/jose/playground/jwe-direct-encryption"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "jwe"
+                explode: false
+                k: "header"
+                n: "x_tw_jose_method"
+                or: "x-tw-jose-method"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/auth/jose/playground/jwe-direct-encryption"
+          q: {
+            "$action": "jwe-direct-encryption"
+            exist: [
+              "x_tw_jose_method"
+            ]
+          }
+          rb: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          s: [
+            {
+              lit: "auth"
+            }
+            {
+              lit: "jose"
+            }
+            {
+              lit: "playground"
+            }
+            {
+              lit: "jwe-direct-encryption"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /auth/jose/playground/jws"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "jws"
+                explode: false
+                k: "header"
+                n: "x_tw_jose_method"
+                or: "x-tw-jose-method"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/auth/jose/playground/jws"
+          q: {
+            "$action": "jws"
+            exist: [
+              "x_tw_jose_method"
+            ]
+          }
+          rb: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          s: [
+            {
+              lit: "auth"
+            }
+            {
+              lit: "jose"
+            }
+            {
+              lit: "playground"
+            }
+            {
+              lit: "jws"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "keyId"
+            "publicKeyMaterial"
+            "scope"
+            "validFrom"
+            "validTill"
+          ]
+          co: {
+            id: "POST /auth/jose/request/public-keys"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/auth/jose/request/public-keys"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "auth"
+            }
+            {
+              lit: "jose"
+            }
+            {
+              lit: "request"
+            }
+            {
+              lit: "public-keys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /auth/jose/response/public-keys"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "ES512"
+                explode: true
+                k: "query"
+                n: "algorithm"
+                or: "algorithm"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "PAYLOAD_SIGNING"
+                explode: true
+                k: "query"
+                n: "scope"
+                or: "scope"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "version"
+                or: "version"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/auth/jose/response/public-keys"
+          q: {
+            exist: [
+              "algorithm"
+              "scope"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "auth"
+            }
+            {
+              lit: "jose"
+            }
+            {
+              lit: "response"
+            }
+            {
+              lit: "public-keys"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /auth/jose/playground/jwe"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "2333836d-2e1c-4acd-8b52-234d379260aa"
+                explode: false
+                k: "header"
+                n: "x_tw_jose_encryption_kid"
+                or: "x-tw-jose-encryption-kid"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "jwe"
+                explode: false
+                k: "header"
+                n: "x_tw_jose_method"
+                or: "x-tw-jose-method"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/auth/jose/playground/jwe"
+          q: {
+            "$action": "jwe"
+            exist: [
+              "x_tw_jose_encryption_kid"
+              "x_tw_jose_method"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          s: [
+            {
+              lit: "auth"
+            }
+            {
+              lit: "jose"
+            }
+            {
+              lit: "playground"
+            }
+            {
+              lit: "jwe"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /auth/jose/playground/jwsjwe"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "2333836d-2e1c-4acd-8b52-234d379260aa"
+                explode: false
+                k: "header"
+                n: "x_tw_jose_encryption_kid"
+                or: "X-TW-JOSE-Encryption-kid"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "jws+jwe"
+                explode: false
+                k: "header"
+                n: "x_tw_jose_method"
+                or: "x-tw-jose-method"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/auth/jose/playground/jwsjwe"
+          q: {
+            "$action": "jwsjwe"
+            exist: [
+              "x_tw_jose_encryption_kid"
+              "x_tw_jose_method"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          s: [
+            {
+              lit: "auth"
+            }
+            {
+              lit: "jose"
+            }
+            {
+              lit: "playground"
+            }
+            {
+              lit: "jwsjwe"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,175 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { WiseSDK, BaseFeature, config, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('BusinessProfileEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when WISE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WISE_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = WiseSDK.test()
+    const ent = testsdk.BusinessProfile()
+    assert(null != ent)
+  })
+
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = WiseSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.BusinessProfile().create({"abn":1,"contactDetails":"x"} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.WISE_TEST_LIVE
+    for (const op of ['create']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'business_profile.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"abn":{"a":true,"h":"Abn","n":"abn","r":false,"sh":"Australian Business Number (only for Australian businesses).","t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"abn","index$":0},"acn":{"a":true,"h":"Acn","n":"acn","r":false,"sh":"Australian Company Number (only for Australian businesses).","t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"acn","index$":1},"actorEmail":{"a":true,"h":"Actor Email","n":"actorEmail","r":false,"sh":"Email of the actor.","t":"`$STRING`","key$":"actorEmail","index$":2},"address":{"a":true,"h":"Address","n":"address","r":false,"sh":"Main registered address of the business.","t":"`$OBJECT`","key$":"address","index$":3},"arbn":{"a":true,"h":"Arbn","n":"arbn","r":false,"sh":"Australian Registered Body Number (only for Australian businesses).","t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"arbn","index$":4},"businessFreeFormDescription":{"a":true,"h":"Business Free Form Description","n":"businessFreeFormDescription","r":false,"sh":"Free-form description of the business activities.","t":"`$STRING`","key$":"businessFreeFormDescription","index$":5},"businessName":{"a":true,"h":"Business Name","n":"businessName","r":false,"sh":"Registered business name.","t":"`$STRING`","key$":"businessName","index$":6},"businessNameInKatakana":{"a":true,"h":"Business Name In Katakana","n":"businessNameInKatakana","r":false,"sh":"Business name in Katakana (only for Japanese businesses).","t":["`$ONE`",["`$STRING`","`$NULL`"]],"key$":"businessNameInKatakana","index$":7},"businessRepresentative":{"a":true,"h":"Business Representative","n":"businessRepresentative","r":false,"sh":"Business representative details.","t":"`$OBJECT`","key$":"businessRepresentative","index$":8},"companyRole":{"a":true,"h":"Company Role","n":"companyRole","r":false,"sh":"Role of the person managing the business profile.","t":"`$STRING`","key$":"companyRole","index$":9},"companyType":{"a":true,"h":"Company Type","n":"companyType","r":false,"sh":"Type of company.","t":"`$STRING`","key$":"companyType","index$":10},"contactDetails":{"a":true,"h":"Contact Details","n":"contactDetails","op":{"create":{"req":true,"type":"`$OBJECT`"},"update":{"req":true,"type":"`$OBJECT`"}},"r":false,"sh":"Contact information for the business.","t":"`$OBJECT`","key$":"contactDetails","index$":11},"createdAt":{"a":true,"fo":"date-time","h":"Created At","n":"createdAt","r":false,"sh":"Timestamp when the profile was created (ISO 8601 format).","t":"`$STRING`","key$":"createdAt","index$":12},"currentState":{"a":true,"h":"Current State","n":"currentState","r":false,"sh":"Current status of this profile.","t":"`$STRING`","key$":"currentState","index$":13},"descriptionOfBusiness":{"a":true,"de":true,"h":"Description Of Business","n":"descriptionOfBusiness","r":false,"sh":"Deprecated.","t":"`$STRING`","key$":"descriptionOfBusiness","index$":14},"email":{"a":true,"h":"Email","n":"email","r":false,"sh":"Primary email address for the business.","t":"`$STRING`","key$":"email","index$":15},"externalCustomerId":{"a":true,"h":"External Customer Id","n":"externalCustomerId","r":false,"sh":"An external reference identifier mapping the customer of this profile to your system.","t":"`$STRING`","key$":"externalCustomerId","index$":16},"firstLevelCategory":{"a":true,"de":true,"h":"First Level Category","n":"firstLevelCategory","r":false,"sh":"Deprecated.","t":"`$STRING`","key$":"firstLevelCategory","index$":17},"fullName":{"a":true,"h":"Full Name","n":"fullName","r":false,"sh":"Full legal name of the business.","t":"`$STRING`","key$":"fullName","index$":18},"id":{"a":true,"fo":"int64","h":"Id","n":"id","r":false,"sh":"Unique identifier for the profile.","t":"`$INTEGER`","key$":"id","index$":19},"industryCategories":{"a":true,"h":"Industry Categories","n":"industryCategories","r":false,"sh":"One or more industry categories classifying the business.","t":"`$ARRAY`","key$":"industryCategories","index$":20},"operationalAddresses":{"a":true,"h":"Operational Addresses","n":"operationalAddresses","r":false,"sh":"An array of operational addresses for the business.","t":"`$ARRAY`","key$":"operationalAddresses","index$":21},"publicId":{"a":true,"h":"Public Id","n":"publicId","r":false,"sh":"Publicly accessible identifier for the profile.","t":"`$STRING`","key$":"publicId","index$":22},"registrationNumber":{"a":true,"h":"Registration Number","n":"registrationNumber","r":false,"sh":"Business registration number.","t":"`$STRING`","key$":"registrationNumber","index$":23},"secondLevelCategory":{"a":true,"de":true,"h":"Second Level Category","n":"secondLevelCategory","r":false,"sh":"Deprecated.","t":"`$STRING`","key$":"secondLevelCategory","index$":24},"type":{"a":true,"h":"Type","n":"type","r":true,"sh":"Type of profile.","t":"`$STRING`","key$":"type","index$":25},"updatedAt":{"a":true,"fo":"date-time","h":"Updated At","n":"updatedAt","r":false,"sh":"Timestamp when the profile was last updated (ISO 8601 format).","t":"`$STRING`","key$":"updatedAt","index$":26},"userId":{"a":true,"fo":"int64","h":"User Id","n":"userId","r":false,"sh":"The ID of the user associated with this profile.","t":"`$INTEGER`","key$":"userId","index$":27},"webpage":{"a":true,"h":"Webpage","n":"webpage","r":false,"sh":"Business website URL.","t":"`$STRING`","key$":"webpage","index$":28}},"id":{"field":"id","name":"id"},"name":"business_profile","op":{"create":{"input":"data","name":"create","points":[{"a":true,"bf":["abn","acn","actorEmail","address","arbn","businessFreeFormDescription","businessName","businessNameInKatakana","businessRepresentative","companyRole","companyType","contactDetails","externalCustomerId","firstLevelCategory","industryCategories","operationalAddresses","registrationNumber","secondLevelCategory","webpage"],"co":{"id":"POST /profiles/business-profile","source":"openapi3","version":2},"g":{"header":[{"a":true,"ex":"f47ac10b-58cc-4372-a567-0e02b2c3d479","explode":false,"k":"header","n":"x_external_correlation_id","or":"X-External-Correlation-Id","r":false,"style":"simple","t":"`$STRING`","index$":0},{"a":true,"explode":false,"k":"header","n":"xidempotence_uuid","or":"X-idempotence-uuid","r":false,"style":"simple","t":"`$STRING`","index$":1}]},"k":"http","m":"POST","o":"/profiles/business-profile","q":{},"r":{},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"profiles"},{"lit":"business-profile"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"update":{"input":"data","name":"update","points":[{"a":true,"bf":["abn","acn","address","arbn","businessFreeFormDescription","businessName","businessNameInKatakana","companyRole","companyType","contactDetails","externalCustomerId","firstLevelCategory","id","industryCategories","operationalAddresses","registrationNumber","secondLevelCategory","webpage"],"co":{"id":"PUT /profiles/{profileId}/business-profile","source":"openapi3","version":2},"g":{"header":[{"a":true,"ex":"f47ac10b-58cc-4372-a567-0e02b2c3d479","explode":false,"k":"header","n":"x_external_correlation_id","or":"X-External-Correlation-Id","r":false,"style":"simple","t":"`$STRING`","index$":0}],"params":[{"a":true,"k":"param","n":"profile_id","or":"profileId","r":true,"t":"`$INTEGER`","index$":0}]},"k":"http","m":"PUT","o":"/profiles/{profileId}/business-profile","q":{"exist":["profile_id"]},"r":{"param":{"profileId":"profile_id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"profiles"},{"var":"profile_id"},{"lit":"business-profile"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"update"}},"relations":{"ancestors":[["$.main.kit.entity.profile"]]},"key$":"business_profile","name__orig":"business_profile","Name":"BusinessProfile","name_":"business_profile","name-":"business-profile","NAME":"BUSINESS_PROFILE","index$":11}, {"active":true,"entity":"business_profile","key$":"BasicBusinessProfileFlow","kind":"basic","name":"BasicBusinessProfileFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"business_profile_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":false,"d":{},"i":{"ref":"business_profile_ref01","srcdatavar":"business_profile_ref01_data","suffix":"_up0","textfield":"abn"},"m":{},"o":"update","s":[{"apply":"TextFieldMark","def":{"mark":"Mark01-business_profile_ref01"}}],"v":[],"unreachable":true}]}, 'BusinessProfile', {"POST /profiles/business-profile":{"protocol":"http","requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"businessName":{"type":"string","description":"Business name.","example":"ABC Logistics Ltd","key$":"businessName"},"businessNameInKatakana":{"type":["string","null"],"description":"Business name in Katakana (only for Japanese businesses).","example":null,"key$":"businessNameInKatakana"},"businessFreeFormDescription":{"type":"string","description":"Business free form description. Required if `companyType` is `OTHER`. If this is not provided for an `OTHER` companyType, the profile should not be allowed to create a transfer.\nFor the rest of the companyTypes, it is highly recommended to always provide the business' description, to avoid payment issues such as suspensions. Wise will send a request for information (RFI) if this detail is not provided.\n","example":"Biz free form desc","key$":"businessFreeFormDescription"},"registrationNumber":{"type":"string","description":"Business registration number.","example":"12144939","key$":"registrationNumber"},"acn":{"type":["string","null"],"description":"Australian Company Number (only for Australian businesses).","example":null,"key$":"acn"},"abn":{"type":["string","null"],"description":"Australian Business Number (only for Australian businesses).","example":null,"key$":"abn"},"arbn":{"type":["string","null"],"description":"Australian Registered Body Number (only for Australian businesses).","example":null,"key$":"arbn"},"companyType":{"type":"string","description":"Company legal form.","enum":["LIMITED","PARTNERSHIP","SOLE_TRADER","LIMITED_BY_GUARANTEE","LIMITED_LIABILITY_COMPANY","FOR_PROFIT_CORPORATION","NON_PROFIT_CORPORATION","LIMITED_PARTNERSHIP","LIMITED_LIABILITY_PARTNERSHIP","GENERAL_PARTNERSHIP","SOLE_PROPRIETORSHIP","PRIVATE_LIMITED_COMPANY","PUBLIC_LIMITED_COMPANY","TRUST","OTHER"],"example":"LIMITED","key$":"companyType"},"companyRole":{"type":"string","description":"Role of person.","enum":["OWNER","DIRECTOR","OTHER"],"example":"OWNER","key$":"companyRole"},"address":{"type":"object","properties":{"addressFirstLine":{"type":"string","description":"First line of address.","example":"1 A road"},"city":{"type":"string","description":"City.","example":"London"},"countryIso2Code":{"type":"string","description":"2 letter country code.","example":"gb"},"countryIso3Code":{"type":"string","description":"3 letter country code. Must be lowercase.","example":"gbr"},"postCode":{"type":"string","description":"Postal code.","example":"11111"},"stateCode":{"type":"string","description":"State code."}},"key$":"address"},"contactDetails":{"type":"object","description":"Optional contact details for the business, separate from the representative's contact details.","required":["email","phoneNumber"],"properties":{"email":{"type":"string","format":"email","minLength":1,"description":"Contact email address for the business.","example":"contact@innovate-solutions.co.uk"},"phoneNumber":{"type":"string","minLength":5,"maxLength":25,"description":"Contact phone number for the business.","example":"+441617891234"}},"key$":"contactDetails"},"externalCustomerId":{"type":"string","description":"An external reference identifier mapping the customer of this profile to your system.","example":"67890-biz-acct","key$":"externalCustomerId"},"actorEmail":{"type":"string","description":"Email of the actor.","example":"biz-acct@abcl.com","key$":"actorEmail"},"industryCategories":{"type":"array","description":"One or more industry categories classifying the business. See [Business Categories](/guides/product/kyc/business-categories) for the full list of valid values.","minItems":1,"items":{"type":"string"},"example":["SOFTWARE_DEVELOPMENT_PUBLISHING","IT_CONSULTANCY_TECHNICAL_SUPPORT_SERVICES"],"key$":"industryCategories"},"firstLevelCategory":{"type":"string","deprecated":true,"description":"Legacy primary [business category](/guides/product/kyc/business-categories). Use `industryCategories` instead. Cannot be combined with `industryCategories`.\n","example":"CONSULTING_IT_BUSINESS_SERVICES","key$":"firstLevelCategory"},"secondLevelCategory":{"type":"string","deprecated":true,"description":"Legacy secondary [business category](/guides/product/kyc/business-categories). Use `industryCategories` instead. Cannot be combined with `industryCategories`.\n","example":"DESIGN","key$":"secondLevelCategory"},"operationalAddresses":{"type":"array","description":"List of operational addresses.","items":{"type":"object","properties":{"addressFirstLine":{"type":"string","example":"1 A road"},"city":{"type":"string","example":"London"},"countryIso2Code":{"type":"string","example":"gb"},"countryIso3Code":{"type":"string","example":"gbr"},"postCode":{"type":"string","example":"11111"},"stateCode":{"type":"string"}}},"key$":"operationalAddresses"},"webpage":{"type":"string","description":"Business webpage. Required if `companyType` is `OTHER`. If this is not provided for an `OTHER` companyType, the profile should not be allowed to create a transfer.\nFor the rest of the companyTypes, it is highly recommended to always provide the business' website, to avoid payment issues such as suspensions. Wise will send a request for information (RFI) if this detail is not provided.\n","example":"https://abc-logistics.com","key$":"webpage"},"businessRepresentative":{"type":"object","description":"Business representative details. Provide either the full representative details or just the `businessRepresentativeId` to link an existing representative.","properties":{"businessRepresentativeId":{"type":"integer","description":"ID of a Business Representative. This can be obtained from a previous call to create a business profile, in which case the same Business Representative is linked to the current business effectively sharing it across multiple businesses. When the Business Representative ID is provided, it is the only field required and none of the other fields should be provided."},"firstName":{"type":"string","description":"First name of the person representing the business (including middle names). Required unless Business Representative ID is provided.","example":"Oliver"},"lastName":{"type":"string","description":"Last name of the person representing the business. Required unless Business Representative ID is provided.","example":"Wilson"},"preferredName":{"type":"string","description":"Preferred first name, if different to the legal first name.","example":"Olivia"},"address":{"type":"object","properties":{"addressFirstLine":{},"city":{},"countryIso3Code":{},"postCode":{},"stateCode":{}}},"contactDetails":{"type":"object","properties":{"email":{},"phoneNumber":{}}},"dateOfBirth":{"type":"string","description":"Date of birth. Required unless Business Representative ID is provided.","example":"1977-07-01"},"localizedInformation":{"type":"array","description":"Optional localized information for the business representative.\nFor Kana names, provide both firstName and lastName entries\nwith localeScriptCode set to Kana.\nEach combination of key and localeScriptCode must be unique.\n","items":{"type":"object","required":[],"properties":{}}}},"key$":"businessRepresentative"}},"index$":1},"examples":{"withRepresentativeDetails":{"summary":"With Business Representative details","value":{"businessName":"ABC Logistics Ltd","businessNameInKatakana":null,"businessFreeFormDescription":"Biz free form desc","registrationNumber":"12144939","acn":null,"abn":null,"arbn":null,"companyType":"LIMITED","companyRole":"OWNER","address":{"addressFirstLine":"1 A road","city":"London","countryIso2Code":"gb","countryIso3Code":"gbr","postCode":"11111"},"contactDetails":{"email":"contact@innovate-solutions.co.uk","phoneNumber":"+441617891234"},"externalCustomerId":"67890-biz-acct","actorEmail":"biz-acct@abcl.com","industryCategories":["SOFTWARE_DEVELOPMENT_PUBLISHING","IT_CONSULTANCY_TECHNICAL_SUPPORT_SERVICES"],"operationalAddresses":[{"addressFirstLine":"1 A road","city":"London","countryIso2Code":"gb","countryIso3Code":"gbr","postCode":"11111"}],"webpage":"https://abc-logistics.com","businessRepresentative":{"firstName":"Oliver","lastName":"Wilson","localizedInformation":[{"key":"firstName","value":"オリバー","localeScriptCode":"Kana"},{"key":"lastName","value":"ウィルソン","localeScriptCode":"Kana"}],"preferredName":"Olivia","address":{"addressFirstLine":"50 Sunflower Ave","city":"Phoenix","countryIso3Code":"usa","postCode":"10025","stateCode":"AZ"},"dateOfBirth":"1977-07-01","contactDetails":{"email":"o.wilson@example.com","phoneNumber":"+3725064992"}}}},"withRepresentativeId":{"summary":"With Business Representative ID","value":{"businessName":"ABC Logistics Ltd","businessNameInKatakana":null,"businessFreeFormDescription":"Biz free form desc","registrationNumber":"12144939","acn":null,"abn":null,"arbn":null,"companyType":"LIMITED","companyRole":"OWNER","address":{"addressFirstLine":"1 A road","city":"London","countryIso2Code":"gb","countryIso3Code":"gbr","postCode":"11111"},"contactDetails":{"email":"contact@innovate-solutions.co.uk","phoneNumber":"+441617891234"},"externalCustomerId":"67890-biz-acct","actorEmail":"biz-acct@abcl.com","industryCategories":["SOFTWARE_DEVELOPMENT_PUBLISHING","IT_CONSULTANCY_TECHNICAL_SUPPORT_SERVICES"],"operationalAddresses":[{"addressFirstLine":"1 A road","city":"London","countryIso2Code":"gb","countryIso3Code":"gbr","postCode":"11111"}],"webpage":"https://abc-logistics.com","businessRepresentative":{"businessRepresentativeId":123}}}}}}},"parameters":[{"name":"X-idempotence-uuid","in":"header","required":false,"description":"Unique idempotency key for the request.","schema":{"type":"string","format":"uuid"},"index$":0},{"x-global":true,"name":"X-External-Correlation-Id","in":"header","required":false,"description":"Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. [Learn more](/guides/developer/headers/correlation-id).\n","schema":{"type":"string","format":"uuid","maxLength":36},"example":"f47ac10b-58cc-4372-a567-0e02b2c3d479","x-ref":"#/components/parameters/X-External-Correlation-Id","index$":1}]},"PUT /profiles/{profileId}/business-profile":{"protocol":"http","requestBody":{"content":{"application/json":{"schema":{"type":"object","properties":{"id":{"type":"integer","format":"int64","description":"Business profile ID. This must match the business profile ID supplied in the URL.","example":14599371,"key$":"id"},"businessName":{"type":"string","description":"Business name.","example":"ABC Logistics Ltd","key$":"businessName"},"businessNameInKatakana":{"type":["string","null"],"description":"Business name in Katakana (only for Japanese businesses).","example":null,"key$":"businessNameInKatakana"},"businessFreeFormDescription":{"type":"string","description":"Business free form description.","example":"Biz free form desc","key$":"businessFreeFormDescription"},"registrationNumber":{"type":"string","description":"Business registration number.","example":"12144939","key$":"registrationNumber"},"acn":{"type":["string","null"],"description":"Australian Company Number (only for Australian businesses).","example":null,"key$":"acn"},"abn":{"type":["string","null"],"description":"Australian Business Number (only for Australian businesses).","example":null,"key$":"abn"},"arbn":{"type":["string","null"],"description":"Australian Registered Body Number (only for Australian businesses).","example":null,"key$":"arbn"},"companyType":{"type":"string","description":"Company legal form.","enum":["LIMITED","PARTNERSHIP","SOLE_TRADER","LIMITED_BY_GUARANTEE","LIMITED_LIABILITY_COMPANY","FOR_PROFIT_CORPORATION","NON_PROFIT_CORPORATION","LIMITED_PARTNERSHIP","LIMITED_LIABILITY_PARTNERSHIP","GENERAL_PARTNERSHIP","SOLE_PROPRIETORSHIP","PRIVATE_LIMITED_COMPANY","PUBLIC_LIMITED_COMPANY","TRUST","OTHER"],"example":"LIMITED","key$":"companyType"},"address":{"type":"object","properties":{"addressFirstLine":{"type":"string","description":"First line of address.","example":"1 A road"},"city":{"type":"string","description":"City.","example":"London"},"countryIso2Code":{"type":"string","description":"2 letter country code.","example":"gb"},"countryIso3Code":{"type":"string","description":"3 letter country code. Must be lowercase.","example":"gbr"},"postCode":{"type":"string","description":"Postal code.","example":"11111"},"stateCode":{"type":"string","maxLength":5,"description":"State code."}},"key$":"address"},"companyRole":{"type":"string","description":"Role of person.","enum":["OWNER","DIRECTOR","OTHER"],"example":"OWNER","key$":"companyRole"},"contactDetails":{"type":"object","description":"Optional contact details for the business, separate from the representative's contact details.","required":["email","phoneNumber"],"properties":{"email":{"type":"string","format":"email","minLength":1,"description":"Contact email address for the business.","example":"contact@innovate-solutions.co.uk"},"phoneNumber":{"type":"string","minLength":5,"maxLength":25,"description":"Contact phone number for the business.","example":"+441617891234"}},"key$":"contactDetails"},"externalCustomerId":{"type":"string","description":"An external reference identifier mapping the customer of this profile to your system.","example":"67890-biz-acct","key$":"externalCustomerId"},"industryCategories":{"type":"array","description":"One or more industry categories classifying the business. See [Business Categories](/guides/product/kyc/business-categories) for the full list of valid values.","minItems":1,"items":{"type":"string"},"example":["SOFTWARE_DEVELOPMENT_PUBLISHING","IT_CONSULTANCY_TECHNICAL_SUPPORT_SERVICES"],"key$":"industryCategories"},"firstLevelCategory":{"type":"string","deprecated":true,"description":"Legacy primary [business category](/guides/product/kyc/business-categories). Use `industryCategories` instead. Cannot be combined with `industryCategories`.\n","example":"CONSULTING_IT_BUSINESS_SERVICES","key$":"firstLevelCategory"},"secondLevelCategory":{"type":"string","deprecated":true,"description":"Legacy secondary [business category](/guides/product/kyc/business-categories). Use `industryCategories` instead. Cannot be combined with `industryCategories`.\n","example":"DESIGN","key$":"secondLevelCategory"},"operationalAddresses":{"type":"array","description":"List of operational addresses.","items":{"type":"object","properties":{"addressFirstLine":{"type":"string","example":"1 A road"},"city":{"type":"string","example":"London"},"countryIso2Code":{"type":"string","example":"gb"},"countryIso3Code":{"type":"string","example":"gbr"},"postCode":{"type":"string","example":"11111"},"stateCode":{"type":"string","maxLength":5}}},"key$":"operationalAddresses"},"webpage":{"type":"string","description":"Business webpage. Required if `companyType` is `OTHER`. If this is not provided for an `OTHER` companyType, the profile should not be allowed to create a transfer.\nFor the rest of the companyTypes, it is highly recommended to always provide the business' website, to avoid payment issues such as suspensions. Wise will send a request for information (RFI) if this detail is not provided.\n","example":"https://abc-logistics.com","key$":"webpage"}},"index$":1}}}},"parameters":[{"name":"profileId","in":"path","required":true,"description":"Business profile ID.","schema":{"type":"integer","format":"int64"},"index$":0},{"x-global":true,"name":"X-External-Correlation-Id","in":"header","required":false,"description":"Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. [Learn more](/guides/developer/headers/correlation-id).\n","schema":{"type":"string","format":"uuid","maxLength":36},"example":"f47ac10b-58cc-4372-a567-0e02b2c3d479","x-ref":"#/components/parameters/X-External-Correlation-Id","index$":1}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"business_profile.create.0":"GET-only live run: needs POST /profiles/business-profile","business_profile.update.1":"GET-only live run: needs PUT /profiles/{profileId}/business-profile"} : {})
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+
+    // CREATE
+    const business_profile_ref01_ent = client.BusinessProfile()
+    let business_profile_ref01_data = setup.data.new.business_profile['business_profile_ref01']
+
+    business_profile_ref01_data = (await business_profile_ref01_ent.create(business_profile_ref01_data)).data()
+    assert(null != business_profile_ref01_data.id)
+
+
+  })
+})
+
+
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/business_profile/BusinessProfileTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = WiseSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['business_profile01','business_profile02','business_profile03','profile01','profile02','profile03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'WISE_TEST_BUSINESS_PROFILE_ENTID': idmap,
+    'WISE_TEST_LIVE': 'FALSE',
+    'WISE_TEST_EXPLAIN': 'FALSE',
+    'WISE_APIKEY': '',
+  })
+
+  idmap = env['WISE_TEST_BUSINESS_PROFILE_ENTID']
+
+  const live = 'TRUE' === env.WISE_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['WISE_TEST_BUSINESS_PROFILE_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new WiseSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.WISE_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.WISE_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "address": {
+      "ADDRESS00": {
+        "details": {},
+        "id": "ADDRESS00",
+        "profile": 32
+      },
+      "ADDRESS01": {
+        "details": {},
+        "id": "ADDRESS01",
+        "profile": 62
+      },
+      "ADDRESS02": {
+        "details": {},
+        "id": "ADDRESS02",
+        "profile": 92
+      }
+    }
+  },
+  "new": {
+    "address": {
+      "address_ref01": {
+        "details": {},
+        "profile": 122
+      }
+    }
+  },
+  "requests": {
+    "POST /addresses": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /addresses": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /addresses/{addressId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

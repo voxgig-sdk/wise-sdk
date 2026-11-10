@@ -1,0 +1,182 @@
+
+
+import Path from 'node:path'
+import * as Fs from 'node:fs'
+
+import { test, describe, afterEach } from 'node:test'
+import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
+
+
+import { WiseSDK, BaseFeature, config, stdutil } from '../../..'
+
+import {
+  envOverride,
+  liveClientOptions,
+  liveDelay,
+  loadEnvLocal,
+  makeCtrl,
+  makeMatch,
+  makeReqdata,
+  makeStepData,
+  makeValid,
+  maybeSkipControl,
+} from '../../utility'
+
+
+loadEnvLocal(__dirname + '/../../../.env.local')
+
+
+describe('SettlementAllocationEntity', async () => {
+
+  // Per-test live pacing. Delay is read from sdk-test-control.json's
+  // `test.live.delayMs`; only sleeps when WISE_TEST_LIVE=TRUE.
+  afterEach(liveDelay('WISE_TEST_LIVE'))
+
+  test('instance', async () => {
+    const testsdk = WiseSDK.test()
+    const ent = testsdk.SettlementAllocation()
+    assert(null != ent)
+  })
+
+
+  test('validate', async (t) => {
+    if (null == (config as any).feature?.validate) {
+      t.skip('feature not present in this SDK: validate')
+      return
+    }
+    const client = WiseSDK.test(undefined, { feature: { validate: { active: true } } })
+    await assert.rejects(client.SettlementAllocation().load({"id":1} as any),
+      (err: any) => 'validate_failed' === err.code)
+  })
+
+
+
+  test('basic', async (t) => {
+
+    const live = 'TRUE' === process.env.WISE_TEST_LIVE
+    for (const op of ['create', 'load']) {
+      if (!live && maybeSkipControl(t, 'entityOp', 'settlement_allocation.' + op, live)) return
+    }
+
+    
+    const setup = basicSetup()
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":{"command":{"a":true,"h":"Command","n":"command","r":true,"t":"`$OBJECT`","key$":"command","index$":0},"createdAt":{"a":true,"fo":"date-time","h":"Created At","n":"createdAt","op":{"create":{"req":true,"type":"`$STRING`"}},"r":false,"sh":"Timestamp when the settlement allocation was created.","t":"`$STRING`","key$":"createdAt","index$":1},"currency":{"a":true,"h":"Currency","n":"currency","op":{"create":{"req":true,"type":"`$STRING`"}},"r":false,"sh":"Currency code for the allocation (ISO 4217).","t":"`$STRING`","key$":"currency","index$":2},"expectedTotalAmount":{"a":true,"fo":"decimal","h":"Expected Total Amount","n":"expectedTotalAmount","op":{"create":{"req":true,"type":"`$NUMBER`"}},"r":false,"sh":"Expected total amount for the allocation.","t":"`$NUMBER`","key$":"expectedTotalAmount","index$":3},"file":{"a":true,"fo":"binary","h":"File","n":"file","r":true,"sh":"Settlement Allocation Request (SAR) file containing payment intent details","t":"`$STRING`","key$":"file","index$":4},"id":{"a":true,"fo":"uuid","h":"Id","n":"id","op":{"create":{"req":true,"type":"`$STRING`"}},"r":false,"sh":"Unique identifier of the settlement allocation.","t":"`$STRING`","key$":"id","index$":5},"nextPageToken":{"a":true,"h":"Next Page Token","n":"nextPageToken","r":false,"sh":"Token for fetching the next page of payment intents.","t":"`$STRING`","key$":"nextPageToken","index$":6},"paymentIntents":{"a":true,"h":"Payment Intents","n":"paymentIntents","r":false,"sh":"List of payment intents associated with the allocation.","t":"`$ARRAY`","key$":"paymentIntents","index$":7},"paymentReference":{"a":true,"h":"Payment Reference","n":"paymentReference","op":{"create":{"req":true,"type":"`$STRING`"}},"r":false,"sh":"Unique payment reference for the settlement allocation.","t":"`$STRING`","key$":"paymentReference","index$":8},"state":{"a":true,"h":"State","n":"state","op":{"create":{"req":true,"type":"`$STRING`"}},"r":false,"sh":"Current state of the settlement allocation.","t":"`$STRING`","key$":"state","index$":9},"updatedAt":{"a":true,"fo":"date-time","h":"Updated At","n":"updatedAt","op":{"create":{"req":true,"type":"`$STRING`"}},"r":false,"sh":"Timestamp when the settlement allocation was last updated.","t":"`$STRING`","key$":"updatedAt","index$":10}},"id":{"field":"id","name":"id"},"name":"settlement_allocation","op":{"create":{"input":"data","name":"create","points":[{"a":true,"co":{"id":"POST /settlement/allocations","source":"openapi3","version":2},"g":{"header":[{"a":true,"ex":"f47ac10b-58cc-4372-a567-0e02b2c3d479","explode":false,"k":"header","n":"x_external_correlation_id","or":"X-External-Correlation-Id","r":false,"style":"simple","t":"`$STRING`","index$":0},{"a":true,"ex":"1023c8e2a19cc42260968ab2dcf1698e8344a2939ac97f686d21aacb650273e2","explode":false,"k":"header","n":"x_signature","or":"X-Signature","r":true,"style":"simple","t":"`$STRING`","index$":1},{"a":true,"ex":"1700000000","explode":false,"k":"header","n":"x_signature_timestamp","or":"X-Signature-Timestamp","r":true,"style":"simple","t":"`$STRING`","index$":2}]},"k":"http","m":"POST","o":"/settlement/allocations","q":{"exist":["x_signature","x_signature_timestamp"]},"r":{},"rb":{"fields":[{"name":"command"},{"binary":true,"name":"file"}],"kind":"multipart","media":"multipart/form-data"},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"settlement"},{"lit":"allocations"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"create"},"load":{"input":"data","name":"load","points":[{"a":true,"co":{"id":"GET /settlement/allocations/{allocationId}","source":"openapi3","version":2},"g":{"header":[{"a":true,"ex":"f47ac10b-58cc-4372-a567-0e02b2c3d479","explode":false,"k":"header","n":"x_external_correlation_id","or":"X-External-Correlation-Id","r":false,"style":"simple","t":"`$STRING`","index$":0}],"params":[{"a":true,"ex":"f47ac10b-58cc-4372-a567-0e02b2c3d479","k":"param","n":"id","or":"allocationId","r":true,"t":"`$STRING`","index$":0}],"query":[{"a":true,"ex":true,"explode":true,"k":"query","n":"include_payment_intent","or":"includePaymentIntents","r":false,"style":"form","t":"`$BOOLEAN`","index$":0},{"a":true,"ex":20,"explode":true,"k":"query","n":"page_size","or":"pageSize","r":false,"style":"form","t":"`$INTEGER`","index$":1},{"a":true,"ex":"abc123","explode":true,"k":"query","n":"page_token","or":"pageToken","r":false,"style":"form","t":"`$STRING`","index$":2}]},"k":"http","m":"GET","o":"/settlement/allocations/{allocationId}","q":{"exist":["id"]},"r":{"param":{"allocationId":"id"}},"rs":{"kind":"json","media":"application/json"},"s":[{"lit":"settlement"},{"lit":"allocations"},{"var":"id"}],"t":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"settlement_allocation","name__orig":"settlement_allocation","Name":"SettlementAllocation","name_":"settlement_allocation","name-":"settlement-allocation","NAME":"SETTLEMENT_ALLOCATION","index$":61}, {"active":true,"entity":"settlement_allocation","key$":"BasicSettlementAllocationFlow","kind":"basic","name":"BasicSettlementAllocationFlow","param":{},"step":[{"a":true,"d":{},"i":{"ref":"settlement_allocation_ref01"},"m":{},"o":"create","s":[],"v":[],"index$":0},{"a":true,"d":{},"i":{"ref":"settlement_allocation_ref01","srcdatavar":"settlement_allocation_ref01_data","suffix":"_dt0"},"m":{"id":"settlement_allocation01"},"o":"load","s":[],"v":[{"apply":"TextFieldMark","def":{"mark":"Mark01-settlement_allocation_ref01"}}],"index$":1,"route":"GET /settlement/allocations/{allocationId}","record":{}}]}, 'SettlementAllocation', {"POST /settlement/allocations":{"protocol":"http","requestBody":{"required":true,"content":{"multipart/form-data":{"schema":{"type":"object","required":["command","file"],"properties":{"command":{"type":"object","required":["paymentReference","expectedTotalAmount","currency"],"properties":{"paymentReference":{"type":"string","description":"Unique payment reference for the allocation request","example":"PAY-2024-001234"},"expectedTotalAmount":{"type":"number","format":"decimal","description":"Expected total amount for the allocation","example":10000},"currency":{"type":"string","description":"Currency code","pattern":"^[A-Z]{3}$","example":"USD","x-ref":"#/components/schemas/CurrencyCode"}},"x-ref":"#/components/schemas/settlement-allocation-request","key$":"command"},"file":{"type":"string","format":"binary","description":"Settlement Allocation Request (SAR) file containing payment intent details","key$":"file"}},"index$":1}}}},"parameters":[{"name":"X-Signature","in":"header","required":true,"description":"HMAC-SHA256 signature of the request content, hex-encoded in lowercase (64 characters).\nMust be sent together with `X-Signature-Timestamp`.\n","schema":{"type":"string","pattern":"^[0-9a-f]{64}$"},"example":"1023c8e2a19cc42260968ab2dcf1698e8344a2939ac97f686d21aacb650273e2","index$":0},{"name":"X-Signature-Timestamp","in":"header","required":true,"description":"Unix timestamp in **seconds** at which `X-Signature` was generated, as a decimal string.\n\nThis value is part of the signed canonical string, so it must exactly match the timestamp used to compute the signature. Requests more than 300 seconds from Wise server time are rejected in either direction.\n","schema":{"type":"string","pattern":"^[0-9]+$"},"example":"1700000000","index$":1},{"x-global":true,"name":"X-External-Correlation-Id","in":"header","required":false,"description":"Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. [Learn more](/guides/developer/headers/correlation-id).\n","schema":{"type":"string","format":"uuid","maxLength":36},"example":"f47ac10b-58cc-4372-a567-0e02b2c3d479","x-ref":"#/components/parameters/X-External-Correlation-Id","index$":2}]},"GET /settlement/allocations/{allocationId}":{"protocol":"http","parameters":[{"name":"allocationId","in":"path","description":"Unique identifier of the settlement allocation.","schema":{"type":"string","pattern":"^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$","description":"Unique identifier of the settlement allocation.","example":"f47ac10b-58cc-4372-a567-0e02b2c3d479"},"required":true,"index$":0},{"name":"includePaymentIntents","in":"query","description":"Whether to include payment intents in the response.","schema":{"type":"boolean","description":"Whether to include payment intents in the response.","example":true},"index$":1},{"name":"pageToken","in":"query","description":"Token for fetching the next page of results.","schema":{"type":"string","description":"Token for fetching the next page of results.","example":"abc123"},"index$":2},{"name":"pageSize","in":"query","description":"Number of items per page.","schema":{"type":"integer","maximum":50,"description":"Number of items per page.","format":"int32","example":20},"index$":3},{"x-global":true,"name":"X-External-Correlation-Id","in":"header","required":false,"description":"Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. [Learn more](/guides/developer/headers/correlation-id).\n","schema":{"type":"string","format":"uuid","maxLength":36},"example":"f47ac10b-58cc-4372-a567-0e02b2c3d479","x-ref":"#/components/parameters/X-External-Correlation-Id","index$":4}]}}, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? {"settlement_allocation.create.0":"GET-only live run: needs POST /settlement/allocations","settlement_allocation.load.1":"GET-only live run: reads a record only settlement_allocation.create.0 gives"} : {})
+    }
+    const client = setup.client
+    const struct = setup.struct
+
+    const isempty = struct.isempty
+    const select = struct.select
+
+
+    // CREATE
+    const settlement_allocation_ref01_ent = client.SettlementAllocation()
+    let settlement_allocation_ref01_data = setup.data.new.settlement_allocation['settlement_allocation_ref01']
+
+    settlement_allocation_ref01_data = (await settlement_allocation_ref01_ent.create(settlement_allocation_ref01_data)).data()
+    assert(null != settlement_allocation_ref01_data.id)
+
+
+    // LOAD
+    const settlement_allocation_ref01_match_dt0: any = {}
+    settlement_allocation_ref01_match_dt0.id = settlement_allocation_ref01_data.id
+    const settlement_allocation_ref01_data_dt0 = (await settlement_allocation_ref01_ent.load(settlement_allocation_ref01_match_dt0)).data()
+    assert(settlement_allocation_ref01_data_dt0.id === settlement_allocation_ref01_data.id)
+
+
+  })
+})
+
+
+
+// main.kit.test.live.strict is true (the default is true): a live
+// request that fails, or a live test missing an input it needs,
+// fails the test.
+// An account with no record for a test to read skips it either way.
+const LIVE_STRICT = true
+
+function basicSetup(extra?: any) {
+  // TODO: fix test def options
+  const options: any = {} // null
+
+  // TODO: needs test utility to resolve path
+  const entityDataFile =
+    Path.resolve(__dirname, 
+      '../../../../.sdk/test/entity/settlement_allocation/SettlementAllocationTestData.json')
+
+  // TODO: file ready util needed?
+  const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8')
+
+  // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
+  const entityData = JSON.parse(entityDataSource)
+
+  options.entity = entityData.existing
+
+  let client = WiseSDK.test(options, extra)
+  const struct = client.utility().struct
+  const merge = struct.merge
+  const transform = struct.transform
+
+  let idmap = transform(
+    ['settlement_allocation01','settlement_allocation02','settlement_allocation03'],
+    {
+      '`$PACK`': ['', {
+        '`$KEY`': '`$COPY`',
+        '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
+      }]
+    })
+
+  const env = envOverride({
+    'WISE_TEST_SETTLEMENT_ALLOCATION_ENTID': idmap,
+    'WISE_TEST_LIVE': 'FALSE',
+    'WISE_TEST_EXPLAIN': 'FALSE',
+    'WISE_APIKEY': '',
+  })
+
+  idmap = env['WISE_TEST_SETTLEMENT_ALLOCATION_ENTID']
+
+  const live = 'TRUE' === env.WISE_TEST_LIVE
+
+  const transport = createLiveTransport()
+  if (live) {
+    const rawIds = process.env['WISE_TEST_SETTLEMENT_ALLOCATION_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
+    client = new WiseSDK(merge([
+      // FIRST, so the generated fields below win: sdk-test-control.json's
+      // test.client.options adds to the live client, it does not redirect it.
+      liveClientOptions(),
+      {
+        apikey: env.WISE_APIKEY,
+      },
+      // 'extra || {}', not a bare 'extra': struct.merge returns UNDEFINED when the
+      // last entry is undefined, and basicSetup is normally called with no
+      // argument at all - so a bare 'extra' silently discarded the apikey
+      // and server values above and handed the SDK undefined. Harmless
+      // while there was nothing in that object; not harmless now.
+      extra || {},
+      { system: { fetch: transport.fetch } }
+    ]))
+  }
+
+  const setup = {
+    idmap,
+    env,
+    options,
+    client,
+    struct,
+    data: entityData,
+    explain: 'TRUE' === env.WISE_TEST_EXPLAIN,
+    live,
+    transport,
+    now: Date.now(),
+  }
+
+  return setup
+}
+  

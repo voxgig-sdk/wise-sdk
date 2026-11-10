@@ -1,0 +1,782 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>AccountRequirement | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a aria-current="page" href="../api/account_requirement.html">AccountRequirement</a><div class="nav-sections"><a class="nav-section" href="#post-quotesquoteidaccount-requirements">POST /quotes/{quoteId}/account-requirements</a>
+<a class="nav-section" href="#get-quotesquoteidaccount-requirements">GET /quotes/{quoteId}/account-requirements</a></div>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="accountrequirement">AccountRequirement</h1>
+<p>The fields a recipient account needs, for a quote's route.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-quotesquoteidaccount-requirements"><code>/quotes/{quoteId}/account-requirements</code></a></td>
+<td><code>create</code></td>
+<td>Updated account requirements based on provided data</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-quotesquoteidaccount-requirements"><code>/quotes/{quoteId}/account-requirements</code></a></td>
+<td><code>list</code></td>
+<td>Dynamic account requirements for building a recipient form</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">account_requirements, err := client.AccountRequirement(nil).List(map[string]any{&quot;quote_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(account_requirements)
+created, err := client.AccountRequirement(nil).Create(map[string]any{&quot;quote_id&quot;: &quot;example&quot;, &quot;ultimateBeneficiary&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local account_requirements, err = client:AccountRequirement():list({ quote_id = &quot;example&quot; })
+local created, err = client:AccountRequirement():create({ quote_id = &quot;example&quot;, ultimateBeneficiary = {} })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$account_requirements = $client-&gt;AccountRequirement()-&gt;list([&quot;quote_id&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;AccountRequirement()-&gt;create([&quot;quote_id&quot; =&gt; &quot;example&quot;, &quot;ultimateBeneficiary&quot; =&gt; []]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">account_requirements = client.AccountRequirement().list({&quot;quote_id&quot;: &quot;example&quot;})
+created = client.AccountRequirement().create({ &quot;quote_id&quot;: &quot;example&quot;, &quot;ultimateBeneficiary&quot;: {} })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">account_requirements = client.AccountRequirement.list({ &quot;quote_id&quot; =&gt; &quot;example&quot; })
+created = client.AccountRequirement.create({ &quot;quote_id&quot; =&gt; &quot;example&quot;, &quot;ultimateBeneficiary&quot; =&gt; {} })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const account_requirements = await client.AccountRequirement().list({ quote_id: &quot;example&quot; })
+const created = await client.AccountRequirement().create({ quote_id: &quot;example&quot;, ultimateBeneficiary: {} })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient full name.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3-character currency code.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains the details of the recipient account specific to its currency and type.</td>
+</tr>
+<tr>
+<td><code>fields</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>List of UI field groups to collect required data.</td>
+</tr>
+<tr>
+<td><code>ownedByCustomer</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the recipient account is owned by the profile owner.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Personal or business profile ID of the sender.</td>
+</tr>
+<tr>
+<td><code>title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Human-readable title for the requirement group.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account type.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary</code></td>
+<td><code>one,object,null</code></td>
+<td>Yes</td>
+<td>The details about the ultimate beneficiary for this recipient, if present.</td>
+</tr>
+<tr>
+<td><code>usageInfo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional usage/help text.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-quotesquoteidaccount-requirements" class="operation" data-method="post"><code>POST</code> /quotes/{quoteId}/account-requirements</h3>
+<p>Operation ID: <code>recipientAccountRequirementsPost</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Quote ID (supports long or UUID-based IDs).</td>
+</tr>
+<tr>
+<td><code>originatorLegalEntityType</code></td>
+<td><code>query</code></td>
+<td><code>enum: BUSINESS, PRIVATE</code></td>
+<td>No</td>
+<td>Legal entity type override for the actual sender. Correspondent partners must include the <code>originatorLegalEntityType</code> query parameter to ensure the correct requirements are returned in the response. This parameter indicates whether the actual sender is <code>PRIVATE</code> or <code>BUSINESS</code>. When not included, the request is assumed to be for a <code>BUSINESS</code> entity, as Wise has no way of knowing if the true sender on a third-party transfer is a business or private individual.</td>
+</tr>
+<tr>
+<td><code>Accept-Minor-Version</code></td>
+<td><code>header</code></td>
+<td><code>enum: 1</code></td>
+<td>No</td>
+<td>Set to <code>1</code> to ensure the response includes both the recipient name and email fields, which are required to support currencies such as KRW, JPY and RUB.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient full name.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3-character currency code.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains the details of the recipient account specific to its currency and type. Common examples include <code>legalType</code>, <code>sortCode</code>, <code>accountNumber</code>, <code>email</code>, <code>dateOfBirth</code>, etc. Use the <strong>retrieve recipient account requirements</strong> endpoint to determine what is required for a specific recipient.</td>
+</tr>
+<tr>
+<td><code>details.accountNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account number (GBP example).</td>
+</tr>
+<tr>
+<td><code>details.dateOfBirth</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date of birth in ISO 8601 date format. Only required for certain currency routes. Call the <strong>retrieve recipient account requirements</strong> endpoint to confirm.</td>
+</tr>
+<tr>
+<td><code>details.legalType</code></td>
+<td><code>enum: PRIVATE, BUSINESS</code></td>
+<td>No</td>
+<td>Recipient legal type.</td>
+</tr>
+<tr>
+<td><code>details.sortCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Sort code (GBP example).</td>
+</tr>
+<tr>
+<td><code>ownedByCustomer</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the recipient account is owned by the profile owner. While optional, we recommend setting to <code>true</code> for self-transfers (such as a user sending money to their own account in another country or currency). Distinguishing self-transfers from third-party transfers improves routing and processing efficiency.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Personal or business profile ID of the sender. We recommend passing the business profile ID if multiple users manage your business account so all users authorized on the business account can access the recipient.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account type. These are currency/route-specific, for example, <code>sort_code</code>, <code>iban</code>, <code>email</code>.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>The details about the ultimate beneficiary for this recipient, if present. If absent, the ultimate beneficiary <em>is</em> the recipient.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.accountNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary account number.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank code.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank name.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary name details.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name.fullName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary full name.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-updated-account-requirements-based-on-provided-data" class="status" data-status="2xx">200: Updated account requirements based on provided data</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[].fields</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of UI field groups to collect required data.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The actual fields within this group.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].displayFormat</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional display formatting hint.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].example</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Example value for the field (may be empty string).</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Key to include in JSON when submitting recipient details.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].maxLength</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Maximum allowed length, when applicable.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].minLength</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Minimum allowed length, when applicable.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Human-readable label.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].refreshRequirementsOnChange</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, changing this field can alter requirements; call the POST account-requirements endpoint with updated data to refresh requirements.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].required</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this field is mandatory.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UI field type.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].validationAsync</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated. This validation will instead be performed when submitting the request.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].validationRegexp</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Regex pattern for validation, when applicable.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].valuesAllowed</code></td>
+<td><code>array,null</code></td>
+<td>No</td>
+<td>Allowed values for select/radio inputs; null for free-text/date inputs.</td>
+</tr>
+<tr>
+<td><code>[].fields[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Display name of this group.</td>
+</tr>
+<tr>
+<td><code>[].title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Human-readable title for the requirement group.</td>
+</tr>
+<tr>
+<td><code>[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Requirement group identifier (route/payout-method specific).</td>
+</tr>
+<tr>
+<td><code>[].usageInfo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional usage/help text.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-quotesquoteidaccount-requirements" class="operation" data-method="get"><code>GET</code> /quotes/{quoteId}/account-requirements</h3>
+<p>Operation ID: <code>recipientAccountRequirementsGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Quote ID (supports long or UUID-based IDs).</td>
+</tr>
+<tr>
+<td><code>originatorLegalEntityType</code></td>
+<td><code>query</code></td>
+<td><code>enum: BUSINESS, PRIVATE</code></td>
+<td>No</td>
+<td>Legal entity type override for the actual sender. Correspondent partners must include the <code>originatorLegalEntityType</code> query parameter to ensure the correct requirements are returned in the response. This parameter indicates whether the actual sender is <code>PRIVATE</code> or <code>BUSINESS</code>. When not included, the request is assumed to be for a <code>BUSINESS</code> entity, as Wise has no way of knowing if the true sender on a third-party transfer is a business or private individual.</td>
+</tr>
+<tr>
+<td><code>addressRequired</code></td>
+<td><code>query</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When set to <code>true</code>, the response always returns address as required, even if not required by the specific currency route. Include this query parameter set to <code>true</code> to force the address requirement regardless of currency. {% admonition type=&quot;warning&quot; %} Address requirement fields are subject to change. Be sure to build your integration in a way that handles unrecognized or changed fields. {% /admonition %}</td>
+</tr>
+<tr>
+<td><code>Accept-Minor-Version</code></td>
+<td><code>header</code></td>
+<td><code>enum: 1</code></td>
+<td>No</td>
+<td>Set to <code>1</code> to ensure the response includes both the recipient name and email fields, which are required to support currencies such as KRW, JPY and RUB.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-dynamic-account-requirements-for-building-a-recipient-form" class="status" data-status="2xx">200: Dynamic account requirements for building a recipient form</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[].fields</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of UI field groups to collect required data.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The actual fields within this group.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].displayFormat</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional display formatting hint.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].example</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Example value for the field (may be empty string).</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Key to include in JSON when submitting recipient details.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].maxLength</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Maximum allowed length, when applicable.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].minLength</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Minimum allowed length, when applicable.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Human-readable label.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].refreshRequirementsOnChange</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>If true, changing this field can alter requirements; call the POST account-requirements endpoint with updated data to refresh requirements.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].required</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether this field is mandatory.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UI field type.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].validationAsync</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated. This validation will instead be performed when submitting the request.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].validationRegexp</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Regex pattern for validation, when applicable.</td>
+</tr>
+<tr>
+<td><code>[].fields[].group[].valuesAllowed</code></td>
+<td><code>array,null</code></td>
+<td>No</td>
+<td>Allowed values for select/radio inputs; null for free-text/date inputs.</td>
+</tr>
+<tr>
+<td><code>[].fields[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Display name of this group.</td>
+</tr>
+<tr>
+<td><code>[].title</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Human-readable title for the requirement group.</td>
+</tr>
+<tr>
+<td><code>[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Requirement group identifier (route/payout-method specific).</td>
+</tr>
+<tr>
+<td><code>[].usageInfo</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Optional usage/help text.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="404-not-found" class="status" data-status="4xx">404: Not Found</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

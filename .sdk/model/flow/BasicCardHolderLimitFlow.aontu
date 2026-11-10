@@ -1,0 +1,50 @@
+# BasicCardHolderLimitFlow
+
+main: kit: flow: BasicCardHolderLimitFlow:
+{
+  entity: "card_holder_limit",
+  kind: "basic",
+  name: "BasicCardHolderLimitFlow",
+  step: [
+    {
+      m: {
+        card_holder_profile_id: "card_holder_profile01",
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "card_holder_limit_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      d: {
+        profile_id: "profile01"
+      }
+
+      i: {
+        ref: "card_holder_limit_ref01",
+        srcdatavar: "card_holder_limit_ref01_data",
+        suffix: "_up0",
+        textfield: "type"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-card_holder_limit_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCardHolderLimitFlow"
+}

@@ -1,0 +1,220 @@
+# Entity: payment_intent
+
+main: kit: entity: payment_intent: {
+
+  alias: field: {}
+
+  fields: {
+    allocationId: {
+      h: "Allocation Id"
+      n: "allocationId"
+      r: false
+      sh: "Unique identifier of the associated settlement allocation."
+      t: "`$STRING`"
+    }
+    allocationType: {
+      h: "Allocation Type"
+      n: "allocationType"
+      r: false
+      sh: "Type of allocation."
+      t: "`$STRING`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "Timestamp when the payment intent was created."
+      t: "`$STRING`"
+    }
+    fundingSource: {
+      h: "Funding Source"
+      n: "fundingSource"
+      r: false
+      sh: "Source of funding for the payment."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier of the payment intent."
+      t: "`$STRING`"
+    }
+    partnerEntityId: {
+      h: "Partner Entity Id"
+      n: "partnerEntityId"
+      r: false
+      sh: "Partner entity identifier."
+      t: "`$STRING`"
+    }
+    paymentReference: {
+      h: "Payment Reference"
+      n: "paymentReference"
+      r: false
+      sh: "Payment reference."
+      t: "`$STRING`"
+    }
+    profileId: {
+      h: "Profile Id"
+      n: "profileId"
+      r: false
+      sh: "Profile identifier."
+      t: "`$STRING`"
+    }
+    reason: {
+      h: "Reason"
+      n: "reason"
+      r: false
+      sh: "Reason for the payment."
+      t: "`$STRING`"
+    }
+    recipientType: {
+      h: "Recipient Type"
+      n: "recipientType"
+      r: false
+      sh: "Type of recipient."
+      t: "`$STRING`"
+    }
+    sourceAmount: {
+      fo: "decimal"
+      h: "Source Amount"
+      n: "sourceAmount"
+      r: false
+      sh: "Source amount of the payment."
+      t: "`$NUMBER`"
+    }
+    sourceCurrency: {
+      h: "Source Currency"
+      n: "sourceCurrency"
+      r: false
+      sh: "Source currency code (ISO 4217)."
+      t: "`$STRING`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "Current state of the payment intent."
+      t: "`$STRING`"
+    }
+    targetAmount: {
+      fo: "decimal"
+      h: "Target Amount"
+      n: "targetAmount"
+      r: false
+      sh: "Target amount of the payment."
+      t: "`$NUMBER`"
+    }
+    targetCurrency: {
+      h: "Target Currency"
+      n: "targetCurrency"
+      r: false
+      sh: "Target currency code (ISO 4217)."
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "Timestamp when the payment intent was last updated."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "payment_intent"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /settlement/allocations/{allocationId}/payment-intents/{paymentIntentId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                k: "param"
+                n: "allocation_id"
+                or: "allocationId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: "a1b2c3d4-e5f6-7890-abcd-ef1234567890"
+                k: "param"
+                n: "id"
+                or: "paymentIntentId"
+                r: true
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/settlement/allocations/{allocationId}/payment-intents/{paymentIntentId}"
+          q: {
+            exist: [
+              "allocation_id"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              allocationId: "allocation_id"
+              paymentIntentId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "settlement"
+            }
+            {
+              lit: "allocations"
+            }
+            {
+              var: "allocation_id"
+            }
+            {
+              lit: "payment-intents"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

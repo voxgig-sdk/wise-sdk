@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "claim_account": {
+      "CLAIM_ACCOUNT00": {
+        "claimAccountCode": "s14",
+        "registrationCode": "s15",
+        "id": "CLAIM_ACCOUNT00"
+      },
+      "CLAIM_ACCOUNT01": {
+        "claimAccountCode": "s28",
+        "registrationCode": "s29",
+        "id": "CLAIM_ACCOUNT01"
+      },
+      "CLAIM_ACCOUNT02": {
+        "claimAccountCode": "s3c",
+        "registrationCode": "s3d",
+        "id": "CLAIM_ACCOUNT02"
+      }
+    }
+  },
+  "new": {
+    "claim_account": {
+      "claim_account_ref01": {
+        "claimAccountCode": "s50",
+        "registrationCode": "s51"
+      }
+    }
+  },
+  "requests": {
+    "POST /user/claim-account": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

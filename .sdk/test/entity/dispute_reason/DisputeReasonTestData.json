@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "dispute_reason": {
+      "DISPUTE_REASON00": {
+        "code": "s3c",
+        "description": "s3d",
+        "isFraud": true,
+        "subOptions": [],
+        "supportsMultipleTransactions": true,
+        "tooltip": "s41",
+        "profile_id": "PROFILE01"
+      },
+      "DISPUTE_REASON01": {
+        "code": "s78",
+        "description": "s79",
+        "isFraud": true,
+        "subOptions": [],
+        "supportsMultipleTransactions": true,
+        "tooltip": "s7d",
+        "profile_id": "PROFILE01"
+      },
+      "DISPUTE_REASON02": {
+        "code": "sb4",
+        "description": "sb5",
+        "isFraud": true,
+        "subOptions": [],
+        "supportsMultipleTransactions": true,
+        "tooltip": "sb9",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "dispute_reason": {
+      "dispute_reason_ref01": {
+        "code": "sf0",
+        "description": "sf1",
+        "isFraud": true,
+        "subOptions": [],
+        "supportsMultipleTransactions": true,
+        "tooltip": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /spend/profiles/{profileId}/dispute-form/reasons": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,33 @@
+# BasicBalanceStatementFlow
+
+main: kit: flow: BasicBalanceStatementFlow:
+{
+  entity: "balance_statement",
+  kind: "basic",
+  name: "BasicBalanceStatementFlow",
+  step: [
+    {
+      i: {
+        ref: "balance_statement_ref01",
+        srcdatavar: "balance_statement_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "balance_statement01",
+        profile_id: "profile01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-balance_statement_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicBalanceStatementFlow"
+}

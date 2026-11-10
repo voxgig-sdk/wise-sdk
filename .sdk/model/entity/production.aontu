@@ -1,0 +1,254 @@
+# Entity: production
+
+main: kit: entity: production: {
+
+  alias: field: {}
+
+  fields: {
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Detailed description of the error code."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    errorCode: {
+      h: "Error Code"
+      n: "errorCode"
+      r: false
+      sh: "Code returned when card production is not successful."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    kioskId: {
+      h: "Kiosk Id"
+      n: "kioskId"
+      op: {
+        update: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Identifier that specifies which kiosk machine is producing the card."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    occurredAt: {
+      fo: "date-time"
+      h: "Occurred At"
+      n: "occurredAt"
+      r: false
+      sh: "Time when the card production request has been sent to the kiosk machine (ISO 8601 format)."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Current production status: - `READY` - Card is ready for production - `IN_PROGRESS` - Card is in production at the kiosk machine - `PRODUCED` - Card is produced and collected."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "production"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /spend/profiles/{profileId}/cards/{cardToken}/production"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 123456
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/production"
+          q: {
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "production"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "kioskId"
+          ]
+          co: {
+            id: "PUT /spend/profiles/{profileId}/cards/{cardToken}/production"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                ex: 123456
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/spend/profiles/{profileId}/cards/{cardToken}/production"
+          q: {
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "production"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.card")]
+  ]
+
+}

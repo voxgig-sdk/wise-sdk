@@ -1,0 +1,94 @@
+{
+  "existing": {
+    "kyc_review": {
+      "KYC_REVIEW00": {
+        "createdAt": "s6e",
+        "id": "KYC_REVIEW00",
+        "link": "s70",
+        "redirectUrl": "s71",
+        "requiredBy": "s72",
+        "requirements": "s73",
+        "status": "s74",
+        "triggerData": {},
+        "triggerReferences": [],
+        "type": "s77",
+        "updatedAt": "s78",
+        "profile_id": "PROFILE01",
+        "requirement_key": "REQUIREMENT_KEY01"
+      },
+      "KYC_REVIEW01": {
+        "createdAt": "sdc",
+        "id": "KYC_REVIEW01",
+        "link": "sde",
+        "redirectUrl": "sdf",
+        "requiredBy": "se0",
+        "requirements": "se1",
+        "status": "se2",
+        "triggerData": {},
+        "triggerReferences": [],
+        "type": "se5",
+        "updatedAt": "se6",
+        "profile_id": "PROFILE01",
+        "requirement_key": "REQUIREMENT_KEY01"
+      },
+      "KYC_REVIEW02": {
+        "createdAt": "s14a",
+        "id": "KYC_REVIEW02",
+        "link": "s14c",
+        "redirectUrl": "s14d",
+        "requiredBy": "s14e",
+        "requirements": "s14f",
+        "status": "s150",
+        "triggerData": {},
+        "triggerReferences": [],
+        "type": "s153",
+        "updatedAt": "s154",
+        "profile_id": "PROFILE01",
+        "requirement_key": "REQUIREMENT_KEY01"
+      }
+    }
+  },
+  "new": {
+    "kyc_review": {
+      "kyc_review_ref01": {
+        "createdAt": "s1b8",
+        "link": "s1ba",
+        "redirectUrl": "s1bb",
+        "requiredBy": "s1bc",
+        "requirements": "s1bd",
+        "status": "s1be",
+        "triggerData": {},
+        "triggerReferences": [],
+        "type": "s1c1",
+        "updatedAt": "s1c2"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/kyc-requirements/{requirementKey}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/kyc-reviews": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/kyc-reviews": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/kyc-reviews/{kycReviewId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /profiles/{profileId}/kyc-reviews/{kycReviewId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

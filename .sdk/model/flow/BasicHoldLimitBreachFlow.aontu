@@ -1,0 +1,26 @@
+# BasicHoldLimitBreachFlow
+
+main: kit: flow: BasicHoldLimitBreachFlow:
+{
+  entity: "hold_limit_breach",
+  kind: "basic",
+  name: "BasicHoldLimitBreachFlow",
+  step: [
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "hold_limit_breach_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHoldLimitBreachFlow"
+}

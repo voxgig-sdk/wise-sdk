@@ -1,0 +1,1442 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>BusinessProfile | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a aria-current="page" href="../api/business_profile.html">BusinessProfile</a><div class="nav-sections"><a class="nav-section" href="#post-profilesbusiness-profile">POST /profiles/business-profile</a>
+<a class="nav-section" href="#put-profilesprofileidbusiness-profile">PUT /profiles/{profileId}/business-profile</a></div>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="businessprofile">BusinessProfile</h1>
+<p>A business profile: create or update one.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesbusiness-profile"><code>/profiles/business-profile</code></a></td>
+<td><code>create</code></td>
+<td>Created business profile</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-profilesprofileidbusiness-profile"><code>/profiles/{profileId}/business-profile</code></a></td>
+<td><code>update</code></td>
+<td>Updated business profile</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">created, err := client.BusinessProfile(nil).Create(map[string]any{&quot;contactDetails&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.BusinessProfile(nil).Update(map[string]any{&quot;profile_id&quot;: 1, &quot;abn&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local created, err = client:BusinessProfile():create({ contactDetails = {} })
+local updated, err = client:BusinessProfile():update({ profile_id = 1, abn = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$created = $client-&gt;BusinessProfile()-&gt;create([&quot;contactDetails&quot; =&gt; []]);
+$updated = $client-&gt;BusinessProfile()-&gt;update([&quot;profile_id&quot; =&gt; 1, &quot;abn&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">created = client.BusinessProfile().create({ &quot;contactDetails&quot;: {} })
+updated = client.BusinessProfile().update({&quot;profile_id&quot;: 1, &quot;abn&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">created = client.BusinessProfile.create({ &quot;contactDetails&quot; =&gt; {} })
+updated = client.BusinessProfile.update({ &quot;profile_id&quot; =&gt; 1, &quot;abn&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const created = await client.BusinessProfile().create({ contactDetails: {} })
+const updated = await client.BusinessProfile().update({ profile_id: 1, abn: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>abn</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Australian Business Number (only for Australian businesses).</td>
+</tr>
+<tr>
+<td><code>acn</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Australian Company Number (only for Australian businesses).</td>
+</tr>
+<tr>
+<td><code>actorEmail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Email of the actor.</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Main registered address of the business.</td>
+</tr>
+<tr>
+<td><code>arbn</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Australian Registered Body Number (only for Australian businesses).</td>
+</tr>
+<tr>
+<td><code>businessFreeFormDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Free-form description of the business activities.</td>
+</tr>
+<tr>
+<td><code>businessName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Registered business name.</td>
+</tr>
+<tr>
+<td><code>businessNameInKatakana</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Business name in Katakana (only for Japanese businesses).</td>
+</tr>
+<tr>
+<td><code>businessRepresentative</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Business representative details.</td>
+</tr>
+<tr>
+<td><code>companyRole</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Role of the person managing the business profile.</td>
+</tr>
+<tr>
+<td><code>companyType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of company.</td>
+</tr>
+<tr>
+<td><code>contactDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contact information for the business.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Timestamp when the profile was created (ISO 8601 format).</td>
+</tr>
+<tr>
+<td><code>currentState</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Current status of this profile.</td>
+</tr>
+<tr>
+<td><code>descriptionOfBusiness</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Primary email address for the business.</td>
+</tr>
+<tr>
+<td><code>externalCustomerId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external reference identifier mapping the customer of this profile to your system.</td>
+</tr>
+<tr>
+<td><code>firstLevelCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated.</td>
+</tr>
+<tr>
+<td><code>fullName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Full legal name of the business.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Unique identifier for the profile.</td>
+</tr>
+<tr>
+<td><code>industryCategories</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>One or more industry categories classifying the business.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>An array of operational addresses for the business.</td>
+</tr>
+<tr>
+<td><code>publicId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Publicly accessible identifier for the profile.</td>
+</tr>
+<tr>
+<td><code>registrationNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business registration number.</td>
+</tr>
+<tr>
+<td><code>secondLevelCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Type of profile.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Timestamp when the profile was last updated (ISO 8601 format).</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>The ID of the user associated with this profile.</td>
+</tr>
+<tr>
+<td><code>webpage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business website URL.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-profilesbusiness-profile" class="operation" data-method="post"><code>POST</code> /profiles/business-profile</h3>
+<p>Operation ID: <code>profileBusinessCreateV3</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-idempotence-uuid</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Unique idempotency key for the request.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>abn</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Australian Business Number (only for Australian businesses).</td>
+</tr>
+<tr>
+<td><code>acn</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Australian Company Number (only for Australian businesses).</td>
+</tr>
+<tr>
+<td><code>actorEmail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Email of the actor.</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First line of address.</td>
+</tr>
+<tr>
+<td><code>address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>address.countryIso2Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2 letter country code.</td>
+</tr>
+<tr>
+<td><code>address.countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3 letter country code. Must be lowercase.</td>
+</tr>
+<tr>
+<td><code>address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code.</td>
+</tr>
+<tr>
+<td><code>address.stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code.</td>
+</tr>
+<tr>
+<td><code>arbn</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Australian Registered Body Number (only for Australian businesses).</td>
+</tr>
+<tr>
+<td><code>businessFreeFormDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business free form description. Required if <code>companyType</code> is <code>OTHER</code>. If this is not provided for an <code>OTHER</code> companyType, the profile should not be allowed to create a transfer. For the rest of the companyTypes, it is highly recommended to always provide the business' description, to avoid payment issues such as suspensions. Wise will send a request for information (RFI) if this detail is not provided.</td>
+</tr>
+<tr>
+<td><code>businessName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business name.</td>
+</tr>
+<tr>
+<td><code>businessNameInKatakana</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Business name in Katakana (only for Japanese businesses).</td>
+</tr>
+<tr>
+<td><code>businessRepresentative</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Business representative details. Provide either the full representative details or just the <code>businessRepresentativeId</code> to link an existing representative.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>businessRepresentative.address.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First line of address. Required unless Business Representative ID is provided.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City. Required unless Business Representative ID is provided.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.address.countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3 letter country code (lower case). Required unless Business Representative ID is provided.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.address.stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code (max 5 chars). Required for US, CA, BR and AU addresses unless Business Representative ID is provided.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.businessRepresentativeId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>ID of a Business Representative. This can be obtained from a previous call to create a business profile, in which case the same Business Representative is linked to the current business effectively sharing it across multiple businesses. When the Business Representative ID is provided, it is the only field required and none of the other fields should be provided.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.contactDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>businessRepresentative.contactDetails.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Contact email address. Required unless Business Representative ID is provided.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.contactDetails.phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Contact phone number in international phone number format. Required unless Business Representative ID is provided.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.dateOfBirth</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date of birth. Required unless Business Representative ID is provided.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.firstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First name of the person representing the business (including middle names). Required unless Business Representative ID is provided.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.lastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Last name of the person representing the business. Required unless Business Representative ID is provided.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.localizedInformation</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Optional localized information for the business representative. For Kana names, provide both firstName and lastName entries with localeScriptCode set to Kana. Each combination of key and localeScriptCode must be unique.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.localizedInformation[].key</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Name of the field being localized.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.localizedInformation[].localeScriptCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Script code for the localized value.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.localizedInformation[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Localized value of the field.</td>
+</tr>
+<tr>
+<td><code>businessRepresentative.preferredName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred first name, if different to the legal first name.</td>
+</tr>
+<tr>
+<td><code>companyRole</code></td>
+<td><code>enum: OWNER, DIRECTOR, OTHER</code></td>
+<td>No</td>
+<td>Role of person.</td>
+</tr>
+<tr>
+<td><code>companyType</code></td>
+<td><code>enum: LIMITED, PARTNERSHIP, SOLE_TRADER, LIMITED_BY_GUARANTEE, LIMITED_LIABILITY_COMPANY, FOR_PROFIT_CORPORATION, ...</code></td>
+<td>No</td>
+<td>Company legal form.</td>
+</tr>
+<tr>
+<td><code>contactDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Optional contact details for the business, separate from the representative's contact details.</td>
+</tr>
+<tr>
+<td><code>contactDetails.email</code></td>
+<td><code>string (email)</code></td>
+<td>Yes</td>
+<td>Contact email address for the business.</td>
+</tr>
+<tr>
+<td><code>contactDetails.phoneNumber</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Contact phone number for the business.</td>
+</tr>
+<tr>
+<td><code>externalCustomerId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external reference identifier mapping the customer of this profile to your system.</td>
+</tr>
+<tr>
+<td><code>firstLevelCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Legacy primary business category. Use <code>industryCategories</code> instead. Cannot be combined with <code>industryCategories</code>.</td>
+</tr>
+<tr>
+<td><code>industryCategories</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>One or more industry categories classifying the business. See Business Categories for the full list of valid values.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of operational addresses.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].countryIso2Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>registrationNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business registration number.</td>
+</tr>
+<tr>
+<td><code>secondLevelCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Legacy secondary business category. Use <code>industryCategories</code> instead. Cannot be combined with <code>industryCategories</code>.</td>
+</tr>
+<tr>
+<td><code>webpage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business webpage. Required if <code>companyType</code> is <code>OTHER</code>. If this is not provided for an <code>OTHER</code> companyType, the profile should not be allowed to create a transfer. For the rest of the companyTypes, it is highly recommended to always provide the business' website, to avoid payment issues such as suspensions. Wise will send a request for information (RFI) if this detail is not provided.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-created-business-profile" class="status" data-status="2xx">200: Created business profile</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Main registered address of the business.</td>
+</tr>
+<tr>
+<td><code>address.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First line of the address.</td>
+</tr>
+<tr>
+<td><code>address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City of the address.</td>
+</tr>
+<tr>
+<td><code>address.countryIso2Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Two-letter ISO country code.</td>
+</tr>
+<tr>
+<td><code>address.countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Three-letter ISO country code.</td>
+</tr>
+<tr>
+<td><code>address.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the address.</td>
+</tr>
+<tr>
+<td><code>address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code of the address.</td>
+</tr>
+<tr>
+<td><code>address.stateCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State code of the address (can be null for some countries).</td>
+</tr>
+<tr>
+<td><code>businessFreeFormDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Free-form description of the business activities.</td>
+</tr>
+<tr>
+<td><code>businessName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Registered business name.</td>
+</tr>
+<tr>
+<td><code>companyRole</code></td>
+<td><code>enum: OWNER, DIRECTOR, OTHER</code></td>
+<td>No</td>
+<td>Role of the person managing the business profile.</td>
+</tr>
+<tr>
+<td><code>companyType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of company.</td>
+</tr>
+<tr>
+<td><code>contactDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contact information for the business.</td>
+</tr>
+<tr>
+<td><code>contactDetails.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Contact email address.</td>
+</tr>
+<tr>
+<td><code>contactDetails.phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Contact phone number.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp when the profile was created (ISO 8601 format).</td>
+</tr>
+<tr>
+<td><code>currentState</code></td>
+<td><code>enum: HIDDEN, VISIBLE, DEACTIVATED</code></td>
+<td>No</td>
+<td>Current status of this profile.</td>
+</tr>
+<tr>
+<td><code>descriptionOfBusiness</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated. New integrations should use <code>industryCategories</code>. See Migrating to industry categories.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Primary email address for the business.</td>
+</tr>
+<tr>
+<td><code>firstLevelCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated. New integrations should use <code>industryCategories</code>. See Migrating to industry categories. Populated only when the profile was classified with the legacy fields, otherwise <code>null</code>. Create and update responses return the format you did not send as <code>null</code>, only retrieve a profile derives both formats.</td>
+</tr>
+<tr>
+<td><code>fullName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Full legal name of the business.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Unique identifier for the profile.</td>
+</tr>
+<tr>
+<td><code>industryCategories</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>One or more industry categories classifying the business. See Business Categories for the full list of valid values. Populated only when the profile was classified with <code>industryCategories</code>, otherwise <code>null</code>. Create and update responses return the format you did not send as <code>null</code>, only retrieve a profile derives both formats.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An array of operational addresses for the business.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First line of the address.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City of the address.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].countryIso2Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Two-letter ISO country code.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Three-letter ISO country code.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the address.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code of the address.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].stateCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State code of the address (can be null for some countries).</td>
+</tr>
+<tr>
+<td><code>publicId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Publicly accessible identifier for the profile.</td>
+</tr>
+<tr>
+<td><code>registrationNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business registration number.</td>
+</tr>
+<tr>
+<td><code>secondLevelCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated. New integrations should use <code>industryCategories</code>. See Migrating to industry categories. Populated only when the profile was classified with the legacy fields, otherwise <code>null</code>. Create and update responses return the format you did not send as <code>null</code>, only retrieve a profile derives both formats, where it may return <code>UNMAPPED</code> if the <code>industryCategories</code> combination has no legacy equivalent.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: BUSINESS</code></td>
+<td>Yes</td>
+<td>Type of profile.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp when the profile was last updated (ISO 8601 format).</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The ID of the user associated with this profile.</td>
+</tr>
+<tr>
+<td><code>webpage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business website URL.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="update">update</h2>
+<h3 id="put-profilesprofileidbusiness-profile" class="operation" data-method="put"><code>PUT</code> /profiles/{profileId}/business-profile</h3>
+<p>Operation ID: <code>profileBusinessUpdate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Business profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>abn</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Australian Business Number (only for Australian businesses).</td>
+</tr>
+<tr>
+<td><code>acn</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Australian Company Number (only for Australian businesses).</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First line of address.</td>
+</tr>
+<tr>
+<td><code>address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>address.countryIso2Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2 letter country code.</td>
+</tr>
+<tr>
+<td><code>address.countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3 letter country code. Must be lowercase.</td>
+</tr>
+<tr>
+<td><code>address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code.</td>
+</tr>
+<tr>
+<td><code>address.stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code.</td>
+</tr>
+<tr>
+<td><code>arbn</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Australian Registered Body Number (only for Australian businesses).</td>
+</tr>
+<tr>
+<td><code>businessFreeFormDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business free form description.</td>
+</tr>
+<tr>
+<td><code>businessName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business name.</td>
+</tr>
+<tr>
+<td><code>businessNameInKatakana</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Business name in Katakana (only for Japanese businesses).</td>
+</tr>
+<tr>
+<td><code>companyRole</code></td>
+<td><code>enum: OWNER, DIRECTOR, OTHER</code></td>
+<td>No</td>
+<td>Role of person.</td>
+</tr>
+<tr>
+<td><code>companyType</code></td>
+<td><code>enum: LIMITED, PARTNERSHIP, SOLE_TRADER, LIMITED_BY_GUARANTEE, LIMITED_LIABILITY_COMPANY, FOR_PROFIT_CORPORATION, ...</code></td>
+<td>No</td>
+<td>Company legal form.</td>
+</tr>
+<tr>
+<td><code>contactDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Optional contact details for the business, separate from the representative's contact details.</td>
+</tr>
+<tr>
+<td><code>contactDetails.email</code></td>
+<td><code>string (email)</code></td>
+<td>Yes</td>
+<td>Contact email address for the business.</td>
+</tr>
+<tr>
+<td><code>contactDetails.phoneNumber</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Contact phone number for the business.</td>
+</tr>
+<tr>
+<td><code>externalCustomerId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external reference identifier mapping the customer of this profile to your system.</td>
+</tr>
+<tr>
+<td><code>firstLevelCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Legacy primary business category. Use <code>industryCategories</code> instead. Cannot be combined with <code>industryCategories</code>.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Business profile ID. This must match the business profile ID supplied in the URL.</td>
+</tr>
+<tr>
+<td><code>industryCategories</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>One or more industry categories classifying the business. See Business Categories for the full list of valid values.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of operational addresses.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].countryIso2Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>registrationNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business registration number.</td>
+</tr>
+<tr>
+<td><code>secondLevelCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Legacy secondary business category. Use <code>industryCategories</code> instead. Cannot be combined with <code>industryCategories</code>.</td>
+</tr>
+<tr>
+<td><code>webpage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business webpage. Required if <code>companyType</code> is <code>OTHER</code>. If this is not provided for an <code>OTHER</code> companyType, the profile should not be allowed to create a transfer. For the rest of the companyTypes, it is highly recommended to always provide the business' website, to avoid payment issues such as suspensions. Wise will send a request for information (RFI) if this detail is not provided.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-updated-business-profile" class="status" data-status="2xx">200: Updated business profile</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Main registered address of the business.</td>
+</tr>
+<tr>
+<td><code>address.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First line of the address.</td>
+</tr>
+<tr>
+<td><code>address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City of the address.</td>
+</tr>
+<tr>
+<td><code>address.countryIso2Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Two-letter ISO country code.</td>
+</tr>
+<tr>
+<td><code>address.countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Three-letter ISO country code.</td>
+</tr>
+<tr>
+<td><code>address.id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the address.</td>
+</tr>
+<tr>
+<td><code>address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code of the address.</td>
+</tr>
+<tr>
+<td><code>address.stateCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State code of the address (can be null for some countries).</td>
+</tr>
+<tr>
+<td><code>businessFreeFormDescription</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Free-form description of the business activities.</td>
+</tr>
+<tr>
+<td><code>businessName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Registered business name.</td>
+</tr>
+<tr>
+<td><code>companyRole</code></td>
+<td><code>enum: OWNER, DIRECTOR, OTHER</code></td>
+<td>No</td>
+<td>Role of the person managing the business profile.</td>
+</tr>
+<tr>
+<td><code>companyType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of company.</td>
+</tr>
+<tr>
+<td><code>contactDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contact information for the business.</td>
+</tr>
+<tr>
+<td><code>contactDetails.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Contact email address.</td>
+</tr>
+<tr>
+<td><code>contactDetails.phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Contact phone number.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp when the profile was created (ISO 8601 format).</td>
+</tr>
+<tr>
+<td><code>currentState</code></td>
+<td><code>enum: HIDDEN, VISIBLE, DEACTIVATED</code></td>
+<td>No</td>
+<td>Current status of this profile.</td>
+</tr>
+<tr>
+<td><code>descriptionOfBusiness</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated. New integrations should use <code>industryCategories</code>. See Migrating to industry categories.</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Primary email address for the business.</td>
+</tr>
+<tr>
+<td><code>firstLevelCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated. New integrations should use <code>industryCategories</code>. See Migrating to industry categories. Populated only when the profile was classified with the legacy fields, otherwise <code>null</code>. Create and update responses return the format you did not send as <code>null</code>, only retrieve a profile derives both formats.</td>
+</tr>
+<tr>
+<td><code>fullName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Full legal name of the business.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Unique identifier for the profile.</td>
+</tr>
+<tr>
+<td><code>industryCategories</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>One or more industry categories classifying the business. See Business Categories for the full list of valid values. Populated only when the profile was classified with <code>industryCategories</code>, otherwise <code>null</code>. Create and update responses return the format you did not send as <code>null</code>, only retrieve a profile derives both formats.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>An array of operational addresses for the business.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First line of the address.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City of the address.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].countryIso2Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Two-letter ISO country code.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Three-letter ISO country code.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the address.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code of the address.</td>
+</tr>
+<tr>
+<td><code>operationalAddresses[].stateCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>State code of the address (can be null for some countries).</td>
+</tr>
+<tr>
+<td><code>publicId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Publicly accessible identifier for the profile.</td>
+</tr>
+<tr>
+<td><code>registrationNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business registration number.</td>
+</tr>
+<tr>
+<td><code>secondLevelCategory</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Deprecated. New integrations should use <code>industryCategories</code>. See Migrating to industry categories. Populated only when the profile was classified with the legacy fields, otherwise <code>null</code>. Create and update responses return the format you did not send as <code>null</code>, only retrieve a profile derives both formats, where it may return <code>UNMAPPED</code> if the <code>industryCategories</code> combination has no legacy equivalent.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: BUSINESS</code></td>
+<td>Yes</td>
+<td>Type of profile.</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp when the profile was last updated (ISO 8601 format).</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The ID of the user associated with this profile.</td>
+</tr>
+<tr>
+<td><code>webpage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business website URL.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

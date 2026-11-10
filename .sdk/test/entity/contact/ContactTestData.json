@@ -1,0 +1,47 @@
+{
+  "existing": {
+    "contact": {
+      "CONTACT00": {
+        "contactId": "s28",
+        "identifier": "s29",
+        "name": "s2a",
+        "targetCurrency": "s2b",
+        "profile_id": "PROFILE01",
+        "id": "CONTACT00"
+      },
+      "CONTACT01": {
+        "contactId": "s50",
+        "identifier": "s51",
+        "name": "s52",
+        "targetCurrency": "s53",
+        "profile_id": "PROFILE01",
+        "id": "CONTACT01"
+      },
+      "CONTACT02": {
+        "contactId": "s78",
+        "identifier": "s79",
+        "name": "s7a",
+        "targetCurrency": "s7b",
+        "profile_id": "PROFILE01",
+        "id": "CONTACT02"
+      }
+    }
+  },
+  "new": {
+    "contact": {
+      "contact_ref01": {
+        "contactId": "sa0",
+        "identifier": "sa1",
+        "name": "sa2",
+        "targetCurrency": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/contacts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,18 @@
+# BasicClaimAccountFlow
+
+main: kit: flow: BasicClaimAccountFlow:
+{
+  entity: "claim_account",
+  kind: "basic",
+  name: "BasicClaimAccountFlow",
+  step: [
+    {
+      i: {
+        ref: "claim_account_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicClaimAccountFlow"
+}

@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Jose | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a aria-current="page" href="../api/jose.html">Jose</a><div class="nav-sections"><a class="nav-section" href="#post-authjoseplaygroundjwsjwe">POST /auth/jose/playground/jwsjwe</a>
+<a class="nav-section" href="#post-authjoseplaygroundjwe">POST /auth/jose/playground/jwe</a>
+<a class="nav-section" href="#post-authjoseplaygroundjwe-direct-encryption">POST /auth/jose/playground/jwe-direct-encryption</a>
+<a class="nav-section" href="#post-authjoseplaygroundjws">POST /auth/jose/playground/jws</a>
+<a class="nav-section" href="#post-authjoserequestpublic-keys">POST /auth/jose/request/public-keys</a>
+<a class="nav-section" href="#get-authjoseresponsepublic-keys">GET /auth/jose/response/public-keys</a>
+<a class="nav-section" href="#get-authjoseplaygroundjwe">GET /auth/jose/playground/jwe</a>
+<a class="nav-section" href="#get-authjoseplaygroundjwsjwe">GET /auth/jose/playground/jwsjwe</a></div>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="jose">Jose</h1>
+<p>JOSE keys, and a playground for testing JWS and JWE signing and encryption.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-authjoseplaygroundjwsjwe"><code>/auth/jose/playground/jwsjwe</code></a></td>
+<td><code>create</code></td>
+<td>Signed and encrypted response</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-authjoseplaygroundjwe"><code>/auth/jose/playground/jwe</code></a></td>
+<td><code>create</code></td>
+<td>Encrypted response</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-authjoseplaygroundjwe-direct-encryption"><code>/auth/jose/playground/jwe-direct-encryption</code></a></td>
+<td><code>create</code></td>
+<td>Encrypted response using direct encryption</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-authjoseplaygroundjws"><code>/auth/jose/playground/jws</code></a></td>
+<td><code>create</code></td>
+<td>Signed response</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-authjoserequestpublic-keys"><code>/auth/jose/request/public-keys</code></a></td>
+<td><code>create</code></td>
+<td>Public key created successfully</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-authjoseresponsepublic-keys"><code>/auth/jose/response/public-keys</code></a></td>
+<td><code>load</code></td>
+<td>Public key object</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-authjoseplaygroundjwe"><code>/auth/jose/playground/jwe</code></a></td>
+<td><code>load</code></td>
+<td>Encrypted response</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-authjoseplaygroundjwsjwe"><code>/auth/jose/playground/jwsjwe</code></a></td>
+<td><code>load</code></td>
+<td>Signed and encrypted response</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">jose, err := client.Jose(nil).Load(map[string]any{&quot;algorithm&quot;: &quot;example&quot;, &quot;scope&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(jose)
+created, err := client.Jose(nil).Create(map[string]any{&quot;keyId&quot;: &quot;example&quot;, &quot;publicKeyMaterial&quot;: map[string]any{}, &quot;scope&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local jose, err = client:Jose():load({ algorithm = &quot;example&quot;, scope = &quot;example&quot; })
+local created, err = client:Jose():create({ keyId = &quot;example&quot;, publicKeyMaterial = {}, scope = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$jose = $client-&gt;Jose()-&gt;load([&quot;algorithm&quot; =&gt; &quot;example&quot;, &quot;scope&quot; =&gt; &quot;example&quot;]);
+$created = $client-&gt;Jose()-&gt;create([&quot;keyId&quot; =&gt; &quot;example&quot;, &quot;publicKeyMaterial&quot; =&gt; [], &quot;scope&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">jose = client.Jose().load({&quot;algorithm&quot;: &quot;example&quot;, &quot;scope&quot;: &quot;example&quot;})
+created = client.Jose().create({ &quot;keyId&quot;: &quot;example&quot;, &quot;publicKeyMaterial&quot;: {}, &quot;scope&quot;: &quot;example&quot; })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">jose = client.Jose.load({ &quot;algorithm&quot; =&gt; &quot;example&quot;, &quot;scope&quot; =&gt; &quot;example&quot; })
+created = client.Jose.create({ &quot;keyId&quot; =&gt; &quot;example&quot;, &quot;publicKeyMaterial&quot; =&gt; {}, &quot;scope&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const jose = await client.Jose().load({ algorithm: &quot;example&quot;, scope: &quot;example&quot; })
+const created = await client.Jose().create({ keyId: &quot;example&quot;, publicKeyMaterial: {}, scope: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keyId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the key in UUID format.</td>
+</tr>
+<tr>
+<td><code>keyMaterial</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Key Material</td>
+</tr>
+<tr>
+<td><code>publicKeyMaterial</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Public Key Material</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Scope of the key.</td>
+</tr>
+<tr>
+<td><code>validFrom</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The key is valid from this date.</td>
+</tr>
+<tr>
+<td><code>validTill</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The key is valid until this date.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Version of the public key issued.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-authjoseplaygroundjwsjwe" class="operation" data-method="post"><code>POST</code> /auth/jose/playground/jwsjwe</h3>
+<p>Operation ID: <code>josePlaygroundJwsJwePost</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x-tw-jose-method</code></td>
+<td><code>header</code></td>
+<td><code>enum: jws+jwe</code></td>
+<td>Yes</td>
+<td>JOSE method identifier.</td>
+</tr>
+<tr>
+<td><code>Accept-Encoding</code></td>
+<td><code>header</code></td>
+<td><code>enum: identity</code></td>
+<td>No</td>
+<td>Disables response compression so the encrypted response can be processed correctly.</td>
+</tr>
+<tr>
+<td><code>X-TW-JOSE-Encryption-kid</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>ID of the public JWE key uploaded to Wise for encrypting the response.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/jose+json</code></p>
+<p>The request body is <code>string</code>.</p>
+<p>Example request body:</p>
+<pre><code class="language-json">&quot;eyJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.W0fuxaZOoyaBcxWwgtjEPkOnLdVNyH9ncZi5Y9xQbjD4sYJn8vEQmxKHDw5s14sWhdexSNAPTVMSyzwJaA-LRL0tZTEuQ.ohD4LLjImiKOV4Tu.Rgp9mc2JD6m9Zm5htSqrejwWYy0_hIylYdLD39ZCR-VnQ2VX-Tot8kKGeNncnv7hJ_ApANWiJpKJbiM.5hNt-uaxuOkOraGGZSmsig&quot;
+</code></pre>
+<h4 id="responses">Responses</h4>
+<h5 id="200-signed-and-encrypted-response" class="status" data-status="2xx">200: Signed and encrypted response</h5>
+<p><code>application/jose+json</code></p>
+<p>The response is <code>string</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">&quot;eyJraWQiOiJiMzc0ODE1MC0xNGQ0LTRlMDAtYjM5NC03YWUwYzkzYmUyNDUiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.VGhpcyBpcyB0aGUgZW5jcnlwdGVkIENFSw.aXZfdmFsdWU.ZW5jcnlwdGVkX3BheWxvYWQ.YXV0aF90YWc&quot;
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="500-internal-server-error" class="status" data-status="5xx">500: Internal Server Error</h5>
+<p><code>application/json</code></p>
+<h3 id="post-authjoseplaygroundjwe" class="operation" data-method="post"><code>POST</code> /auth/jose/playground/jwe</h3>
+<p>Operation ID: <code>josePlaygroundJwePost</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x-tw-jose-method</code></td>
+<td><code>header</code></td>
+<td><code>enum: jwe</code></td>
+<td>Yes</td>
+<td>JOSE method identifier.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/jose+json</code></p>
+<p>The request body is <code>string</code>.</p>
+<p>Example request body:</p>
+<pre><code class="language-json">&quot;eyJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.W_WPBDXclMryaywqAB-_yC1hUYukKmZxByhE9d1G8hClc2HpewkryILGJW4uVTUeRdo1oVWd68TPIqi7bqMGUsrT-3MI4ggVSjC1rf8Lf1xTZ8-GHjSPso8tFBXnydOKzggi6fnfk98BIW76Rnxkn6sW79LH5NgN1spTOoh8-tI3i_wbHdqJOxTReaUNMYZobm7wxedZcRxhsaSrVqx2qdELeqkfwgvB1DRbHTF_PTe4W0ibMbcJivHjiDf6oAV9vXgVhYb66rhB43pgdFDv4nY1mkQC45R5T6CBdzv80EdAVOj1G4bktHyJWaJzHVsGozpxsNj3bt1AopyvDO8tsw.WLOO5WH4ZpBPi-8B.0g3eUpQPvRIaTbgUi6sH0WejsJ1nLWDGnDKTktZrkquLQlCMmIguj0I5UCyqXEo.URtTniRvfGxrKRLK63trug&quot;
+</code></pre>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-encrypted-response" class="status" data-status="2xx">200: Encrypted response</h5>
+<p><code>application/jose+json</code></p>
+<p>The response is <code>string</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">&quot;eyJraWQiOiI2ZGE0OTQ5NS0xNjMyLTQzY2QtOWEwMy1kZDMyNDYwM2VjZDciLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.qwMqgFXRI84THQdCHhxNe5yvKOuKp2rAMH62xQ1OioPatnLfxqPHJUX0as13B3g3JKaqGgF0qMi7r3QbJ_cXNFBIg1yenCwWv4192J73-kEkCSyS-FflDCNfih1z1mm95ftAE7FhHJVG5tcSm_B0-bPU3SbjB3SDhR3QlLX5o_sQmYkQay8PKSssyBS5tCjuKdz-9QNvZtNADPujKrJGe5hE5r7ShcNwVUS2vpMXANiQTzZnQ2L3j_m07Rru-PgMxHTD2uR621B87YfTHonWDJe4XogA_pMWD_hzHVQKT7Il--2YOtv8PTnLge-uVvRTgqUiYUdvq85nPyDKsOQMnQ.zprknKK9W4iAX7YA.LJWA6oRcYj0LruM3GLPtZ0CtVNpI0Zs9WFrARDd464kKxSlu15LBiFFCFwOHbeKoRudfp8Br7MfRIlaTLHxPEE1xoBB8jZN8fakAcApU.OlMATtfF9XMtYJtTsGuBGQ02&quot;
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-authjoseplaygroundjwe-direct-encryption" class="operation" data-method="post"><code>POST</code> /auth/jose/playground/jwe-direct-encryption</h3>
+<p>Operation ID: <code>josePlaygroundJweDirectEncryption</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x-tw-jose-method</code></td>
+<td><code>header</code></td>
+<td><code>enum: jwe</code></td>
+<td>Yes</td>
+<td>JOSE method identifier.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/jose+json</code></p>
+<p>The request body is <code>string</code>.</p>
+<p>Example request body:</p>
+<pre><code class="language-json">&quot;eyJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.rVqOhX92u637hqwrw96rqA48e7NhMZVeWvUZwA4OAwOa_sBVcpXecd6qivPfZ-CuhRaD4gNKUlUJnTedBwOh5hcDZELRWThtwNiTZKaDS_ZNDjJf1r0VQPj65nT2ikfPAP-S6cYCy6JbWXivf7Jwq6lus-QydmxoLlVRvAuROFe-HzlH0-JhlwOdhPwbwl1AGx64qEir7oOn5VezJvpx3sscipm3w30mfoFc7pLlscMijMNFUwngXCLmgpno1rC_ZDzRcEycVbwvgKW75jO25UyEJif25MdE0UJUx4IT6MDviHqtBXO4OQpwhd_W6jVk-PlZ1WkZyOZqpi8HLKGo8Q.eFHqPV-mcBC82Ga2.W9o2BT7Q-vEUA2u3n4gaSdfQY_4svVj0-jwjcXmlBraZEKmtTW_A1ygvr8b9iHfS9fkxL8H_6S_oEcqzFqTKmNTzwe2V0cRY-kvzsKI.lO2gETmo2WocPZoTpU-pkQ&quot;
+</code></pre>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-encrypted-response-using-direct-encryption" class="status" data-status="2xx">200: Encrypted response using direct encryption</h5>
+<p><code>application/jose+json</code></p>
+<p>The response is <code>string</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">&quot;eyJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..gTnxA4uYrCTWVNp1.jQ3dDidM2Z8RuYkgQt1ydJ6xYy5uG3CH72-pioHlZPqucxPWeN1pWwmceQKgpGulJmw3nYLRNkgCa9yQHMofpFIlV5HQJS6mQDxZP4G2kj3bFKvByckRYQQ3v3W7TkjfVL4NAVlrDqxx3G29-qblRwbyneMP.mVY_uctEfEAleVVbHjcqdA04&quot;
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-authjoseplaygroundjws" class="operation" data-method="post"><code>POST</code> /auth/jose/playground/jws</h3>
+<p>Operation ID: <code>josePlaygroundJws</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x-tw-jose-method</code></td>
+<td><code>header</code></td>
+<td><code>enum: jws</code></td>
+<td>Yes</td>
+<td>JOSE method identifier.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/jose+json</code></p>
+<p>The request body is <code>string</code>.</p>
+<p>Example request body:</p>
+<pre><code class="language-json">&quot;eyJhbGciOiJFUzUxMiIsInR5cCI6IkpXVCIsInVybCI6Ii92MS9hdXRoL2pvc2UvcGxheWdyb3VuZC9qd3MifQ.eyJtZXNzYWdlIjoiVGhpcyBpcyBhbiBleGFtcGxlIGZyb20gZG9jcy53aXNlLmNvbSJ9.AS9QHdkWvUEn0LxQEMPRBzlceN78J-Le-Qm1XIkkSBpsGdc0WM0MZTIGFEAJEcWeUR2M-abtd5DRdar4hLzs9apPAQ-GT70SIDV6pX9-4UKfIfzJ4g305zCoHflTfn-ijvI7XrVR_yr7xO9GJo86bfBqAX_m5uuxyU7Jy9gM1epd8HcC&quot;
+</code></pre>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-signed-response" class="status" data-status="2xx">200: Signed response</h5>
+<p><code>application/jose+json</code></p>
+<p>The response is <code>string</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">&quot;eyJ2ZXJzaW9uIjoxLCJhbGciOiJFUzUxMiJ9.eyJtZXNzYWdlIjoiam9zZS1wbGF5Z3JvdW5kLXJlc3BvbnNlLVRoaXMgaXMgYW4gZXhhbXBsZSBmcm9tIGRvY3Mud2lzZS5jb20iLCJtZXRob2QiOiJQT1NUIn0.APYfoUySW_dPdBBVST3tJdaCBCMQZm0UR6g0vBqxjjX4WWkOdt6h045EXZKMT1m0JEMI5b7KpN14Mib9BxS7VWpLAPwYhTU5pJcQrtiK4fwaBMTT_DwipZk6ASXVevrMK_Tn9YSSkKDsv6X9qyBsnIXKy304Ex5QIHKmSGQT6wNSJ7Ye02&quot;
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-authjoserequestpublic-keys" class="operation" data-method="post"><code>POST</code> /auth/jose/request/public-keys</h3>
+<p>Operation ID: <code>joseRequestPublicKeysCreate</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-4">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keyId</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Unique public key identifier in UUID format.</td>
+</tr>
+<tr>
+<td><code>publicKeyMaterial</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>publicKeyMaterial.algorithm</code></td>
+<td><code>enum: ES256, ES384, ES512, PS256, PS384, PS512, ...</code></td>
+<td>No</td>
+<td>Algorithm to be used for: - Signature verification (Scope: <code>PAYLOAD_SIGNING</code>): <code>ES256</code>, <code>ES384</code>, <code>ES512</code>, <code>PS256</code>, <code>PS384</code>, <code>PS512</code> - Payload encryption (Scope: <code>PAYLOAD_ENCRYPTION</code>): <code>RSA_OAEP_256</code></td>
+</tr>
+<tr>
+<td><code>publicKeyMaterial.keyMaterial</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Public key material in DER (Distinguished Encoding Rules) format and base64 encoded.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>enum: PAYLOAD_SIGNING, PAYLOAD_ENCRYPTION</code></td>
+<td>No</td>
+<td>Scope of the payload operation.</td>
+</tr>
+<tr>
+<td><code>validFrom</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The key is valid from this date. Format: <code>yyyy-MM-dd HH:mm:ss</code> (UTC).</td>
+</tr>
+<tr>
+<td><code>validTill</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The key is valid until this date. Format: <code>yyyy-MM-dd HH:mm:ss</code> (UTC).</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;keyId&quot;: &quot;e87da464-8e5e-4380-8f2d-4e4e04052672&quot;,
+  &quot;publicKeyMaterial&quot;: {
+    &quot;algorithm&quot;: &quot;ES512&quot;,
+    &quot;keyMaterial&quot;: &quot;MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBYAwVICxD0Paq7MOuO34omujHxSrQXZtiTQ/VMteqAeUfM4wE+vTSpbYCqb1pNhhcQpF+FJd2H8jB1H1zil7qLLcBw+yl4PrnLza1pmNLr+kqQVoVXVyVx/xxMK2WObLn8tHxXtW4k+bm1/ySF+0RQ265IZcw2i8YYX2FY59JkwE2Fac=&quot;
+  },
+  &quot;scope&quot;: &quot;PAYLOAD_SIGNING&quot;,
+  &quot;validFrom&quot;: &quot;2023-04-27 00:00:00&quot;,
+  &quot;validTill&quot;: &quot;2024-04-01 00:00:00&quot;
+}
+</code></pre>
+<h4 id="responses-4">Responses</h4>
+<h5 id="201-public-key-created-successfully" class="status" data-status="2xx">201: Public key created successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>This field is currently not in use and will always return <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>deactivationTimestamp</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>This field is currently not in use and will always return <code>null</code>.</td>
+</tr>
+<tr>
+<td><code>keyId</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Unique public key identifier in UUID format.</td>
+</tr>
+<tr>
+<td><code>publicKeyMaterial</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>publicKeyMaterial.algorithm</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Algorithm to be used for request signature verification or for response payload encryption.</td>
+</tr>
+<tr>
+<td><code>publicKeyMaterial.keyMaterial</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Public key material in DER (Distinguished Encoding Rules) format and base64 encoded.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>enum: PAYLOAD_SIGNING, PAYLOAD_ENCRYPTION</code></td>
+<td>No</td>
+<td>Scope of the payload operation.</td>
+</tr>
+<tr>
+<td><code>validFrom</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The key is valid from this date. Format: <code>yyyy-MM-dd HH:mm:ss</code> (UTC).</td>
+</tr>
+<tr>
+<td><code>validTill</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The key is valid until this date. Format: <code>yyyy-MM-dd HH:mm:ss</code> (UTC).</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;clientId&quot;: null,
+  &quot;deactivationTimestamp&quot;: null,
+  &quot;keyId&quot;: &quot;e87da464-8e5e-4380-8f2d-4e4e04052672&quot;,
+  &quot;publicKeyMaterial&quot;: {
+    &quot;algorithm&quot;: &quot;ES512&quot;,
+    &quot;keyMaterial&quot;: &quot;MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBYAwVICxD0Paq7MOuO34omujHxSrQXZtiTQ/VMteqAeUfM4wE+vTSpbYCqb1pNhhcQpF+FJd2H8jB1H1zil7qLLcBw+yl4PrnLza1pmNLr+kqQVoVXVyVx/xxMK2WObLn8tHxXtW4k+bm1/ySF+0RQ265IZcw2i8YYX2FY59JkwE2Fac=&quot;
+  },
+  &quot;scope&quot;: &quot;PAYLOAD_SIGNING&quot;,
+  &quot;validFrom&quot;: &quot;2023-04-27 00:00:00&quot;,
+  &quot;validTill&quot;: &quot;2024-04-01 00:00:00&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-authjoseresponsepublic-keys" class="operation" data-method="get"><code>GET</code> /auth/jose/response/public-keys</h3>
+<p>Operation ID: <code>joseResponsePublicKeysGet</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>version</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>Fetch a specific public key version. If omitted the most recent public key is provided.</td>
+</tr>
+<tr>
+<td><code>algorithm</code></td>
+<td><code>query</code></td>
+<td><code>enum: ES256, ES384, ES512, PS256, PS384, PS512, ...</code></td>
+<td>Yes</td>
+<td>Algorithm to be used for signature verification or payload encryption. This must match the algorithm used during request. - Signature verification (Scope: <code>PAYLOAD_SIGNING</code>): <code>ES256</code>, <code>ES384</code>, <code>ES512</code>, <code>PS256</code>, <code>PS384</code>, <code>PS512</code> - Payload encryption (Scope: <code>PAYLOAD_ENCRYPTION</code>): <code>RSA_OAEP_256</code></td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>query</code></td>
+<td><code>enum: PAYLOAD_SIGNING, PAYLOAD_ENCRYPTION</code></td>
+<td>Yes</td>
+<td>Scope of the key. Must be <code>PAYLOAD_SIGNING</code> or <code>PAYLOAD_ENCRYPTION</code>.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-public-key-object" class="status" data-status="2xx">200: Public key object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>keyId</code></td>
+<td><code>string (UUID)</code></td>
+<td>No</td>
+<td>ID of the key in UUID format.</td>
+</tr>
+<tr>
+<td><code>keyMaterial</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>keyMaterial.algorithm</code></td>
+<td><code>enum: ES256, ES384, ES512, PS256, PS384, PS512, ...</code></td>
+<td>No</td>
+<td>Algorithm to be used with the key.</td>
+</tr>
+<tr>
+<td><code>keyMaterial.keyMaterial</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Public key material.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>enum: PAYLOAD_SIGNING, PAYLOAD_ENCRYPTION</code></td>
+<td>No</td>
+<td>Scope of the key.</td>
+</tr>
+<tr>
+<td><code>version</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>Version of the public key issued.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;keyMaterial&quot;: {
+    &quot;algorithm&quot;: &quot;ES512&quot;,
+    &quot;keyMaterial&quot;: &quot;MIGbMBAGByqGSM49AgEGBSuBBAAjA4GGAAQBYAwVICxD0Paq7MOuO34omujHxSrQXZtiTQ/VMteqAeUfM4wE+vTSpbYCqb1pNhhcQpF+FJd2H8jB1H1zil7qLLcBw+yl4PrnLza1pmNLr+kqQVoVXVyVx/xxMK2WObLn8tHxXtW4k+bm1/ySF+0RQ265IZcw2i8YYX2FY59JkwE2Fac=&quot;
+  },
+  &quot;scope&quot;: &quot;PAYLOAD_SIGNING&quot;,
+  &quot;version&quot;: 1
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-5" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-authjoseplaygroundjwe" class="operation" data-method="get"><code>GET</code> /auth/jose/playground/jwe</h3>
+<p>Operation ID: <code>josePlaygroundJweGet</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x-tw-jose-method</code></td>
+<td><code>header</code></td>
+<td><code>enum: jwe</code></td>
+<td>Yes</td>
+<td>JOSE method identifier.</td>
+</tr>
+<tr>
+<td><code>x-tw-jose-encryption-kid</code></td>
+<td><code>header</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Public Key ID of JWE Encryption Key</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-encrypted-response-1" class="status" data-status="2xx">200: Encrypted response</h5>
+<p><code>application/jose+json</code></p>
+<p>The response is <code>string</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">&quot;eyJraWQiOiI2ZGE0OTQ5NS0xNjMyLTQzY2QtOWEwMy1kZDMyNDYwM2VjZDciLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.UC5mC6XSGZZuQzUALpM2QfDWyi-lcl4Wv3v8-9L04BFmqYTyiQMO-YMxiwzOdVbF-L01CaFcr_iuoM36fKp01onJAtsrvuGcnrHeh23kMwZ5k29ycGTckE0YYLe-WV9WtXguudfFC3Hri9v4FTPEE1_BbkrHACVufuhw_xWUWgYAekfm7dnmTI_3SmtExWZ_P-Xn6rkGXhsJ0Kq9LB-F3mnuvz_iglvZsW76RdLV_I4es-TfTnQgVOGO-N38SSS4wCF1qw2TWOkpNAe9kyAg6a8tWw8ZkpOxJlmGdp4jLuG_GDWlmtDrv9ntgeCLDRiTp4SLYL2MGYdmNXigZI5xrg.P_h3CuIiKxEzndER.Zf0wahZEHQSMcb4olkeT1NNzh3Alj34XbXVdREiqQH9CKDa-GnKvh1lXXYuvTO99vtBmNRM.iTzGQ3FNRIybDT_lJcnaeQ03&quot;
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-6" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-authjoseplaygroundjwsjwe" class="operation" data-method="get"><code>GET</code> /auth/jose/playground/jwsjwe</h3>
+<p>Operation ID: <code>josePlaygroundJwsJweGet</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>x-tw-jose-method</code></td>
+<td><code>header</code></td>
+<td><code>enum: jws+jwe</code></td>
+<td>Yes</td>
+<td>JOSE method identifier.</td>
+</tr>
+<tr>
+<td><code>X-TW-JOSE-Encryption-kid</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>ID of the public JWE key uploaded to Wise for encrypting the response.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-signed-and-encrypted-response-1" class="status" data-status="2xx">200: Signed and encrypted response</h5>
+<p><code>application/jose+json</code></p>
+<p>The response is <code>string</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">&quot;eyJraWQiOiJiMzc0ODE1MC0xNGQ0LTRlMDAtYjM5NC03YWUwYzkzYmUyNDUiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.VGhpcyBpcyB0aGUgZW5jcnlwdGVkIENFSw.aXZfdmFsdWU.ZW5jcnlwdGVkX3BheWxvYWQ.YXV0aF90YWc&quot;
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-7" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="500-internal-server-error-1" class="status" data-status="5xx">500: Internal Server Error</h5>
+<p><code>application/json</code></p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "user": {
+      "USER00": {
+        "active": true,
+        "details": "s47",
+        "email": "s48",
+        "id": "USER00",
+        "language": "s4a",
+        "name": "s4b",
+        "registrationCode": "s4c"
+      },
+      "USER01": {
+        "active": true,
+        "details": "s8d",
+        "email": "s8e",
+        "id": "USER01",
+        "language": "s90",
+        "name": "s91",
+        "registrationCode": "s92"
+      },
+      "USER02": {
+        "active": true,
+        "details": "sd3",
+        "email": "sd4",
+        "id": "USER02",
+        "language": "sd6",
+        "name": "sd7",
+        "registrationCode": "sd8"
+      }
+    }
+  },
+  "new": {
+    "user": {
+      "user_ref01": {
+        "active": true,
+        "details": "s119",
+        "email": "s11a",
+        "language": "s11c",
+        "name": "s11d",
+        "registrationCode": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /user/signup/registration_code": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /users/exists": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /users/{userId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /users/{userId}/contact-email": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /me": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /users/{userId}/contact-email": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,26 @@
+# BasicActivityFlow
+
+main: kit: flow: BasicActivityFlow:
+{
+  entity: "activity",
+  kind: "basic",
+  name: "BasicActivityFlow",
+  step: [
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "activity_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicActivityFlow"
+}

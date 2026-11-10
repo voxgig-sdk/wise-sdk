@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "bulk_settlement": {
+      "BULK_SETTLEMENT00": {
+        "balanceTransfer": 70,
+        "refundedTransfers": [],
+        "settlementCurrency": "s48",
+        "settlementDate": "s49",
+        "settlementReference": "s4a",
+        "transfers": [],
+        "type": "s4c",
+        "id": "BULK_SETTLEMENT00"
+      },
+      "BULK_SETTLEMENT01": {
+        "balanceTransfer": 140,
+        "refundedTransfers": [],
+        "settlementCurrency": "s8e",
+        "settlementDate": "s8f",
+        "settlementReference": "s90",
+        "transfers": [],
+        "type": "s92",
+        "id": "BULK_SETTLEMENT01"
+      },
+      "BULK_SETTLEMENT02": {
+        "balanceTransfer": 210,
+        "refundedTransfers": [],
+        "settlementCurrency": "sd4",
+        "settlementDate": "sd5",
+        "settlementReference": "sd6",
+        "transfers": [],
+        "type": "sd8",
+        "id": "BULK_SETTLEMENT02"
+      }
+    }
+  },
+  "new": {
+    "bulk_settlement": {
+      "bulk_settlement_ref01": {
+        "balanceTransfer": 280,
+        "refundedTransfers": [],
+        "settlementCurrency": "s11a",
+        "settlementDate": "s11b",
+        "settlementReference": "s11c",
+        "transfers": [],
+        "type": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /settlements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

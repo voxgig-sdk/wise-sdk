@@ -1,0 +1,38 @@
+{
+  "existing": {
+    "payment_initiation": {
+      "PAYMENT_INITIATION00": {
+        "id": "PAYMENT_INITIATION00",
+        "batch_group_id": "BATCH_GROUP01",
+        "profile_id": "PROFILE01"
+      },
+      "PAYMENT_INITIATION01": {
+        "id": "PAYMENT_INITIATION01",
+        "batch_group_id": "BATCH_GROUP01",
+        "profile_id": "PROFILE01"
+      },
+      "PAYMENT_INITIATION02": {
+        "id": "PAYMENT_INITIATION02",
+        "batch_group_id": "BATCH_GROUP01",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "payment_initiation": {
+      "payment_initiation_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/batch-groups/{batchGroupId}/payment-initiations": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/batch-groups/{batchGroupId}/payment-initiations/{paymentInitiationId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

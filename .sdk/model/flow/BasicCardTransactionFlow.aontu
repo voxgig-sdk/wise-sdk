@@ -1,0 +1,50 @@
+# BasicCardTransactionFlow
+
+main: kit: flow: BasicCardTransactionFlow:
+{
+  entity: "card_transaction",
+  kind: "basic",
+  name: "BasicCardTransactionFlow",
+  step: [
+    {
+      m: {
+        card_token: "card_token01",
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "card_transaction_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "card_transaction_ref01",
+        srcdatavar: "card_transaction_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "card_transaction01",
+        profile_id: "profile01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-card_transaction_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicCardTransactionFlow"
+}

@@ -1,0 +1,479 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Production | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a aria-current="page" href="../api/production.html">Production</a><div class="nav-sections"><a class="nav-section" href="#get-spendprofilesprofileidcardscardtokenproduction">GET /spend/profiles/{profileId}/cards/{cardToken}/production</a>
+<a class="nav-section" href="#put-spendprofilesprofileidcardscardtokenproduction">PUT /spend/profiles/{profileId}/cards/{cardToken}/production</a></div>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="production">Production</h1>
+<p>A card's production status.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileidcardscardtokenproduction"><code>/spend/profiles/{profileId}/cards/{cardToken}/production</code></a></td>
+<td><code>load</code></td>
+<td>OK - Successfully retrieved card production status</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-spendprofilesprofileidcardscardtokenproduction"><code>/spend/profiles/{profileId}/cards/{cardToken}/production</code></a></td>
+<td><code>update</code></td>
+<td>OK - The card information has been successfully sent to the kiosk machine</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">production, err := client.Production(nil).Load(map[string]any{&quot;card_token&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(production)
+updated, err := client.Production(nil).Update(map[string]any{&quot;card_token&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local production, err = client:Production():load({ card_token = &quot;example&quot;, profile_id = 1 })
+local updated, err = client:Production():update({ card_token = &quot;example&quot;, profile_id = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$production = $client-&gt;Production()-&gt;load([&quot;card_token&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1]);
+$updated = $client-&gt;Production()-&gt;update([&quot;card_token&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">production = client.Production().load({&quot;card_token&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1})
+updated = client.Production().update({&quot;card_token&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">production = client.Production.load({ &quot;card_token&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1 })
+updated = client.Production.update({ &quot;card_token&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const production = await client.Production().load({ card_token: &quot;example&quot;, profile_id: 1 })
+const updated = await client.Production().update({ card_token: &quot;example&quot;, profile_id: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Detailed description of the error code.</td>
+</tr>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Code returned when card production is not successful.</td>
+</tr>
+<tr>
+<td><code>kioskId</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Identifier that specifies which kiosk machine is producing the card.</td>
+</tr>
+<tr>
+<td><code>occurredAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Time when the card production request has been sent to the kiosk machine (ISO 8601 format).</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Current production status: - <code>READY</code> - Card is ready for production - <code>IN_PROGRESS</code> - Card is in production at the kiosk machine - <code>PRODUCED</code> - Card is produced and collected.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-spendprofilesprofileidcardscardtokenproduction" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/cards/{cardToken}/production</h3>
+<p>Operation ID: <code>cardKioskCollectionProductionGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID (personal or business) that owns the card.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique token identifying the card.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-card-production-status" class="status" data-status="2xx">200: OK - Successfully retrieved card production status</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Detailed description of the error code.</td>
+</tr>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Code returned when card production is not successful. Nullable. <strong>Request errors</strong> - Returned when <code>status</code> is <code>REQUEST_ERROR</code>: - <code>UNKNOWN_ERROR</code> - An error occurred on the server - <code>REQUEST_ALREADY_EXISTS</code> - The request has already been submitted - <code>KIOSK_ID_NOT_FOUND</code> - The kiosk ID does not exist - <code>CARD_TYPE_NOT_FOUND</code> - The card type does not exist - <code>INVALID_FIELD_VALUE</code> - Some field values are unexpected - <code>INVALID_PIN_FORMAT</code> - The PIN does not follow ISO0 or ISO2 standard - <code>EMPTY_OR_NULL_FIELD_VALUE</code> - Some required fields are empty or null - <code>EMPTY_OR_NULL_OR_WRONG_SIZE_FIELD_VALUE</code> - Some required fields are empty, null, or have incorrect lengths - <code>CHARSET_NOT_SUPPORTED</code> - The character set for some fields is not supported - <code>INVALID_FIELD_FORMAT</code> - Some field formats are invalid - <code>INVALID_FIELD_ENCODING</code> - The encoding for some fields is not expected - <code>CDATA_ENCODING_OR_FORMATING_ERROR</code> - The encoding or formatting for XML text field values is incorrect - <code>PIN_LENGTH_ERROR</code> - The PIN length is incorrect - <code>PIN_VERIFICATION_FAILED</code> - The PIN cannot be verified because the server is unreachable - <code>DATA_PREPARATION_FAILED</code> - The server failed to parse the request - <code>PARTIAL_DATA_RECEIVED</code> - Only part of the expected data has been received - <code>NO_BRANCH_LINKED_TO_KIOSK</code> - The kiosk has not been linked to any branch - <code>IMAGE_SERVER_ERROR</code> - The image server is unreachable or failed to process the data - <code>PAN_ALREADY_EXISTS</code> - The PAN already exists - <code>PRINTER_OR_SATELLITE_NOT_READY</code> - The printer or satellite is not ready to start the production - <code>REQUEST_CREATED_BUT_NOT_STARTED</code> - The request has been created, but production is pending until the printer or satellite is ready - <code>UNABLE_TO_ACCEPT_REQUEST</code> - The system is currently busy and cannot accept new requests at this time <strong>Production errors</strong> - Returned when <code>status</code> is <code>PRODUCTION_ERROR</code>: - <code>CB_NOT_AVAILABLE</code> - Main server error: central base not available - <code>CB_DB_NOT_AVAILABLE</code> - Main server error: database not available - <code>CB_NETWORK_NOT_AVAILABLE</code> - Main server error: network not available - <code>CB_AUTHENTICATION_FAILED</code> - Main server error: user authentication verification failed - <code>CB_SERVICE_NOT_ALLOWED</code> - Main server error: the accessed service requires a higher security level - <code>CB_TIME</code> - Main server error: timeout occurred on the Central Base side - <code>DP_NOT_AVAILABLE</code> - Data processing error: the Data preparation module is not available - <code>DP_IO_ERROR</code> - Data processing error: Input/Output error when communicating with the DP - <code>DP_TIMEOUT</code> - Data processing error: timeout error - <code>SAT_SERVER_NOT_REACHABLE</code> - Satellite agent error: the server is not reachable - <code>SAT_AUTHENTICATION_FAILED</code> - Satellite agent error: user authentication failed on satellite - <code>SAT_NETWORK_NOT_AVAILABLE</code> - Satellite agent error: the network is not available - <code>PRT_NOT_REACHABLE</code> - Printer error: printer is not reachable - <code>PRT_SETUP_ERROR</code> - Printer error: printer setup is incorrect - <code>PRT_TIMEOUT</code> - Printer error: printer timeout - <code>PRT_RIBBON</code> - Printer error: ribbon error - <code>PRT_LOCK_ERROR</code> - Printer error: printer physically unlocked - <code>PRT_RIBBON_MISSING</code> - Printer error: ribbon is missing - <code>PRT_RIBBON_ENDED</code> - Printer error: ribbon has ended - <code>PRT_COVER_OPEN</code> - Printer error: printer cover is open - <code>PRT_PAUSED</code> - Printer error: printer paused - <code>PRD_UNEXPECTED_DATA</code> - Production error: production data is incorrect - <code>PRD_FEEDER_EMPTY</code> - Production error: feeder is empty - <code>PRD_FEEDER_JAM</code> - Production error: feeder card jam - <code>PRD_HOPPER_FULL</code> - Production error: hopper is full - <code>PRD_HOPPER_DOOR</code> - Production error: hopper door is open - <code>PRD_HOPPER_JAM</code> - Production error: hopper card jam - <code>PRD_MAGSTRIPE</code> - Production error: error occurred during magstripe encoding - <code>PRD_SMARTCARD</code> - Production error: error occurred during chip personalization - <code>PRD_EMBOSSER</code> - Production error: error occurred during embossing - <code>PRD_TIMEOUT</code> - Production error: production timeout has been reached - <code>PRD_REJECT_FULL</code> - Production error: reject box is full - <code>PRD_SMARTCARD_CARD_NOT_IN_READER</code> - Production error: card is not in reader - <code>PRD_FINAL_VALIDATION_NOK</code> - Production error: user has rejected card production - <code>INV_NOT_INITIALIZED</code> - Production error: inventory not initialized - <code>UNKNOWN_ERROR</code> - Unknown error</td>
+</tr>
+<tr>
+<td><code>kioskId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Identifier that specifies which kiosk machine is producing the card. When the status is <code>READY</code>, this value is null.</td>
+</tr>
+<tr>
+<td><code>occurredAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card production request has been sent to the kiosk machine (ISO 8601 format).</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: READY, IN_PROGRESS, PRODUCED, PRODUCTION_ERROR, REQUEST_ERROR</code></td>
+<td>No</td>
+<td>Current production status: - <code>READY</code> - Card is ready for production - <code>IN_PROGRESS</code> - Card is in production at the kiosk machine - <code>PRODUCED</code> - Card is produced and collected. This is a final state - <code>PRODUCTION_ERROR</code> - Card production failed - <code>REQUEST_ERROR</code> - Card production request failed</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;description&quot;: &quot;Card ready for production&quot;,
+  &quot;errorCode&quot;: null,
+  &quot;kioskId&quot;: null,
+  &quot;occurredAt&quot;: &quot;2024-01-01T12:24:56.124Z&quot;,
+  &quot;status&quot;: &quot;READY&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="update">update</h2>
+<h3 id="put-spendprofilesprofileidcardscardtokenproduction" class="operation" data-method="put"><code>PUT</code> /spend/profiles/{profileId}/cards/{cardToken}/production</h3>
+<p>Operation ID: <code>cardKioskCollectionProduce</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID (personal or business) that owns the card.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The unique token identifying the card.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kioskId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Identifier that specifies on which kiosk the card should be produced.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-ok---the-card-information-has-been-successfully-sent-to-the-kiosk-machine" class="status" data-status="2xx">200: OK - The card information has been successfully sent to the kiosk machine</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Detailed description of the error code.</td>
+</tr>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Code returned when card production is not successful. Nullable. <strong>Request errors</strong> - Returned when <code>status</code> is <code>REQUEST_ERROR</code>: - <code>UNKNOWN_ERROR</code> - An error occurred on the server - <code>REQUEST_ALREADY_EXISTS</code> - The request has already been submitted - <code>KIOSK_ID_NOT_FOUND</code> - The kiosk ID does not exist - <code>CARD_TYPE_NOT_FOUND</code> - The card type does not exist - <code>INVALID_FIELD_VALUE</code> - Some field values are unexpected - <code>INVALID_PIN_FORMAT</code> - The PIN does not follow ISO0 or ISO2 standard - <code>EMPTY_OR_NULL_FIELD_VALUE</code> - Some required fields are empty or null - <code>EMPTY_OR_NULL_OR_WRONG_SIZE_FIELD_VALUE</code> - Some required fields are empty, null, or have incorrect lengths - <code>CHARSET_NOT_SUPPORTED</code> - The character set for some fields is not supported - <code>INVALID_FIELD_FORMAT</code> - Some field formats are invalid - <code>INVALID_FIELD_ENCODING</code> - The encoding for some fields is not expected - <code>CDATA_ENCODING_OR_FORMATING_ERROR</code> - The encoding or formatting for XML text field values is incorrect - <code>PIN_LENGTH_ERROR</code> - The PIN length is incorrect - <code>PIN_VERIFICATION_FAILED</code> - The PIN cannot be verified because the server is unreachable - <code>DATA_PREPARATION_FAILED</code> - The server failed to parse the request - <code>PARTIAL_DATA_RECEIVED</code> - Only part of the expected data has been received - <code>NO_BRANCH_LINKED_TO_KIOSK</code> - The kiosk has not been linked to any branch - <code>IMAGE_SERVER_ERROR</code> - The image server is unreachable or failed to process the data - <code>PAN_ALREADY_EXISTS</code> - The PAN already exists - <code>PRINTER_OR_SATELLITE_NOT_READY</code> - The printer or satellite is not ready to start the production - <code>REQUEST_CREATED_BUT_NOT_STARTED</code> - The request has been created, but production is pending until the printer or satellite is ready - <code>UNABLE_TO_ACCEPT_REQUEST</code> - The system is currently busy and cannot accept new requests at this time <strong>Production errors</strong> - Returned when <code>status</code> is <code>PRODUCTION_ERROR</code>: - <code>CB_NOT_AVAILABLE</code> - Main server error: central base not available - <code>CB_DB_NOT_AVAILABLE</code> - Main server error: database not available - <code>CB_NETWORK_NOT_AVAILABLE</code> - Main server error: network not available - <code>CB_AUTHENTICATION_FAILED</code> - Main server error: user authentication verification failed - <code>CB_SERVICE_NOT_ALLOWED</code> - Main server error: the accessed service requires a higher security level - <code>CB_TIME</code> - Main server error: timeout occurred on the Central Base side - <code>DP_NOT_AVAILABLE</code> - Data processing error: the Data preparation module is not available - <code>DP_IO_ERROR</code> - Data processing error: Input/Output error when communicating with the DP - <code>DP_TIMEOUT</code> - Data processing error: timeout error - <code>SAT_SERVER_NOT_REACHABLE</code> - Satellite agent error: the server is not reachable - <code>SAT_AUTHENTICATION_FAILED</code> - Satellite agent error: user authentication failed on satellite - <code>SAT_NETWORK_NOT_AVAILABLE</code> - Satellite agent error: the network is not available - <code>PRT_NOT_REACHABLE</code> - Printer error: printer is not reachable - <code>PRT_SETUP_ERROR</code> - Printer error: printer setup is incorrect - <code>PRT_TIMEOUT</code> - Printer error: printer timeout - <code>PRT_RIBBON</code> - Printer error: ribbon error - <code>PRT_LOCK_ERROR</code> - Printer error: printer physically unlocked - <code>PRT_RIBBON_MISSING</code> - Printer error: ribbon is missing - <code>PRT_RIBBON_ENDED</code> - Printer error: ribbon has ended - <code>PRT_COVER_OPEN</code> - Printer error: printer cover is open - <code>PRT_PAUSED</code> - Printer error: printer paused - <code>PRD_UNEXPECTED_DATA</code> - Production error: production data is incorrect - <code>PRD_FEEDER_EMPTY</code> - Production error: feeder is empty - <code>PRD_FEEDER_JAM</code> - Production error: feeder card jam - <code>PRD_HOPPER_FULL</code> - Production error: hopper is full - <code>PRD_HOPPER_DOOR</code> - Production error: hopper door is open - <code>PRD_HOPPER_JAM</code> - Production error: hopper card jam - <code>PRD_MAGSTRIPE</code> - Production error: error occurred during magstripe encoding - <code>PRD_SMARTCARD</code> - Production error: error occurred during chip personalization - <code>PRD_EMBOSSER</code> - Production error: error occurred during embossing - <code>PRD_TIMEOUT</code> - Production error: production timeout has been reached - <code>PRD_REJECT_FULL</code> - Production error: reject box is full - <code>PRD_SMARTCARD_CARD_NOT_IN_READER</code> - Production error: card is not in reader - <code>PRD_FINAL_VALIDATION_NOK</code> - Production error: user has rejected card production - <code>INV_NOT_INITIALIZED</code> - Production error: inventory not initialized - <code>UNKNOWN_ERROR</code> - Unknown error</td>
+</tr>
+<tr>
+<td><code>kioskId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Identifier that specifies which kiosk machine is producing the card. When the status is <code>READY</code>, this value is null.</td>
+</tr>
+<tr>
+<td><code>occurredAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card production request has been sent to the kiosk machine (ISO 8601 format).</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: READY, IN_PROGRESS, PRODUCED, PRODUCTION_ERROR, REQUEST_ERROR</code></td>
+<td>No</td>
+<td>Current production status: - <code>READY</code> - Card is ready for production - <code>IN_PROGRESS</code> - Card is in production at the kiosk machine - <code>PRODUCED</code> - Card is produced and collected. This is a final state - <code>PRODUCTION_ERROR</code> - Card production failed - <code>REQUEST_ERROR</code> - Card production request failed</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;kioskId&quot;: &quot;WIS00001&quot;,
+  &quot;occurredAt&quot;: &quot;2024-01-01T12:24:56.121Z&quot;,
+  &quot;status&quot;: &quot;IN_PROGRESS&quot;
+}
+</code></pre>
+<h5 id="422-unprocessable-content---the-card-information-can39t-be-processed-by-the-kiosk-machine-for-more-details-check-the-error-code-returned" class="status" data-status="4xx">422: Unprocessable Content - The card information can't be processed by the kiosk machine. For more details, check the error code returned</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>description</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Detailed description of the error code.</td>
+</tr>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Code returned when card production is not successful. Nullable. <strong>Request errors</strong> - Returned when <code>status</code> is <code>REQUEST_ERROR</code>: - <code>UNKNOWN_ERROR</code> - An error occurred on the server - <code>REQUEST_ALREADY_EXISTS</code> - The request has already been submitted - <code>KIOSK_ID_NOT_FOUND</code> - The kiosk ID does not exist - <code>CARD_TYPE_NOT_FOUND</code> - The card type does not exist - <code>INVALID_FIELD_VALUE</code> - Some field values are unexpected - <code>INVALID_PIN_FORMAT</code> - The PIN does not follow ISO0 or ISO2 standard - <code>EMPTY_OR_NULL_FIELD_VALUE</code> - Some required fields are empty or null - <code>EMPTY_OR_NULL_OR_WRONG_SIZE_FIELD_VALUE</code> - Some required fields are empty, null, or have incorrect lengths - <code>CHARSET_NOT_SUPPORTED</code> - The character set for some fields is not supported - <code>INVALID_FIELD_FORMAT</code> - Some field formats are invalid - <code>INVALID_FIELD_ENCODING</code> - The encoding for some fields is not expected - <code>CDATA_ENCODING_OR_FORMATING_ERROR</code> - The encoding or formatting for XML text field values is incorrect - <code>PIN_LENGTH_ERROR</code> - The PIN length is incorrect - <code>PIN_VERIFICATION_FAILED</code> - The PIN cannot be verified because the server is unreachable - <code>DATA_PREPARATION_FAILED</code> - The server failed to parse the request - <code>PARTIAL_DATA_RECEIVED</code> - Only part of the expected data has been received - <code>NO_BRANCH_LINKED_TO_KIOSK</code> - The kiosk has not been linked to any branch - <code>IMAGE_SERVER_ERROR</code> - The image server is unreachable or failed to process the data - <code>PAN_ALREADY_EXISTS</code> - The PAN already exists - <code>PRINTER_OR_SATELLITE_NOT_READY</code> - The printer or satellite is not ready to start the production - <code>REQUEST_CREATED_BUT_NOT_STARTED</code> - The request has been created, but production is pending until the printer or satellite is ready - <code>UNABLE_TO_ACCEPT_REQUEST</code> - The system is currently busy and cannot accept new requests at this time <strong>Production errors</strong> - Returned when <code>status</code> is <code>PRODUCTION_ERROR</code>: - <code>CB_NOT_AVAILABLE</code> - Main server error: central base not available - <code>CB_DB_NOT_AVAILABLE</code> - Main server error: database not available - <code>CB_NETWORK_NOT_AVAILABLE</code> - Main server error: network not available - <code>CB_AUTHENTICATION_FAILED</code> - Main server error: user authentication verification failed - <code>CB_SERVICE_NOT_ALLOWED</code> - Main server error: the accessed service requires a higher security level - <code>CB_TIME</code> - Main server error: timeout occurred on the Central Base side - <code>DP_NOT_AVAILABLE</code> - Data processing error: the Data preparation module is not available - <code>DP_IO_ERROR</code> - Data processing error: Input/Output error when communicating with the DP - <code>DP_TIMEOUT</code> - Data processing error: timeout error - <code>SAT_SERVER_NOT_REACHABLE</code> - Satellite agent error: the server is not reachable - <code>SAT_AUTHENTICATION_FAILED</code> - Satellite agent error: user authentication failed on satellite - <code>SAT_NETWORK_NOT_AVAILABLE</code> - Satellite agent error: the network is not available - <code>PRT_NOT_REACHABLE</code> - Printer error: printer is not reachable - <code>PRT_SETUP_ERROR</code> - Printer error: printer setup is incorrect - <code>PRT_TIMEOUT</code> - Printer error: printer timeout - <code>PRT_RIBBON</code> - Printer error: ribbon error - <code>PRT_LOCK_ERROR</code> - Printer error: printer physically unlocked - <code>PRT_RIBBON_MISSING</code> - Printer error: ribbon is missing - <code>PRT_RIBBON_ENDED</code> - Printer error: ribbon has ended - <code>PRT_COVER_OPEN</code> - Printer error: printer cover is open - <code>PRT_PAUSED</code> - Printer error: printer paused - <code>PRD_UNEXPECTED_DATA</code> - Production error: production data is incorrect - <code>PRD_FEEDER_EMPTY</code> - Production error: feeder is empty - <code>PRD_FEEDER_JAM</code> - Production error: feeder card jam - <code>PRD_HOPPER_FULL</code> - Production error: hopper is full - <code>PRD_HOPPER_DOOR</code> - Production error: hopper door is open - <code>PRD_HOPPER_JAM</code> - Production error: hopper card jam - <code>PRD_MAGSTRIPE</code> - Production error: error occurred during magstripe encoding - <code>PRD_SMARTCARD</code> - Production error: error occurred during chip personalization - <code>PRD_EMBOSSER</code> - Production error: error occurred during embossing - <code>PRD_TIMEOUT</code> - Production error: production timeout has been reached - <code>PRD_REJECT_FULL</code> - Production error: reject box is full - <code>PRD_SMARTCARD_CARD_NOT_IN_READER</code> - Production error: card is not in reader - <code>PRD_FINAL_VALIDATION_NOK</code> - Production error: user has rejected card production - <code>INV_NOT_INITIALIZED</code> - Production error: inventory not initialized - <code>UNKNOWN_ERROR</code> - Unknown error</td>
+</tr>
+<tr>
+<td><code>kioskId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Identifier that specifies which kiosk machine is producing the card. When the status is <code>READY</code>, this value is null.</td>
+</tr>
+<tr>
+<td><code>occurredAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card production request has been sent to the kiosk machine (ISO 8601 format).</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: READY, IN_PROGRESS, PRODUCED, PRODUCTION_ERROR, REQUEST_ERROR</code></td>
+<td>No</td>
+<td>Current production status: - <code>READY</code> - Card is ready for production - <code>IN_PROGRESS</code> - Card is in production at the kiosk machine - <code>PRODUCED</code> - Card is produced and collected. This is a final state - <code>PRODUCTION_ERROR</code> - Card production failed - <code>REQUEST_ERROR</code> - Card production request failed</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;description&quot;: &quot;The PIN cannot be verified because the server is unreachable&quot;,
+  &quot;errorCode&quot;: &quot;PIN_VERIFICATION_FAILED&quot;,
+  &quot;kioskId&quot;: &quot;WIS00001&quot;,
+  &quot;occurredAt&quot;: &quot;2024-01-01T12:24:56.121Z&quot;,
+  &quot;status&quot;: &quot;REQUEST_ERROR&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

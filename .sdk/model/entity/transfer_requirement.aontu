@@ -1,0 +1,101 @@
+# Entity: transfer_requirement
+
+main: kit: entity: transfer_requirement: {
+
+  alias: field: {}
+
+  fields: {
+    customerTransactionId: {
+      fo: "uuid"
+      h: "Customer Transaction Id"
+      n: "customerTransactionId"
+      r: false
+      sh: "Unique identifier for the transfer request"
+      t: "`$STRING`"
+    }
+    details: {
+      h: "Details"
+      n: "details"
+      r: false
+      t: "`$OBJECT`"
+    }
+    originatorLegalEntityType: {
+      h: "Originator Legal Entity Type"
+      n: "originatorLegalEntityType"
+      r: false
+      sh: "Type of sender."
+      t: "`$STRING`"
+    }
+    quoteUuid: {
+      fo: "uuid"
+      h: "Quote Uuid"
+      n: "quoteUuid"
+      r: true
+      sh: "V2 quote ID"
+      t: "`$STRING`"
+    }
+    targetAccount: {
+      fo: "int64"
+      h: "Target Account"
+      n: "targetAccount"
+      r: true
+      sh: "Recipient account ID"
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "transfer_requirement"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "customerTransactionId"
+            "details"
+            "originatorLegalEntityType"
+            "quoteUuid"
+            "targetAccount"
+          ]
+          co: {
+            id: "POST /transfer-requirements"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/transfer-requirements"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "transfer-requirements"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

@@ -1,0 +1,18 @@
+# BasicLookupGpiTrackingResponseContentFlow
+
+main: kit: flow: BasicLookupGpiTrackingResponseContentFlow:
+{
+  entity: "lookup_gpi_tracking_response_content",
+  kind: "basic",
+  name: "BasicLookupGpiTrackingResponseContentFlow",
+  step: [
+    {
+      i: {
+        ref: "lookup_gpi_tracking_response_content_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicLookupGpiTrackingResponseContentFlow"
+}

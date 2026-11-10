@@ -1,0 +1,40 @@
+# BasicSettlementAllocationResponseContentFlow
+
+main: kit: flow: BasicSettlementAllocationResponseContentFlow:
+{
+  entity: "settlement_allocation_response_content",
+  kind: "basic",
+  name: "BasicSettlementAllocationResponseContentFlow",
+  step: [
+    {
+      i: {
+        ref: "settlement_allocation_response_content_ref01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "settlement_allocation_response_content_ref01",
+        srcdatavar: "settlement_allocation_response_content_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "settlement_allocation_response_content01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-settlement_allocation_response_content_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSettlementAllocationResponseContentFlow"
+}

@@ -1,0 +1,35 @@
+# BasicScaFacemapFlow
+
+main: kit: flow: BasicScaFacemapFlow:
+{
+  entity: "sca_facemap",
+  kind: "basic",
+  name: "BasicScaFacemapFlow",
+  step: [
+    {
+      i: {
+        ref: "sca_facemap_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "sca_facemap_ref01",
+        suffix: "_rm0"
+      }
+
+      m: {
+        id: "sca_facemap01"
+      }
+
+      o: "remove"
+    }
+  ],
+  "key$": "BasicScaFacemapFlow"
+}

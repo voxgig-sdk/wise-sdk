@@ -1,0 +1,93 @@
+{
+  "existing": {
+    "subscription": {
+      "SUBSCRIPTION00": {
+        "created_at": "s46",
+        "created_by": {},
+        "delivery": {},
+        "id": "SUBSCRIPTION00",
+        "name": "s4a",
+        "scope": {},
+        "trigger_on": "s4c",
+        "client_key": "CLIENT_KEY01",
+        "profile_id": "PROFILE01"
+      },
+      "SUBSCRIPTION01": {
+        "created_at": "s8c",
+        "created_by": {},
+        "delivery": {},
+        "id": "SUBSCRIPTION01",
+        "name": "s90",
+        "scope": {},
+        "trigger_on": "s92",
+        "client_key": "CLIENT_KEY01",
+        "profile_id": "PROFILE01"
+      },
+      "SUBSCRIPTION02": {
+        "created_at": "sd2",
+        "created_by": {},
+        "delivery": {},
+        "id": "SUBSCRIPTION02",
+        "name": "sd6",
+        "scope": {},
+        "trigger_on": "sd8",
+        "client_key": "CLIENT_KEY01",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "subscription": {
+      "subscription_ref01": {
+        "created_at": "s118",
+        "created_by": {},
+        "delivery": {},
+        "name": "s11c",
+        "scope": {},
+        "trigger_on": "s11e"
+      }
+    }
+  },
+  "requests": {
+    "POST /applications/{clientKey}/subscriptions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/subscriptions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /applications/{clientKey}/subscriptions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/subscriptions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /applications/{clientKey}/subscriptions/{subscriptionId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/subscriptions/{subscriptionId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /applications/{clientKey}/subscriptions/{subscriptionId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /profiles/{profileId}/subscriptions/{subscriptionId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

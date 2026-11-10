@@ -1,0 +1,296 @@
+# Entity: ott
+
+main: kit: entity: ott: {
+
+  alias: field: {}
+
+  fields: {
+    actionType: {
+      h: "Action Type"
+      n: "actionType"
+      r: false
+      sh: "The action bound to the one time token."
+      t: "`$STRING`"
+    }
+    challenges: {
+      h: "Challenges"
+      n: "challenges"
+      r: false
+      sh: "Array of challenge objects."
+      t: "`$ARRAY`"
+    }
+    oneTimeToken: {
+      h: "One Time Token"
+      n: "oneTimeToken"
+      r: false
+      sh: "Unique identifier of a one time token."
+      t: "`$STRING`"
+    }
+    userId: {
+      fo: "int64"
+      h: "User Id"
+      n: "userId"
+      r: false
+      sh: "Creator of this one time token."
+      t: "`$INTEGER`"
+    }
+    validity: {
+      fo: "int64"
+      h: "Validity"
+      n: "validity"
+      r: false
+      sh: "Seconds until the one time token becomes expired."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "ott"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "otpCode"
+          ]
+          co: {
+            id: "POST /one-time-token/sms/verify"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "one_time_token"
+                or: "One-Time-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/one-time-token/sms/verify"
+          q: {
+            "$action": "sms"
+            exist: [
+              "one_time_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "one-time-token"
+            }
+            {
+              lit: "sms"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.oneTimeTokenProperties`"
+          }
+        }
+        {
+          bf: [
+            "otpCode"
+          ]
+          co: {
+            id: "POST /one-time-token/voice/verify"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "one_time_token"
+                or: "One-Time-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/one-time-token/voice/verify"
+          q: {
+            "$action": "voice"
+            exist: [
+              "one_time_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "one-time-token"
+            }
+            {
+              lit: "voice"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.oneTimeTokenProperties`"
+          }
+        }
+        {
+          bf: [
+            "otpCode"
+          ]
+          co: {
+            id: "POST /one-time-token/whatsapp/verify"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "one_time_token"
+                or: "One-Time-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/one-time-token/whatsapp/verify"
+          q: {
+            "$action": "whatsapp"
+            exist: [
+              "one_time_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "one-time-token"
+            }
+            {
+              lit: "whatsapp"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.oneTimeTokenProperties`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /one-time-token/status"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "one_time_token"
+                or: "One-Time-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/one-time-token/status"
+          q: {
+            exist: [
+              "one_time_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "one-time-token"
+            }
+            {
+              lit: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.oneTimeTokenProperties`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

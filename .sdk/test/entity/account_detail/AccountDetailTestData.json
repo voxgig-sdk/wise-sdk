@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "account_detail": {
+      "ACCOUNT_DETAIL00": {
+        "accountHolderName": "s3c",
+        "accountIdentification": "s3d",
+        "country": "s3e",
+        "id": "ACCOUNT_DETAIL00",
+        "profileId": 64,
+        "state": "s41"
+      },
+      "ACCOUNT_DETAIL01": {
+        "accountHolderName": "s78",
+        "accountIdentification": "s79",
+        "country": "s7a",
+        "id": "ACCOUNT_DETAIL01",
+        "profileId": 124,
+        "state": "s7d"
+      },
+      "ACCOUNT_DETAIL02": {
+        "accountHolderName": "sb4",
+        "accountIdentification": "sb5",
+        "country": "sb6",
+        "id": "ACCOUNT_DETAIL02",
+        "profileId": 184,
+        "state": "sb9"
+      }
+    }
+  },
+  "new": {
+    "account_detail": {
+      "account_detail_ref01": {
+        "accountHolderName": "sf0",
+        "accountIdentification": "sf1",
+        "country": "sf2",
+        "profileId": 244,
+        "state": "sf5"
+      }
+    }
+  },
+  "requests": {
+    "GET /balances/account-details/{id}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

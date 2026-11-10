@@ -1,0 +1,36 @@
+{
+  "existing": {
+    "delivery_estimate": {
+      "DELIVERY_ESTIMATE00": {
+        "estimatedDeliveryDate": "s1e",
+        "formattedEstimatedDeliveryDate": "s1f",
+        "id": "DELIVERY_ESTIMATE00"
+      },
+      "DELIVERY_ESTIMATE01": {
+        "estimatedDeliveryDate": "s3c",
+        "formattedEstimatedDeliveryDate": "s3d",
+        "id": "DELIVERY_ESTIMATE01"
+      },
+      "DELIVERY_ESTIMATE02": {
+        "estimatedDeliveryDate": "s5a",
+        "formattedEstimatedDeliveryDate": "s5b",
+        "id": "DELIVERY_ESTIMATE02"
+      }
+    }
+  },
+  "new": {
+    "delivery_estimate": {
+      "delivery_estimate_ref01": {
+        "estimatedDeliveryDate": "s78",
+        "formattedEstimatedDeliveryDate": "s79"
+      }
+    }
+  },
+  "requests": {
+    "GET /delivery-estimates/{transferId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,1532 @@
+# Entity: simulation
+
+main: kit: entity: simulation: {
+
+  alias: field: {}
+
+  alias: {
+    field: {
+      wise_id: "id"
+    }
+  }
+
+  fields: {
+    business: {
+      h: "Business"
+      n: "business"
+      r: false
+      t: "`$STRING`"
+    }
+    created: {
+      h: "Created"
+      n: "created"
+      r: false
+      t: "`$STRING`"
+    }
+    creationTime: {
+      h: "Creation Time"
+      n: "creationTime"
+      r: false
+      sh: "Time when the card transaction was created."
+      t: "`$NUMBER`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "Description of the KYC review item."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    details: {
+      h: "Details"
+      n: "details"
+      r: false
+      t: "`$OBJECT`"
+    }
+    failure_reason_code: {
+      h: "Failure Reason Code"
+      n: "failure_reason_code"
+      r: false
+      sh: "Failure reason code to trigger for payout failure."
+      t: "`$STRING`"
+    }
+    hasActiveIssues: {
+      h: "Has Active Issues"
+      n: "hasActiveIssues"
+      r: false
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: false
+      sh: "KYC review item key."
+      t: "`$STRING`"
+    }
+    quote: {
+      h: "Quote"
+      n: "quote"
+      r: false
+      t: "`$INTEGER`"
+    }
+    rate: {
+      h: "Rate"
+      n: "rate"
+      r: false
+      t: "`$NUMBER`"
+    }
+    reference: {
+      h: "Reference"
+      n: "reference"
+      r: false
+      t: "`$STRING`"
+    }
+    sourceAccount: {
+      h: "Source Account"
+      n: "sourceAccount"
+      r: false
+      t: "`$STRING`"
+    }
+    sourceCurrency: {
+      h: "Source Currency"
+      n: "sourceCurrency"
+      r: false
+      t: "`$STRING`"
+    }
+    sourceValue: {
+      h: "Source Value"
+      n: "sourceValue"
+      r: false
+      t: "`$INTEGER`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: false
+      sh: "State of the KYC review item."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      t: "`$STRING`"
+    }
+    targetAccount: {
+      h: "Target Account"
+      n: "targetAccount"
+      r: false
+      t: "`$INTEGER`"
+    }
+    targetCurrency: {
+      h: "Target Currency"
+      n: "targetCurrency"
+      r: false
+      t: "`$STRING`"
+    }
+    targetValue: {
+      h: "Target Value"
+      n: "targetValue"
+      r: false
+      t: "`$NUMBER`"
+    }
+    transactionId: {
+      fo: "int64"
+      h: "Transaction Id"
+      n: "transactionId"
+      r: false
+      sh: "ID of the transaction."
+      t: "`$INTEGER`"
+    }
+    transferRequest: {
+      h: "Transfer Request"
+      n: "transferRequest"
+      r: false
+      t: "`$STRING`"
+    }
+    user: {
+      h: "User"
+      n: "user"
+      r: false
+      t: "`$INTEGER`"
+    }
+    wise_id: {
+      h: "Wise Id"
+      n: "wise_id"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+    parts: [
+      "transfer_id"
+      "status"
+    ]
+    sep: "/"
+  }
+
+  name: "simulation"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "amount"
+            "cardNumber"
+            "mcc"
+            "pos"
+            "transactionType"
+          ]
+          co: {
+            id: "POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/authorisation"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/authorisation"
+          q: {
+            "$action": "card-authorisation"
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "transactions"
+            }
+            {
+              lit: "authorisation"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.reference`"
+          }
+        }
+        {
+          bf: [
+            "amount"
+            "ref"
+            "transactionType"
+          ]
+          co: {
+            id: "POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/clearing"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/clearing"
+          q: {
+            "$action": "card-clearing"
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "transactions"
+            }
+            {
+              lit: "clearing"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.reference`"
+          }
+        }
+        {
+          bf: [
+            "errorCode"
+            "status"
+          ]
+          co: {
+            id: "POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/production"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/production"
+          q: {
+            "$action": "card-production"
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "production"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "amount"
+            "ref"
+            "transactionType"
+          ]
+          co: {
+            id: "POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/reversal"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/reversal"
+          q: {
+            "$action": "card-reversal"
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "transactions"
+            }
+            {
+              lit: "reversal"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.reference`"
+          }
+        }
+        {
+          bf: [
+            "requestedAction"
+            "requirement"
+          ]
+          co: {
+            id: "POST /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/add"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "kyc_review_id"
+                or: "kycReviewId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/add"
+          q: {
+            "$action": "kyc-requirement-add"
+            exist: [
+              "kyc_review_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              kycReviewId: "kyc_review_id"
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "kyc-reviews"
+            }
+            {
+              var: "kyc_review_id"
+            }
+            {
+              lit: "requirements"
+            }
+            {
+              lit: "add"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "requirement"
+          ]
+          co: {
+            id: "POST /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/submit"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "kyc_review_id"
+                or: "kycReviewId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/submit"
+          q: {
+            "$action": "kyc-requirement-submit"
+            exist: [
+              "kyc_review_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              kycReviewId: "kyc_review_id"
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "kyc-reviews"
+            }
+            {
+              var: "kyc_review_id"
+            }
+            {
+              lit: "requirements"
+            }
+            {
+              lit: "submit"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "requestedAction"
+            "requirements"
+          ]
+          co: {
+            id: "POST /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/verify"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "kyc_review_id"
+                or: "kycReviewId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/verify"
+          q: {
+            "$action": "kyc-review-verify"
+            exist: [
+              "kyc_review_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              kycReviewId: "kyc_review_id"
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "kyc-reviews"
+            }
+            {
+              var: "kyc_review_id"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "amount"
+            "beneficiaryAddress"
+            "beneficiaryName"
+            "currency"
+            "reference"
+            "senderAccountNumber"
+            "senderAddress"
+            "senderBankCode"
+            "senderName"
+          ]
+          co: {
+            id: "POST /simulation/profiles/{profileId}/bank-transactions/import"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/profiles/{profileId}/bank-transactions/import"
+          q: {
+            "$action": "bank-transaction-import"
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "bank-transactions"
+            }
+            {
+              lit: "import"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "amount"
+            "beneficiaryAccount"
+            "beneficiaryAddress"
+            "beneficiaryName"
+            "charges"
+            "currencyCode"
+            "instructedAmount"
+            "instructedCurrencyCode"
+            "paymentReference"
+            "previousInstructingAgents"
+            "senderAccount"
+            "senderAddress"
+            "senderBank"
+            "senderBic"
+            "senderName"
+          ]
+          co: {
+            id: "POST /simulation/profiles/{profileId}/swift-in"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/profiles/{profileId}/swift-in"
+          q: {
+            "$action": "swift-in"
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "swift-in"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /simulation/profiles/{profileId}/verifications"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/profiles/{profileId}/verifications"
+          q: {
+            "$action": "verification"
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "verifications"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "failure_reason_code"
+          ]
+          co: {
+            id: "POST /simulation/transfers/{transferId}/payout-failure"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "transfer_id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/transfers/{transferId}/payout-failure"
+          q: {
+            exist: [
+              "transfer_id"
+            ]
+          }
+          r: {
+            param: {
+              transferId: "transfer_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "transfers"
+            }
+            {
+              var: "transfer_id"
+            }
+            {
+              lit: "payout-failure"
+            }
+          ]
+          t: {
+            req: {
+              failure_reason_code: "`reqdata.failure_reason_code`"
+            }
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "amount"
+            "balanceId"
+            "channel"
+            "currency"
+            "profileId"
+          ]
+          co: {
+            id: "POST /simulation/balance/topup"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/balance/topup"
+          q: {
+            "$action": "balance-topup"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "balance"
+            }
+            {
+              lit: "topup"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "caseId"
+            "closingReason"
+            "profileId"
+            "sanctionType"
+            "simulationSanctionSubType"
+            "status"
+            "transferId"
+          ]
+          co: {
+            id: "POST /simulation/sanction-cases"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/sanction-cases"
+          q: {
+            "$action": "sanction_case"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "sanction-cases"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "amount"
+            "currency"
+            "paymentReference"
+          ]
+          co: {
+            id: "POST /simulation/settlement/funds"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/settlement/funds"
+          q: {
+            "$action": "settlement-funds"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "settlement"
+            }
+            {
+              lit: "funds"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /simulation/verify-profile"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/simulation/verify-profile"
+          q: {
+            "$action": "verify_profile"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "verify-profile"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "card_token"
+                or: "cardToken"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: 10
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions"
+          q: {
+            exist: [
+              "card_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              cardToken: "card_token"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "cards"
+            }
+            {
+              var: "card_token"
+            }
+            {
+              lit: "transactions"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "kyc_review_id"
+                or: "kycReviewId"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements"
+          q: {
+            exist: [
+              "kyc_review_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              kycReviewId: "kyc_review_id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "kyc-reviews"
+            }
+            {
+              var: "kyc_review_id"
+            }
+            {
+              lit: "requirements"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.requirements`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /simulation/transfers/{transferId}/{status}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "status"
+                or: "status"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "transfer_id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/simulation/transfers/{transferId}/{status}"
+          q: {
+            exist: [
+              "status"
+              "transfer_id"
+            ]
+          }
+          r: {
+            param: {
+              transferId: "transfer_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "simulation"
+            }
+            {
+              lit: "transfers"
+            }
+            {
+              var: "transfer_id"
+            }
+            {
+              var: "status"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+    [path("$.main.kit.entity.transfer")]
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.kyc_review")]
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.card")]
+  ]
+
+}

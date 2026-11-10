@@ -1,0 +1,62 @@
+# BasicPaymentInstrumentFlow
+
+main: kit: flow: BasicPaymentInstrumentFlow:
+{
+  entity: "payment_instrument",
+  kind: "basic",
+  name: "BasicPaymentInstrumentFlow",
+  step: [
+    {
+      i: {
+        ref: "payment_instrument_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        payment_instrument_id: "payment_instrument01",
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "payment_instrument_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "payment_instrument_ref01",
+        srcdatavar: "payment_instrument_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "payment_instrument01",
+        profile_id: "profile01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-payment_instrument_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaymentInstrumentFlow"
+}

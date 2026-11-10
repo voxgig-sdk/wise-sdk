@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "sca_otp": {
+      "SCA_OTP00": {
+        "phone_number_id": "PHONE_NUMBER01",
+        "user_id": "USER01",
+        "id": "SCA_OTP00"
+      },
+      "SCA_OTP01": {
+        "phone_number_id": "PHONE_NUMBER01",
+        "user_id": "USER01",
+        "id": "SCA_OTP01"
+      },
+      "SCA_OTP02": {
+        "phone_number_id": "PHONE_NUMBER01",
+        "user_id": "USER01",
+        "id": "SCA_OTP02"
+      }
+    }
+  },
+  "new": {
+    "sca_otp": {
+      "sca_otp_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /one-time-token/sms/trigger": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /one-time-token/voice/trigger": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /one-time-token/whatsapp/trigger": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /application/users/{userId}/phone-numbers/{phoneNumberId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

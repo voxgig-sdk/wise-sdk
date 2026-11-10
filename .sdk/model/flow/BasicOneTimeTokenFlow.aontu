@@ -1,0 +1,22 @@
+# BasicOneTimeTokenFlow
+
+main: kit: flow: BasicOneTimeTokenFlow:
+{
+  entity: "one_time_token",
+  kind: "basic",
+  name: "BasicOneTimeTokenFlow",
+  step: [
+    {
+      i: {
+        ref: "one_time_token_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicOneTimeTokenFlow"
+}

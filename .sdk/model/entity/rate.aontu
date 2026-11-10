@@ -1,0 +1,148 @@
+# Entity: rate
+
+main: kit: entity: rate: {
+
+  alias: field: {}
+
+  fields: {
+    rate: {
+      fo: "double"
+      h: "Rate"
+      n: "rate"
+      r: true
+      sh: "Exchange rate value."
+      t: "`$NUMBER`"
+    }
+    source: {
+      h: "Source"
+      n: "source"
+      r: true
+      sh: "Source (send) currency code."
+      t: "`$STRING`"
+    }
+    target: {
+      h: "Target"
+      n: "target"
+      r: true
+      sh: "Target (receive) currency code."
+      t: "`$STRING`"
+    }
+    time: {
+      h: "Time"
+      n: "time"
+      r: true
+      sh: "Timestamp for exchange rate."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "rate"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /rates"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                ex: "2019-02-13T14:53:01"
+                explode: true
+                k: "query"
+                n: "from"
+                or: "from"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "day"
+                explode: true
+                k: "query"
+                n: "group"
+                or: "group"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "EUR"
+                explode: true
+                k: "query"
+                n: "source"
+                or: "source"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "USD"
+                explode: true
+                k: "query"
+                n: "target"
+                or: "target"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "2019-02-13T14:53:01"
+                explode: true
+                k: "query"
+                n: "time"
+                or: "time"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "2019-03-13T14:53:01"
+                explode: true
+                k: "query"
+                n: "to"
+                or: "to"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/rates"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "rates"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

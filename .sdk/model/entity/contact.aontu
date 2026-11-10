@@ -1,0 +1,132 @@
+# Entity: contact
+
+main: kit: entity: contact: {
+
+  alias: field: {}
+
+  fields: {
+    contactId: {
+      fo: "uuid"
+      h: "Contact Id"
+      n: "contactId"
+      r: false
+      sh: "Contact ID in the format of UUID."
+      t: "`$STRING`"
+    }
+    identifier: {
+      h: "Identifier"
+      n: "identifier"
+      r: false
+      sh: "A Wise profile's identifier."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Full name of the contact."
+      t: "`$STRING`"
+    }
+    targetCurrency: {
+      h: "Target Currency"
+      n: "targetCurrency"
+      r: false
+      sh: "3 character currency code."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "contact"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "identifier"
+            "targetCurrency"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/contacts"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 12345678
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: true
+                explode: true
+                k: "query"
+                n: "is_direct_identifier_creation"
+                or: "isDirectIdentifierCreation"
+                r: true
+                style: "form"
+                t: "`$BOOLEAN`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/contacts"
+          q: {
+            exist: [
+              "is_direct_identifier_creation"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "contacts"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

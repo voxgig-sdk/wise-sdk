@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "comparison": {
+      "COMPARISON00": {
+        "amount": 90,
+        "amountType": "s5b",
+        "providerCountry": "s5c",
+        "providerTypes": [],
+        "providers": [],
+        "sourceCountry": "s5f",
+        "sourceCurrency": "s60",
+        "targetCountry": "s61",
+        "targetCurrency": "s62",
+        "id": "COMPARISON00"
+      },
+      "COMPARISON01": {
+        "amount": 180,
+        "amountType": "sb5",
+        "providerCountry": "sb6",
+        "providerTypes": [],
+        "providers": [],
+        "sourceCountry": "sb9",
+        "sourceCurrency": "sba",
+        "targetCountry": "sbb",
+        "targetCurrency": "sbc",
+        "id": "COMPARISON01"
+      },
+      "COMPARISON02": {
+        "amount": 270,
+        "amountType": "s10f",
+        "providerCountry": "s110",
+        "providerTypes": [],
+        "providers": [],
+        "sourceCountry": "s113",
+        "sourceCurrency": "s114",
+        "targetCountry": "s115",
+        "targetCurrency": "s116",
+        "id": "COMPARISON02"
+      }
+    }
+  },
+  "new": {
+    "comparison": {
+      "comparison_ref01": {
+        "amount": 360,
+        "amountType": "s169",
+        "providerCountry": "s16a",
+        "providerTypes": [],
+        "providers": [],
+        "sourceCountry": "s16d",
+        "sourceCurrency": "s16e",
+        "targetCountry": "s16f",
+        "targetCurrency": "s170"
+      }
+    }
+  },
+  "requests": {
+    "GET /comparisons": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

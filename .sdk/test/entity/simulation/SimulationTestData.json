@@ -1,0 +1,217 @@
+{
+  "existing": {
+    "simulation": {
+      "SIMULATION00": {
+        "business": "sf0",
+        "created": "sf1",
+        "creationTime": 242,
+        "description": "sf3",
+        "details": {},
+        "failure_reason_code": "sf5",
+        "hasActiveIssues": true,
+        "id": "SIMULATION00",
+        "key": "sf8",
+        "quote": 249,
+        "rate": 250,
+        "reference": "sfb",
+        "sourceAccount": "sfc",
+        "sourceCurrency": "sfd",
+        "sourceValue": 254,
+        "state": "sff",
+        "status": "s100",
+        "targetAccount": 257,
+        "targetCurrency": "s102",
+        "targetValue": 259,
+        "transactionId": 260,
+        "transferRequest": "s105",
+        "user": 262,
+        "wise_id": "WISE01",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01",
+        "kyc_review_id": "KYC_REVIEW01",
+        "transfer_id": "TRANSFER01"
+      },
+      "SIMULATION01": {
+        "business": "s1e0",
+        "created": "s1e1",
+        "creationTime": 482,
+        "description": "s1e3",
+        "details": {},
+        "failure_reason_code": "s1e5",
+        "hasActiveIssues": true,
+        "id": "SIMULATION01",
+        "key": "s1e8",
+        "quote": 489,
+        "rate": 490,
+        "reference": "s1eb",
+        "sourceAccount": "s1ec",
+        "sourceCurrency": "s1ed",
+        "sourceValue": 494,
+        "state": "s1ef",
+        "status": "s1f0",
+        "targetAccount": 497,
+        "targetCurrency": "s1f2",
+        "targetValue": 499,
+        "transactionId": 500,
+        "transferRequest": "s1f5",
+        "user": 502,
+        "wise_id": "WISE01",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01",
+        "kyc_review_id": "KYC_REVIEW01",
+        "transfer_id": "TRANSFER01"
+      },
+      "SIMULATION02": {
+        "business": "s2d0",
+        "created": "s2d1",
+        "creationTime": 722,
+        "description": "s2d3",
+        "details": {},
+        "failure_reason_code": "s2d5",
+        "hasActiveIssues": true,
+        "id": "SIMULATION02",
+        "key": "s2d8",
+        "quote": 729,
+        "rate": 730,
+        "reference": "s2db",
+        "sourceAccount": "s2dc",
+        "sourceCurrency": "s2dd",
+        "sourceValue": 734,
+        "state": "s2df",
+        "status": "s2e0",
+        "targetAccount": 737,
+        "targetCurrency": "s2e2",
+        "targetValue": 739,
+        "transactionId": 740,
+        "transferRequest": "s2e5",
+        "user": 742,
+        "wise_id": "WISE01",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01",
+        "kyc_review_id": "KYC_REVIEW01",
+        "transfer_id": "TRANSFER01"
+      }
+    }
+  },
+  "new": {
+    "simulation": {
+      "simulation_ref01": {
+        "business": "s3c0",
+        "created": "s3c1",
+        "creationTime": 962,
+        "description": "s3c3",
+        "details": {},
+        "failure_reason_code": "s3c5",
+        "hasActiveIssues": true,
+        "key": "s3c8",
+        "quote": 969,
+        "rate": 970,
+        "reference": "s3cb",
+        "sourceAccount": "s3cc",
+        "sourceCurrency": "s3cd",
+        "sourceValue": 974,
+        "state": "s3cf",
+        "status": "s3d0",
+        "targetAccount": 977,
+        "targetCurrency": "s3d2",
+        "targetValue": 979,
+        "transactionId": 980,
+        "transferRequest": "s3d5",
+        "user": 982,
+        "wise_id": "WISE01"
+      }
+    }
+  },
+  "requests": {
+    "POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/authorisation": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/clearing": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/production": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/reversal": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/add": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/submit": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/profiles/{profileId}/bank-transactions/import": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/profiles/{profileId}/swift-in": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/profiles/{profileId}/verifications": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/transfers/{transferId}/payout-failure": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/balance/topup": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/sanction-cases": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/settlement/funds": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /simulation/verify-profile": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /simulation/transfers/{transferId}/{status}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

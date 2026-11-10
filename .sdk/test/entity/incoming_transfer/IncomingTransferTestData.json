@@ -1,0 +1,96 @@
+{
+  "existing": {
+    "incoming_transfer": {
+      "INCOMING_TRANSFER00": {
+        "accountDetailsId": "sb4",
+        "amounts": {},
+        "balanceId": "sb6",
+        "chargeBearer": "sb7",
+        "creditTransferType": "sb8",
+        "creditedTime": "sb9",
+        "creditor": {},
+        "debtor": {},
+        "endToEndId": "sbc",
+        "exchangeRate": 189,
+        "fees": {},
+        "id": "INCOMING_TRANSFER00",
+        "previousInstructingAgents": [],
+        "profileId": 193,
+        "scheme": "sc2",
+        "state": "sc3",
+        "uetr": "sc4",
+        "unstructuredReference": "sc5"
+      },
+      "INCOMING_TRANSFER01": {
+        "accountDetailsId": "s168",
+        "amounts": {},
+        "balanceId": "s16a",
+        "chargeBearer": "s16b",
+        "creditTransferType": "s16c",
+        "creditedTime": "s16d",
+        "creditor": {},
+        "debtor": {},
+        "endToEndId": "s170",
+        "exchangeRate": 369,
+        "fees": {},
+        "id": "INCOMING_TRANSFER01",
+        "previousInstructingAgents": [],
+        "profileId": 373,
+        "scheme": "s176",
+        "state": "s177",
+        "uetr": "s178",
+        "unstructuredReference": "s179"
+      },
+      "INCOMING_TRANSFER02": {
+        "accountDetailsId": "s21c",
+        "amounts": {},
+        "balanceId": "s21e",
+        "chargeBearer": "s21f",
+        "creditTransferType": "s220",
+        "creditedTime": "s221",
+        "creditor": {},
+        "debtor": {},
+        "endToEndId": "s224",
+        "exchangeRate": 549,
+        "fees": {},
+        "id": "INCOMING_TRANSFER02",
+        "previousInstructingAgents": [],
+        "profileId": 553,
+        "scheme": "s22a",
+        "state": "s22b",
+        "uetr": "s22c",
+        "unstructuredReference": "s22d"
+      }
+    }
+  },
+  "new": {
+    "incoming_transfer": {
+      "incoming_transfer_ref01": {
+        "accountDetailsId": "s2d0",
+        "amounts": {},
+        "balanceId": "s2d2",
+        "chargeBearer": "s2d3",
+        "creditTransferType": "s2d4",
+        "creditedTime": "s2d5",
+        "creditor": {},
+        "debtor": {},
+        "endToEndId": "s2d8",
+        "exchangeRate": 729,
+        "fees": {},
+        "previousInstructingAgents": [],
+        "profileId": 733,
+        "scheme": "s2de",
+        "state": "s2df",
+        "uetr": "s2e0",
+        "unstructuredReference": "s2e1"
+      }
+    }
+  },
+  "requests": {
+    "GET /incoming-transfers/{incomingTransferId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,28 @@
+# BasicFacetecFlow
+
+main: kit: flow: BasicFacetecFlow:
+{
+  entity: "facetec",
+  kind: "basic",
+  name: "BasicFacetecFlow",
+  step: [
+    {
+      i: {
+        ref: "facetec_ref01",
+        srcdatavar: "facetec_ref01_data",
+        suffix: "_dt0"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-facetec_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicFacetecFlow"
+}

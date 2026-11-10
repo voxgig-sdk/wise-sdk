@@ -1,0 +1,764 @@
+# Entity: transfer
+
+main: kit: entity: transfer: {
+
+  alias: field: {}
+
+  fields: {
+    business: {
+      fo: "int64"
+      h: "Business"
+      n: "business"
+      r: false
+      sh: "Your business profile ID"
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    created: {
+      fo: "date-time"
+      h: "Created"
+      n: "created"
+      r: false
+      sh: "Timestamp when transfer was created"
+      t: "`$STRING`"
+    }
+    customerTransactionId: {
+      fo: "uuid"
+      h: "Customer Transaction Id"
+      n: "customerTransactionId"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Unique identifier randomly generated per transfer request by the calling client"
+      t: "`$STRING`"
+    }
+    details: {
+      h: "Details"
+      n: "details"
+      r: false
+      t: "`$OBJECT`"
+    }
+    hasActiveIssues: {
+      h: "Has Active Issues"
+      n: "hasActiveIssues"
+      r: false
+      sh: "Are there any pending issues which stop executing the transfer?"
+      t: "`$BOOLEAN`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Transfer ID"
+      t: "`$INTEGER`"
+    }
+    payinSessionId: {
+      fo: "uuid"
+      h: "Payin Session Id"
+      n: "payinSessionId"
+      r: false
+      sh: "ID of the Payin Session generated for the transfer, which can be used for certain payin methods when funding the transfer"
+      t: "`$STRING`"
+    }
+    quote: {
+      fo: "int64"
+      h: "Quote"
+      n: "quote"
+      r: false
+      sh: "V1 quote ID"
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    quoteUuid: {
+      fo: "uuid"
+      h: "Quote Uuid"
+      n: "quoteUuid"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "V2 quote ID"
+      t: "`$STRING`"
+    }
+    rate: {
+      h: "Rate"
+      n: "rate"
+      r: false
+      sh: "Exchange rate value"
+      t: "`$NUMBER`"
+    }
+    reference: {
+      de: true
+      h: "Reference"
+      n: "reference"
+      r: false
+      sh: "Deprecated, use `details.reference` instead"
+      t: "`$STRING`"
+    }
+    sourceAccount: {
+      fo: "int64"
+      h: "Source Account"
+      n: "sourceAccount"
+      r: false
+      sh: "Refund recipient account ID"
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    sourceCurrency: {
+      h: "Source Currency"
+      n: "sourceCurrency"
+      r: false
+      sh: "Source currency code"
+      t: "`$STRING`"
+    }
+    sourceValue: {
+      h: "Source Value"
+      n: "sourceValue"
+      r: false
+      sh: "Transfer amount in source currency"
+      t: "`$NUMBER`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Transfer current status."
+      t: "`$STRING`"
+    }
+    targetAccount: {
+      fo: "int64"
+      h: "Target Account"
+      n: "targetAccount"
+      op: {
+        create: {
+          req: true
+          type: "`$INTEGER`"
+        }
+      }
+      r: false
+      sh: "Recipient account ID"
+      t: "`$INTEGER`"
+    }
+    targetCurrency: {
+      h: "Target Currency"
+      n: "targetCurrency"
+      r: false
+      sh: "Target currency code"
+      t: "`$STRING`"
+    }
+    targetValue: {
+      h: "Target Value"
+      n: "targetValue"
+      r: false
+      sh: "Transfer amount in target currency"
+      t: "`$NUMBER`"
+    }
+    transferRequest: {
+      de: true
+      h: "Transfer Request"
+      n: "transferRequest"
+      r: false
+      sh: "Deprecated"
+      t: [
+        "`$ONE`"
+        [
+          "`$INTEGER`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    user: {
+      fo: "int64"
+      h: "User"
+      n: "user"
+      r: false
+      sh: "Your user ID"
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "transfer"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "customerTransactionId"
+            "details"
+            "quoteUuid"
+            "sourceAccount"
+            "targetAccount"
+          ]
+          co: {
+            id: "POST /transfers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/transfers"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "transfers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /transfers"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                explode: true
+                k: "query"
+                n: "created_date_end"
+                or: "createdDateEnd"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "created_date_start"
+                or: "createdDateStart"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "limit"
+                or: "limit"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "offset"
+                or: "offset"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "profile"
+                or: "profile"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "source_currency"
+                or: "sourceCurrency"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                explode: true
+                k: "query"
+                n: "target_currency"
+                or: "targetCurrency"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/transfers"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "transfers"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /transfers/{transferId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/transfers/{transferId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              transferId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "transfers"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /transfers/{transferId}/documents/noc"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/transfers/{transferId}/documents/noc"
+          q: {
+            "$action": "document_noc"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              transferId: "id"
+            }
+          }
+          rs: {
+            binary: true
+            kind: "raw"
+            media: "application/pdf"
+          }
+          s: [
+            {
+              lit: "transfers"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "documents"
+            }
+            {
+              lit: "noc"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /transfers/{transferId}/invoices/bankingpartner"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/transfers/{transferId}/invoices/bankingpartner"
+          q: {
+            "$action": "invoice_bankingpartner"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              transferId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "transfers"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "invoices"
+            }
+            {
+              lit: "bankingpartner"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /transfers/{transferId}/receipt.pdf"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/transfers/{transferId}/receipt.pdf"
+          q: {
+            "$action": "receiptpdf"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              transferId: "id"
+            }
+          }
+          rs: {
+            binary: true
+            kind: "raw"
+            media: "application/pdf"
+          }
+          s: [
+            {
+              lit: "transfers"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "receipt.pdf"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /transfers/{transferId}/us-combined-receipt.pdf"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/transfers/{transferId}/us-combined-receipt.pdf"
+          q: {
+            "$action": "us_combined_receiptpdf"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              transferId: "id"
+            }
+          }
+          rs: {
+            binary: true
+            kind: "raw"
+            media: "application/pdf"
+          }
+          s: [
+            {
+              lit: "transfers"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "us-combined-receipt.pdf"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          co: {
+            id: "PUT /transfers/{transferId}/cancel"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "transferId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/transfers/{transferId}/cancel"
+          q: {
+            "$action": "cancel"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              transferId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "transfers"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "cancel"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

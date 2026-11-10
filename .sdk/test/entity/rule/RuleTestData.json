@@ -1,0 +1,52 @@
+{
+  "existing": {
+    "rule": {
+      "RULE00": {
+        "description": "s32",
+        "id": "RULE00",
+        "operation": "s34",
+        "type": "s35",
+        "values": [],
+        "application_id": "APPLICATION01"
+      },
+      "RULE01": {
+        "description": "s64",
+        "id": "RULE01",
+        "operation": "s66",
+        "type": "s67",
+        "values": [],
+        "application_id": "APPLICATION01"
+      },
+      "RULE02": {
+        "description": "s96",
+        "id": "RULE02",
+        "operation": "s98",
+        "type": "s99",
+        "values": [],
+        "application_id": "APPLICATION01"
+      }
+    }
+  },
+  "new": {
+    "rule": {
+      "rule_ref01": {
+        "description": "sc8",
+        "operation": "sca",
+        "type": "scb",
+        "values": []
+      }
+    }
+  },
+  "requests": {
+    "POST /spend/applications/{clientId}/spend-controls/rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/applications/{clientId}/spend-controls/rules": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

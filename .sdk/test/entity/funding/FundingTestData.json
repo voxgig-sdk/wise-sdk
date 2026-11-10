@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "funding": {
+      "FUNDING00": {
+        "balanceTransactionId": 30,
+        "status": "s1f",
+        "type": "s20",
+        "profile_id": "PROFILE01",
+        "transfer_id": "TRANSFER01",
+        "id": "FUNDING00"
+      },
+      "FUNDING01": {
+        "balanceTransactionId": 60,
+        "status": "s3d",
+        "type": "s3e",
+        "profile_id": "PROFILE01",
+        "transfer_id": "TRANSFER01",
+        "id": "FUNDING01"
+      },
+      "FUNDING02": {
+        "balanceTransactionId": 90,
+        "status": "s5b",
+        "type": "s5c",
+        "profile_id": "PROFILE01",
+        "transfer_id": "TRANSFER01",
+        "id": "FUNDING02"
+      }
+    }
+  },
+  "new": {
+    "funding": {
+      "funding_ref01": {
+        "balanceTransactionId": 120,
+        "status": "s79",
+        "type": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/transfers/{transferId}/payments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

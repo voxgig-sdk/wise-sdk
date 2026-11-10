@@ -1,0 +1,284 @@
+# Profile entity test
+
+import json
+import os
+import time
+
+import pytest
+
+from wise_sdk.utility.voxgig_struct import voxgig_struct as vs
+from wise_sdk import WiseSDK
+from wise_sdk.core import helpers
+from wise_sdk.config import shared_config
+from wise_sdk.feature.base_feature import WiseBaseFeature
+
+_TEST_DIR = os.path.dirname(os.path.abspath(__file__))
+from test import runner
+
+
+class _FailHook(WiseBaseFeature):
+    def __init__(self):
+        super().__init__()
+        self.name = "failhook"
+        self.unexpected = 0
+
+    def init(self, ctx, options):
+        pass
+
+    def PreSpec(self, ctx):
+        raise RuntimeError("profile hook failed")
+
+    def PreUnexpected(self, ctx):
+        self.unexpected += 1
+
+
+
+# main.kit.test.live.strict is true (the default is true): a live
+# request that fails, or a live test missing an input it needs,
+# fails the test.
+# An account with no record for a test to read skips it either way.
+LIVE_STRICT = True
+
+
+class TestProfileEntity:
+
+    def test_should_create_instance(self):
+        testsdk = WiseSDK.test(None, None)
+        ent = testsdk.Profile(None)
+        assert ent is not None
+
+    def test_should_stream(self):
+        # Feature #4: the entity stream(action, ...) method runs the op
+        # pipeline and yields result items. With the streaming feature active
+        # it yields the feature's incremental output; otherwise it falls back
+        # to the materialised list so stream always yields.
+        seed = {
+            "entity": {
+                "profile": {
+                    "s1": {"id": "s1"},
+                    "s2": {"id": "s2"},
+                    "s3": {"id": "s3"},
+                }
+            }
+        }
+
+        # Fallback: streaming inactive -> yields the materialised list items.
+        base = WiseSDK.test(seed, None)
+        seen = list(base.Profile(None).stream("list", None, None))
+        assert len(seen) == 3
+
+        # Inbound: streaming active -> yields each item from the feature.
+        from wise_sdk.config import shared_config
+        cfg = shared_config()
+        if isinstance(cfg.get("feature"), dict) and "streaming" in cfg["feature"]:
+            sdk = WiseSDK.test(
+                seed, {"feature": {"streaming": {"active": True}}})
+            got = []
+            for item in sdk.Profile(None).stream("list", None, None):
+                if isinstance(item, list):
+                    got.extend(item)
+                else:
+                    got.append(item)
+            assert len(got) == 3
+
+    def test_should_report_a_failed_stream(self):
+        offline = {"net": {"offline": True}}
+        with pytest.raises(Exception, match="offline"):
+            list(WiseSDK.test(offline, None).Profile(None).stream("list", None, None))
+
+        quiet = {"ctrl": {"throw": False}}
+        list(WiseSDK.test(offline, None).Profile(None).stream("list", None, quiet))
+
+        if "rbac" in (shared_config().get("feature") or {}):
+            denied = WiseSDK.test(
+                None, {"feature": {"rbac": {"active": True, "deny": True}}})
+            with pytest.raises(Exception) as err:
+                list(denied.Profile(None).stream("list", None, None))
+            assert "rbac_denied" == getattr(err.value, "code", None)
+
+    def test_should_leave_the_callers_ctrl(self):
+        explain = {}
+        ctrl = {"explain": explain}
+        list(WiseSDK.test(None, None).Profile(None).stream("list", None, {"ctrl": ctrl}))
+        assert ["explain"] == list(ctrl.keys())
+        assert explain is ctrl["explain"] and 0 < len(explain)
+
+    def test_should_fire_pre_unexpected(self):
+        hook = _FailHook()
+        client = WiseSDK({"feature": {"test": {"active": True}}, "extend": [hook]})
+        with pytest.raises(Exception, match="hook failed"):
+            client.Profile(None).list(None, None)
+        assert 0 < hook.unexpected
+
+        fired = hook.unexpected
+        assert client.Profile(None).list(None, {"throw": False}) is None
+        assert fired < hook.unexpected
+
+    def test_should_refuse_an_invalid_request(self):
+        if "validate" not in (shared_config().get("feature") or {}):
+            pytest.skip("feature not present in this SDK: validate")
+        client = WiseSDK.test(
+            None, {"feature": {"validate": {"active": True}}})
+        with pytest.raises(Exception) as err:
+            client.Profile(None).list({"avatar": 1}, None)
+        assert "validate_failed" == getattr(err.value, "code", None)
+
+    def test_should_run_basic_flow(self):
+        setup = _profile_basic_setup(None)
+        # Per-op sdk-test-control.json skip — basic test exercises a flow with
+        # multiple ops; skipping any one skips the whole flow (steps depend
+        # on each other).
+        _live = setup.get("live", False)
+        for _op in ["list", "load"]:
+            _skip, _reason = runner.is_control_skipped("entityOp", "profile." + _op, "live" if _live else "unit")
+            if _skip:
+                pytest.skip(_reason or "skipped via sdk-test-control.json")
+                return
+        if setup["live"] and os.environ.get("VOXGIG_GETONLY_GUARD") == "TRUE":
+            print("LIVE STEP {\"id\":\"profile.create.0\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs POST /profiles/{profileId}/pin\"}")
+            print("LIVE STEP {\"id\":\"profile.update.2\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs PUT /profiles/{profileId}/business-profile/business-representative\"}")
+            print("LIVE STEP {\"id\":\"profile.remove.4\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: needs DELETE /profiles/{profileId}/pin\"}")
+            print("LIVE STEP {\"id\":\"profile.list.5\",\"state\":\"excluded\",\"attempted\":false,\"reason\":\"GET-only live run: checks a removal this run does not make\"}")
+            return self._run_get_only_flow(setup)
+
+        client = setup["client"]
+        if setup["live"]:
+            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("profile01")
+            runner.live_pace()
+            runner.live_existing(setup, LIVE_STRICT, "profile",
+                                 lambda: client.Profile(None).list({}, None),
+                                 "id", _live_id)
+
+        # Bootstrap entity data from existing test data.
+        profile_ref01_data_raw = vs.items(helpers.to_map(
+            vs.getpath(setup["data"], "existing.profile")))
+        profile_ref01_data = None
+        if len(profile_ref01_data_raw) > 0:
+            profile_ref01_data = helpers.to_map(profile_ref01_data_raw[0][1])
+
+        if setup["live"]:
+            runner.live_pace()
+        # LIST
+        profile_ref01_ent = client.Profile(None)
+        profile_ref01_match = {}
+
+        profile_ref01_list_result = profile_ref01_ent.list(profile_ref01_match, None)
+        assert isinstance(profile_ref01_list_result, list)
+
+        if setup["live"]:
+            runner.live_pace()
+        # LOAD
+        profile_ref01_match_dt0 = {
+            "id": profile_ref01_data["id"],
+        }
+        profile_ref01_data_dt0_loaded = profile_ref01_ent.load(profile_ref01_match_dt0, None)
+        profile_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(profile_ref01_data_dt0_loaded))
+        assert profile_ref01_data_dt0_load_result is not None
+        assert runner.live_same_id(profile_ref01_data_dt0_load_result.get("id"), profile_ref01_data["id"])
+
+
+    def _run_get_only_flow(self, setup):
+        client = setup["client"]
+        if setup["live"]:
+            _live_id = None if setup.get("synthetic_only") else setup["idmap"].get("profile01")
+            runner.live_pace()
+            runner.live_existing(setup, LIVE_STRICT, "profile",
+                                 lambda: client.Profile(None).list({}, None),
+                                 "id", _live_id)
+
+        # Bootstrap entity data from existing test data.
+        profile_ref01_data_raw = vs.items(helpers.to_map(
+            vs.getpath(setup["data"], "existing.profile")))
+        profile_ref01_data = None
+        if len(profile_ref01_data_raw) > 0:
+            profile_ref01_data = helpers.to_map(profile_ref01_data_raw[0][1])
+
+        if setup["live"]:
+            runner.live_pace()
+        # LIST
+        profile_ref01_ent = client.Profile(None)
+        profile_ref01_match = {}
+
+        profile_ref01_list_result = profile_ref01_ent.list(profile_ref01_match, None)
+        assert isinstance(profile_ref01_list_result, list)
+
+        if setup["live"]:
+            runner.live_pace()
+        # LOAD
+        profile_ref01_match_dt0 = {
+            "id": profile_ref01_data["id"],
+        }
+        profile_ref01_data_dt0_loaded = profile_ref01_ent.load(profile_ref01_match_dt0, None)
+        profile_ref01_data_dt0_load_result = helpers.to_map(runner.entity_data(profile_ref01_data_dt0_loaded))
+        assert profile_ref01_data_dt0_load_result is not None
+        assert runner.live_same_id(profile_ref01_data_dt0_load_result.get("id"), profile_ref01_data["id"])
+
+
+
+def _profile_basic_setup(extra):
+    runner.load_env_local()
+
+    entity_data_file = os.path.join(_TEST_DIR, "../../.sdk/test/entity/profile/ProfileTestData.json")
+    with open(entity_data_file, "r", encoding="utf-8") as f:
+        entity_data_source = f.read()
+
+    entity_data = json.loads(entity_data_source)
+
+    options = {}
+    options["entity"] = entity_data.get("existing")
+
+    client = WiseSDK.test(options, extra)
+
+    # Generate idmap via transform.
+    idmap = vs.transform(
+        ["profile01", "profile02", "profile03"],
+        {
+            "`$PACK`": ["", {
+                "`$KEY`": "`$COPY`",
+                "`$VAL`": ["`$FORMAT`", "upper", "`$COPY`"],
+            }],
+        }
+    )
+
+    # Whether *_ENTID supplied the idmap, read before env_override consumes
+    # it: without it, the ids a live flow binds are the fixture's synthetic ones.
+    _entid_env_raw = os.environ.get(
+        "WISE_TEST_PROFILE_ENTID")
+    _idmap_overridden = _entid_env_raw is not None and _entid_env_raw.strip().startswith("{")
+
+    env = runner.env_override({
+        "WISE_TEST_PROFILE_ENTID": idmap,
+        "WISE_TEST_LIVE": "FALSE",
+        "WISE_TEST_EXPLAIN": "FALSE",
+        "WISE_APIKEY": "",
+    })
+
+    idmap_resolved = helpers.to_map(
+        env.get("WISE_TEST_PROFILE_ENTID"))
+    if idmap_resolved is None:
+        idmap_resolved = helpers.to_map(idmap)
+
+    if env.get("WISE_TEST_LIVE") == "TRUE":
+        merged_opts = vs.merge([
+            # FIRST, so the generated fields below win: sdk-test-control.json's
+            # test.client.options adds to the live client, it does not
+            # redirect it.
+            runner.live_client_options(),
+            {
+                "apikey": env.get("WISE_APIKEY"),
+            },
+            extra or {},
+        ])
+        client = WiseSDK(helpers.to_map(merged_opts))
+
+    _live = env.get("WISE_TEST_LIVE") == "TRUE"
+    return {
+        "client": client,
+        "data": entity_data,
+        "idmap": idmap_resolved,
+        "env": env,
+        "explain": env.get("WISE_TEST_EXPLAIN") == "TRUE",
+        "live": _live,
+        "synthetic_only": _live and not _idmap_overridden,
+        "now": int(time.time() * 1000),
+    }

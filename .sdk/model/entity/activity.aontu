@@ -1,0 +1,227 @@
+# Entity: activity
+
+main: kit: entity: activity: {
+
+  alias: field: {}
+
+  fields: {
+    createdOn: {
+      fo: "date-time"
+      h: "Created On"
+      n: "createdOn"
+      r: false
+      sh: "Timestamp when the activity was created."
+      t: "`$STRING`"
+    }
+    description: {
+      h: "Description"
+      n: "description"
+      r: false
+      sh: "A short description that briefly summarizes the activity."
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Activity id."
+      t: "`$STRING`"
+    }
+    primaryAmount: {
+      h: "Primary Amount"
+      n: "primaryAmount"
+      r: false
+      sh: "A currency formatted text that describe the primary amount of transaction."
+      t: "`$STRING`"
+    }
+    resource: {
+      h: "Resource"
+      n: "resource"
+      r: false
+      sh: "The resource associated with the activity."
+      t: "`$OBJECT`"
+    }
+    secondaryAmount: {
+      h: "Secondary Amount"
+      n: "secondaryAmount"
+      r: false
+      sh: "A currency formatted text that describe the secondary amount of transaction."
+      t: "`$STRING`"
+    }
+    status: {
+      h: "Status"
+      n: "status"
+      r: false
+      sh: "Status of the Activity."
+      t: "`$STRING`"
+    }
+    title: {
+      h: "Title"
+      n: "title"
+      r: false
+      sh: "Title of the Activity."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      sh: "Type of Activity."
+      t: "`$STRING`"
+    }
+    updatedOn: {
+      fo: "date-time"
+      h: "Updated On"
+      n: "updatedOn"
+      r: false
+      sh: "Timestamp when the activity was last modified."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "activity"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/activities"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: "TRANSFER"
+                explode: true
+                k: "query"
+                n: "monetary_resource_type"
+                or: "monetaryResourceType"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: ""
+                explode: true
+                k: "query"
+                n: "next_cursor"
+                or: "nextCursor"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "2025-03-10T11:56:30.376Z"
+                explode: true
+                k: "query"
+                n: "since"
+                or: "since"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: 10
+                explode: true
+                k: "query"
+                n: "size"
+                or: "size"
+                r: false
+                style: "form"
+                t: "`$INTEGER`"
+              }
+              {
+                ex: "IN_PROGRESS"
+                explode: true
+                k: "query"
+                n: "status"
+                or: "status"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "2025-03-30T23:59:59.999Z"
+                explode: true
+                k: "query"
+                n: "until"
+                or: "until"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/activities"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "activities"
+            }
+          ]
+          t: {
+            page: {
+              cursor: "`body.cursor`"
+            }
+            req: "`reqdata`"
+            res: "`body.activities`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

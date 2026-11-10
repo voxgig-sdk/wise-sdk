@@ -1,0 +1,72 @@
+<?php
+declare(strict_types=1);
+
+// Wise SDK utility registration
+
+require_once __DIR__ . '/../core/UtilityType.php';
+require_once __DIR__ . '/Clean.php';
+require_once __DIR__ . '/Done.php';
+require_once __DIR__ . '/MakeError.php';
+require_once __DIR__ . '/FeatureAdd.php';
+require_once __DIR__ . '/FeatureHook.php';
+require_once __DIR__ . '/FeatureInit.php';
+require_once __DIR__ . '/Fetcher.php';
+require_once __DIR__ . '/MakeFetchDef.php';
+require_once __DIR__ . '/MakeContext.php';
+require_once __DIR__ . '/MakeOptions.php';
+require_once __DIR__ . '/MakeRequest.php';
+require_once __DIR__ . '/MakeResponse.php';
+require_once __DIR__ . '/MakeResult.php';
+require_once __DIR__ . '/MakePoint.php';
+require_once __DIR__ . '/MakeSpec.php';
+require_once __DIR__ . '/MakeUrl.php';
+require_once __DIR__ . '/Param.php';
+require_once __DIR__ . '/PrepareAuth.php';
+require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
+require_once __DIR__ . '/PrepareHeaders.php';
+require_once __DIR__ . '/PrepareMethod.php';
+require_once __DIR__ . '/PrepareParams.php';
+require_once __DIR__ . '/PreparePath.php';
+require_once __DIR__ . '/PrepareQuery.php';
+require_once __DIR__ . '/ResultBasic.php';
+require_once __DIR__ . '/ResultBody.php';
+require_once __DIR__ . '/ResultHeaders.php';
+require_once __DIR__ . '/TransformRequest.php';
+require_once __DIR__ . '/TransformResponse.php';
+
+WiseUtility::setRegistrar(function (WiseUtility $u): void {
+    $u->clean = [WiseClean::class, 'call'];
+    $u->clean_add = [WiseClean::class, 'add'];
+    $u->clean_explain = [WiseDone::class, 'clean_explain'];
+    $u->done = [WiseDone::class, 'call'];
+    $u->make_error = [WiseMakeError::class, 'call'];
+    $u->feature_add = [WiseFeatureAdd::class, 'call'];
+    $u->feature_hook = [WiseFeatureHook::class, 'call'];
+    $u->feature_init = [WiseFeatureInit::class, 'call'];
+    $u->fetcher = [WiseFetcher::class, 'call'];
+    $u->make_fetch_def = [WiseMakeFetchDef::class, 'call'];
+    $u->make_context = [WiseMakeContext::class, 'call'];
+    $u->make_options = [WiseMakeOptions::class, 'call'];
+    $u->make_request = [WiseMakeRequest::class, 'call'];
+    $u->make_response = [WiseMakeResponse::class, 'call'];
+    $u->make_result = [WiseMakeResult::class, 'call'];
+    $u->make_point = [WiseMakePoint::class, 'call'];
+    $u->make_spec = [WiseMakeSpec::class, 'call'];
+    $u->make_url = [WiseMakeUrl::class, 'call'];
+    $u->param = [WiseParam::class, 'call'];
+    $u->prepare_auth = [WisePrepareAuth::class, 'call'];
+    $u->prepare_body = [WisePrepareBody::class, 'call'];
+    $u->prepare_headers = [WisePrepareHeaders::class, 'call'];
+    $u->prepare_method = [WisePrepareMethod::class, 'call'];
+    $u->prepare_params = [WisePrepareParams::class, 'call'];
+    $u->prepare_path = [WisePreparePath::class, 'call'];
+    $u->prepare_query = [WisePrepareQuery::class, 'call'];
+    $u->graphql_body = [WiseGraphql::class, 'body'];
+    $u->graphql_errors = [WiseGraphql::class, 'errors'];
+    $u->result_basic = [WiseResultBasic::class, 'call'];
+    $u->result_body = [WiseResultBody::class, 'call'];
+    $u->result_headers = [WiseResultHeaders::class, 'call'];
+    $u->transform_request = [WiseTransformRequest::class, 'call'];
+    $u->transform_response = [WiseTransformResponse::class, 'call'];
+});

@@ -1,0 +1,356 @@
+# Entity: one_time_token
+
+main: kit: entity: one_time_token: {
+
+  alias: field: {}
+
+  fields: {
+    challenges: {
+      h: "Challenges"
+      n: "challenges"
+      r: false
+      sh: "An array of challenges."
+      t: "`$ARRAY`"
+    }
+    faceMap: {
+      h: "Face Map"
+      n: "faceMap"
+      r: false
+      sh: "A base64 encoded string."
+      t: "`$STRING`"
+    }
+    oneTimeToken: {
+      fo: "uuid"
+      h: "One Time Token"
+      n: "oneTimeToken"
+      r: false
+      sh: "A one-time token unique identifier."
+      t: "`$STRING`"
+    }
+    validity: {
+      h: "Validity"
+      n: "validity"
+      r: false
+      sh: "The One-Time Token expiration in seconds."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "one_time_token"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /profiles/{profileId}/device-fingerprints/verify"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "identity"
+                explode: false
+                k: "header"
+                n: "accept_encoding"
+                or: "Accept-Encoding"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "identity"
+                explode: false
+                k: "header"
+                n: "content_encoding"
+                or: "Content-Encoding"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "one_time_token"
+                or: "One-Time-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "jwe"
+                explode: false
+                k: "header"
+                n: "xtw_jose_method"
+                or: "X-tw-jose-method"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/device-fingerprints/verify"
+          q: {
+            "$action": "device-fingerprint"
+            exist: [
+              "accept_encoding"
+              "content_encoding"
+              "one_time_token"
+              "profile_id"
+              "xtw_jose_method"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rb: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "device-fingerprints"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: false
+          co: {
+            id: "POST /profiles/{profileId}/pin/verify"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "identity"
+                explode: false
+                k: "header"
+                n: "accept_encoding"
+                or: "Accept-Encoding"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "identity"
+                explode: false
+                k: "header"
+                n: "content_encoding"
+                or: "Content-Encoding"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "one_time_token"
+                or: "One-Time-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "jwe"
+                explode: false
+                k: "header"
+                n: "xtw_jose_method"
+                or: "X-tw-jose-method"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/pin/verify"
+          q: {
+            "$action": "pin"
+            exist: [
+              "accept_encoding"
+              "content_encoding"
+              "one_time_token"
+              "profile_id"
+              "xtw_jose_method"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rb: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "pin"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "faceMap"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/facemaps/verify"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "one_time_token"
+                or: "One-Time-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/facemaps/verify"
+          q: {
+            exist: [
+              "one_time_token"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "facemaps"
+            }
+            {
+              lit: "verify"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

@@ -1,0 +1,56 @@
+{
+  "existing": {
+    "card_holder_limit": {
+      "CARD_HOLDER_LIMIT00": {
+        "aggregateWindow": {},
+        "spendLimits": [],
+        "type": "s20",
+        "card_holder_profile_id": "CARD_HOLDER_PROFILE01",
+        "profile_id": "PROFILE01",
+        "id": "CARD_HOLDER_LIMIT00"
+      },
+      "CARD_HOLDER_LIMIT01": {
+        "aggregateWindow": {},
+        "spendLimits": [],
+        "type": "s3e",
+        "card_holder_profile_id": "CARD_HOLDER_PROFILE01",
+        "profile_id": "PROFILE01",
+        "id": "CARD_HOLDER_LIMIT01"
+      },
+      "CARD_HOLDER_LIMIT02": {
+        "aggregateWindow": {},
+        "spendLimits": [],
+        "type": "s5c",
+        "card_holder_profile_id": "CARD_HOLDER_PROFILE01",
+        "profile_id": "PROFILE01",
+        "id": "CARD_HOLDER_LIMIT02"
+      }
+    }
+  },
+  "new": {
+    "card_holder_limit": {
+      "card_holder_limit_ref01": {
+        "aggregateWindow": {},
+        "spendLimits": [],
+        "type": "s7a"
+      }
+    }
+  },
+  "requests": {
+    "GET /spend/profiles/{businessProfileId}/card-holder-profiles/{cardHolderProfileId}/spend-limits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /spend/profiles/{businessProfileId}/card-holder-profiles/{cardHolderProfileId}/spend-limits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PATCH /spend/profiles/{businessProfileId}/card-holder-profiles/{cardHolderProfileId}/spend-limits": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,748 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>GpiTracking | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a aria-current="page" href="../api/gpi_tracking.html">GpiTracking</a><div class="nav-sections"><a class="nav-section" href="#post-gpi-tracking">POST /gpi-tracking</a></div>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="gpitracking">GpiTracking</h1>
+<p>A SWIFT gpi tracking lookup.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-gpi-tracking"><code>/gpi-tracking</code></a></td>
+<td><code>create</code></td>
+<td>Returns matching GPI tracking transactions</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">created, err := client.GpiTracking(nil).Create(map[string]any{&quot;identifier&quot;: &quot;example&quot;, &quot;identifierType&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local created, err = client:GpiTracking():create({ identifier = &quot;example&quot;, identifierType = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$created = $client-&gt;GpiTracking()-&gt;create([&quot;identifier&quot; =&gt; &quot;example&quot;, &quot;identifierType&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">created = client.GpiTracking().create({ &quot;identifier&quot;: &quot;example&quot;, &quot;identifierType&quot;: &quot;example&quot; })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">created = client.GpiTracking.create({ &quot;identifier&quot; =&gt; &quot;example&quot;, &quot;identifierType&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const created = await client.GpiTracking().create({ identifier: &quot;example&quot;, identifierType: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>identifier</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The UETR or Wise transfer ID of the transfer to look up, matching <code>identifierType</code>.</td>
+</tr>
+<tr>
+<td><code>identifierType</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The type of identifier used to look up the transfer.</td>
+</tr>
+<tr>
+<td><code>transactions</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>The matching GPI tracking transactions.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-gpi-tracking" class="operation" data-method="post"><code>POST</code> /gpi-tracking</h3>
+<p>Operation ID: <code>LookupGpiTracking</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>identifier</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The UETR or Wise transfer ID of the transfer to look up, matching <code>identifierType</code>. Must be a UUID (for example <code>97ed4827-7b6f-4491-a206-42bcf859a919</code>) when <code>identifierType</code> is <code>UETR</code>, or a positive integer (int64) (for example <code>16521632</code>) when <code>identifierType</code> is <code>TRANSFER_ID</code>.</td>
+</tr>
+<tr>
+<td><code>identifierType</code></td>
+<td><code>enum: UETR, TRANSFER_ID</code></td>
+<td>Yes</td>
+<td>The type of identifier used to look up the transfer.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-returns-matching-gpi-tracking-transactions" class="status" data-status="2xx">200: Returns matching GPI tracking transactions</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transactions</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>The matching GPI tracking transactions.</td>
+</tr>
+<tr>
+<td><code>transactions[].cancellationStatus</code></td>
+<td><code>enum: CANCELLED, PENDING_CANCELLATION, CANCELLATION_REJECTED</code></td>
+<td>No</td>
+<td>Cancellation status, when a cancellation has been requested or resolved.</td>
+</tr>
+<tr>
+<td><code>transactions[].completedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the transaction reached a completed state.</td>
+</tr>
+<tr>
+<td><code>transactions[].confirmedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount credited to the creditor's account. Present when status is <code>ACCC</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].confirmedAmount.amount</code></td>
+<td><code>number (decimal)</code></td>
+<td>No</td>
+<td>Non-negative monetary amount.</td>
+</tr>
+<tr>
+<td><code>transactions[].confirmedAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ISO 4217 currency code.</td>
+</tr>
+<tr>
+<td><code>transactions[].confirmedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the funds were made available to the creditor. Present when status is <code>ACCC</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].events</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Ordered tracking events, latest first.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].amountInconsistency</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether instructed and settled amounts are inconsistent.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].cancellationRequestStatus</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Cancellation request status conveyed by this event.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].cancellationRequestStatus.indemnityAgreement</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether an indemnity agreement applies to the cancellation request.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].cancellationRequestStatus.reasonCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Cancellation reason code, passed through as a SWIFT gpi cancellation reason code. Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].cancellationRequestTrackingStatus</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Cancellation request tracking status conveyed by this event, passed through as a SWIFT gpi cancellation request tracking status code. Known values: <code>S000</code>, <code>S001</code>, <code>S002</code>, <code>S003</code>, <code>S004</code>. Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].cancellationResponseStatus</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Cancellation response status conveyed by this event.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].cancellationResponseStatus.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Cancellation response code, passed through as a SWIFT gpi cancellation response code. Known values: <code>CNCL</code> (cancelled), <code>PDCR</code> (pending), <code>RJCR</code> (rejected). Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].cancellationResponseStatus.reasonCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Cancellation response reason code, passed through as a SWIFT gpi cancellation response reason code. Present for <code>PDCR</code> and <code>RJCR</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].chargeBearer</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Charge bearer indicator, passed through as a SWIFT gpi charge bearer code. Known values: <code>DEBT</code>, <code>CRED</code>, <code>SHAR</code>, <code>SLEV</code>. Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].charges</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Charges applied at this hop. Omitted when there are none.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].charges[].amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Charge amount.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].charges[].amount.amount</code></td>
+<td><code>number (decimal)</code></td>
+<td>No</td>
+<td>Non-negative monetary amount.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].charges[].amount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ISO 4217 currency code.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].charges[].bic</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>BIC of the charging agent.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].charges[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the charging agent.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].confirmedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount credited to the creditor's account. Present when status is <code>ACCC</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].confirmedAmount.amount</code></td>
+<td><code>number (decimal)</code></td>
+<td>No</td>
+<td>Non-negative monetary amount.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].confirmedAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ISO 4217 currency code.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].confirmedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the funds were made available to the creditor. Present when status is <code>ACCC</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].creditorAgent</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creditor agent BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].debtorAgent</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Debtor agent BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].endToEndId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>End-to-end identifier.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].eventCreationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When this event was created.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].eventTarget</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target of the tracking event, passed through as a SWIFT gpi tracker event target code. Known values: <code>CREDIT_TRANSFER</code>, <code>CREDIT_TRANSFER_RETURN</code>, <code>CREDIT_TRANSFER_COVER</code>, <code>CREDIT_TRANSFER_COVER_RETURN</code>, <code>FINANCIAL_INSTITUTION_CREDIT_TRANSFER</code>, <code>FINANCIAL_INSTITUTION_CREDIT_TRANSFER_RETURN</code>, <code>FINANCIAL_INSTITUTION_CREDIT_TRANSFER_COVER</code>, <code>FINANCIAL_INSTITUTION_CREDIT_TRANSFER_COVER_RETURN</code>. Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].eventType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of the tracking event, passed through as a SWIFT gpi tracker event type code. Known values: <code>PAYMENT</code>, <code>STATUS_UPDATE</code>, <code>CANCELLATION_REQUEST</code>, <code>CANCELLATION_RESPONSE</code>, <code>CANCELLATION_REQUEST_STATUS_UPDATE</code>. Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].exchangeRate</code></td>
+<td><code>number (decimal)</code></td>
+<td>No</td>
+<td>Exchange rate applied between the source and target currencies.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].from</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Sending agent BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].instructedAgent</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Instructed agent BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].instructedAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount as instructed at this hop.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].instructedAmount.amount</code></td>
+<td><code>number (decimal)</code></td>
+<td>No</td>
+<td>Non-negative monetary amount.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].instructedAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ISO 4217 currency code.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].instructingReimbursementAgent</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Instructing reimbursement agent BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].instructionId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Instruction identifier.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].intermediaryAgent1</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Intermediary agent 1 BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].intermediaryAgent2</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Intermediary agent 2 BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].intermediaryAgent3</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Intermediary agent 3 BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].messageNameIdentification</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Message name identification (ISO 20022 message type).</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].previousInstructingAgent1</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Previous instructing agent 1 BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].previousInstructingAgent2</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Previous instructing agent 2 BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].previousInstructingAgent3</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Previous instructing agent 3 BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].rejectionReason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Rejection reason code, passed through as a SWIFT gpi rejection reason code (ISO 20022 external return/reason code). Present when status is <code>RJCT</code>. Known values include <code>AC04</code> (closed account number), <code>AC06</code> (blocked account), <code>AM09</code> (wrong amount), <code>BE01</code> (inconsistent with end customer), <code>RR04</code> (regulatory reason). Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].returnReason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Return reason code associated with this event, passed through as a SWIFT gpi return reason code (ISO 20022 external return/reason code). Known values include <code>AC04</code> (closed account number), <code>AC06</code> (blocked account), <code>AM09</code> (wrong amount), <code>BE01</code> (inconsistent with end customer), <code>RR04</code> (regulatory reason). Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].serviceLevel</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Service level of the transaction, passed through as a SWIFT gpi service level code. Known values: <code>G001</code>, <code>G002</code>, <code>G004</code>, <code>G005</code>, <code>G009</code>. Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].settledAmount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount as settled at this hop.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].settledAmount.amount</code></td>
+<td><code>number (decimal)</code></td>
+<td>No</td>
+<td>Non-negative monetary amount.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].settledAmount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ISO 4217 currency code.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].settlementDate</code></td>
+<td><code>string (date)</code></td>
+<td>No</td>
+<td>Settlement date of this event.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source currency of the exchange, if any.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Status conveyed by this event, passed through as a SWIFT gpi transaction status code. Known values: <code>ACSP</code> (accepted, settlement in progress), <code>ACCC</code> (accepted, settlement completed), <code>RJCT</code> (rejected). Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].statusReason</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Sub-status detail, present when status is <code>ACSP</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].statusReason.chargeBearer</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Charge bearer code. Present for <code>G000</code>, <code>G001</code>, <code>G005</code>, <code>G006</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].statusReason.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Sub-status code, passed through as a SWIFT gpi transaction status reason code. Known values: <code>G000</code>, <code>G001</code>, <code>G002</code>, <code>G003</code>, <code>G004</code>, <code>G005</code>, <code>G006</code>. Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].statusReason.instructedAgent</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>BIC the transaction was forwarded to. Present for <code>G000</code>, <code>G001</code>, <code>G005</code>, <code>G006</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].statusReason.settlementMethod</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Settlement method. Present for <code>G000</code>, <code>G001</code>, <code>G005</code>, <code>G006</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].statusReason.settlementMethod.clearingSystem</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Clearing system, present when the settlement method is <code>CLRG</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].statusReason.settlementMethod.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Settlement method code, passed through as a SWIFT gpi settlement method code. Known values: <code>INDA</code>, <code>INGA</code>, <code>COVE</code>, <code>CLRG</code>. Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].statusTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When this status was reached. Present when status is <code>ACSP</code> or <code>RJCT</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target currency of the exchange, if any.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].to</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Receiving agent BIC.</td>
+</tr>
+<tr>
+<td><code>transactions[].events[].trackerInformingParty</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Party informing the tracker.</td>
+</tr>
+<tr>
+<td><code>transactions[].initiatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When transaction tracking was initiated.</td>
+</tr>
+<tr>
+<td><code>transactions[].lastUpdatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When the tracking record was last updated.</td>
+</tr>
+<tr>
+<td><code>transactions[].rejectionReason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Rejection reason code, passed through as a SWIFT gpi rejection reason code (ISO 20022 external return/reason code). Present when status is <code>RJCT</code>. Known values include <code>AC04</code> (closed account number), <code>AC06</code> (blocked account), <code>AM09</code> (wrong amount), <code>BE01</code> (inconsistent with end customer), <code>RR04</code> (regulatory reason). Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].returnReason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Return reason code, present when the transaction was returned or rejected, passed through as a SWIFT gpi return reason code (ISO 20022 external return/reason code). Known values include <code>AC04</code> (closed account number), <code>AC06</code> (blocked account), <code>AM09</code> (wrong amount), <code>BE01</code> (inconsistent with end customer), <code>RR04</code> (regulatory reason). Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Overall tracking status of the transaction, passed through as a SWIFT gpi transaction status code. Known values: <code>ACSP</code> (accepted, settlement in progress), <code>ACCC</code> (accepted, settlement completed), <code>RJCT</code> (rejected). Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].statusReason</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Sub-status detail, present when status is <code>ACSP</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].statusReason.chargeBearer</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Charge bearer code. Present for <code>G000</code>, <code>G001</code>, <code>G005</code>, <code>G006</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].statusReason.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Sub-status code, passed through as a SWIFT gpi transaction status reason code. Known values: <code>G000</code>, <code>G001</code>, <code>G002</code>, <code>G003</code>, <code>G004</code>, <code>G005</code>, <code>G006</code>. Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].statusReason.instructedAgent</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>BIC the transaction was forwarded to. Present for <code>G000</code>, <code>G001</code>, <code>G005</code>, <code>G006</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].statusReason.settlementMethod</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Settlement method. Present for <code>G000</code>, <code>G001</code>, <code>G005</code>, <code>G006</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].statusReason.settlementMethod.clearingSystem</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Clearing system, present when the settlement method is <code>CLRG</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].statusReason.settlementMethod.code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Settlement method code, passed through as a SWIFT gpi settlement method code. Known values: <code>INDA</code>, <code>INGA</code>, <code>COVE</code>, <code>CLRG</code>. Additional values may be introduced by SWIFT gpi; see the SWIFT gpi code lists.</td>
+</tr>
+<tr>
+<td><code>transactions[].statusTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>When this status was reached. Present when status is <code>ACSP</code> or <code>RJCT</code>.</td>
+</tr>
+<tr>
+<td><code>transactions[].uetr</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The UETR of the tracked transaction.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "token": {
+      "TOKEN00": {
+        "access_token": "s5a",
+        "created_at": "s5b",
+        "expires_at": "s5c",
+        "expires_in": 93,
+        "refresh_token": "s5e",
+        "refresh_token_expires_at": "s5f",
+        "refresh_token_expires_in": 96,
+        "scope": "s61",
+        "token_type": "s62",
+        "id": "TOKEN00"
+      },
+      "TOKEN01": {
+        "access_token": "sb4",
+        "created_at": "sb5",
+        "expires_at": "sb6",
+        "expires_in": 183,
+        "refresh_token": "sb8",
+        "refresh_token_expires_at": "sb9",
+        "refresh_token_expires_in": 186,
+        "scope": "sbb",
+        "token_type": "sbc",
+        "id": "TOKEN01"
+      },
+      "TOKEN02": {
+        "access_token": "s10e",
+        "created_at": "s10f",
+        "expires_at": "s110",
+        "expires_in": 273,
+        "refresh_token": "s112",
+        "refresh_token_expires_at": "s113",
+        "refresh_token_expires_in": 276,
+        "scope": "s115",
+        "token_type": "s116",
+        "id": "TOKEN02"
+      }
+    }
+  },
+  "new": {
+    "token": {
+      "token_ref01": {
+        "access_token": "s168",
+        "created_at": "s169",
+        "expires_at": "s16a",
+        "expires_in": 363,
+        "refresh_token": "s16c",
+        "refresh_token_expires_at": "s16d",
+        "refresh_token_expires_in": 366,
+        "scope": "s16f",
+        "token_type": "s170"
+      }
+    }
+  },
+  "requests": {
+    "POST /oauth/token": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

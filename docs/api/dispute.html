@@ -1,0 +1,1044 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Dispute | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a aria-current="page" href="../api/dispute.html">Dispute</a><div class="nav-sections"><a class="nav-section" href="#post-spendprofilesprofileiddispute-formflowsschemereason">POST /spend/profiles/{profileId}/dispute-form/flows/{scheme}/{reason}</a>
+<a class="nav-section" href="#post-spendprofilesprofileiddispute-formfile">POST /spend/profiles/{profileId}/dispute-form/file</a>
+<a class="nav-section" href="#get-spendprofilesprofileiddisputes">GET /spend/profiles/{profileId}/disputes</a>
+<a class="nav-section" href="#get-spendprofilesprofileiddisputesdisputeid">GET /spend/profiles/{profileId}/disputes/{disputeId}</a>
+<a class="nav-section" href="#put-spendprofilesprofileiddisputesdisputeidstatus">PUT /spend/profiles/{profileId}/disputes/{disputeId}/status</a></div>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="dispute">Dispute</h1>
+<p>A card transaction dispute: submit, list, get or withdraw one, or upload a file for it.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-spendprofilesprofileiddispute-formflowsschemereason"><code>/spend/profiles/{profileId}/dispute-form/flows/{scheme}/{reason}</code></a></td>
+<td><code>create</code></td>
+<td>Dynamic Flow JSON response. If using the Dynamic Flow framework, pass this to the framework. If using the API directly, the response can be ignored.</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-spendprofilesprofileiddispute-formfile"><code>/spend/profiles/{profileId}/dispute-form/file</code></a></td>
+<td><code>create</code></td>
+<td>A key-value pair mapping the file name to the assigned file ID</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileiddisputes"><code>/spend/profiles/{profileId}/disputes</code></a></td>
+<td><code>list</code></td>
+<td>Paginated list of disputes</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileiddisputesdisputeid"><code>/spend/profiles/{profileId}/disputes/{disputeId}</code></a></td>
+<td><code>load</code></td>
+<td>The dispute</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-spendprofilesprofileiddisputesdisputeidstatus"><code>/spend/profiles/{profileId}/disputes/{disputeId}/status</code></a></td>
+<td><code>update</code></td>
+<td>The updated dispute</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">disputes, err := client.Dispute(nil).List(map[string]any{&quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(disputes)
+dispute, err := client.Dispute(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(dispute)
+created, err := client.Dispute(nil).Create(map[string]any{&quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Dispute(nil).Update(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1, &quot;status&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local disputes, err = client:Dispute():list({ profile_id = 1 })
+local dispute, err = client:Dispute():load({ id = &quot;example_id&quot;, profile_id = 1 })
+local created, err = client:Dispute():create({ profile_id = 1 })
+local updated, err = client:Dispute():update({ id = &quot;example_id&quot;, profile_id = 1, status = &quot;example&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$disputes = $client-&gt;Dispute()-&gt;list([&quot;profile_id&quot; =&gt; 1]);
+$dispute = $client-&gt;Dispute()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1]);
+$created = $client-&gt;Dispute()-&gt;create([&quot;profile_id&quot; =&gt; 1]);
+$updated = $client-&gt;Dispute()-&gt;update([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1, &quot;status&quot; =&gt; &quot;example&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">disputes = client.Dispute().list({&quot;profile_id&quot;: 1})
+dispute = client.Dispute().load({&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1})
+created = client.Dispute().create({ &quot;profile_id&quot;: 1 })
+updated = client.Dispute().update({&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1, &quot;status&quot;: &quot;example&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">disputes = client.Dispute.list({ &quot;profile_id&quot; =&gt; 1 })
+dispute = client.Dispute.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1 })
+created = client.Dispute.create({ &quot;profile_id&quot; =&gt; 1 })
+updated = client.Dispute.update({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1, &quot;status&quot; =&gt; &quot;example&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const disputes = await client.Dispute().list({ profile_id: 1 })
+const dispute = await client.Dispute().load({ id: &quot;example_id&quot;, profile_id: 1 })
+const created = await client.Dispute().create({ profile_id: 1 })
+const updated = await client.Dispute().update({ id: &quot;example_id&quot;, profile_id: 1, status: &quot;example&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canWithdraw</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the dispute can be withdrawn.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Time when the dispute was created.</td>
+</tr>
+<tr>
+<td><code>createdBy</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creator of the dispute.</td>
+</tr>
+<tr>
+<td><code>disclaimer</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Acknowledgement fields.</td>
+</tr>
+<tr>
+<td><code>files</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Key-value pairs mapping file field names to file IDs obtained from the file upload endpoint.</td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Form fields required to submit this dispute.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of the dispute.</td>
+</tr>
+<tr>
+<td><code>lastUpdatedAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Time when the dispute was last updated.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Dispute reason code.</td>
+</tr>
+<tr>
+<td><code>receipt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The file to upload.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Dispute overall status.</td>
+</tr>
+<tr>
+<td><code>statusMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Explanation for <code>subStatus</code>.</td>
+</tr>
+<tr>
+<td><code>subStatus</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Dispute detailed status.</td>
+</tr>
+<tr>
+<td><code>transaction</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Transaction details for the dispute.</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Card transaction ID.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-spendprofilesprofileiddispute-formflowsschemereason" class="operation" data-method="post"><code>POST</code> /spend/profiles/{profileId}/dispute-form/flows/{scheme}/{reason}</h3>
+<p>Operation ID: <code>disputeSubmit</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Your profile ID.</td>
+</tr>
+<tr>
+<td><code>scheme</code></td>
+<td><code>path</code></td>
+<td><code>enum: MASTERCARD, VISA</code></td>
+<td>Yes</td>
+<td>The network of the card that was used to make this transaction.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Dispute reason code supplied by the dispute reasons endpoint.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>disclaimer</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Acknowledgement fields.</td>
+</tr>
+<tr>
+<td><code>disclaimer.allAnswered</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Acknowledgment that all questions have been answered. Must be <code>true</code> or the request will be rejected.</td>
+</tr>
+<tr>
+<td><code>disclaimer.filesUploaded</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Acknowledgment that all relevant files have been attached. Must be <code>true</code> or the request will be rejected.</td>
+</tr>
+<tr>
+<td><code>files</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Key-value pairs mapping file field names to file IDs obtained from the file upload endpoint. Available file fields vary per reason code.</td>
+</tr>
+<tr>
+<td><code>form</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Form fields required to submit this dispute. The specific fields vary per reason code. See the disputes via API guide for per-reason field details.</td>
+</tr>
+<tr>
+<td><code>transaction</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Transaction details for the dispute.</td>
+</tr>
+<tr>
+<td><code>transaction.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Email of the support team that Wise should reach out to.</td>
+</tr>
+<tr>
+<td><code>transaction.transactionId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the transaction.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;disclaimer&quot;: {
+    &quot;allAnswered&quot;: true,
+    &quot;filesUploaded&quot;: true
+  },
+  &quot;form&quot;: {
+    &quot;agreedDetails&quot;: {
+      &quot;agreed&quot;: true,
+      &quot;agreedReason&quot;: &quot;some reason&quot;
+    },
+    &quot;charged&quot;: {
+      &quot;currency&quot;: &quot;EUR&quot;,
+      &quot;value&quot;: 50
+    },
+    &quot;details&quot;: &quot;wrong amount dispute&quot;,
+    &quot;expected&quot;: {
+      &quot;currency&quot;: &quot;EUR&quot;,
+      &quot;value&quot;: 5
+    },
+    &quot;goods&quot;: &quot;something&quot;
+  },
+  &quot;transaction&quot;: {
+    &quot;email&quot;: &quot;support@partner.com&quot;,
+    &quot;transactionId&quot;: &quot;12345&quot;
+  }
+}
+</code></pre>
+<h4 id="responses">Responses</h4>
+<h5 id="200-dynamic-flow-json-response-if-using-the-dynamic-flow-framework-pass-this-to-the-framework-if-using-the-api-directly-the-response-can-be-ignored" class="status" data-status="2xx">200: Dynamic Flow JSON response. If using the Dynamic Flow framework, pass this to the framework. If using the API directly, the response can be ignored.</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;actions&quot;: [
+    {
+      &quot;$id&quot;: &quot;continue&quot;,
+      &quot;exit&quot;: true,
+      &quot;title&quot;: &quot;Continue&quot;
+    }
+  ],
+  &quot;key&quot;: &quot;final&quot;,
+  &quot;layout&quot;: [
+    {
+      &quot;components&quot;: [
+        {
+          &quot;type&quot;: &quot;image&quot;,
+          &quot;url&quot;: &quot;https://wise.com/web-art/assets/illustrations/email-success-large%402x.png&quot;
+        }
+      ],
+      &quot;type&quot;: &quot;box&quot;,
+      &quot;width&quot;: &quot;md&quot;
+    },
+    {
+      &quot;align&quot;: &quot;center&quot;,
+      &quot;margin&quot;: &quot;lg&quot;,
+      &quot;markdown&quot;: &quot;Thanks for reporting this transaction. It's pre-authorised right now, but as soon as it becomes \&quot;spent\&quot; we'll begin our investigation.&quot;,
+      &quot;type&quot;: &quot;info&quot;
+    },
+    {
+      &quot;action&quot;: {
+        &quot;$ref&quot;: &quot;continue&quot;,
+        &quot;x-ref&quot;: &quot;continue&quot;
+      },
+      &quot;type&quot;: &quot;button&quot;
+    }
+  ],
+  &quot;schemas&quot;: [],
+  &quot;title&quot;: &quot;Done!&quot;,
+  &quot;type&quot;: &quot;form&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-spendprofilesprofileiddispute-formfile" class="operation" data-method="post"><code>POST</code> /spend/profiles/{profileId}/dispute-form/file</h3>
+<p>Operation ID: <code>disputeFileUpload</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Your profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>multipart/form-data</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>receipt</code></td>
+<td><code>string (binary)</code></td>
+<td>No</td>
+<td>The file to upload.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-a-key-value-pair-mapping-the-file-name-to-the-assigned-file-id" class="status" data-status="2xx">200: A key-value pair mapping the file name to the assigned file ID</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;receipt&quot;: &quot;ab4f5d2&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-spendprofilesprofileiddisputes" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/disputes</h3>
+<p>Operation ID: <code>disputeList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Your profile ID.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>query</code></td>
+<td><code>enum: ACTIVE, CLOSED</code></td>
+<td>No</td>
+<td>Filter by dispute status.</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td><code>query</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Filter by card transaction ID.</td>
+</tr>
+<tr>
+<td><code>pageSize</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum number of disputes to return per page. Between 10 and 100, defaults to 10.</td>
+</tr>
+<tr>
+<td><code>pageNumber</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The page number to retrieve. Must be at least 1, defaults to 1.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-paginated-list-of-disputes" class="status" data-status="2xx">200: Paginated list of disputes</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>disputes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>disputes[].canWithdraw</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the dispute can be withdrawn.</td>
+</tr>
+<tr>
+<td><code>disputes[].createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the dispute was created.</td>
+</tr>
+<tr>
+<td><code>disputes[].createdBy</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creator of the dispute. Currently set to the user ID.</td>
+</tr>
+<tr>
+<td><code>disputes[].id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of the dispute.</td>
+</tr>
+<tr>
+<td><code>disputes[].lastUpdatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the dispute was last updated.</td>
+</tr>
+<tr>
+<td><code>disputes[].profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>disputes[].reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Dispute reason code.</td>
+</tr>
+<tr>
+<td><code>disputes[].status</code></td>
+<td><code>enum: ACTIVE, CLOSED</code></td>
+<td>No</td>
+<td>Dispute overall status.</td>
+</tr>
+<tr>
+<td><code>disputes[].statusMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Explanation for <code>subStatus</code>.</td>
+</tr>
+<tr>
+<td><code>disputes[].subStatus</code></td>
+<td><code>enum: SUBMITTED, IN_REVIEW, REFUNDED, REJECTED, WITHDRAWN, CONFIRMED, ...</code></td>
+<td>No</td>
+<td>Dispute detailed status.</td>
+</tr>
+<tr>
+<td><code>disputes[].transactionId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Card transaction ID.</td>
+</tr>
+<tr>
+<td><code>totalCount</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Total number of disputes matching the filters.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;disputes&quot;: [
+    {
+      &quot;canWithdraw&quot;: true,
+      &quot;createdAt&quot;: &quot;2024-03-08T08:30:14.989Z&quot;,
+      &quot;createdBy&quot;: &quot;6097861&quot;,
+      &quot;id&quot;: &quot;51e2dc60-9e4b-4ff5-b917-b90cc5e1ecfb&quot;,
+      &quot;lastUpdatedAt&quot;: &quot;2024-03-08T08:30:14.989Z&quot;,
+      &quot;profileId&quot;: 16605997,
+      &quot;reason&quot;: &quot;NEVER_ARRIVED&quot;,
+      &quot;status&quot;: &quot;ACTIVE&quot;,
+      &quot;statusMessage&quot;: &quot;Submitted&quot;,
+      &quot;subStatus&quot;: &quot;SUBMITTED&quot;,
+      &quot;transactionId&quot;: 2040
+    },
+    {
+      &quot;canWithdraw&quot;: true,
+      &quot;createdAt&quot;: &quot;2024-03-27T02:24:16.878Z&quot;,
+      &quot;createdBy&quot;: &quot;6097861&quot;,
+      &quot;id&quot;: &quot;9c5ca0cb-00d6-41f7-8214-8cfdb11388a7&quot;,
+      &quot;lastUpdatedAt&quot;: &quot;2024-03-27T02:24:16.878Z&quot;,
+      &quot;profileId&quot;: 16605997,
+      &quot;reason&quot;: &quot;CANCELLED_ORDER&quot;,
+      &quot;status&quot;: &quot;ACTIVE&quot;,
+      &quot;statusMessage&quot;: &quot;Submitted&quot;,
+      &quot;subStatus&quot;: &quot;SUBMITTED&quot;,
+      &quot;transactionId&quot;: 3405
+    }
+  ],
+  &quot;totalCount&quot;: 2
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-spendprofilesprofileiddisputesdisputeid" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/disputes/{disputeId}</h3>
+<p>Operation ID: <code>disputeGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Your profile ID.</td>
+</tr>
+<tr>
+<td><code>disputeId</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The dispute ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-the-dispute" class="status" data-status="2xx">200: The dispute</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canWithdraw</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the dispute can be withdrawn.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the dispute was created.</td>
+</tr>
+<tr>
+<td><code>createdBy</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creator of the dispute. Currently set to the user ID.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of the dispute.</td>
+</tr>
+<tr>
+<td><code>lastUpdatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the dispute was last updated.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Dispute reason code.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: ACTIVE, CLOSED</code></td>
+<td>No</td>
+<td>Dispute overall status.</td>
+</tr>
+<tr>
+<td><code>statusMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Explanation for <code>subStatus</code>.</td>
+</tr>
+<tr>
+<td><code>subStatus</code></td>
+<td><code>enum: SUBMITTED, IN_REVIEW, REFUNDED, REJECTED, WITHDRAWN, CONFIRMED, ...</code></td>
+<td>No</td>
+<td>Dispute detailed status.</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Card transaction ID.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="update">update</h2>
+<h3 id="put-spendprofilesprofileiddisputesdisputeidstatus" class="operation" data-method="put"><code>PUT</code> /spend/profiles/{profileId}/disputes/{disputeId}/status</h3>
+<p>Operation ID: <code>disputeWithdraw</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Your profile ID.</td>
+</tr>
+<tr>
+<td><code>disputeId</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The dispute ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: CLOSED</code></td>
+<td>Yes</td>
+<td>Must be set to <code>CLOSED</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;status&quot;: &quot;CLOSED&quot;
+}
+</code></pre>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-the-updated-dispute" class="status" data-status="2xx">200: The updated dispute</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>canWithdraw</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether the dispute can be withdrawn.</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the dispute was created.</td>
+</tr>
+<tr>
+<td><code>createdBy</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creator of the dispute. Currently set to the user ID.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier of the dispute.</td>
+</tr>
+<tr>
+<td><code>lastUpdatedAt</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the dispute was last updated.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>reason</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Dispute reason code.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: ACTIVE, CLOSED</code></td>
+<td>No</td>
+<td>Dispute overall status.</td>
+</tr>
+<tr>
+<td><code>statusMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Explanation for <code>subStatus</code>.</td>
+</tr>
+<tr>
+<td><code>subStatus</code></td>
+<td><code>enum: SUBMITTED, IN_REVIEW, REFUNDED, REJECTED, WITHDRAWN, CONFIRMED, ...</code></td>
+<td>No</td>
+<td>Dispute detailed status.</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Card transaction ID.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;canWithdraw&quot;: false,
+  &quot;createdAt&quot;: &quot;2024-03-08T08:30:14.989Z&quot;,
+  &quot;createdBy&quot;: &quot;6097861&quot;,
+  &quot;id&quot;: &quot;51e2dc60-9e4b-4ff5-b917-b90cc5e1ecfb&quot;,
+  &quot;lastUpdatedAt&quot;: &quot;2024-03-27T13:12:28.390Z&quot;,
+  &quot;profileId&quot;: 16605997,
+  &quot;reason&quot;: &quot;NEVER_ARRIVED&quot;,
+  &quot;status&quot;: &quot;CLOSED&quot;,
+  &quot;statusMessage&quot;: &quot;Withdrawn&quot;,
+  &quot;subStatus&quot;: &quot;WITHDRAWN&quot;,
+  &quot;transactionId&quot;: 2040
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

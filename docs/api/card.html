@@ -1,0 +1,1142 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Card | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a aria-current="page" href="../api/card.html">Card</a><div class="nav-sections"><a class="nav-section" href="#post-spendprofilesprofileidcardscardtokenreset-pin-count">POST /spend/profiles/{profileId}/cards/{cardToken}/reset-pin-count</a>
+<a class="nav-section" href="#get-spendprofilesprofileidcardscardtokenspending-permissions">GET /spend/profiles/{profileId}/cards/{cardToken}/spending-permissions</a>
+<a class="nav-section" href="#get-spendprofilesprofileidcards">GET /spend/profiles/{profileId}/cards</a>
+<a class="nav-section" href="#get-spendprofilesprofileidcardscardtoken">GET /spend/profiles/{profileId}/cards/{cardToken}</a>
+<a class="nav-section" href="#patch-spendprofilesprofileidcardscardtokenspending-permissions">PATCH /spend/profiles/{profileId}/cards/{cardToken}/spending-permissions</a>
+<a class="nav-section" href="#put-spendprofilesprofileidcardscardtokenstatus">PUT /spend/profiles/{profileId}/cards/{cardToken}/status</a></div>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="card">Card</h1>
+<p>A card: list a profile's cards, get one, update its status or permissions, or reset its PIN count.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-spendprofilesprofileidcardscardtokenreset-pin-count"><code>/spend/profiles/{profileId}/cards/{cardToken}/reset-pin-count</code></a></td>
+<td><code>create</code></td>
+<td>PIN count reset successfully</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileidcardscardtokenspending-permissions"><code>/spend/profiles/{profileId}/cards/{cardToken}/spending-permissions</code></a></td>
+<td><code>list</code></td>
+<td>Card permissions retrieved successfully</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileidcards"><code>/spend/profiles/{profileId}/cards</code></a></td>
+<td><code>list</code></td>
+<td>List of cards retrieved successfully</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-spendprofilesprofileidcardscardtoken"><code>/spend/profiles/{profileId}/cards/{cardToken}</code></a></td>
+<td><code>load</code></td>
+<td>Card details retrieved successfully</td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-spendprofilesprofileidcardscardtokenspending-permissions"><code>/spend/profiles/{profileId}/cards/{cardToken}/spending-permissions</code></a></td>
+<td><code>update</code></td>
+<td>Permissions updated successfully</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-spendprofilesprofileidcardscardtokenstatus"><code>/spend/profiles/{profileId}/cards/{cardToken}/status</code></a></td>
+<td><code>update</code></td>
+<td>Card status updated successfully</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">cards, err := client.Card(nil).List(map[string]any{&quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(cards)
+card, err := client.Card(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(card)
+created, err := client.Card(nil).Create(map[string]any{&quot;card_token&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local cards, err = client:Card():list({ profile_id = 1 })
+local card, err = client:Card():load({ id = &quot;example_id&quot;, profile_id = 1 })
+local created, err = client:Card():create({ card_token = &quot;example&quot;, profile_id = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$cards = $client-&gt;Card()-&gt;list([&quot;profile_id&quot; =&gt; 1]);
+$card = $client-&gt;Card()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1]);
+$created = $client-&gt;Card()-&gt;create([&quot;card_token&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">cards = client.Card().list({&quot;profile_id&quot;: 1})
+card = client.Card().load({&quot;id&quot;: &quot;example_id&quot;, &quot;profile_id&quot;: 1})
+created = client.Card().create({ &quot;card_token&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1 })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">cards = client.Card.list({ &quot;profile_id&quot; =&gt; 1 })
+card = client.Card.load({ &quot;id&quot; =&gt; &quot;example_id&quot;, &quot;profile_id&quot; =&gt; 1 })
+created = client.Card.create({ &quot;card_token&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const cards = await client.Card().list({ profile_id: 1 })
+const card = await client.Card().load({ id: &quot;example_id&quot;, profile_id: 1 })
+const created = await client.Card().create({ card_token: &quot;example&quot;, profile_id: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bankIdentificationNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Bank identification number (BIN) of the card.</td>
+</tr>
+<tr>
+<td><code>cardHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card holder.</td>
+</tr>
+<tr>
+<td><code>cardProgram</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Card program details.</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Client ID of the partner that issued the card.</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Time when the card was created.</td>
+</tr>
+<tr>
+<td><code>expiryDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date when the card will expire.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Id</td>
+</tr>
+<tr>
+<td><code>lastFourDigits</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Last 4 digits of the card number.</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Time when the card was last modified.</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Phone number associated with the card.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Profile ID that owns this card.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Current status of the card.</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the card.</td>
+</tr>
+<tr>
+<td><code>unlockSpendingPermissions</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Method with which physical card spending permissions can be unlocked.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-spendprofilesprofileidcardscardtokenreset-pin-count" class="operation" data-method="post"><code>POST</code> /spend/profiles/{profileId}/cards/{cardToken}/reset-pin-count</h3>
+<p>Operation ID: <code>cardPinCountReset</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that owns the card.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The unique token identifying the card.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-pin-count-reset-successfully" class="status" data-status="2xx">200: PIN count reset successfully</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-spendprofilesprofileidcardscardtokenspending-permissions" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/cards/{cardToken}/spending-permissions</h3>
+<p>Operation ID: <code>cardPermissionsGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that owns the card.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The unique token identifying the card.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-card-permissions-retrieved-successfully" class="status" data-status="2xx">200: Card permissions retrieved successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>permissions</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of spending permissions for this card.</td>
+</tr>
+<tr>
+<td><code>permissions[].isEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Indicates if this permission type is enabled.</td>
+</tr>
+<tr>
+<td><code>permissions[].isLocked</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates if this permission is locked. If <code>true</code>, this permission cannot be updated.</td>
+</tr>
+<tr>
+<td><code>permissions[].type</code></td>
+<td><code>enum: ECOM, POS_CHIP, POS_MAGSTRIPE, POS_CONTACTLESS, ATM_WITHDRAWAL, MOBILE_WALLETS</code></td>
+<td>Yes</td>
+<td>The type of transaction this permission controls. Permissions available on all cards: - <code>ECOM</code> - Online transactions - <code>ATM_WITHDRAWAL</code> - ATM withdrawals - <code>MOBILE_WALLETS</code> - Digital wallet payments (Apple Pay, Google Pay) Additional permissions available on physical cards: - <code>POS_MAGSTRIPE</code> - Physical point-of-sale transactions with magnetic stripe - <code>POS_CONTACTLESS</code> - Physical point-of-sale contactless transactions - <code>POS_CHIP</code> - Physical point-of-sale transactions with chip Virtual cards do not return physical point-of-sale permissions. Only permissions returned for the card can be updated.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;permissions&quot;: [
+    {
+      &quot;isEnabled&quot;: false,
+      &quot;isLocked&quot;: false,
+      &quot;type&quot;: &quot;ECOM&quot;
+    },
+    {
+      &quot;isEnabled&quot;: true,
+      &quot;isLocked&quot;: false,
+      &quot;type&quot;: &quot;POS_CHIP&quot;
+    },
+    {
+      &quot;isEnabled&quot;: false,
+      &quot;isLocked&quot;: false,
+      &quot;type&quot;: &quot;ATM_WITHDRAWAL&quot;
+    },
+    {
+      &quot;isEnabled&quot;: true,
+      &quot;isLocked&quot;: false,
+      &quot;type&quot;: &quot;MOBILE_WALLETS&quot;
+    },
+    {
+      &quot;isEnabled&quot;: false,
+      &quot;isLocked&quot;: true,
+      &quot;type&quot;: &quot;POS_CONTACTLESS&quot;
+    },
+    {
+      &quot;isEnabled&quot;: false,
+      &quot;isLocked&quot;: true,
+      &quot;type&quot;: &quot;POS_MAGSTRIPE&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-spendprofilesprofileidcards" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/cards</h3>
+<p>Operation ID: <code>cardList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile to retrieve cards for.</td>
+</tr>
+<tr>
+<td><code>pageSize</code></td>
+<td><code>query</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The maximum number of cards to return per page. Must be between 10 and 100.</td>
+</tr>
+<tr>
+<td><code>pageNumber</code></td>
+<td><code>query</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The page number to retrieve. Must be greater than or equal to 1.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-list-of-cards-retrieved-successfully" class="status" data-status="2xx">200: List of cards retrieved successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>cards</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Collection of cards for this profile.</td>
+</tr>
+<tr>
+<td><code>cards[].bankIdentificationNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Bank identification number (BIN) of the card.</td>
+</tr>
+<tr>
+<td><code>cards[].cardHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card holder.</td>
+</tr>
+<tr>
+<td><code>cards[].cardProgram</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Card program details.</td>
+</tr>
+<tr>
+<td><code>cards[].cardProgram.cardType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of the card. for example <code>PHYSICAL</code> or <code>VIRTUAL</code>.</td>
+</tr>
+<tr>
+<td><code>cards[].cardProgram.defaultCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Default currency of the card.</td>
+</tr>
+<tr>
+<td><code>cards[].cardProgram.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card program.</td>
+</tr>
+<tr>
+<td><code>cards[].cardProgram.scheme</code></td>
+<td><code>enum: VISA, MASTERCARD</code></td>
+<td>No</td>
+<td>Card network scheme.</td>
+</tr>
+<tr>
+<td><code>cards[].clientId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Client ID of the partner that issued the card.</td>
+</tr>
+<tr>
+<td><code>cards[].creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card was created.</td>
+</tr>
+<tr>
+<td><code>cards[].expiryDate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date when the card will expire.</td>
+</tr>
+<tr>
+<td><code>cards[].lastFourDigits</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Last 4 digits of the card number.</td>
+</tr>
+<tr>
+<td><code>cards[].modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card was last modified.</td>
+</tr>
+<tr>
+<td><code>cards[].phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Phone number associated with the card.</td>
+</tr>
+<tr>
+<td><code>cards[].profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Profile ID that owns this card.</td>
+</tr>
+<tr>
+<td><code>cards[].status</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Current status of the card.</td>
+</tr>
+<tr>
+<td><code>cards[].status.value</code></td>
+<td><code>enum: ACTIVE, INACTIVE, BLOCKED, FROZEN, PARTNER_SUSPENDED, EXPIRED, ...</code></td>
+<td>No</td>
+<td>Status value. One of: - <code>ACTIVE</code> - Card is active and can be used - <code>INACTIVE</code> - Card is inactive and all transactions will be declined - <code>BLOCKED</code> - Card is blocked and cannot be reversed back to any state - <code>FROZEN</code> - Card is temporarily frozen; all authorization requests will be declined - <code>PARTNER_SUSPENDED</code> - Card is suspended by Wise temporarily (do not display to end customers) - <code>EXPIRED</code> - Card is expired - <code>PURGED</code> - Cardholder data (for example PAN, PIN) has been purged after the retention period (555 days after the card's expiry date)</td>
+</tr>
+<tr>
+<td><code>cards[].token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the card.</td>
+</tr>
+<tr>
+<td><code>cards[].unlockSpendingPermissions</code></td>
+<td><code>enum: WITH_PARTNER_API, WITH_FIRST_CHIP_AND_PIN_TRANSACTION, NONE</code></td>
+<td>No</td>
+<td>Method with which physical card spending permissions can be unlocked. One of: - <code>WITH_PARTNER_API</code> - Unlock via Partner API - <code>WITH_FIRST_CHIP_AND_PIN_TRANSACTION</code> - Unlock with first chip and PIN transaction - <code>NONE</code> - Not applicable (for virtual cards)</td>
+</tr>
+<tr>
+<td><code>totalCount</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The total number of cards for this profile.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-spendprofilesprofileidcardscardtoken" class="operation" data-method="get"><code>GET</code> /spend/profiles/{profileId}/cards/{cardToken}</h3>
+<p>Operation ID: <code>cardGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that owns the card.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The unique token identifying the card.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-card-details-retrieved-successfully" class="status" data-status="2xx">200: Card details retrieved successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bankIdentificationNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Bank identification number (BIN) of the card.</td>
+</tr>
+<tr>
+<td><code>cardHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card holder.</td>
+</tr>
+<tr>
+<td><code>cardProgram</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Card program details.</td>
+</tr>
+<tr>
+<td><code>cardProgram.cardType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of the card. for example <code>PHYSICAL</code> or <code>VIRTUAL</code>.</td>
+</tr>
+<tr>
+<td><code>cardProgram.defaultCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Default currency of the card.</td>
+</tr>
+<tr>
+<td><code>cardProgram.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card program.</td>
+</tr>
+<tr>
+<td><code>cardProgram.scheme</code></td>
+<td><code>enum: VISA, MASTERCARD</code></td>
+<td>No</td>
+<td>Card network scheme.</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Client ID of the partner that issued the card.</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card was created.</td>
+</tr>
+<tr>
+<td><code>expiryDate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date when the card will expire.</td>
+</tr>
+<tr>
+<td><code>lastFourDigits</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Last 4 digits of the card number.</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card was last modified.</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Phone number associated with the card.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Profile ID that owns this card.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Current status of the card.</td>
+</tr>
+<tr>
+<td><code>status.value</code></td>
+<td><code>enum: ACTIVE, INACTIVE, BLOCKED, FROZEN, PARTNER_SUSPENDED, EXPIRED, ...</code></td>
+<td>No</td>
+<td>Status value. One of: - <code>ACTIVE</code> - Card is active and can be used - <code>INACTIVE</code> - Card is inactive and all transactions will be declined - <code>BLOCKED</code> - Card is blocked and cannot be reversed back to any state - <code>FROZEN</code> - Card is temporarily frozen; all authorization requests will be declined - <code>PARTNER_SUSPENDED</code> - Card is suspended by Wise temporarily (do not display to end customers) - <code>EXPIRED</code> - Card is expired - <code>PURGED</code> - Cardholder data (for example PAN, PIN) has been purged after the retention period (555 days after the card's expiry date)</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the card.</td>
+</tr>
+<tr>
+<td><code>unlockSpendingPermissions</code></td>
+<td><code>enum: WITH_PARTNER_API, WITH_FIRST_CHIP_AND_PIN_TRANSACTION, NONE</code></td>
+<td>No</td>
+<td>Method with which physical card spending permissions can be unlocked. One of: - <code>WITH_PARTNER_API</code> - Unlock via Partner API - <code>WITH_FIRST_CHIP_AND_PIN_TRANSACTION</code> - Unlock with first chip and PIN transaction - <code>NONE</code> - Not applicable (for virtual cards)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="update">update</h2>
+<h3 id="patch-spendprofilesprofileidcardscardtokenspending-permissions" class="operation" data-method="patch"><code>PATCH</code> /spend/profiles/{profileId}/cards/{cardToken}/spending-permissions</h3>
+<p>Operation ID: <code>cardPermissionsBulkUpdate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that owns the card.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The unique token identifying the card.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>permissions</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>List of permissions to update.</td>
+</tr>
+<tr>
+<td><code>permissions[].isEnabled</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Indicates if this permission type is enabled.</td>
+</tr>
+<tr>
+<td><code>permissions[].isLocked</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates if this permission is locked. If <code>true</code>, this permission cannot be updated.</td>
+</tr>
+<tr>
+<td><code>permissions[].type</code></td>
+<td><code>enum: ECOM, POS_CHIP, POS_MAGSTRIPE, POS_CONTACTLESS, ATM_WITHDRAWAL, MOBILE_WALLETS</code></td>
+<td>Yes</td>
+<td>The type of transaction this permission controls. Permissions available on all cards: - <code>ECOM</code> - Online transactions - <code>ATM_WITHDRAWAL</code> - ATM withdrawals - <code>MOBILE_WALLETS</code> - Digital wallet payments (Apple Pay, Google Pay) Additional permissions available on physical cards: - <code>POS_MAGSTRIPE</code> - Physical point-of-sale transactions with magnetic stripe - <code>POS_CONTACTLESS</code> - Physical point-of-sale contactless transactions - <code>POS_CHIP</code> - Physical point-of-sale transactions with chip Virtual cards do not return physical point-of-sale permissions. Only permissions returned for the card can be updated.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;permissions&quot;: [
+    {
+      &quot;isEnabled&quot;: true,
+      &quot;type&quot;: &quot;ECOM&quot;
+    },
+    {
+      &quot;isEnabled&quot;: true,
+      &quot;type&quot;: &quot;POS_CHIP&quot;
+    }
+  ]
+}
+</code></pre>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-permissions-updated-successfully" class="status" data-status="2xx">200: Permissions updated successfully</h5>
+<h5 id="400-bad-request-the-requested-permission-type-is-not-recognized-no-permissions-are-updated" class="status" data-status="4xx">400: Bad request. The requested permission type is not recognized. No permissions are updated.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error message describing the invalid permission type.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="422-unprocessable-entity-the-request-is-syntactically-valid-but-cannot-be-fulfilled-because-a-requested-permission-is-not-supported-by-this-card-type-or-the-permission-is-locked-and-cannot-be-changed-no-permissions-are-updated" class="status" data-status="4xx">422: Unprocessable entity. The request is syntactically valid but cannot be fulfilled because a requested permission is not supported by this card type, or the permission is locked and cannot be changed. No permissions are updated.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error message describing why the permission update was rejected.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="put-spendprofilesprofileidcardscardtokenstatus" class="operation" data-method="put"><code>PUT</code> /spend/profiles/{profileId}/cards/{cardToken}/status</h3>
+<p>Operation ID: <code>cardStatusUpdate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile that owns the card.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The unique token identifying the card.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: ACTIVE, FROZEN, BLOCKED</code></td>
+<td>Yes</td>
+<td>The status to update the card to.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;status&quot;: &quot;ACTIVE&quot;
+}
+</code></pre>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-card-status-updated-successfully" class="status" data-status="2xx">200: Card status updated successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>bankIdentificationNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Bank identification number (BIN) of the card.</td>
+</tr>
+<tr>
+<td><code>cardHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card holder.</td>
+</tr>
+<tr>
+<td><code>cardProgram</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Card program details.</td>
+</tr>
+<tr>
+<td><code>cardProgram.cardType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type of the card. for example <code>PHYSICAL</code> or <code>VIRTUAL</code>.</td>
+</tr>
+<tr>
+<td><code>cardProgram.defaultCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Default currency of the card.</td>
+</tr>
+<tr>
+<td><code>cardProgram.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the card program.</td>
+</tr>
+<tr>
+<td><code>cardProgram.scheme</code></td>
+<td><code>enum: VISA, MASTERCARD</code></td>
+<td>No</td>
+<td>Card network scheme.</td>
+</tr>
+<tr>
+<td><code>clientId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Client ID of the partner that issued the card.</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card was created.</td>
+</tr>
+<tr>
+<td><code>expiryDate</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Date when the card will expire.</td>
+</tr>
+<tr>
+<td><code>lastFourDigits</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Last 4 digits of the card number.</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Time when the card was last modified.</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Phone number associated with the card.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Profile ID that owns this card.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Current status of the card.</td>
+</tr>
+<tr>
+<td><code>status.value</code></td>
+<td><code>enum: ACTIVE, INACTIVE, BLOCKED, FROZEN, PARTNER_SUSPENDED, EXPIRED, ...</code></td>
+<td>No</td>
+<td>Status value. One of: - <code>ACTIVE</code> - Card is active and can be used - <code>INACTIVE</code> - Card is inactive and all transactions will be declined - <code>BLOCKED</code> - Card is blocked and cannot be reversed back to any state - <code>FROZEN</code> - Card is temporarily frozen; all authorization requests will be declined - <code>PARTNER_SUSPENDED</code> - Card is suspended by Wise temporarily (do not display to end customers) - <code>EXPIRED</code> - Card is expired - <code>PURGED</code> - Cardholder data (for example PAN, PIN) has been purged after the retention period (555 days after the card's expiry date)</td>
+</tr>
+<tr>
+<td><code>token</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unique identifier for the card.</td>
+</tr>
+<tr>
+<td><code>unlockSpendingPermissions</code></td>
+<td><code>enum: WITH_PARTNER_API, WITH_FIRST_CHIP_AND_PIN_TRANSACTION, NONE</code></td>
+<td>No</td>
+<td>Method with which physical card spending permissions can be unlocked. One of: - <code>WITH_PARTNER_API</code> - Unlock via Partner API - <code>WITH_FIRST_CHIP_AND_PIN_TRANSACTION</code> - Unlock with first chip and PIN transaction - <code>NONE</code> - Not applicable (for virtual cards)</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-5" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

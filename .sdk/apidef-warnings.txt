@@ -1,0 +1,76 @@
+{
+  point: "warning"
+  note: "list GET /accounts reads `body.content`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /comparisons reads its whole body, the one record its definition declares: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "list GET /profiles/{profileId}/balance-statements/{balanceId}/statement.json reads `body.transactions`, beside data of the object it is in: declare what it lists in guide.aontu"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Accept` of GET /auth/jose/playground/jwe ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Accept` of POST /auth/jose/playground/jwe ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Accept` of POST /auth/jose/playground/jwe-direct-encryption ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Accept` of POST /auth/jose/playground/jws ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Accept` of GET /auth/jose/playground/jwsjwe ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Accept` of POST /auth/jose/playground/jwsjwe ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Accept` of POST /profiles/{profileId}/device-fingerprints ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Accept` of POST /profiles/{profileId}/device-fingerprints/verify ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Accept` of POST /profiles/{profileId}/pin ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}
+
+
+{
+  point: "warning"
+  note: "header parameter `Accept` of POST /profiles/{profileId}/pin/verify ignored: OpenAPI ignores Accept, Content-Type and Authorization header parameters"
+}

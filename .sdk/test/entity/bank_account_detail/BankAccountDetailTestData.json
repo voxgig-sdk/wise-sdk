@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "bank_account_detail": {
+      "BANK_ACCOUNT_DETAIL00": {
+        "active": true,
+        "currency": "s47",
+        "id": "BANK_ACCOUNT_DETAIL00",
+        "internationalDetails": "s49",
+        "localDetails": {},
+        "reason": "s4b",
+        "targetAccountId": 76,
+        "payment_id": "PAYMENT01",
+        "profile_id": "PROFILE01"
+      },
+      "BANK_ACCOUNT_DETAIL01": {
+        "active": true,
+        "currency": "s8d",
+        "id": "BANK_ACCOUNT_DETAIL01",
+        "internationalDetails": "s8f",
+        "localDetails": {},
+        "reason": "s91",
+        "targetAccountId": 146,
+        "payment_id": "PAYMENT01",
+        "profile_id": "PROFILE01"
+      },
+      "BANK_ACCOUNT_DETAIL02": {
+        "active": true,
+        "currency": "sd3",
+        "id": "BANK_ACCOUNT_DETAIL02",
+        "internationalDetails": "sd5",
+        "localDetails": {},
+        "reason": "sd7",
+        "targetAccountId": 216,
+        "payment_id": "PAYMENT01",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "bank_account_detail": {
+      "bank_account_detail_ref01": {
+        "active": true,
+        "currency": "s119",
+        "internationalDetails": "s11b",
+        "localDetails": {},
+        "reason": "s11d",
+        "targetAccountId": 286
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/account-details/payments/{paymentId}/returns": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/bank-details": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

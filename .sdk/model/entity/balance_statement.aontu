@@ -1,0 +1,217 @@
+# Entity: balance_statement
+
+main: kit: entity: balance_statement: {
+
+  alias: field: {}
+
+  fields: {
+    accountHolder: {
+      h: "Account Holder"
+      n: "accountHolder"
+      r: false
+      sh: "Account holder information."
+      t: "`$OBJECT`"
+    }
+    bankDetails: {
+      h: "Bank Details"
+      n: "bankDetails"
+      r: false
+      sh: "Local bank details for the account."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    endOfStatementBalance: {
+      h: "End Of Statement Balance"
+      n: "endOfStatementBalance"
+      r: false
+      sh: "Closing balance for the specified time period."
+      t: "`$OBJECT`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      syn: true
+      t: "`$STRING`"
+    }
+    issuer: {
+      h: "Issuer"
+      n: "issuer"
+      r: false
+      sh: "Account issuer information."
+      t: "`$OBJECT`"
+    }
+    query: {
+      h: "Query"
+      n: "query"
+      r: false
+      sh: "Query parameters used for the request."
+      t: "`$OBJECT`"
+    }
+    transactions: {
+      h: "Transactions"
+      n: "transactions"
+      r: false
+      sh: "List of transactions in the statement period."
+      t: "`$ARRAY`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "balance_statement"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/balance-statements/{balanceId}/statement.json"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: 64
+                k: "param"
+                n: "id"
+                or: "balanceId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                ex: 12345
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: "EUR"
+                explode: true
+                k: "query"
+                n: "currency"
+                or: "currency"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "2025-04-30T23:59:59.999Z"
+                explode: true
+                k: "query"
+                n: "interval_end"
+                or: "intervalEnd"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "2025-03-01T00:00:00.000Z"
+                explode: true
+                k: "query"
+                n: "interval_start"
+                or: "intervalStart"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "en"
+                explode: true
+                k: "query"
+                n: "statement_locale"
+                or: "statementLocale"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+              {
+                ex: "COMPACT"
+                explode: true
+                k: "query"
+                n: "type"
+                or: "type"
+                r: false
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/balance-statements/{balanceId}/statement.json"
+          q: {
+            exist: [
+              "currency"
+              "id"
+              "interval_end"
+              "interval_start"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              balanceId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "balance-statements"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "statement.json"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

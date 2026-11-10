@@ -1,0 +1,272 @@
+# Entity: sca_otp
+
+main: kit: entity: sca_otp: {
+
+  alias: field: {}
+
+  name: "sca_otp"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /one-time-token/sms/trigger"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "one_time_token"
+                or: "One-Time-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/one-time-token/sms/trigger"
+          q: {
+            "$action": "sms"
+            exist: [
+              "one_time_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "one-time-token"
+            }
+            {
+              lit: "sms"
+            }
+            {
+              lit: "trigger"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /one-time-token/voice/trigger"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "one_time_token"
+                or: "One-Time-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/one-time-token/voice/trigger"
+          q: {
+            "$action": "voice"
+            exist: [
+              "one_time_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "one-time-token"
+            }
+            {
+              lit: "voice"
+            }
+            {
+              lit: "trigger"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /one-time-token/whatsapp/trigger"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                explode: false
+                k: "header"
+                n: "one_time_token"
+                or: "One-Time-Token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/one-time-token/whatsapp/trigger"
+          q: {
+            "$action": "whatsapp"
+            exist: [
+              "one_time_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "one-time-token"
+            }
+            {
+              lit: "whatsapp"
+            }
+            {
+              lit: "trigger"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /application/users/{userId}/phone-numbers/{phoneNumberId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "phone_number_id"
+                or: "phoneNumberId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "user_id"
+                or: "userId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/application/users/{userId}/phone-numbers/{phoneNumberId}"
+          q: {
+            exist: [
+              "phone_number_id"
+              "user_id"
+            ]
+          }
+          r: {
+            param: {
+              phoneNumberId: "phone_number_id"
+              userId: "user_id"
+            }
+          }
+          s: [
+            {
+              lit: "application"
+            }
+            {
+              lit: "users"
+            }
+            {
+              var: "user_id"
+            }
+            {
+              lit: "phone-numbers"
+            }
+            {
+              var: "phone_number_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+  fields: {
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.user") path("$.main.kit.entity.phone_number")]
+  ]
+
+}

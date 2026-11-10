@@ -1,0 +1,65 @@
+# BasicSimulationFlow
+
+main: kit: flow: BasicSimulationFlow:
+{
+  entity: "simulation",
+  kind: "basic",
+  name: "BasicSimulationFlow",
+  step: [
+    {
+      i: {
+        ref: "simulation_ref01"
+      }
+
+      m: {
+        card_token: "card_token01",
+        kyc_review_id: "kyc_review01",
+        profile_id: "profile01",
+        transfer_id: "transfer01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        kyc_review_id: "kyc_review01",
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "simulation_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "simulation_ref01",
+        srcdatavar: "simulation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "simulation01",
+        transfer_id: "transfer01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-simulation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicSimulationFlow"
+}

@@ -1,0 +1,2573 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Simulation | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a aria-current="page" href="../api/simulation.html">Simulation</a><div class="nav-sections"><a class="nav-section" href="#post-simulationspendprofilesprofileidcardscardtokentransactionsauthorisation">POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/authorisation</a>
+<a class="nav-section" href="#post-simulationspendprofilesprofileidcardscardtokentransactionsclearing">POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/clearing</a>
+<a class="nav-section" href="#post-simulationspendprofilesprofileidcardscardtokenproduction">POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/production</a>
+<a class="nav-section" href="#post-simulationspendprofilesprofileidcardscardtokentransactionsreversal">POST /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/reversal</a>
+<a class="nav-section" href="#post-simulationprofilesprofileidkyc-reviewskycreviewidrequirementsadd">POST /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/add</a>
+<a class="nav-section" href="#post-simulationprofilesprofileidkyc-reviewskycreviewidrequirementssubmit">POST /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/submit</a>
+<a class="nav-section" href="#post-simulationprofilesprofileidkyc-reviewskycreviewidverify">POST /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/verify</a>
+<a class="nav-section" href="#post-simulationprofilesprofileidbank-transactionsimport">POST /simulation/profiles/{profileId}/bank-transactions/import</a>
+<a class="nav-section" href="#post-simulationprofilesprofileidswift-in">POST /simulation/profiles/{profileId}/swift-in</a>
+<a class="nav-section" href="#post-simulationprofilesprofileidverifications">POST /simulation/profiles/{profileId}/verifications</a>
+<a class="nav-section" href="#post-simulationtransferstransferidpayout-failure">POST /simulation/transfers/{transferId}/payout-failure</a>
+<a class="nav-section" href="#post-simulationbalancetopup">POST /simulation/balance/topup</a>
+<a class="nav-section" href="#post-simulationsanction-cases">POST /simulation/sanction-cases</a>
+<a class="nav-section" href="#post-simulationsettlementfunds">POST /simulation/settlement/funds</a>
+<a class="nav-section" href="#post-simulationverify-profile">POST /simulation/verify-profile</a>
+<a class="nav-section" href="#get-simulationspendprofilesprofileidcardscardtokentransactions">GET /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions</a>
+<a class="nav-section" href="#get-simulationprofilesprofileidkyc-reviewskycreviewidrequirements">GET /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements</a>
+<a class="nav-section" href="#get-simulationtransferstransferidstatus">GET /simulation/transfers/{transferId}/{status}</a></div>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="simulation">Simulation</h1>
+<p>Sandbox simulations: transfers, cards, KYC reviews, top-ups and incoming payments.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationspendprofilesprofileidcardscardtokentransactionsauthorisation"><code>/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/authorisation</code></a></td>
+<td><code>create</code></td>
+<td>Simulated card authorisation</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationspendprofilesprofileidcardscardtokentransactionsclearing"><code>/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/clearing</code></a></td>
+<td><code>create</code></td>
+<td>Simulated transaction clearing result</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationspendprofilesprofileidcardscardtokenproduction"><code>/simulation/spend/profiles/{profileId}/cards/{cardToken}/production</code></a></td>
+<td><code>create</code></td>
+<td>Card production state changed successfully</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationspendprofilesprofileidcardscardtokentransactionsreversal"><code>/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/reversal</code></a></td>
+<td><code>create</code></td>
+<td>Simulated transaction reversal result</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationprofilesprofileidkyc-reviewskycreviewidrequirementsadd"><code>/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/add</code></a></td>
+<td><code>create</code></td>
+<td>Requirement added successfully. No content returned</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationprofilesprofileidkyc-reviewskycreviewidrequirementssubmit"><code>/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/submit</code></a></td>
+<td><code>create</code></td>
+<td>Requirement submitted successfully. No content returned</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationprofilesprofileidkyc-reviewskycreviewidverify"><code>/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/verify</code></a></td>
+<td><code>create</code></td>
+<td>KYC review verified successfully. No content returned</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationprofilesprofileidbank-transactionsimport"><code>/simulation/profiles/{profileId}/bank-transactions/import</code></a></td>
+<td><code>create</code></td>
+<td>Bank transaction imported successfully. No content returned</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationprofilesprofileidswift-in"><code>/simulation/profiles/{profileId}/swift-in</code></a></td>
+<td><code>create</code></td>
+<td>Swift payment simulated successfully</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationprofilesprofileidverifications"><code>/simulation/profiles/{profileId}/verifications</code></a></td>
+<td><code>create</code></td>
+<td>Verification state changed successfully. No content returned</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationtransferstransferidpayout-failure"><code>/simulation/transfers/{transferId}/payout-failure</code></a></td>
+<td><code>create</code></td>
+<td>Successful initiation of payout failure</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationbalancetopup"><code>/simulation/balance/topup</code></a></td>
+<td><code>create</code></td>
+<td>Simulated balance top-up result</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationsanction-cases"><code>/simulation/sanction-cases</code></a></td>
+<td><code>create</code></td>
+<td>Sanction case successfully closed</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationsettlementfunds"><code>/simulation/settlement/funds</code></a></td>
+<td><code>create</code></td>
+<td>Funds received simulation completed successfully</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-simulationverify-profile"><code>/simulation/verify-profile</code></a></td>
+<td><code>create</code></td>
+<td>Verification state changed successfully. No content returned</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-simulationspendprofilesprofileidcardscardtokentransactions"><code>/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions</code></a></td>
+<td><code>list</code></td>
+<td>List of simulated card transactions</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-simulationprofilesprofileidkyc-reviewskycreviewidrequirements"><code>/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements</code></a></td>
+<td><code>list</code></td>
+<td>List of KYC review requirements</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-simulationtransferstransferidstatus"><code>/simulation/transfers/{transferId}/{status}</code></a></td>
+<td><code>load</code></td>
+<td>Transfer with updated status</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">simulations, err := client.Simulation(nil).List(map[string]any{&quot;card_token&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(simulations)
+simulation, err := client.Simulation(nil).Load(map[string]any{&quot;status&quot;: &quot;example&quot;, &quot;transfer_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(simulation)
+created, err := client.Simulation(nil).Create(map[string]any{&quot;transfer_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local simulations, err = client:Simulation():list({ card_token = &quot;example&quot;, profile_id = 1 })
+local simulation, err = client:Simulation():load({ status = &quot;example&quot;, transfer_id = 1 })
+local created, err = client:Simulation():create({ transfer_id = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$simulations = $client-&gt;Simulation()-&gt;list([&quot;card_token&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1]);
+$simulation = $client-&gt;Simulation()-&gt;load([&quot;status&quot; =&gt; &quot;example&quot;, &quot;transfer_id&quot; =&gt; 1]);
+$created = $client-&gt;Simulation()-&gt;create([&quot;transfer_id&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">simulations = client.Simulation().list({&quot;card_token&quot;: &quot;example&quot;, &quot;profile_id&quot;: 1})
+simulation = client.Simulation().load({&quot;status&quot;: &quot;example&quot;, &quot;transfer_id&quot;: 1})
+created = client.Simulation().create({ &quot;transfer_id&quot;: 1 })
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">simulations = client.Simulation.list({ &quot;card_token&quot; =&gt; &quot;example&quot;, &quot;profile_id&quot; =&gt; 1 })
+simulation = client.Simulation.load({ &quot;status&quot; =&gt; &quot;example&quot;, &quot;transfer_id&quot; =&gt; 1 })
+created = client.Simulation.create({ &quot;transfer_id&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const simulations = await client.Simulation().list({ card_token: &quot;example&quot;, profile_id: 1 })
+const simulation = await client.Simulation().load({ status: &quot;example&quot;, transfer_id: 1 })
+const created = await client.Simulation().create({ transfer_id: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>business</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Business</td>
+</tr>
+<tr>
+<td><code>created</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Created</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Time when the card transaction was created.</td>
+</tr>
+<tr>
+<td><code>description</code></td>
+<td><code>one,string,null</code></td>
+<td>No</td>
+<td>Description of the KYC review item.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Details</td>
+</tr>
+<tr>
+<td><code>failure_reason_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Failure reason code to trigger for payout failure.</td>
+</tr>
+<tr>
+<td><code>hasActiveIssues</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Has Active Issues</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Id</td>
+</tr>
+<tr>
+<td><code>key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>KYC review item key.</td>
+</tr>
+<tr>
+<td><code>quote</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Quote</td>
+</tr>
+<tr>
+<td><code>rate</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Rate</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Reference</td>
+</tr>
+<tr>
+<td><code>sourceAccount</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source Account</td>
+</tr>
+<tr>
+<td><code>sourceCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Source Currency</td>
+</tr>
+<tr>
+<td><code>sourceValue</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Source Value</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State of the KYC review item.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Status</td>
+</tr>
+<tr>
+<td><code>targetAccount</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Target Account</td>
+</tr>
+<tr>
+<td><code>targetCurrency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Target Currency</td>
+</tr>
+<tr>
+<td><code>targetValue</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Target Value</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>ID of the transaction.</td>
+</tr>
+<tr>
+<td><code>transferRequest</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Transfer Request</td>
+</tr>
+<tr>
+<td><code>user</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>User</td>
+</tr>
+<tr>
+<td><code>wise_id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Wise Id</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-simulationspendprofilesprofileidcardscardtokentransactionsauthorisation" class="operation" data-method="post"><code>POST</code> /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/authorisation</h3>
+<p>Operation ID: <code>simulationCardTransactionAuthorisation</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The card token.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code.</td>
+</tr>
+<tr>
+<td><code>amount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transaction amount.</td>
+</tr>
+<tr>
+<td><code>cardNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Primary Account Number of the card.</td>
+</tr>
+<tr>
+<td><code>mcc</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>Merchant category code.</td>
+</tr>
+<tr>
+<td><code>pos</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The point-of-sale used for the transaction. - For POS transactions: <code>CHIP_AND_PIN</code> - For e-commerce transactions: <code>E_COMMERCE_NO_3DS</code> - For ATM transactions: <code>CHIP_AND_PIN</code> - For refund transactions: <code>CHIP_AND_PIN</code> or <code>E_COMMERCE_NO_3DS</code></td>
+</tr>
+<tr>
+<td><code>transactionType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the transaction. - For POS and e-commerce transactions: <code>GOODS_AND_SERVICES</code> - For ATM transactions: <code>CASH_WITHDRAWAL</code> - For refund transactions: <code>REFUND</code></td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-simulated-card-authorisation" class="status" data-status="2xx">200: Simulated card authorisation</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>An error returned by the transaction, if it exists.</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The transaction reference. This can be used in a following request for reversal and clearing.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: null,
+  &quot;reference&quot;: {
+    &quot;authorizationIdResponse&quot;: &quot;123646&quot;,
+    &quot;requestMti&quot;: &quot;0200&quot;,
+    &quot;transaction&quot;: {
+      &quot;acquirer&quot;: {
+        &quot;acceptorIdCode&quot;: &quot;CARD ACCEPTOR&quot;,
+        &quot;acceptorTerminalId&quot;: &quot;TERMID01&quot;,
+        &quot;city&quot;: &quot;CITY NAME&quot;,
+        &quot;country&quot;: &quot;GB&quot;,
+        &quot;forwardingInstitutionId&quot;: &quot;400050&quot;,
+        &quot;institutionId&quot;: &quot;430010&quot;,
+        &quot;merchantCategoryCode&quot;: 5499,
+        &quot;name&quot;: &quot;ACQUIRER NAME&quot;
+      },
+      &quot;card&quot;: {
+        &quot;cardStatus&quot;: &quot;ACTIVE&quot;,
+        &quot;country&quot;: &quot;SG&quot;,
+        &quot;currencies&quot;: [
+          &quot;SGD&quot;
+        ],
+        &quot;cvv1&quot;: &quot;123&quot;,
+        &quot;cvv2&quot;: &quot;789&quot;,
+        &quot;expiration&quot;: [
+          2029,
+          7
+        ],
+        &quot;icvv&quot;: &quot;456&quot;,
+        &quot;pan&quot;: &quot;4242424242424242&quot;,
+        &quot;pin&quot;: &quot;1234&quot;,
+        &quot;profileId&quot;: 2,
+        &quot;schemeName&quot;: &quot;VISA&quot;,
+        &quot;sequenceNumber&quot;: 1,
+        &quot;token&quot;: &quot;59123122-223d-45f9-b840-0ad4a4f80937&quot;,
+        &quot;userId&quot;: 5
+      },
+      &quot;pos&quot;: {
+        &quot;acceptsOnlinePins&quot;: true,
+        &quot;hasChip&quot;: true,
+        &quot;maxPinLength&quot;: 12,
+        &quot;supports3ds&quot;: false,
+        &quot;type&quot;: &quot;CHIP_AND_PIN&quot;
+      },
+      &quot;retrievalReferenceNum&quot;: &quot;230805363054&quot;,
+      &quot;schemeTransactionId&quot;: &quot;932290252416153&quot;,
+      &quot;stan&quot;: &quot;363054&quot;,
+      &quot;transactionStartTime&quot;: 1667541087.0476434
+    }
+  }
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationspendprofilesprofileidcardscardtokentransactionsclearing" class="operation" data-method="post"><code>POST</code> /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/clearing</h3>
+<p>Operation ID: <code>simulationCardTransactionClearing</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The card token.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code.</td>
+</tr>
+<tr>
+<td><code>amount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transaction amount.</td>
+</tr>
+<tr>
+<td><code>ref</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The transaction reference. This can be obtained from a previous authorisation request.</td>
+</tr>
+<tr>
+<td><code>transactionType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the transaction. Use the same transaction type from the previous authorisation request.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;amount&quot;: {
+    &quot;currency&quot;: &quot;SGD&quot;,
+    &quot;value&quot;: 10
+  },
+  &quot;ref&quot;: {
+    &quot;authorizationIdResponse&quot;: &quot;123646&quot;,
+    &quot;requestMti&quot;: &quot;0200&quot;,
+    &quot;transaction&quot;: {
+      &quot;acquirer&quot;: {
+        &quot;acceptorIdCode&quot;: &quot;CARD ACCEPTOR&quot;,
+        &quot;acceptorTerminalId&quot;: &quot;TERMID01&quot;,
+        &quot;city&quot;: &quot;CITY NAME&quot;,
+        &quot;country&quot;: &quot;GB&quot;,
+        &quot;forwardingInstitutionId&quot;: &quot;400050&quot;,
+        &quot;institutionId&quot;: &quot;430010&quot;,
+        &quot;merchantCategoryCode&quot;: 5499,
+        &quot;name&quot;: &quot;ACQUIRER NAME&quot;
+      },
+      &quot;card&quot;: {
+        &quot;cardStatus&quot;: &quot;ACTIVE&quot;,
+        &quot;country&quot;: &quot;SG&quot;,
+        &quot;currencies&quot;: [
+          &quot;SGD&quot;
+        ],
+        &quot;cvv1&quot;: &quot;123&quot;,
+        &quot;cvv2&quot;: &quot;789&quot;,
+        &quot;expiration&quot;: [
+          2029,
+          7
+        ],
+        &quot;icvv&quot;: &quot;456&quot;,
+        &quot;pan&quot;: &quot;4242424242424242&quot;,
+        &quot;pin&quot;: &quot;1234&quot;,
+        &quot;profileId&quot;: 2,
+        &quot;schemeName&quot;: &quot;VISA&quot;,
+        &quot;sequenceNumber&quot;: 1,
+        &quot;token&quot;: &quot;59123122-223d-45f9-b840-0ad4a4f80937&quot;,
+        &quot;userId&quot;: 5
+      },
+      &quot;pos&quot;: {
+        &quot;acceptsOnlinePins&quot;: true,
+        &quot;hasChip&quot;: true,
+        &quot;maxPinLength&quot;: 12,
+        &quot;supports3ds&quot;: false,
+        &quot;type&quot;: &quot;CHIP_AND_PIN&quot;
+      },
+      &quot;retrievalReferenceNum&quot;: &quot;230805363054&quot;,
+      &quot;schemeTransactionId&quot;: &quot;932290252416153&quot;,
+      &quot;stan&quot;: &quot;363054&quot;,
+      &quot;transactionStartTime&quot;: 1667541087.0476434
+    }
+  },
+  &quot;transactionType&quot;: &quot;GOODS_AND_SERVICES&quot;
+}
+</code></pre>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-simulated-transaction-clearing-result" class="status" data-status="2xx">200: Simulated transaction clearing result</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>An error returned by the transaction, if it exists.</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The transaction reference.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: null,
+  &quot;reference&quot;: {
+    &quot;authorizationIdResponse&quot;: &quot;123646&quot;,
+    &quot;requestMti&quot;: &quot;0200&quot;,
+    &quot;transaction&quot;: {
+      &quot;acquirer&quot;: {
+        &quot;acceptorIdCode&quot;: &quot;CARD ACCEPTOR&quot;,
+        &quot;acceptorTerminalId&quot;: &quot;TERMID01&quot;,
+        &quot;city&quot;: &quot;CITY NAME&quot;,
+        &quot;country&quot;: &quot;GB&quot;,
+        &quot;forwardingInstitutionId&quot;: &quot;400050&quot;,
+        &quot;institutionId&quot;: &quot;430010&quot;,
+        &quot;merchantCategoryCode&quot;: 5499,
+        &quot;name&quot;: &quot;ACQUIRER NAME&quot;
+      },
+      &quot;card&quot;: {
+        &quot;cardStatus&quot;: &quot;ACTIVE&quot;,
+        &quot;country&quot;: &quot;SG&quot;,
+        &quot;currencies&quot;: [
+          &quot;SGD&quot;
+        ],
+        &quot;cvv1&quot;: &quot;123&quot;,
+        &quot;cvv2&quot;: &quot;789&quot;,
+        &quot;expiration&quot;: [
+          2029,
+          7
+        ],
+        &quot;icvv&quot;: &quot;456&quot;,
+        &quot;pan&quot;: &quot;4242424242424242&quot;,
+        &quot;pin&quot;: &quot;1234&quot;,
+        &quot;profileId&quot;: 2,
+        &quot;schemeName&quot;: &quot;VISA&quot;,
+        &quot;sequenceNumber&quot;: 1,
+        &quot;token&quot;: &quot;59123122-223d-45f9-b840-0ad4a4f80937&quot;,
+        &quot;userId&quot;: 5
+      },
+      &quot;pos&quot;: {
+        &quot;acceptsOnlinePins&quot;: true,
+        &quot;hasChip&quot;: true,
+        &quot;maxPinLength&quot;: 12,
+        &quot;supports3ds&quot;: false,
+        &quot;type&quot;: &quot;CHIP_AND_PIN&quot;
+      },
+      &quot;retrievalReferenceNum&quot;: &quot;230805363054&quot;,
+      &quot;schemeTransactionId&quot;: &quot;932290252416153&quot;,
+      &quot;stan&quot;: &quot;363054&quot;,
+      &quot;transactionStartTime&quot;: 1667541087.0476434
+    }
+  }
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationspendprofilesprofileidcardscardtokenproduction" class="operation" data-method="post"><code>POST</code> /simulation/spend/profiles/{profileId}/cards/{cardToken}/production</h3>
+<p>Operation ID: <code>simulationCardProduction</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The card token.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The error code to simulate. This field should be set only if the status is <code>PRODUCTION_ERROR</code>.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: PRODUCED, PRODUCTION_ERROR</code></td>
+<td>No</td>
+<td>The intended production status of the card.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;errorCode&quot;: &quot;PRT_NOT_REACHABLE&quot;,
+  &quot;status&quot;: &quot;PRODUCTION_ERROR&quot;
+}
+</code></pre>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-card-production-state-changed-successfully" class="status" data-status="2xx">200: Card production state changed successfully</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationspendprofilesprofileidcardscardtokentransactionsreversal" class="operation" data-method="post"><code>POST</code> /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/reversal</h3>
+<p>Operation ID: <code>simulationCardTransactionReversal</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The card token.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-3">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>amount.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code.</td>
+</tr>
+<tr>
+<td><code>amount.value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Transaction amount. Set to 0 for full reversal, or the intended final value for partial reversal.</td>
+</tr>
+<tr>
+<td><code>ref</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The transaction reference. This can be obtained from a previous authorisation request.</td>
+</tr>
+<tr>
+<td><code>transactionType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of the transaction. Use the same transaction type from the previous authorisation request.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;amount&quot;: {
+    &quot;currency&quot;: &quot;SGD&quot;,
+    &quot;value&quot;: 3
+  },
+  &quot;ref&quot;: {
+    &quot;authorizationIdResponse&quot;: &quot;123646&quot;,
+    &quot;requestMti&quot;: &quot;0200&quot;,
+    &quot;transaction&quot;: {
+      &quot;acquirer&quot;: {
+        &quot;acceptorIdCode&quot;: &quot;CARD ACCEPTOR&quot;,
+        &quot;acceptorTerminalId&quot;: &quot;TERMID01&quot;,
+        &quot;city&quot;: &quot;CITY NAME&quot;,
+        &quot;country&quot;: &quot;GB&quot;,
+        &quot;forwardingInstitutionId&quot;: &quot;400050&quot;,
+        &quot;institutionId&quot;: &quot;430010&quot;,
+        &quot;merchantCategoryCode&quot;: 5499,
+        &quot;name&quot;: &quot;ACQUIRER NAME&quot;
+      },
+      &quot;card&quot;: {
+        &quot;cardStatus&quot;: &quot;ACTIVE&quot;,
+        &quot;country&quot;: &quot;SG&quot;,
+        &quot;currencies&quot;: [
+          &quot;SGD&quot;
+        ],
+        &quot;cvv1&quot;: &quot;123&quot;,
+        &quot;cvv2&quot;: &quot;789&quot;,
+        &quot;expiration&quot;: [
+          2029,
+          7
+        ],
+        &quot;icvv&quot;: &quot;456&quot;,
+        &quot;pan&quot;: &quot;4242424242424242&quot;,
+        &quot;pin&quot;: &quot;1234&quot;,
+        &quot;profileId&quot;: 2,
+        &quot;schemeName&quot;: &quot;VISA&quot;,
+        &quot;sequenceNumber&quot;: 1,
+        &quot;token&quot;: &quot;59123122-223d-45f9-b840-0ad4a4f80937&quot;,
+        &quot;userId&quot;: 5
+      },
+      &quot;pos&quot;: {
+        &quot;acceptsOnlinePins&quot;: true,
+        &quot;hasChip&quot;: true,
+        &quot;maxPinLength&quot;: 12,
+        &quot;supports3ds&quot;: false,
+        &quot;type&quot;: &quot;CHIP_AND_PIN&quot;
+      },
+      &quot;retrievalReferenceNum&quot;: &quot;230805363054&quot;,
+      &quot;schemeTransactionId&quot;: &quot;932290252416153&quot;,
+      &quot;stan&quot;: &quot;363054&quot;,
+      &quot;transactionStartTime&quot;: 1667541087.0476434
+    }
+  },
+  &quot;transactionType&quot;: &quot;GOODS_AND_SERVICES&quot;
+}
+</code></pre>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-simulated-transaction-reversal-result" class="status" data-status="2xx">200: Simulated transaction reversal result</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>error</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>An error returned by the transaction, if it exists.</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The transaction reference.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;error&quot;: null,
+  &quot;reference&quot;: {
+    &quot;authorizationIdResponse&quot;: &quot;123646&quot;,
+    &quot;requestMti&quot;: &quot;0200&quot;,
+    &quot;transaction&quot;: {
+      &quot;acquirer&quot;: {
+        &quot;acceptorIdCode&quot;: &quot;CARD ACCEPTOR&quot;,
+        &quot;acceptorTerminalId&quot;: &quot;TERMID01&quot;,
+        &quot;city&quot;: &quot;CITY NAME&quot;,
+        &quot;country&quot;: &quot;GB&quot;,
+        &quot;forwardingInstitutionId&quot;: &quot;400050&quot;,
+        &quot;institutionId&quot;: &quot;430010&quot;,
+        &quot;merchantCategoryCode&quot;: 5499,
+        &quot;name&quot;: &quot;ACQUIRER NAME&quot;
+      },
+      &quot;card&quot;: {
+        &quot;cardStatus&quot;: &quot;ACTIVE&quot;,
+        &quot;country&quot;: &quot;SG&quot;,
+        &quot;currencies&quot;: [
+          &quot;SGD&quot;
+        ],
+        &quot;cvv1&quot;: &quot;123&quot;,
+        &quot;cvv2&quot;: &quot;789&quot;,
+        &quot;expiration&quot;: [
+          2029,
+          7
+        ],
+        &quot;icvv&quot;: &quot;456&quot;,
+        &quot;pan&quot;: &quot;4242424242424242&quot;,
+        &quot;pin&quot;: &quot;1234&quot;,
+        &quot;profileId&quot;: 2,
+        &quot;schemeName&quot;: &quot;VISA&quot;,
+        &quot;sequenceNumber&quot;: 1,
+        &quot;token&quot;: &quot;59123122-223d-45f9-b840-0ad4a4f80937&quot;,
+        &quot;userId&quot;: 5
+      },
+      &quot;pos&quot;: {
+        &quot;acceptsOnlinePins&quot;: true,
+        &quot;hasChip&quot;: true,
+        &quot;maxPinLength&quot;: 12,
+        &quot;supports3ds&quot;: false,
+        &quot;type&quot;: &quot;CHIP_AND_PIN&quot;
+      },
+      &quot;retrievalReferenceNum&quot;: &quot;230805363054&quot;,
+      &quot;schemeTransactionId&quot;: &quot;932290252416153&quot;,
+      &quot;stan&quot;: &quot;363054&quot;,
+      &quot;transactionStartTime&quot;: 1667541087.0476434
+    }
+  }
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationprofilesprofileidkyc-reviewskycreviewidrequirementsadd" class="operation" data-method="post"><code>POST</code> /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/add</h3>
+<p>Operation ID: <code>simulationKycReviewRequirementsAdd</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID requiring the new requirement to be added.</td>
+</tr>
+<tr>
+<td><code>kycReviewId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The ID of the existing KYC review.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-4">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requestedAction</code></td>
+<td><code>enum: APPROVE, REJECT</code></td>
+<td>No</td>
+<td>The action to be carried out.</td>
+</tr>
+<tr>
+<td><code>requirement</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Requirement to simulate hosted journey for.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="202-requirement-added-successfully-no-content-returned" class="status" data-status="2xx">202: Requirement added successfully. No content returned</h5>
+<h5 id="400-bad-request" class="status" data-status="4xx">400: Bad request</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;category&quot;: &quot;CLIENT&quot;,
+  &quot;code&quot;: &quot;invalid-request&quot;,
+  &quot;description&quot;: &quot;Profile 123L is a personal type, not permitted to simulate evidence request&quot;,
+  &quot;details&quot;: null
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationprofilesprofileidkyc-reviewskycreviewidrequirementssubmit" class="operation" data-method="post"><code>POST</code> /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/submit</h3>
+<p>Operation ID: <code>simulationKycReviewRequirementsSubmit</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>kycReviewId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The ID of the existing KYC review.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-5">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requirement</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Requirement to simulate hosted journey for.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;requirement&quot;: &quot;ACCOUNT_PURPOSE&quot;
+}
+</code></pre>
+<h4 id="responses-5">Responses</h4>
+<h5 id="202-requirement-submitted-successfully-no-content-returned" class="status" data-status="2xx">202: Requirement submitted successfully. No content returned</h5>
+<h5 id="400-bad-request-1" class="status" data-status="4xx">400: Bad request</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;category&quot;: &quot;CLIENT&quot;,
+  &quot;code&quot;: &quot;invalid-request&quot;,
+  &quot;description&quot;: &quot;Invalid request. KycRequirement {ACCOUNT_PURPOSE} was not found for KycReview&quot;,
+  &quot;details&quot;: null
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-5" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationprofilesprofileidkyc-reviewskycreviewidverify" class="operation" data-method="post"><code>POST</code> /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/verify</h3>
+<p>Operation ID: <code>simulationKycReviewVerify</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>kycReviewId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The ID of the existing KYC review.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-6">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requestedAction</code></td>
+<td><code>enum: APPROVE, REJECT</code></td>
+<td>No</td>
+<td>The action to be carried out.</td>
+</tr>
+<tr>
+<td><code>requirements</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Zero or more requirements to be verified. If not provided, all blocking requirements are verified.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;requestedAction&quot;: &quot;APPROVE&quot;,
+  &quot;requirements&quot;: [
+    &quot;ACCOUNT_PURPOSE_V2&quot;
+  ]
+}
+</code></pre>
+<h4 id="responses-6">Responses</h4>
+<h5 id="202-kyc-review-verified-successfully-no-content-returned" class="status" data-status="2xx">202: KYC review verified successfully. No content returned</h5>
+<h5 id="400-bad-request-2" class="status" data-status="4xx">400: Bad request</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;category&quot;: &quot;CLIENT&quot;,
+  &quot;code&quot;: &quot;kyc_review.state_update_not_allowed&quot;,
+  &quot;description&quot;: &quot;Invalid action passed in request, action: APPROVED&quot;,
+  &quot;details&quot;: null
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-6" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationprofilesprofileidbank-transactionsimport" class="operation" data-method="post"><code>POST</code> /simulation/profiles/{profileId}/bank-transactions/import</h3>
+<p>Operation ID: <code>simulationBankTransactionImport</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-7">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The payment amount.</td>
+</tr>
+<tr>
+<td><code>beneficiaryAddress</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Beneficiary address.</td>
+</tr>
+<tr>
+<td><code>beneficiaryAddress.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Address line: street, house, apartment.</td>
+</tr>
+<tr>
+<td><code>beneficiaryAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City name.</td>
+</tr>
+<tr>
+<td><code>beneficiaryAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country code (ISO 3166-1 alpha-2).</td>
+</tr>
+<tr>
+<td><code>beneficiaryAddress.postalCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code.</td>
+</tr>
+<tr>
+<td><code>beneficiaryAddress.stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code.</td>
+</tr>
+<tr>
+<td><code>beneficiaryName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Beneficiary name - defaults to account holder name.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency of the bank account details that you want to make payment to.</td>
+</tr>
+<tr>
+<td><code>reference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Custom payment reference to identify the payment.</td>
+</tr>
+<tr>
+<td><code>senderAccountNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Sender's bank account number.</td>
+</tr>
+<tr>
+<td><code>senderAddress</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Sender address.</td>
+</tr>
+<tr>
+<td><code>senderAddress.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Address line: street, house, apartment.</td>
+</tr>
+<tr>
+<td><code>senderAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City name.</td>
+</tr>
+<tr>
+<td><code>senderAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Country code (ISO 3166-1 alpha-2).</td>
+</tr>
+<tr>
+<td><code>senderAddress.postalCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code.</td>
+</tr>
+<tr>
+<td><code>senderAddress.stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code.</td>
+</tr>
+<tr>
+<td><code>senderBankCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Sender bank code.</td>
+</tr>
+<tr>
+<td><code>senderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Sender full name.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-7">Responses</h4>
+<h5 id="201-bank-transaction-imported-successfully-no-content-returned" class="status" data-status="2xx">201: Bank transaction imported successfully. No content returned</h5>
+<h5 id="400-bad-request-3" class="status" data-status="4xx">400: Bad request</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;code&quot;: &quot;not.valid&quot;,
+  &quot;message&quot;: &quot;No account details found for profile currency pair&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-7" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationprofilesprofileidswift-in" class="operation" data-method="post"><code>POST</code> /simulation/profiles/{profileId}/swift-in</h3>
+<p>Operation ID: <code>simulationSwiftIn</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-8">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>Amount received by Wise.</td>
+</tr>
+<tr>
+<td><code>beneficiaryAccount</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account number of the ultimate beneficiary. It can be either a local account number or an IBAN. <em>If the provided IBAN resolves to a BIC that does not match any connected test BICs, simulation is not allowed and an error is returned.</em></td>
+</tr>
+<tr>
+<td><code>beneficiaryAddress</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>Address of the ultimate beneficiary.</td>
+</tr>
+<tr>
+<td><code>beneficiaryName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the ultimate beneficiary.</td>
+</tr>
+<tr>
+<td><code>charges</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of fees declared by correspondents (for example, handling fee).</td>
+</tr>
+<tr>
+<td><code>charges[].agent</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>BIC of the agent incurring the fee.</td>
+</tr>
+<tr>
+<td><code>charges[].amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>Fee amount.</td>
+</tr>
+<tr>
+<td><code>charges[].currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Fee currency. 3-letter ISO currency code.</td>
+</tr>
+<tr>
+<td><code>currencyCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Currency received by Wise. 3-letter ISO currency code.</td>
+</tr>
+<tr>
+<td><code>instructedAmount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Amount sent by the sender. If not provided, it is assumed to be the same as <code>amount</code> plus <strong>same currency</strong> fees. Any outstanding fees in other currencies are ignored. Required if <code>instructedCurrencyCode</code> is provided.</td>
+</tr>
+<tr>
+<td><code>instructedCurrencyCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency sent by the sender. 3-letter ISO currency code. If not provided, it is assumed to be the same as <code>currencyCode</code>.</td>
+</tr>
+<tr>
+<td><code>paymentReference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Custom payment reference.</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>List of previous instructing agents. Maximum 3 items.</td>
+</tr>
+<tr>
+<td><code>senderAccount</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account number of the sender. It can be either an IBAN or local account number.</td>
+</tr>
+<tr>
+<td><code>senderAddress</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>Address of the sender.</td>
+</tr>
+<tr>
+<td><code>senderBank</code></td>
+<td><code>any or any or any or any</code></td>
+<td>No</td>
+<td>Details of the sender's bank. Cannot be provided together with <code>senderBic</code>.</td>
+</tr>
+<tr>
+<td><code>senderBank.address</code></td>
+<td><code>object and object</code></td>
+<td>No</td>
+<td>Address of the sender's bank.</td>
+</tr>
+<tr>
+<td><code>senderBank.bic</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>BIC of the sender's bank.</td>
+</tr>
+<tr>
+<td><code>senderBank.clearingSystemCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Code identifying the clearing system in which the sender bank is registered.</td>
+</tr>
+<tr>
+<td><code>senderBank.clearingSystemMemberId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Identifier of the sender bank within the clearing system specified by <code>clearingSystemCode</code>.</td>
+</tr>
+<tr>
+<td><code>senderBank.lei</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Legal Entity Identifier (LEI) of the sender bank.</td>
+</tr>
+<tr>
+<td><code>senderBank.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the sender's bank.</td>
+</tr>
+<tr>
+<td><code>senderBic</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>BIC of the sender's bank. Cannot be provided together with <code>senderBank</code>.</td>
+</tr>
+<tr>
+<td><code>senderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the sender.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-swift-payment-simulated-successfully" class="status" data-status="2xx">200: Swift payment simulated successfully</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;ackMessage&quot;: false,
+  &quot;actor&quot;: &quot;SYSTEM&quot;,
+  &quot;actorId&quot;: null,
+  &quot;actorOktaId&quot;: null,
+  &quot;amount&quot;: 100,
+  &quot;attributes&quot;: null,
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;direction&quot;: &quot;INCOMING&quot;,
+  &quot;finMessage&quot;: null,
+  &quot;id&quot;: 123,
+  &quot;jsonMessage&quot;: null,
+  &quot;messageReference&quot;: null,
+  &quot;messageType&quot;: &quot;pacs.008.001.08&quot;,
+  &quot;mur&quot;: null,
+  &quot;payoutInstructionId&quot;: null,
+  &quot;processTime&quot;: &quot;2026-02-27T09:24:38.484276Z&quot;,
+  &quot;receiver&quot;: null,
+  &quot;sender&quot;: null,
+  &quot;source&quot;: &quot;SWIFT_CLOUD&quot;,
+  &quot;state&quot;: &quot;RECEIVED&quot;,
+  &quot;transferId&quot;: null,
+  &quot;uetr&quot;: &quot;f87c3c37-d97b-4da6-a788-94004414e648&quot;,
+  &quot;valueDate&quot;: null
+}
+</code></pre>
+<h5 id="400-bad-request-4" class="status" data-status="4xx">400: Bad request</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;errors&quot;: [
+    {
+      &quot;arguments&quot;: [],
+      &quot;code&quot;: &quot;not.valid&quot;,
+      &quot;message&quot;: &quot;must be greater than 0&quot;,
+      &quot;path&quot;: &quot;amount&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="422-unprocessable-entity" class="status" data-status="4xx">422: Unprocessable Entity</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;arguments&quot;: [],
+  &quot;code&quot;: &quot;not.valid&quot;,
+  &quot;message&quot;: &quot;None of connected BICs match beneficiary account DE00000000000000000000 (TESTDE00)&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-8" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationprofilesprofileidverifications" class="operation" data-method="post"><code>POST</code> /simulation/profiles/{profileId}/verifications</h3>
+<p>Operation ID: <code>simulationVerification</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the profile to verify.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-verification-state-changed-successfully-no-content-returned" class="status" data-status="2xx">200: Verification state changed successfully. No content returned</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-9" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationtransferstransferidpayout-failure" class="operation" data-method="post"><code>POST</code> /simulation/transfers/{transferId}/payout-failure</h3>
+<p>Operation ID: <code>simulationTransferPayoutFailure</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-10">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transferId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the transfer to simulate.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-9">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>failure_reason_code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Failure reason code to trigger for payout failure. When not provided, a failure code is selected at random and returned.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-10">Responses</h4>
+<h5 id="200-successful-initiation-of-payout-failure" class="status" data-status="2xx">200: Successful initiation of payout failure</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;failure_description&quot;: &quot;Invalid recipient's ID document number&quot;,
+  &quot;failure_reason_code&quot;: &quot;WRONG_ID_NUMBER&quot;,
+  &quot;occurred_at&quot;: &quot;2023-08-10T10:17:23.123Z&quot;
+}
+</code></pre>
+<h5 id="400-bad-request---invalid-input-or-transfer-state" class="status" data-status="4xx">400: Bad request - invalid input or transfer state</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-10" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h5 id="500-internal-server-error" class="status" data-status="5xx">500: Internal server error</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;errors&quot;: [
+    {
+      &quot;code&quot;: &quot;system_error&quot;,
+      &quot;message&quot;: &quot;Something went wrong in our side. Please try again in 5 minutes. If this does not help, please let us know api@wise.com&quot;
+    }
+  ]
+}
+</code></pre>
+<h3 id="post-simulationbalancetopup" class="operation" data-method="post"><code>POST</code> /simulation/balance/topup</h3>
+<p>Operation ID: <code>simulationBalanceTopup</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-11">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-10">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>The amount to top up the balance account with.</td>
+</tr>
+<tr>
+<td><code>balanceId</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the balance account that is going to receive the funds.</td>
+</tr>
+<tr>
+<td><code>channel</code></td>
+<td><code>enum: TRANSFER, CARD</code></td>
+<td>No</td>
+<td>Type of top-up. Not providing a channel will default to <code>CARD</code>.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The currency to top up the balance account in. Must be the same currency as the balance account.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID linked to the balance account.</td>
+</tr>
+</tbody>
+</table>
+<p>Example request body:</p>
+<pre><code class="language-json">{
+  &quot;amount&quot;: 100,
+  &quot;balanceId&quot;: 5,
+  &quot;channel&quot;: &quot;TRANSFER&quot;,
+  &quot;currency&quot;: &quot;EUR&quot;,
+  &quot;profileId&quot;: 2
+}
+</code></pre>
+<h4 id="responses-11">Responses</h4>
+<h5 id="200-simulated-balance-top-up-result" class="status" data-status="2xx">200: Simulated balance top-up result</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>balancesAfter</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>balancesAfter[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The currency of the balance account.</td>
+</tr>
+<tr>
+<td><code>balancesAfter[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The ID of the balance account.</td>
+</tr>
+<tr>
+<td><code>balancesAfter[].value</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>The new amount available in the balance account.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The state of the transaction. <code>COMPLETED</code> is always returned when using this endpoint.</td>
+</tr>
+<tr>
+<td><code>transactionId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The ID of the top-up transaction.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;balancesAfter&quot;: [
+    {
+      &quot;currency&quot;: &quot;EUR&quot;,
+      &quot;id&quot;: 5,
+      &quot;value&quot;: 100
+    }
+  ],
+  &quot;state&quot;: &quot;COMPLETED&quot;,
+  &quot;transactionId&quot;: 5
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-11" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationsanction-cases" class="operation" data-method="post"><code>POST</code> /simulation/sanction-cases</h3>
+<p>Operation ID: <code>simulateSanctionCase</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-12">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-11">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>caseId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The self-service case ID to close. Required when <code>status</code> is <code>CLOSE</code>. When <code>status</code> is <code>OPEN</code>, this can optionally be provided to specify the case ID; otherwise, one will be auto-generated.</td>
+</tr>
+<tr>
+<td><code>closingReason</code></td>
+<td><code>enum: EXPIRED, INVALIDATED, ABORTED, COMPLETED</code></td>
+<td>No</td>
+<td>The reason for closing the case. Required when <code>status</code> is <code>CLOSE</code>. - <code>EXPIRED</code>: The case expired without resolution - <code>INVALIDATED</code>: The case was determined to be invalid - <code>ABORTED</code>: The case was aborted/cancelled - <code>COMPLETED</code>: The case was successfully resolved</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID linked to the transfer.</td>
+</tr>
+<tr>
+<td><code>sanctionType</code></td>
+<td><code>enum: SANCTION</code></td>
+<td>Yes</td>
+<td>The type of sanction. Currently only <code>SANCTION</code> is supported.</td>
+</tr>
+<tr>
+<td><code>simulationSanctionSubType</code></td>
+<td><code>enum: REFERENCE_SANCTION_HIT, RECIPIENT_SANCTION_HIT, REFERENCE_LOCATION_HIT, RECIPIENT_LOCATION_HIT, DEPOSIT_SANCTION_HIT</code></td>
+<td>No</td>
+<td>The specific subtype of sanction case to simulate. Required when <code>sanctionType</code> is <code>SANCTION</code>. - <code>REFERENCE_SANCTION_HIT</code>: Sanction hit on the transfer reference/sender - <code>RECIPIENT_SANCTION_HIT</code>: Sanction hit on the recipient - <code>REFERENCE_LOCATION_HIT</code>: Location-based hit on the reference/sender - <code>RECIPIENT_LOCATION_HIT</code>: Location-based hit on the recipient - <code>DEPOSIT_SANCTION_HIT</code>: Sanction hit on an incoming deposit</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>enum: OPEN, CLOSE</code></td>
+<td>Yes</td>
+<td>The action to perform. - <code>OPEN</code>: Create a new sanction case - <code>CLOSE</code>: Close an existing sanction case</td>
+</tr>
+<tr>
+<td><code>transferId</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the transfer associated with the sanction case.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-12">Responses</h4>
+<h5 id="200-sanction-case-successfully-closed" class="status" data-status="2xx">200: Sanction case successfully closed</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>caseId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The ID of the case in the partner support system. May be null if the case hasn't been fully processed yet.</td>
+</tr>
+<tr>
+<td><code>eventId</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The unique identifier for this simulation event.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;caseId&quot;: 42,
+  &quot;eventId&quot;: &quot;550e8400-e29b-41d4-a716-446655440001&quot;
+}
+</code></pre>
+<h5 id="201-sanction-case-successfully-created" class="status" data-status="2xx">201: Sanction case successfully created</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>caseId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>The ID of the case in the partner support system. May be null if the case hasn't been fully processed yet.</td>
+</tr>
+<tr>
+<td><code>eventId</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>The unique identifier for this simulation event.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-bad-request---validation-error" class="status" data-status="4xx">400: Bad request - validation error</h5>
+<p><code>application/json</code></p>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-12" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationsettlementfunds" class="operation" data-method="post"><code>POST</code> /simulation/settlement/funds</h3>
+<p>Operation ID: <code>SimulateSettlementAllocationsFunds</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-13">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-12">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>amount</code></td>
+<td><code>number (decimal)</code></td>
+<td>Yes</td>
+<td>The amount to be simulated as received.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Currency code (ISO 4217).</td>
+</tr>
+<tr>
+<td><code>paymentReference</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Payment reference for the settlement allocation. Must start with '<code>BYOPSP_</code>'.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-13">Responses</h4>
+<h5 id="204-funds-received-simulation-completed-successfully" class="status" data-status="2xx">204: Funds received simulation completed successfully</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-13" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-simulationverify-profile" class="operation" data-method="post"><code>POST</code> /simulation/verify-profile</h3>
+<p>Operation ID: <code>simulationVerifyProfile</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-14">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-14">Responses</h4>
+<h5 id="200-verification-state-changed-successfully-no-content-returned-1" class="status" data-status="2xx">200: Verification state changed successfully. No content returned</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-14" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-simulationspendprofilesprofileidcardscardtokentransactions" class="operation" data-method="get"><code>GET</code> /simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions</h3>
+<p>Operation ID: <code>simulationCardTransactions</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-15">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>cardToken</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The card token.</td>
+</tr>
+<tr>
+<td><code>limit</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The maximum number of transactions to return. The default value is 10.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-15">Responses</h4>
+<h5 id="200-list-of-simulated-card-transactions" class="status" data-status="2xx">200: List of simulated card transactions</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[].creationTime</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Time when the card transaction was created.</td>
+</tr>
+<tr>
+<td><code>[].transactionId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the transaction.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">[
+  {
+    &quot;creationTime&quot;: 1723600773.748887,
+    &quot;transactionId&quot;: 5028
+  },
+  {
+    &quot;creationTime&quot;: 1723600659.095692,
+    &quot;transactionId&quot;: 5027
+  },
+  {
+    &quot;creationTime&quot;: 1723600648.133955,
+    &quot;transactionId&quot;: 5026
+  },
+  {
+    &quot;creationTime&quot;: 1723545470.449374,
+    &quot;transactionId&quot;: 5025
+  },
+  {
+    &quot;creationTime&quot;: 1723545430.790566,
+    &quot;transactionId&quot;: 5024
+  }
+]
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-15" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-simulationprofilesprofileidkyc-reviewskycreviewidrequirements" class="operation" data-method="get"><code>GET</code> /simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements</h3>
+<p>Operation ID: <code>simulationKycReviewRequirementsList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-16">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>kycReviewId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>The ID of the existing KYC review.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-16">Responses</h4>
+<h5 id="200-list-of-kyc-review-requirements" class="status" data-status="2xx">200: List of KYC review requirements</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>requirements</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>requirements[].description</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Description of the KYC review item.</td>
+</tr>
+<tr>
+<td><code>requirements[].key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>KYC review item key.</td>
+</tr>
+<tr>
+<td><code>requirements[].state</code></td>
+<td><code>enum: NOT_PROVIDED, IN_REVIEW, VERIFIED, REJECTED</code></td>
+<td>No</td>
+<td>State of the KYC review item.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;requirements&quot;: [
+    {
+      &quot;description&quot;: null,
+      &quot;key&quot;: &quot;ID_DOCUMENT_WITH_LIVENESS&quot;,
+      &quot;state&quot;: &quot;IN_REVIEW&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="404-kyc-review-not-found" class="status" data-status="4xx">404: KYC review not found</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;category&quot;: &quot;CLIENT&quot;,
+  &quot;code&quot;: &quot;kyc_review.not_found&quot;,
+  &quot;description&quot;: &quot;KycReview not found&quot;,
+  &quot;details&quot;: null
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-16" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-simulationtransferstransferidstatus" class="operation" data-method="get"><code>GET</code> /simulation/transfers/{transferId}/{status}</h3>
+<p>Operation ID: <code>simulationTransferStateChange</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-17">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>transferId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The ID of the transfer to simulate.</td>
+</tr>
+<tr>
+<td><code>status</code></td>
+<td><code>path</code></td>
+<td><code>enum: processing, funds_converted, outgoing_payment_sent, bounced_back, funds_refunded</code></td>
+<td>Yes</td>
+<td>The target transfer status.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-17">Responses</h4>
+<h5 id="200-transfer-with-updated-status" class="status" data-status="2xx">200: Transfer with updated status</h5>
+<p><code>application/json</code></p>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;business&quot;: null,
+  &quot;created&quot;: &quot;2017-03-14 15:25:51&quot;,
+  &quot;details&quot;: {
+    &quot;reference&quot;: &quot;good times&quot;
+  },
+  &quot;hasActiveIssues&quot;: false,
+  &quot;id&quot;: 15574445,
+  &quot;quote&quot;: 113379,
+  &quot;rate&quot;: 1.2151,
+  &quot;reference&quot;: &quot;good times&quot;,
+  &quot;sourceAccount&quot;: null,
+  &quot;sourceCurrency&quot;: &quot;EUR&quot;,
+  &quot;sourceValue&quot;: 1000,
+  &quot;status&quot;: &quot;processing&quot;,
+  &quot;targetAccount&quot;: 7993919,
+  &quot;targetCurrency&quot;: &quot;GBP&quot;,
+  &quot;targetValue&quot;: 895.32,
+  &quot;transferRequest&quot;: null,
+  &quot;user&quot;: 294205
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-17" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

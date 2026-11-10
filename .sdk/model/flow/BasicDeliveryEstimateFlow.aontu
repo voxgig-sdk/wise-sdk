@@ -1,0 +1,32 @@
+# BasicDeliveryEstimateFlow
+
+main: kit: flow: BasicDeliveryEstimateFlow:
+{
+  entity: "delivery_estimate",
+  kind: "basic",
+  name: "BasicDeliveryEstimateFlow",
+  step: [
+    {
+      i: {
+        ref: "delivery_estimate_ref01",
+        srcdatavar: "delivery_estimate_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "delivery_estimate01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-delivery_estimate_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicDeliveryEstimateFlow"
+}

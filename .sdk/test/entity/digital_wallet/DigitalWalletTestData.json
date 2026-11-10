@@ -1,0 +1,64 @@
+{
+  "existing": {
+    "digital_wallet": {
+      "DIGITAL_WALLET00": {
+        "activation": "s1e",
+        "paymentTokens": [],
+        "walletNames": [],
+        "card_token": "CARD_TOKEN01",
+        "payment_token_unique_reference": "PAYMENT_TOKEN_UNIQUE_REFERENCE01",
+        "profile_id": "PROFILE01",
+        "id": "DIGITAL_WALLET00"
+      },
+      "DIGITAL_WALLET01": {
+        "activation": "s3c",
+        "paymentTokens": [],
+        "walletNames": [],
+        "card_token": "CARD_TOKEN01",
+        "payment_token_unique_reference": "PAYMENT_TOKEN_UNIQUE_REFERENCE01",
+        "profile_id": "PROFILE01",
+        "id": "DIGITAL_WALLET01"
+      },
+      "DIGITAL_WALLET02": {
+        "activation": "s5a",
+        "paymentTokens": [],
+        "walletNames": [],
+        "card_token": "CARD_TOKEN01",
+        "payment_token_unique_reference": "PAYMENT_TOKEN_UNIQUE_REFERENCE01",
+        "profile_id": "PROFILE01",
+        "id": "DIGITAL_WALLET02"
+      }
+    }
+  },
+  "new": {
+    "digital_wallet": {
+      "digital_wallet_ref01": {
+        "activation": "s78",
+        "paymentTokens": [],
+        "walletNames": []
+      }
+    }
+  },
+  "requests": {
+    "POST /spend/profiles/{profileId}/cards/{cardToken}/payment-tokens/{paymentTokenUniqueReference}/activation": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /spend/profiles/{profileId}/cards/{cardToken}/payment-tokens": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /twcard-data/v1/push-provisioning/encrypted-payload/apple-pay": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /twcard-data/v1/push-provisioning/encrypted-payload/google-pay": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

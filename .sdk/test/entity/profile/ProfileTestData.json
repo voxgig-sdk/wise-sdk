@@ -1,0 +1,176 @@
+{
+  "existing": {
+    "profile": {
+      "PROFILE00": {
+        "address": {},
+        "avatar": "sb5",
+        "contactDetails": {},
+        "createdAt": "sb7",
+        "currentState": "sb8",
+        "dateOfBirth": "sb9",
+        "email": "sba",
+        "firstName": "sbb",
+        "fullName": "sbc",
+        "id": "PROFILE00",
+        "lastName": "sbe",
+        "phoneNumber": "sbf",
+        "preferredName": "sc0",
+        "publicId": "sc1",
+        "secondaryAddresses": [],
+        "type": "sc3",
+        "updatedAt": "sc4",
+        "userId": 197
+      },
+      "PROFILE01": {
+        "address": {},
+        "avatar": "s169",
+        "contactDetails": {},
+        "createdAt": "s16b",
+        "currentState": "s16c",
+        "dateOfBirth": "s16d",
+        "email": "s16e",
+        "firstName": "s16f",
+        "fullName": "s170",
+        "id": "PROFILE01",
+        "lastName": "s172",
+        "phoneNumber": "s173",
+        "preferredName": "s174",
+        "publicId": "s175",
+        "secondaryAddresses": [],
+        "type": "s177",
+        "updatedAt": "s178",
+        "userId": 377
+      },
+      "PROFILE02": {
+        "address": {},
+        "avatar": "s21d",
+        "contactDetails": {},
+        "createdAt": "s21f",
+        "currentState": "s220",
+        "dateOfBirth": "s221",
+        "email": "s222",
+        "firstName": "s223",
+        "fullName": "s224",
+        "id": "PROFILE02",
+        "lastName": "s226",
+        "phoneNumber": "s227",
+        "preferredName": "s228",
+        "publicId": "s229",
+        "secondaryAddresses": [],
+        "type": "s22b",
+        "updatedAt": "s22c",
+        "userId": 557
+      }
+    }
+  },
+  "new": {
+    "profile": {
+      "profile_ref01": {
+        "address": {},
+        "avatar": "s2d1",
+        "contactDetails": {},
+        "createdAt": "s2d3",
+        "currentState": "s2d4",
+        "dateOfBirth": "s2d5",
+        "email": "s2d6",
+        "firstName": "s2d7",
+        "fullName": "s2d8",
+        "lastName": "s2da",
+        "phoneNumber": "s2db",
+        "preferredName": "s2dc",
+        "publicId": "s2dd",
+        "secondaryAddresses": [],
+        "type": "s2df",
+        "updatedAt": "s2e0",
+        "userId": 737
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/pin": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/verification-status/bank-transfer": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/excess-money-account": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/update-window": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/verification-documents": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/verification-status/upload-document": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/personal-profile": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/balance-capacity": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/business-profile/business-representative": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/multi-currency-account": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /profiles/{profileId}/pin": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "DELETE /profiles/{profileId}/update-window": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /profiles/{profileId}/business-profile/business-representative": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /profiles/{profileId}/personal-profile": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /profiles/{profileId}/verification-documents": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

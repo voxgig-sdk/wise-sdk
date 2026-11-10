@@ -1,0 +1,23 @@
+# BasicPayinFlow
+
+main: kit: flow: BasicPayinFlow:
+{
+  entity: "payin",
+  kind: "basic",
+  name: "BasicPayinFlow",
+  step: [
+    {
+      i: {
+        ref: "payin_ref01"
+      }
+
+      m: {
+        payment_instrument_id: "payment_instrument01",
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPayinFlow"
+}

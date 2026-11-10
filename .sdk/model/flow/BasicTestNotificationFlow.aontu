@@ -1,0 +1,23 @@
+# BasicTestNotificationFlow
+
+main: kit: flow: BasicTestNotificationFlow:
+{
+  entity: "test_notification",
+  kind: "basic",
+  name: "BasicTestNotificationFlow",
+  step: [
+    {
+      i: {
+        ref: "test_notification_ref01"
+      }
+
+      m: {
+        client_key: "client_key01",
+        subscription_id: "subscription01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicTestNotificationFlow"
+}

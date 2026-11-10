@@ -1,0 +1,57 @@
+# BasicUboFlow
+
+main: kit: flow: BasicUboFlow:
+{
+  entity: "ubo",
+  kind: "basic",
+  name: "BasicUboFlow",
+  step: [
+    {
+      i: {
+        ref: "ubo_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "ubo_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "ubo_ref01",
+        srcdatavar: "ubo_ref01_data",
+        suffix: "_up0",
+        textfield: "addressFirstLine"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-ubo_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicUboFlow"
+}

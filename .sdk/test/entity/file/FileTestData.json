@@ -1,0 +1,61 @@
+{
+  "existing": {
+    "file": {
+      "FILE00": {
+        "createdAt": "s46",
+        "file": "s47",
+        "fileId": "s48",
+        "fileName": "s49",
+        "profileId": 74,
+        "purpose": "s4b",
+        "submissionData": {},
+        "id": "FILE00"
+      },
+      "FILE01": {
+        "createdAt": "s8c",
+        "file": "s8d",
+        "fileId": "s8e",
+        "fileName": "s8f",
+        "profileId": 144,
+        "purpose": "s91",
+        "submissionData": {},
+        "id": "FILE01"
+      },
+      "FILE02": {
+        "createdAt": "sd2",
+        "file": "sd3",
+        "fileId": "sd4",
+        "fileName": "sd5",
+        "profileId": 214,
+        "purpose": "sd7",
+        "submissionData": {},
+        "id": "FILE02"
+      }
+    }
+  },
+  "new": {
+    "file": {
+      "file_ref01": {
+        "createdAt": "s118",
+        "file": "s119",
+        "fileId": "s11a",
+        "fileName": "s11b",
+        "profileId": 284,
+        "purpose": "s11d",
+        "submissionData": {}
+      }
+    }
+  },
+  "requests": {
+    "POST /cases/files": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /cases/files": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

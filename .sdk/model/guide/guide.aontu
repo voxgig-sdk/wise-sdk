@@ -1,0 +1,135 @@
+# Guide
+
+@"@voxgig/apidef/model/guide.aontu"
+
+@"./base-guide.aontu"
+
+
+# EVERY ROUTE REACHABLE. apidef groups Wise's 229 operations into entities
+# well, but in fourteen places two or more routes of one entity share an
+# operation and a selector, so only the first could ever be called. Each is
+# told apart below by an action named after its own path segment, which a
+# call selects with `$action` (for example `$action: 'pin'`). One group is
+# its own resource in Wise's documentation and gets its own entity.
+
+
+# Balances. "Convert or Move Money Between Balances" is a movement, beside
+# "Create a Balance Account".
+guide: entity: balance: path: "/profiles/{profileId}/balance-movements": action: movement: {}
+
+# "Create bank account details order" and its list are the bank account
+# details ORDERS resource; "Create multiple bank account details" stays on
+# bank_account_detail.
+guide: entity: bank_account_details_order: path: "/profiles/{profileId}/account-details-orders": {
+  rename: param: profileId: profile_id
+  op: create: method: POST
+  op: list: method: GET
+}
+guide: entity: bank_account_detail: path: "/profiles/{profileId}/account-details-orders": active: false
+
+# Sensitive card data: "Get sensitive card details" and "Get card PIN".
+guide: entity: card_sensitive_detail: path: "/twcard-data/v1/sensitive-card-data/details": action: details: {}
+guide: entity: card_sensitive_detail: path: "/twcard-data/v1/sensitive-card-data/pin": action: pin: {}
+
+# Push provisioning to Apple Pay and Google Pay.
+guide: entity: digital_wallet: path: "/twcard-data/v1/push-provisioning/encrypted-payload/apple-pay": action: "apple-pay": {}
+guide: entity: digital_wallet: path: "/twcard-data/v1/push-provisioning/encrypted-payload/google-pay": action: "google-pay": {}
+
+# The JOSE playground: one action per scheme, GET and POST alike.
+guide: entity: jose: path: "/auth/jose/playground/jwe": action: jwe: {}
+guide: entity: jose: path: "/auth/jose/playground/jwe-direct-encryption": action: "jwe-direct-encryption": {}
+guide: entity: jose: path: "/auth/jose/playground/jws": action: jws: {}
+guide: entity: jose: path: "/auth/jose/playground/jwsjwe": action: jwsjwe: {}
+
+# Multi-currency account: "Retrieve available currencies" and "Retrieve
+# payin currencies".
+guide: entity: multi_currency_account: path: "/borderless-accounts-configuration/profiles/{profileId}/available-currencies": action: "available-currencies": {}
+guide: entity: multi_currency_account: path: "/borderless-accounts-configuration/profiles/{profileId}/payin-currencies": action: "payin-currencies": {}
+
+# Strong customer authentication: "Verify a device fingerprint" and "Verify
+# a PIN".
+guide: entity: one_time_token: path: "/profiles/{profileId}/device-fingerprints/verify": action: "device-fingerprint": {}
+guide: entity: one_time_token: path: "/profiles/{profileId}/pin/verify": action: pin: {}
+
+# One-time token challenges, verified and triggered by channel.
+guide: entity: ott: path: "/one-time-token/sms/verify": action: sms: {}
+guide: entity: ott: path: "/one-time-token/voice/verify": action: voice: {}
+guide: entity: ott: path: "/one-time-token/whatsapp/verify": action: whatsapp: {}
+guide: entity: sca_otp: path: "/one-time-token/sms/trigger": action: sms: {}
+guide: entity: sca_otp: path: "/one-time-token/voice/trigger": action: voice: {}
+guide: entity: sca_otp: path: "/one-time-token/whatsapp/trigger": action: whatsapp: {}
+
+# Sandbox simulations, each named for what it simulates.
+guide: entity: simulation: path: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/production": action: "card-production": {}
+guide: entity: simulation: path: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/authorisation": action: "card-authorisation": {}
+guide: entity: simulation: path: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/clearing": action: "card-clearing": {}
+guide: entity: simulation: path: "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/reversal": action: "card-reversal": {}
+guide: entity: simulation: path: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/add": action: "kyc-requirement-add": {}
+guide: entity: simulation: path: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/submit": action: "kyc-requirement-submit": {}
+guide: entity: simulation: path: "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/verify": action: "kyc-review-verify": {}
+guide: entity: simulation: path: "/simulation/profiles/{profileId}/bank-transactions/import": action: "bank-transaction-import": {}
+guide: entity: simulation: path: "/simulation/profiles/{profileId}/swift-in": action: "swift-in": {}
+guide: entity: simulation: path: "/simulation/profiles/{profileId}/verifications": action: verification: {}
+guide: entity: simulation: path: "/simulation/balance/topup": action: "balance-topup": {}
+guide: entity: simulation: path: "/simulation/settlement/funds": action: "settlement-funds": {}
+
+# Spend controls: "Apply an authorisation rule" and "Unapply" it.
+guide: entity: spend_control: path: "/spend/applications/{clientId}/spend-controls/rules/apply": action: apply: {}
+guide: entity: spend_control: path: "/spend/applications/{clientId}/spend-controls/rules/unapply": action: unapply: {}
+
+
+# WHOLE RECORDS, NOT LISTS. Two GETs answer with one object that holds a list,
+# and the heuristic listed the inner records. Each is the one record.
+#
+# "Request a comparison quote" returns one comparison holding its providers.
+guide: entity: comparison: path: "/comparisons": {
+  op: list: active: false
+  op: load: method: GET
+}
+# "Get Balance Statement" returns the statement: account holder, issuer, bank
+# details, transactions and closing balance.
+guide: entity: balance_statement: path: "/profiles/{profileId}/balance-statements/{balanceId}/statement.json": {
+  op: list: active: false
+  op: load: method: GET
+}
+
+# "List recipient accounts" pages its records under `content`, beside the seek
+# positions; that is what it lists.
+guide: entity: recipient: path: "/accounts": op: list: transform: res: "`body.content`"
+
+
+# WISE'S OWN NAMES. Five entities were named after response schemas
+# (create_third_party_transfer_response_content, ...). Each route is declared
+# again under the resource Wise's documentation names, then switched off
+# where the heuristic put it.
+guide: entity: third_party_transfer: path: "/profiles/{profileId}/third-party-transfers": {
+  rename: param: profileId: profile_id
+  op: create: method: POST
+}
+guide: entity: create_third_party_transfer_response_content: active: false
+
+guide: entity: gpi_tracking: path: "/gpi-tracking": op: create: method: POST
+guide: entity: lookup_gpi_tracking_response_content: active: false
+
+guide: entity: settlement_allocation: path: "/settlement/allocations": op: create: method: POST
+guide: entity: settlement_allocation: path: "/settlement/allocations/{allocationId}": {
+  rename: param: allocationId: id
+  op: load: method: GET
+}
+guide: entity: settlement_allocation_response_content: active: false
+
+# "Confirm instrument" is an action on the payment instrument it confirms.
+guide: entity: payment_instrument: path: "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}/manual-confirmation": {
+  action: "manual-confirmation": {}
+  rename: param: paymentInstrumentId: id
+  rename: param: profileId: profile_id
+  op: create: method: POST
+}
+guide: entity: payment_instrument_details_resource: active: false
+
+# "Inform challenge result" for a 3-D Secure challenge.
+guide: entity: three_d_secure: path: "/spend/profiles/{profileId}/3dsecure/challenge-result": {
+  rename: param: profileId: profile_id
+  op: create: method: POST
+}
+guide: entity: n3ds: active: false

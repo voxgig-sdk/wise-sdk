@@ -1,0 +1,41 @@
+{
+  "existing": {
+    "rate": {
+      "RATE00": {
+        "rate": 40,
+        "source": "s29",
+        "target": "s2a",
+        "time": "s2b"
+      },
+      "RATE01": {
+        "rate": 80,
+        "source": "s51",
+        "target": "s52",
+        "time": "s53"
+      },
+      "RATE02": {
+        "rate": 120,
+        "source": "s79",
+        "target": "s7a",
+        "time": "s7b"
+      }
+    }
+  },
+  "new": {
+    "rate": {
+      "rate_ref01": {
+        "rate": 160,
+        "source": "sa1",
+        "target": "sa2",
+        "time": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "GET /rates": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

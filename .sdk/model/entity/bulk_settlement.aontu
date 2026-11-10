@@ -1,0 +1,113 @@
+# Entity: bulk_settlement
+
+main: kit: entity: bulk_settlement: {
+
+  alias: field: {}
+
+  fields: {
+    balanceTransfer: {
+      fo: "decimal"
+      h: "Balance Transfer"
+      n: "balanceTransfer"
+      r: false
+      sh: "The amount of money to be deducted from the expected settlement amount based on what is owed to you for previous days where the total settlement from you to Wise was negative."
+      t: "`$NUMBER`"
+    }
+    refundedTransfers: {
+      h: "Refunded Transfers"
+      n: "refundedTransfers"
+      r: false
+      sh: "Array of transfers for which refunds have been processed."
+      t: "`$ARRAY`"
+    }
+    settlementCurrency: {
+      h: "Settlement Currency"
+      n: "settlementCurrency"
+      r: false
+      sh: "The currency in which the transfers in this journal will be settled."
+      t: "`$STRING`"
+    }
+    settlementDate: {
+      fo: "date-time"
+      h: "Settlement Date"
+      n: "settlementDate"
+      r: true
+      sh: "The date you send the settlement funds, ISO 8601 format."
+      t: "`$STRING`"
+    }
+    settlementReference: {
+      h: "Settlement Reference"
+      n: "settlementReference"
+      r: true
+      sh: "Reference used when paying the end of day settlement monies to Wise."
+      t: "`$STRING`"
+    }
+    transfers: {
+      h: "Transfers"
+      n: "transfers"
+      r: true
+      sh: "Array of transfers to be settled."
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "Type of settlement."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "bulk_settlement"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "balanceTransfer"
+            "refundedTransfers"
+            "settlementCurrency"
+            "settlementDate"
+            "settlementReference"
+            "transfers"
+            "type"
+          ]
+          co: {
+            id: "POST /settlements"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/settlements"
+          s: [
+            {
+              lit: "settlements"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

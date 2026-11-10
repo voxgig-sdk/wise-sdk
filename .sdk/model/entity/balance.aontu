@@ -1,0 +1,718 @@
+# Entity: balance
+
+main: kit: entity: balance: {
+
+  alias: field: {}
+
+  fields: {
+    amount: {
+      h: "Amount"
+      n: "amount"
+      r: false
+      sh: "Available balance that can be used to fund transfers."
+      t: "`$OBJECT`"
+    }
+    cashAmount: {
+      h: "Cash Amount"
+      n: "cashAmount"
+      r: false
+      sh: "Cash amount in the account."
+      t: "`$OBJECT`"
+    }
+    creationTime: {
+      fo: "date-time"
+      h: "Creation Time"
+      n: "creationTime"
+      r: false
+      sh: "Date when the balance was created."
+      t: "`$STRING`"
+    }
+    currency: {
+      h: "Currency"
+      n: "currency"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Currency code (ISO 4217 Alphabetic Code)."
+      t: "`$STRING`"
+    }
+    icon: {
+      h: "Icon"
+      n: "icon"
+      r: false
+      sh: "Icon for the balance."
+      t: [
+        "`$ONE`"
+        [
+          "`$OBJECT`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Balance ID."
+      t: "`$INTEGER`"
+    }
+    investmentState: {
+      h: "Investment State"
+      n: "investmentState"
+      r: false
+      sh: "Investment state of the balance."
+      t: "`$STRING`"
+    }
+    modificationTime: {
+      fo: "date-time"
+      h: "Modification Time"
+      n: "modificationTime"
+      r: false
+      sh: "Date when the balance was last modified."
+      t: "`$STRING`"
+    }
+    name: {
+      h: "Name"
+      n: "name"
+      r: false
+      sh: "Name of the balance."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    overdraft: {
+      h: "Overdraft"
+      n: "overdraft"
+      r: false
+      sh: "Overdraft details for the account."
+      t: "`$OBJECT`"
+    }
+    reservedAmount: {
+      h: "Reserved Amount"
+      n: "reservedAmount"
+      r: false
+      sh: "Amount reserved for transactions."
+      t: "`$OBJECT`"
+    }
+    state: {
+      h: "State"
+      n: "state"
+      r: true
+      sh: "Must be `CLOSED`."
+      t: "`$STRING`"
+    }
+    targetRecipientId: {
+      h: "Target Recipient Id"
+      n: "targetRecipientId"
+      r: true
+      sh: "ID of the recipient to receive the refund of the excess funds."
+      t: "`$INTEGER`"
+    }
+    totalAvailable: {
+      h: "Total Available"
+      n: "totalAvailable"
+      r: false
+      sh: "Total available balance, which is the sum of cash ledger balance and any approved overdraft limit."
+      t: "`$OBJECT`"
+    }
+    totalCash: {
+      h: "Total Cash"
+      n: "totalCash"
+      r: false
+      sh: "Total cash balance across all balances, including group balances but excluding asset portfolios."
+      t: "`$OBJECT`"
+    }
+    totalWorth: {
+      h: "Total Worth"
+      n: "totalWorth"
+      r: false
+      sh: "Total worth of the account, including cash ledger balance and valuation of any asset portfolio if invested."
+      t: "`$OBJECT`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      op: {
+        create: {
+          req: true
+          type: "`$STRING`"
+        }
+      }
+      r: false
+      sh: "Type of balance account."
+      t: "`$STRING`"
+    }
+    visible: {
+      h: "Visible"
+      n: "visible"
+      r: false
+      sh: "Whether the balance is visible to the user."
+      t: "`$BOOLEAN`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "balance"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "state"
+            "targetRecipientId"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/balances/hold-limit-breach/{holdLimitBreachId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "hold_limit_breach_id"
+                or: "holdLimitBreachId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/balances/hold-limit-breach/{holdLimitBreachId}"
+          q: {
+            exist: [
+              "hold_limit_breach_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              holdLimitBreachId: "hold_limit_breach_id"
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "balances"
+            }
+            {
+              lit: "hold-limit-breach"
+            }
+            {
+              var: "hold_limit_breach_id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "amount"
+            "quoteId"
+            "sourceBalanceId"
+            "targetBalanceId"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/balance-movements"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "xidempotence_uuid"
+                or: "X-idempotence-uuid"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/balance-movements"
+          q: {
+            "$action": "movement"
+            exist: [
+              "profile_id"
+              "xidempotence_uuid"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "balance-movements"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "currency"
+            "name"
+            "type"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/balances"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "xidempotence_uuid"
+                or: "X-idempotence-uuid"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/balances"
+          q: {
+            exist: [
+              "profile_id"
+              "xidempotence_uuid"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "balances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/balances"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: "STANDARD"
+                explode: true
+                k: "query"
+                n: "type"
+                or: "types"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/balances"
+          q: {
+            exist: [
+              "profile_id"
+              "type"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "balances"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/total-funds/{currency}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                ex: "EUR"
+                k: "param"
+                n: "currency"
+                or: "currency"
+                r: true
+                t: "`$STRING`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/total-funds/{currency}"
+          q: {
+            exist: [
+              "currency"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "total-funds"
+            }
+            {
+              var: "currency"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /profiles/{profileId}/balances/{balanceId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "balanceId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/balances/{balanceId}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              balanceId: "id"
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "balances"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /profiles/{profileId}/balances/{balanceId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "balanceId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/profiles/{profileId}/balances/{balanceId}"
+          q: {
+            exist: [
+              "id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              balanceId: "id"
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "balances"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+    [path("$.main.kit.entity.profile") path("$.main.kit.entity.hold_limit_breach")]
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

@@ -1,0 +1,77 @@
+{
+  "existing": {
+    "ubo": {
+      "UBO00": {
+        "addressFirstLine": "s64",
+        "city": "s65",
+        "countryOfResidenceIso3Code": "s66",
+        "dateOfBirth": "s67",
+        "id": "UBO00",
+        "name": "s69",
+        "ownershipPercentage": 106,
+        "postCode": "s6b",
+        "state": "s6c",
+        "ubos": [],
+        "profile_id": "PROFILE01"
+      },
+      "UBO01": {
+        "addressFirstLine": "sc8",
+        "city": "sc9",
+        "countryOfResidenceIso3Code": "sca",
+        "dateOfBirth": "scb",
+        "id": "UBO01",
+        "name": "scd",
+        "ownershipPercentage": 206,
+        "postCode": "scf",
+        "state": "sd0",
+        "ubos": [],
+        "profile_id": "PROFILE01"
+      },
+      "UBO02": {
+        "addressFirstLine": "s12c",
+        "city": "s12d",
+        "countryOfResidenceIso3Code": "s12e",
+        "dateOfBirth": "s12f",
+        "id": "UBO02",
+        "name": "s131",
+        "ownershipPercentage": 306,
+        "postCode": "s133",
+        "state": "s134",
+        "ubos": [],
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "ubo": {
+      "ubo_ref01": {
+        "addressFirstLine": "s190",
+        "city": "s191",
+        "countryOfResidenceIso3Code": "s192",
+        "dateOfBirth": "s193",
+        "name": "s195",
+        "ownershipPercentage": 406,
+        "postCode": "s197",
+        "state": "s198",
+        "ubos": []
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/ubos": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/ubos": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /profiles/{profileId}/ubos": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

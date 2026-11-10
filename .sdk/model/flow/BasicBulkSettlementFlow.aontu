@@ -1,0 +1,18 @@
+# BasicBulkSettlementFlow
+
+main: kit: flow: BasicBulkSettlementFlow:
+{
+  entity: "bulk_settlement",
+  kind: "basic",
+  name: "BasicBulkSettlementFlow",
+  step: [
+    {
+      i: {
+        ref: "bulk_settlement_ref01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicBulkSettlementFlow"
+}

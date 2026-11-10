@@ -1,0 +1,3186 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Recipient | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a aria-current="page" href="../api/recipient.html">Recipient</a><div class="nav-sections"><a class="nav-section" href="#post-accountsaccountidquotesquoteidcompatibility">POST /accounts/{accountId}/quotes/{quoteId}/compatibility</a>
+<a class="nav-section" href="#post-accounts">POST /accounts</a>
+<a class="nav-section" href="#get-accounts">GET /accounts</a>
+<a class="nav-section" href="#get-accountsaccountid">GET /accounts/{accountId}</a>
+<a class="nav-section" href="#delete-accountsaccountid">DELETE /accounts/{accountId}</a>
+<a class="nav-section" href="#patch-accountsaccountidconfirmations">PATCH /accounts/{accountId}/confirmations</a></div>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="recipient">Recipient</h1>
+<p>A recipient account: create, list, get or deactivate one.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-accountsaccountidquotesquoteidcompatibility"><code>/accounts/{accountId}/quotes/{quoteId}/compatibility</code></a></td>
+<td><code>create</code></td>
+<td>Returns the compatibility result, including any verification outcomes. See the Recipient verification guide for details about handling the <code>confirmations</code> object</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-accounts"><code>/accounts</code></a></td>
+<td><code>create</code></td>
+<td>Recipient account created successfully</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-accounts"><code>/accounts</code></a></td>
+<td><code>list</code></td>
+<td>Paginated list of recipient accounts</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-accountsaccountid"><code>/accounts/{accountId}</code></a></td>
+<td><code>load</code></td>
+<td>Recipient account details</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-accountsaccountid"><code>/accounts/{accountId}</code></a></td>
+<td><code>remove</code></td>
+<td>Recipient returned with <code>active=false</code></td>
+</tr>
+<tr>
+<td><code>PATCH</code></td>
+<td><a href="#patch-accountsaccountidconfirmations"><code>/accounts/{accountId}/confirmations</code></a></td>
+<td><code>update</code></td>
+<td>Recipient with updated confirmation status</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">recipients, err := client.Recipient(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(recipients)
+recipient, err := client.Recipient(nil).Load(map[string]any{&quot;account_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(recipient)
+created, err := client.Recipient(nil).Create(map[string]any{&quot;acceptedOutcomes&quot;: true, &quot;ultimateBeneficiary&quot;: map[string]any{}}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+updated, err := client.Recipient(nil).Update(map[string]any{&quot;account_id&quot;: 1, &quot;quote_id&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(updated)
+removed, err := client.Recipient(nil).Remove(map[string]any{&quot;account_id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local recipients, err = client:Recipient():list()
+local recipient, err = client:Recipient():load({ account_id = 1 })
+local created, err = client:Recipient():create({ acceptedOutcomes = true, ultimateBeneficiary = {} })
+local updated, err = client:Recipient():update({ account_id = 1, quote_id = &quot;example&quot; })
+local removed, err = client:Recipient():remove({ account_id = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$recipients = $client-&gt;Recipient()-&gt;list();
+$recipient = $client-&gt;Recipient()-&gt;load([&quot;account_id&quot; =&gt; 1]);
+$created = $client-&gt;Recipient()-&gt;create([&quot;acceptedOutcomes&quot; =&gt; true, &quot;ultimateBeneficiary&quot; =&gt; []]);
+$updated = $client-&gt;Recipient()-&gt;update([&quot;account_id&quot; =&gt; 1, &quot;quote_id&quot; =&gt; &quot;example&quot;]);
+$client-&gt;Recipient()-&gt;remove([&quot;account_id&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">recipients = client.Recipient().list()
+recipient = client.Recipient().load({&quot;account_id&quot;: 1})
+created = client.Recipient().create({ &quot;acceptedOutcomes&quot;: True, &quot;ultimateBeneficiary&quot;: {} })
+updated = client.Recipient().update({&quot;account_id&quot;: 1, &quot;quote_id&quot;: &quot;example&quot;})
+client.Recipient().remove({&quot;account_id&quot;: 1})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">recipients = client.Recipient.list()
+recipient = client.Recipient.load({ &quot;account_id&quot; =&gt; 1 })
+created = client.Recipient.create({ &quot;acceptedOutcomes&quot; =&gt; true, &quot;ultimateBeneficiary&quot; =&gt; {} })
+updated = client.Recipient.update({ &quot;account_id&quot; =&gt; 1, &quot;quote_id&quot; =&gt; &quot;example&quot; })
+client.Recipient.remove({ &quot;account_id&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const recipients = await client.Recipient().list()
+const recipient = await client.Recipient().load({ account_id: 1 })
+const created = await client.Recipient().create({ acceptedOutcomes: true, ultimateBeneficiary: {} })
+const updated = await client.Recipient().update({ account_id: 1, quote_id: &quot;example&quot; })
+await client.Recipient().remove({ account_id: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acceptedOutcomes</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Set to <code>true</code> to indicate the customer accepted the confirmation outcome.</td>
+</tr>
+<tr>
+<td><code>accountHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient full name.</td>
+</tr>
+<tr>
+<td><code>accountId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Recipient account ID.</td>
+</tr>
+<tr>
+<td><code>accountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Summary of account details for ease of lookup.</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of the recipient account.</td>
+</tr>
+<tr>
+<td><code>commonFieldMap</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Map of key lookup fields for the account.</td>
+</tr>
+<tr>
+<td><code>confirmations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains verification results for the recipient's details.</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2-character country code.</td>
+</tr>
+<tr>
+<td><code>creatorId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Account entity that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3-character currency code.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains the details of the recipient account specific to its currency and type.</td>
+</tr>
+<tr>
+<td><code>displayFields</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Lookup fields (key/label/value) for rendering in your front-end.</td>
+</tr>
+<tr>
+<td><code>hash</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account hash for tracking changes to recipient details.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>ID of the recipient.</td>
+</tr>
+<tr>
+<td><code>isInternal</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether recipient is internal.</td>
+</tr>
+<tr>
+<td><code>legalEntityType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Entity type of recipient account.</td>
+</tr>
+<tr>
+<td><code>longAccountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Longer account details summary.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Recipient name details.</td>
+</tr>
+<tr>
+<td><code>ownedByCustomer</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Inidicates if recipient account belongs to profile owner.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Personal or business profile ID of the sender.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Specific profile that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Quote ID.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account type.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary</code></td>
+<td><code>one,object,null</code></td>
+<td>Yes</td>
+<td>The details for the ultimate beneficiary of this recipient.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-accountsaccountidquotesquoteidcompatibility" class="operation" data-method="post"><code>POST</code> /accounts/{accountId}/quotes/{quoteId}/compatibility</h3>
+<p>Operation ID: <code>recipientCompatibilityCheck</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Recipient account ID.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Quote ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-returns-the-compatibility-result-including-any-verification-outcomes-see-the-recipient-verification-guide-for-details-about-handling-the-confirmations-object" class="status" data-status="2xx">200: Returns the compatibility result, including any verification outcomes. See the Recipient verification guide for details about handling the <code>confirmations</code> object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Recipient account ID.</td>
+</tr>
+<tr>
+<td><code>confirmations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains verification results for the recipient's details. Only populated for currencies with recipient verification enabled (CNY, KRW, INR, IDR, EUR). See the Recipient verification guides for details about how to handle this verification data by currency.</td>
+</tr>
+<tr>
+<td><code>confirmations.acceptedAt</code></td>
+<td><code>string,null (date-time)</code></td>
+<td>No</td>
+<td>Timestamp indicating date and time of outcome acceptance. Value is <code>null</code> until acceptance received.</td>
+</tr>
+<tr>
+<td><code>confirmations.acceptedOutcomes</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we've received an explicit customer acceptance.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of confirmation outcomes. Currently, it is safe to assume there is only one element in the outcomes array.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].fieldsChecked</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Fields used to confirm the account.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Customer-facing message about the outcome of the check.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].outcome</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The actual outcome of the confirmation check. Possible values: <code>SUCCESS</code>, <code>PARTIAL_FAILURE</code>, <code>FAILURE</code>, <code>COULD_NOT_CHECK</code>.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].providedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name the customer provided when creating the recipient account. Only populated for <code>NAME_MATCHING</code> and <code>NAME_RESOLUTION</code> types for certain outcomes.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Shows the correct values for some of the fields checked.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates[].path</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The field path to update.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The recommended value for the field.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].requiresCustomerAcceptance</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we require customer acceptance. The value for this field (<code>true</code> or <code>false</code>) depends on the currency and the nature of the confirmation. If <code>true</code>, you must present your customer with the ability to accept or decline the confirmation result.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].resolvedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name that we resolved during name matching or name resolution.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].timestamp</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the confirmation check was performed.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of confirmation. Possible values: <code>ACCOUNT_EXISTENCE</code>, <code>NAME_MATCHING</code>, <code>NAME_RESOLUTION</code>.</td>
+</tr>
+<tr>
+<td><code>confirmations.quoteId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>If the confirmation check was run as part of a quote compatibility check, then the <code>quoteId</code> is included in the result. If <code>quoteId</code> is present, the outcome acceptance needs the <code>quoteId</code> to be specified as well.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Quote ID.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;accountId&quot;: 40000000,
+  &quot;confirmations&quot;: {
+    &quot;acceptedAt&quot;: null,
+    &quot;acceptedOutcomes&quot;: false,
+    &quot;outcomes&quot;: [
+      {
+        &quot;fieldsChecked&quot;: [
+          &quot;name/fullName&quot;,
+          &quot;details/accountNumber&quot;
+        ],
+        &quot;message&quot;: &quot;The name entered is slightly different to the name on the account.&quot;,
+        &quot;outcome&quot;: &quot;PARTIAL_FAILURE&quot;,
+        &quot;providedName&quot;: &quot;John Doe&quot;,
+        &quot;recommendedUpdates&quot;: [
+          {
+            &quot;path&quot;: &quot;name/fullName&quot;,
+            &quot;value&quot;: &quot;Joe Doe&quot;
+          }
+        ],
+        &quot;requiresCustomerAcceptance&quot;: true,
+        &quot;resolvedName&quot;: &quot;Joe Doe&quot;,
+        &quot;type&quot;: &quot;NAME_MATCHING&quot;
+      }
+    ],
+    &quot;quoteId&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;
+  },
+  &quot;quoteId&quot;: &quot;00000000-0000-0000-0000-000000000000&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-accounts" class="operation" data-method="post"><code>POST</code> /accounts</h3>
+<p>Operation ID: <code>recipientCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>refund</code></td>
+<td><code>query</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>When <code>true</code>, the request creates a refund recipient account.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountHolderName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient full name.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3-character currency code.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains the details of the recipient account specific to its currency and type. Common examples include <code>legalType</code>, <code>sortCode</code>, <code>accountNumber</code>, <code>email</code>, <code>dateOfBirth</code>, etc. Use the <strong>retrieve recipient account requirements</strong> endpoint to determine what is required for a specific recipient.</td>
+</tr>
+<tr>
+<td><code>details.accountNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account number (GBP example).</td>
+</tr>
+<tr>
+<td><code>details.dateOfBirth</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date of birth in ISO 8601 date format. Only required for certain currency routes. Call the <strong>retrieve recipient account requirements</strong> endpoint to confirm.</td>
+</tr>
+<tr>
+<td><code>details.legalType</code></td>
+<td><code>enum: PRIVATE, BUSINESS</code></td>
+<td>No</td>
+<td>Recipient legal type.</td>
+</tr>
+<tr>
+<td><code>details.sortCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Sort code (GBP example).</td>
+</tr>
+<tr>
+<td><code>ownedByCustomer</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether the recipient account is owned by the profile owner. While optional, we recommend setting to <code>true</code> for self-transfers (such as a user sending money to their own account in another country or currency). Distinguishing self-transfers from third-party transfers improves routing and processing efficiency.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Personal or business profile ID of the sender. We recommend passing the business profile ID if multiple users manage your business account so all users authorized on the business account can access the recipient.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account type. These are currency/route-specific, for example, <code>sort_code</code>, <code>iban</code>, <code>email</code>.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>The details about the ultimate beneficiary for this recipient, if present. If absent, the ultimate beneficiary <em>is</em> the recipient.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.accountNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary account number.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank code.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank name.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary name details.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name.fullName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary full name.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-recipient-account-created-successfully" class="status" data-status="2xx">200: Recipient account created successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Summary of account details for ease of lookup. Can be used to display recipient details in your UI.</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of the recipient account.</td>
+</tr>
+<tr>
+<td><code>commonFieldMap</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Map of key lookup fields for the account.</td>
+</tr>
+<tr>
+<td><code>confirmations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains verification results for the recipient's details. Only populated for currencies with recipient verification enabled (CNY, KRW, INR, IDR, EUR). See the Recipient verification guides for details about how to handle this verification data by currency.</td>
+</tr>
+<tr>
+<td><code>confirmations.acceptedAt</code></td>
+<td><code>string,null (date-time)</code></td>
+<td>No</td>
+<td>Timestamp indicating date and time of outcome acceptance. Value is <code>null</code> until acceptance received.</td>
+</tr>
+<tr>
+<td><code>confirmations.acceptedOutcomes</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we've received an explicit customer acceptance.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of confirmation outcomes. Currently, it is safe to assume there is only one element in the outcomes array.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].fieldsChecked</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Fields used to confirm the account.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Customer-facing message about the outcome of the check.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].outcome</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The actual outcome of the confirmation check. Possible values: <code>SUCCESS</code>, <code>PARTIAL_FAILURE</code>, <code>FAILURE</code>, <code>COULD_NOT_CHECK</code>.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].providedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name the customer provided when creating the recipient account. Only populated for <code>NAME_MATCHING</code> and <code>NAME_RESOLUTION</code> types for certain outcomes.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Shows the correct values for some of the fields checked.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates[].path</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The field path to update.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The recommended value for the field.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].requiresCustomerAcceptance</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we require customer acceptance. The value for this field (<code>true</code> or <code>false</code>) depends on the currency and the nature of the confirmation. If <code>true</code>, you must present your customer with the ability to accept or decline the confirmation result.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].resolvedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name that we resolved during name matching or name resolution.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].timestamp</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the confirmation check was performed.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of confirmation. Possible values: <code>ACCOUNT_EXISTENCE</code>, <code>NAME_MATCHING</code>, <code>NAME_RESOLUTION</code>.</td>
+</tr>
+<tr>
+<td><code>confirmations.quoteId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>If the confirmation check was run as part of a quote compatibility check, then the <code>quoteId</code> is included in the result. If <code>quoteId</code> is present, the outcome acceptance needs the <code>quoteId</code> to be specified as well.</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2-character country code.</td>
+</tr>
+<tr>
+<td><code>creatorId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Account entity that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3-character currency code.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains the details of the recipient account specific to its currency and type. The fields required (in the request) or present (in the response) vary depending on currency route and recipient type (for example, sort code, IBAN, SWIFT, email).</td>
+</tr>
+<tr>
+<td><code>details.accountNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient bank account number (GBP example).</td>
+</tr>
+<tr>
+<td><code>details.hashedByLooseHashAlgorithm</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account hash.</td>
+</tr>
+<tr>
+<td><code>details.reference</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient reference (applies for some routes).</td>
+</tr>
+<tr>
+<td><code>details.sortCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient bank sort code (GBP example).</td>
+</tr>
+<tr>
+<td><code>displayFields</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Lookup fields (key/label/value) for rendering in your front-end. Allows you to build a UI containing all the dynamic fields for a recipient individually.</td>
+</tr>
+<tr>
+<td><code>displayFields[].key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier key name.</td>
+</tr>
+<tr>
+<td><code>displayFields[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier display label.</td>
+</tr>
+<tr>
+<td><code>displayFields[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier value.</td>
+</tr>
+<tr>
+<td><code>hash</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account hash for tracking changes to recipient details. This is useful for re-running any validation checks on the recipient, for example against fraud engines. The hash remains constant unless the recipient's name or information in the details object changes.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the recipient. Use the returned id as <code>sourceAccount</code> to specify the refund recipient when creating transfers.</td>
+</tr>
+<tr>
+<td><code>isInternal</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether recipient is internal.</td>
+</tr>
+<tr>
+<td><code>legalEntityType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Entity type of recipient account.</td>
+</tr>
+<tr>
+<td><code>longAccountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Longer account details summary. Can be used to display recipient details in your UI.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Recipient name details.</td>
+</tr>
+<tr>
+<td><code>name.cannotHavePatronymicName</code></td>
+<td><code>boolean,null</code></td>
+<td>No</td>
+<td>Indicates if the recipient cannot have a patronymic name (when applicable).</td>
+</tr>
+<tr>
+<td><code>name.familyName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient surname.</td>
+</tr>
+<tr>
+<td><code>name.fullName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient full name.</td>
+</tr>
+<tr>
+<td><code>name.givenName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient first name.</td>
+</tr>
+<tr>
+<td><code>name.middleName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient middle name.</td>
+</tr>
+<tr>
+<td><code>name.patronymicName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient patronymic name (when applicable).</td>
+</tr>
+<tr>
+<td><code>ownedByCustomer</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Inidicates if recipient account belongs to profile owner.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Specific profile that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account type.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>The details for the ultimate beneficiary of this recipient.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.accountNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary account number.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank code.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank name.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary name.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name.fullName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary's full name.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-bad-request-validation-error" class="status" data-status="4xx">400: Bad Request, validation error</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of validation errors.</td>
+</tr>
+<tr>
+<td><code>errors[].arguments</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Field with error as well as input value.</td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Error code (for example, <code>NOT_VALID</code>).</td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Human-readable error message.</td>
+</tr>
+<tr>
+<td><code>errors[].path</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Field associated with the error.</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Timestamp of occurrence (ISO-8601 timestamp).</td>
+</tr>
+</tbody>
+</table>
+<h5 id="401-unauthorized" class="status" data-status="4xx">401: Unauthorized</h5>
+<p><code>application/json</code></p>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-accounts" class="operation" data-method="get"><code>GET</code> /accounts</h3>
+<p>Operation ID: <code>recipientList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>creatorId</code></td>
+<td><code>query</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Creator of the account.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>query</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Filters by the personal or business profile that created the account. Defaults to the personal profile.</td>
+</tr>
+<tr>
+<td><code>profile</code></td>
+<td><code>query</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Alias for <code>profileId</code>.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Filters the response by target currency. Useful for presenting a list of recipients to your customer when they have already indicated the target currency in your flow. Supports comma-separated values (for example, <code>USD,GBP</code>).</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td><code>query</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Filters by whether the selected profile is active. Defaults to <code>true</code>.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Filters the response by account type. Supports comma-separated values (for example, <code>iban,swift_code</code>).</td>
+</tr>
+<tr>
+<td><code>ownedByCustomer</code></td>
+<td><code>query</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Filters the response by whether the account is owned by the customer. Leave out to retrieve all accounts.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><code>query</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>The number of accounts returned in a page of the response. Defaults to 20 (the maximum).</td>
+</tr>
+<tr>
+<td><code>seekPosition</code></td>
+<td><code>query</code></td>
+<td><code>integer,null (int64)</code></td>
+<td>No</td>
+<td>For pagination, use the value from the <code>seekPositionForNext</code> field of the previous response to retrieve the next page.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Controls the sorting strategy for the response. Uses comma-separated options (either <code>id</code> or <code>currency</code> first, followed by <code>asc</code> or <code>desc</code> for direction). - <code>?sort=id,asc</code> sorts in ascending order by <code>id</code>. - <code>?sort=id,desc</code> sorts in descending order by <code>id</code>. - <code>?sort=currency,asc</code> sorts in ascending order by currency.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-paginated-list-of-recipient-accounts" class="status" data-status="2xx">200: Paginated list of recipient accounts</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>content</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>List of recipient accounts returned for this page.</td>
+</tr>
+<tr>
+<td><code>content[].accountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Summary of account details for ease of lookup. Can be used to display recipient details in your UI.</td>
+</tr>
+<tr>
+<td><code>content[].active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of the recipient account.</td>
+</tr>
+<tr>
+<td><code>content[].commonFieldMap</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Map of key lookup fields for the account.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains verification results for the recipient's details. Only populated for currencies with recipient verification enabled (CNY, KRW, INR, IDR, EUR). See the Recipient verification guides for details about how to handle this verification data by currency.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.acceptedAt</code></td>
+<td><code>string,null (date-time)</code></td>
+<td>No</td>
+<td>Timestamp indicating date and time of outcome acceptance. Value is <code>null</code> until acceptance received.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.acceptedOutcomes</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we've received an explicit customer acceptance.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of confirmation outcomes. Currently, it is safe to assume there is only one element in the outcomes array.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].fieldsChecked</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Fields used to confirm the account.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Customer-facing message about the outcome of the check.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].outcome</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The actual outcome of the confirmation check. Possible values: <code>SUCCESS</code>, <code>PARTIAL_FAILURE</code>, <code>FAILURE</code>, <code>COULD_NOT_CHECK</code>.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].providedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name the customer provided when creating the recipient account. Only populated for <code>NAME_MATCHING</code> and <code>NAME_RESOLUTION</code> types for certain outcomes.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].recommendedUpdates</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Shows the correct values for some of the fields checked.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].recommendedUpdates[].path</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The field path to update.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].recommendedUpdates[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The recommended value for the field.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].requiresCustomerAcceptance</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we require customer acceptance. The value for this field (<code>true</code> or <code>false</code>) depends on the currency and the nature of the confirmation. If <code>true</code>, you must present your customer with the ability to accept or decline the confirmation result.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].resolvedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name that we resolved during name matching or name resolution.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].timestamp</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the confirmation check was performed.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.outcomes[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of confirmation. Possible values: <code>ACCOUNT_EXISTENCE</code>, <code>NAME_MATCHING</code>, <code>NAME_RESOLUTION</code>.</td>
+</tr>
+<tr>
+<td><code>content[].confirmations.quoteId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>If the confirmation check was run as part of a quote compatibility check, then the <code>quoteId</code> is included in the result. If <code>quoteId</code> is present, the outcome acceptance needs the <code>quoteId</code> to be specified as well.</td>
+</tr>
+<tr>
+<td><code>content[].country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2-character country code.</td>
+</tr>
+<tr>
+<td><code>content[].creatorId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Account entity that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>content[].currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3-character currency code.</td>
+</tr>
+<tr>
+<td><code>content[].details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains the details of the recipient account specific to its currency and type. The fields required (in the request) or present (in the response) vary depending on currency route and recipient type (for example, sort code, IBAN, SWIFT, email).</td>
+</tr>
+<tr>
+<td><code>content[].details.accountNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient bank account number (GBP example).</td>
+</tr>
+<tr>
+<td><code>content[].details.hashedByLooseHashAlgorithm</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account hash.</td>
+</tr>
+<tr>
+<td><code>content[].details.reference</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient reference (applies for some routes).</td>
+</tr>
+<tr>
+<td><code>content[].details.sortCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient bank sort code (GBP example).</td>
+</tr>
+<tr>
+<td><code>content[].displayFields</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Lookup fields (key/label/value) for rendering in your front-end. Allows you to build a UI containing all the dynamic fields for a recipient individually.</td>
+</tr>
+<tr>
+<td><code>content[].displayFields[].key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier key name.</td>
+</tr>
+<tr>
+<td><code>content[].displayFields[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier display label.</td>
+</tr>
+<tr>
+<td><code>content[].displayFields[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier value.</td>
+</tr>
+<tr>
+<td><code>content[].hash</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account hash for tracking changes to recipient details. This is useful for re-running any validation checks on the recipient, for example against fraud engines. The hash remains constant unless the recipient's name or information in the details object changes.</td>
+</tr>
+<tr>
+<td><code>content[].id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the recipient. Use the returned id as <code>sourceAccount</code> to specify the refund recipient when creating transfers.</td>
+</tr>
+<tr>
+<td><code>content[].isInternal</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether recipient is internal.</td>
+</tr>
+<tr>
+<td><code>content[].legalEntityType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Entity type of recipient account.</td>
+</tr>
+<tr>
+<td><code>content[].longAccountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Longer account details summary. Can be used to display recipient details in your UI.</td>
+</tr>
+<tr>
+<td><code>content[].name</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Recipient name details.</td>
+</tr>
+<tr>
+<td><code>content[].name.cannotHavePatronymicName</code></td>
+<td><code>boolean,null</code></td>
+<td>No</td>
+<td>Indicates if the recipient cannot have a patronymic name (when applicable).</td>
+</tr>
+<tr>
+<td><code>content[].name.familyName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient surname.</td>
+</tr>
+<tr>
+<td><code>content[].name.fullName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient full name.</td>
+</tr>
+<tr>
+<td><code>content[].name.givenName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient first name.</td>
+</tr>
+<tr>
+<td><code>content[].name.middleName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient middle name.</td>
+</tr>
+<tr>
+<td><code>content[].name.patronymicName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient patronymic name (when applicable).</td>
+</tr>
+<tr>
+<td><code>content[].ownedByCustomer</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Inidicates if recipient account belongs to profile owner.</td>
+</tr>
+<tr>
+<td><code>content[].profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Specific profile that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>content[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account type.</td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>The details for the ultimate beneficiary of this recipient.</td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.accountNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary account number.</td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.address</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary address.</td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.address.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.bankAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank address.</td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.bankAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.bankAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.bankAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.bankAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.bankAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.bankCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank code.</td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.bankName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank name.</td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary name.</td>
+</tr>
+<tr>
+<td><code>content[].ultimateBeneficiary.name.fullName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary's full name.</td>
+</tr>
+<tr>
+<td><code>seekPositionForCurrent</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Seek position for the current page of the response. For pagination, use this value for the <code>seekPosition</code> query parameter of your next request to fetch this current page again.</td>
+</tr>
+<tr>
+<td><code>seekPositionForNext</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Seek position for the next page of the response. For pagination, use this value for the <code>seekPosition</code> query parameter of your next request to fetch the next page.</td>
+</tr>
+<tr>
+<td><code>size</code></td>
+<td><code>integer (int32)</code></td>
+<td>No</td>
+<td>Page size returned.</td>
+</tr>
+<tr>
+<td><code>sort</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Sort metadata.</td>
+</tr>
+<tr>
+<td><code>sort.empty</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sort.sorted</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>sort.unsorted</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;content&quot;: [
+    {
+      &quot;accountSummary&quot;: &quot;(04-00-75) 37778842&quot;,
+      &quot;active&quot;: true,
+      &quot;commonFieldMap&quot;: {
+        &quot;accountNumberField&quot;: &quot;accountNumber&quot;,
+        &quot;bankCodeField&quot;: &quot;sortCode&quot;
+      },
+      &quot;country&quot;: &quot;GB&quot;,
+      &quot;creatorId&quot;: 41000000,
+      &quot;currency&quot;: &quot;GBP&quot;,
+      &quot;details&quot;: {
+        &quot;accountNumber&quot;: &quot;37778842&quot;,
+        &quot;hashedByLooseHashAlgorithm&quot;: &quot;ad245621b974efa3ef870895c3wer419a3f01af18a8a5790b47645dba6304194&quot;,
+        &quot;reference&quot;: null,
+        &quot;sortCode&quot;: &quot;040075&quot;
+      },
+      &quot;displayFields&quot;: [
+        {
+          &quot;key&quot;: &quot;details/sortCode&quot;,
+          &quot;label&quot;: &quot;UK sort code&quot;,
+          &quot;value&quot;: &quot;04-00-75&quot;
+        },
+        {
+          &quot;key&quot;: &quot;details/accountNumber&quot;,
+          &quot;label&quot;: &quot;Account number&quot;,
+          &quot;value&quot;: &quot;37778842&quot;
+        }
+      ],
+      &quot;hash&quot;: &quot;666ef880f8aa6113fa112ba6531d3ed2c26dd9fgbd7de5136bfb827a6e800479&quot;,
+      &quot;id&quot;: 40000000,
+      &quot;isInternal&quot;: false,
+      &quot;legalEntityType&quot;: &quot;PERSON&quot;,
+      &quot;longAccountSummary&quot;: &quot;GBP account ending in 8842&quot;,
+      &quot;name&quot;: {
+        &quot;cannotHavePatronymicName&quot;: null,
+        &quot;familyName&quot;: null,
+        &quot;fullName&quot;: &quot;John Doe&quot;,
+        &quot;givenName&quot;: null,
+        &quot;middleName&quot;: null,
+        &quot;patronymicName&quot;: null
+      },
+      &quot;ownedByCustomer&quot;: false,
+      &quot;profileId&quot;: 30000000,
+      &quot;type&quot;: &quot;SortCode&quot;
+    }
+  ],
+  &quot;seekPositionForCurrent&quot;: 40000000,
+  &quot;seekPositionForNext&quot;: 40000001,
+  &quot;size&quot;: 20,
+  &quot;sort&quot;: {
+    &quot;empty&quot;: true,
+    &quot;sorted&quot;: false,
+    &quot;unsorted&quot;: true
+  }
+}
+</code></pre>
+<h5 id="401-unauthorized-1" class="status" data-status="4xx">401: Unauthorized</h5>
+<h5 id="403-forbidden" class="status" data-status="4xx">403: Forbidden</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-accountsaccountid" class="operation" data-method="get"><code>GET</code> /accounts/{accountId}</h3>
+<p>Operation ID: <code>recipientGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Recipient account ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-recipient-account-details" class="status" data-status="2xx">200: Recipient account details</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Summary of account details for ease of lookup. Can be used to display recipient details in your UI.</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of the recipient account.</td>
+</tr>
+<tr>
+<td><code>commonFieldMap</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Map of key lookup fields for the account.</td>
+</tr>
+<tr>
+<td><code>confirmations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains verification results for the recipient's details. Only populated for currencies with recipient verification enabled (CNY, KRW, INR, IDR, EUR). See the Recipient verification guides for details about how to handle this verification data by currency.</td>
+</tr>
+<tr>
+<td><code>confirmations.acceptedAt</code></td>
+<td><code>string,null (date-time)</code></td>
+<td>No</td>
+<td>Timestamp indicating date and time of outcome acceptance. Value is <code>null</code> until acceptance received.</td>
+</tr>
+<tr>
+<td><code>confirmations.acceptedOutcomes</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we've received an explicit customer acceptance.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of confirmation outcomes. Currently, it is safe to assume there is only one element in the outcomes array.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].fieldsChecked</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Fields used to confirm the account.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Customer-facing message about the outcome of the check.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].outcome</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The actual outcome of the confirmation check. Possible values: <code>SUCCESS</code>, <code>PARTIAL_FAILURE</code>, <code>FAILURE</code>, <code>COULD_NOT_CHECK</code>.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].providedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name the customer provided when creating the recipient account. Only populated for <code>NAME_MATCHING</code> and <code>NAME_RESOLUTION</code> types for certain outcomes.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Shows the correct values for some of the fields checked.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates[].path</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The field path to update.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The recommended value for the field.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].requiresCustomerAcceptance</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we require customer acceptance. The value for this field (<code>true</code> or <code>false</code>) depends on the currency and the nature of the confirmation. If <code>true</code>, you must present your customer with the ability to accept or decline the confirmation result.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].resolvedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name that we resolved during name matching or name resolution.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].timestamp</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the confirmation check was performed.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of confirmation. Possible values: <code>ACCOUNT_EXISTENCE</code>, <code>NAME_MATCHING</code>, <code>NAME_RESOLUTION</code>.</td>
+</tr>
+<tr>
+<td><code>confirmations.quoteId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>If the confirmation check was run as part of a quote compatibility check, then the <code>quoteId</code> is included in the result. If <code>quoteId</code> is present, the outcome acceptance needs the <code>quoteId</code> to be specified as well.</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2-character country code.</td>
+</tr>
+<tr>
+<td><code>creatorId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Account entity that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3-character currency code.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains the details of the recipient account specific to its currency and type. The fields required (in the request) or present (in the response) vary depending on currency route and recipient type (for example, sort code, IBAN, SWIFT, email).</td>
+</tr>
+<tr>
+<td><code>details.accountNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient bank account number (GBP example).</td>
+</tr>
+<tr>
+<td><code>details.hashedByLooseHashAlgorithm</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account hash.</td>
+</tr>
+<tr>
+<td><code>details.reference</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient reference (applies for some routes).</td>
+</tr>
+<tr>
+<td><code>details.sortCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient bank sort code (GBP example).</td>
+</tr>
+<tr>
+<td><code>displayFields</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Lookup fields (key/label/value) for rendering in your front-end. Allows you to build a UI containing all the dynamic fields for a recipient individually.</td>
+</tr>
+<tr>
+<td><code>displayFields[].key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier key name.</td>
+</tr>
+<tr>
+<td><code>displayFields[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier display label.</td>
+</tr>
+<tr>
+<td><code>displayFields[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier value.</td>
+</tr>
+<tr>
+<td><code>hash</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account hash for tracking changes to recipient details. This is useful for re-running any validation checks on the recipient, for example against fraud engines. The hash remains constant unless the recipient's name or information in the details object changes.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the recipient. Use the returned id as <code>sourceAccount</code> to specify the refund recipient when creating transfers.</td>
+</tr>
+<tr>
+<td><code>isInternal</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether recipient is internal.</td>
+</tr>
+<tr>
+<td><code>legalEntityType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Entity type of recipient account.</td>
+</tr>
+<tr>
+<td><code>longAccountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Longer account details summary. Can be used to display recipient details in your UI.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Recipient name details.</td>
+</tr>
+<tr>
+<td><code>name.cannotHavePatronymicName</code></td>
+<td><code>boolean,null</code></td>
+<td>No</td>
+<td>Indicates if the recipient cannot have a patronymic name (when applicable).</td>
+</tr>
+<tr>
+<td><code>name.familyName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient surname.</td>
+</tr>
+<tr>
+<td><code>name.fullName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient full name.</td>
+</tr>
+<tr>
+<td><code>name.givenName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient first name.</td>
+</tr>
+<tr>
+<td><code>name.middleName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient middle name.</td>
+</tr>
+<tr>
+<td><code>name.patronymicName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient patronymic name (when applicable).</td>
+</tr>
+<tr>
+<td><code>ownedByCustomer</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Inidicates if recipient account belongs to profile owner.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Specific profile that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account type.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>The details for the ultimate beneficiary of this recipient.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.accountNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary account number.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank code.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank name.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary name.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name.fullName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary's full name.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="remove">remove</h2>
+<h3 id="delete-accountsaccountid" class="operation" data-method="delete"><code>DELETE</code> /accounts/{accountId}</h3>
+<p>Operation ID: <code>recipientDeactivate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Recipient account ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-recipient-returned-with-activefalse" class="status" data-status="2xx">200: Recipient returned with <code>active=false</code></h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Summary of account details for ease of lookup. Can be used to display recipient details in your UI.</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of the recipient account.</td>
+</tr>
+<tr>
+<td><code>commonFieldMap</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Map of key lookup fields for the account.</td>
+</tr>
+<tr>
+<td><code>confirmations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains verification results for the recipient's details. Only populated for currencies with recipient verification enabled (CNY, KRW, INR, IDR, EUR). See the Recipient verification guides for details about how to handle this verification data by currency.</td>
+</tr>
+<tr>
+<td><code>confirmations.acceptedAt</code></td>
+<td><code>string,null (date-time)</code></td>
+<td>No</td>
+<td>Timestamp indicating date and time of outcome acceptance. Value is <code>null</code> until acceptance received.</td>
+</tr>
+<tr>
+<td><code>confirmations.acceptedOutcomes</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we've received an explicit customer acceptance.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of confirmation outcomes. Currently, it is safe to assume there is only one element in the outcomes array.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].fieldsChecked</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Fields used to confirm the account.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Customer-facing message about the outcome of the check.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].outcome</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The actual outcome of the confirmation check. Possible values: <code>SUCCESS</code>, <code>PARTIAL_FAILURE</code>, <code>FAILURE</code>, <code>COULD_NOT_CHECK</code>.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].providedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name the customer provided when creating the recipient account. Only populated for <code>NAME_MATCHING</code> and <code>NAME_RESOLUTION</code> types for certain outcomes.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Shows the correct values for some of the fields checked.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates[].path</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The field path to update.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The recommended value for the field.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].requiresCustomerAcceptance</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we require customer acceptance. The value for this field (<code>true</code> or <code>false</code>) depends on the currency and the nature of the confirmation. If <code>true</code>, you must present your customer with the ability to accept or decline the confirmation result.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].resolvedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name that we resolved during name matching or name resolution.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].timestamp</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the confirmation check was performed.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of confirmation. Possible values: <code>ACCOUNT_EXISTENCE</code>, <code>NAME_MATCHING</code>, <code>NAME_RESOLUTION</code>.</td>
+</tr>
+<tr>
+<td><code>confirmations.quoteId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>If the confirmation check was run as part of a quote compatibility check, then the <code>quoteId</code> is included in the result. If <code>quoteId</code> is present, the outcome acceptance needs the <code>quoteId</code> to be specified as well.</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2-character country code.</td>
+</tr>
+<tr>
+<td><code>creatorId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Account entity that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3-character currency code.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains the details of the recipient account specific to its currency and type. The fields required (in the request) or present (in the response) vary depending on currency route and recipient type (for example, sort code, IBAN, SWIFT, email).</td>
+</tr>
+<tr>
+<td><code>details.accountNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient bank account number (GBP example).</td>
+</tr>
+<tr>
+<td><code>details.hashedByLooseHashAlgorithm</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account hash.</td>
+</tr>
+<tr>
+<td><code>details.reference</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient reference (applies for some routes).</td>
+</tr>
+<tr>
+<td><code>details.sortCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient bank sort code (GBP example).</td>
+</tr>
+<tr>
+<td><code>displayFields</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Lookup fields (key/label/value) for rendering in your front-end. Allows you to build a UI containing all the dynamic fields for a recipient individually.</td>
+</tr>
+<tr>
+<td><code>displayFields[].key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier key name.</td>
+</tr>
+<tr>
+<td><code>displayFields[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier display label.</td>
+</tr>
+<tr>
+<td><code>displayFields[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier value.</td>
+</tr>
+<tr>
+<td><code>hash</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account hash for tracking changes to recipient details. This is useful for re-running any validation checks on the recipient, for example against fraud engines. The hash remains constant unless the recipient's name or information in the details object changes.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the recipient. Use the returned id as <code>sourceAccount</code> to specify the refund recipient when creating transfers.</td>
+</tr>
+<tr>
+<td><code>isInternal</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether recipient is internal.</td>
+</tr>
+<tr>
+<td><code>legalEntityType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Entity type of recipient account.</td>
+</tr>
+<tr>
+<td><code>longAccountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Longer account details summary. Can be used to display recipient details in your UI.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Recipient name details.</td>
+</tr>
+<tr>
+<td><code>name.cannotHavePatronymicName</code></td>
+<td><code>boolean,null</code></td>
+<td>No</td>
+<td>Indicates if the recipient cannot have a patronymic name (when applicable).</td>
+</tr>
+<tr>
+<td><code>name.familyName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient surname.</td>
+</tr>
+<tr>
+<td><code>name.fullName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient full name.</td>
+</tr>
+<tr>
+<td><code>name.givenName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient first name.</td>
+</tr>
+<tr>
+<td><code>name.middleName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient middle name.</td>
+</tr>
+<tr>
+<td><code>name.patronymicName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient patronymic name (when applicable).</td>
+</tr>
+<tr>
+<td><code>ownedByCustomer</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Inidicates if recipient account belongs to profile owner.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Specific profile that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account type.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>The details for the ultimate beneficiary of this recipient.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.accountNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary account number.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank code.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank name.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary name.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name.fullName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary's full name.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="update">update</h2>
+<h3 id="patch-accountsaccountidconfirmations" class="operation" data-method="patch"><code>PATCH</code> /accounts/{accountId}/confirmations</h3>
+<p>Operation ID: <code>recipientConfirmationsAccept</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Recipient account ID.</td>
+</tr>
+<tr>
+<td><code>quoteId</code></td>
+<td><code>query</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Required if the confirmation result contained a <code>quoteId</code>.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>acceptedOutcomes</code></td>
+<td><code>boolean</code></td>
+<td>Yes</td>
+<td>Set to <code>true</code> to indicate the customer accepted the confirmation outcome.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-recipient-with-updated-confirmation-status" class="status" data-status="2xx">200: Recipient with updated confirmation status</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Summary of account details for ease of lookup. Can be used to display recipient details in your UI.</td>
+</tr>
+<tr>
+<td><code>active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Status of the recipient account.</td>
+</tr>
+<tr>
+<td><code>commonFieldMap</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Map of key lookup fields for the account.</td>
+</tr>
+<tr>
+<td><code>confirmations</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains verification results for the recipient's details. Only populated for currencies with recipient verification enabled (CNY, KRW, INR, IDR, EUR). See the Recipient verification guides for details about how to handle this verification data by currency.</td>
+</tr>
+<tr>
+<td><code>confirmations.acceptedAt</code></td>
+<td><code>string,null (date-time)</code></td>
+<td>No</td>
+<td>Timestamp indicating date and time of outcome acceptance. Value is <code>null</code> until acceptance received.</td>
+</tr>
+<tr>
+<td><code>confirmations.acceptedOutcomes</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we've received an explicit customer acceptance.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Array of confirmation outcomes. Currently, it is safe to assume there is only one element in the outcomes array.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].fieldsChecked</code></td>
+<td><code>array of string</code></td>
+<td>No</td>
+<td>Fields used to confirm the account.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Customer-facing message about the outcome of the check.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].outcome</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The actual outcome of the confirmation check. Possible values: <code>SUCCESS</code>, <code>PARTIAL_FAILURE</code>, <code>FAILURE</code>, <code>COULD_NOT_CHECK</code>.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].providedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name the customer provided when creating the recipient account. Only populated for <code>NAME_MATCHING</code> and <code>NAME_RESOLUTION</code> types for certain outcomes.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Shows the correct values for some of the fields checked.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates[].path</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The field path to update.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].recommendedUpdates[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The recommended value for the field.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].requiresCustomerAcceptance</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether we require customer acceptance. The value for this field (<code>true</code> or <code>false</code>) depends on the currency and the nature of the confirmation. If <code>true</code>, you must present your customer with the ability to accept or decline the confirmation result.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].resolvedName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name that we resolved during name matching or name resolution.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].timestamp</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the confirmation check was performed.</td>
+</tr>
+<tr>
+<td><code>confirmations.outcomes[].type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The type of confirmation. Possible values: <code>ACCOUNT_EXISTENCE</code>, <code>NAME_MATCHING</code>, <code>NAME_RESOLUTION</code>.</td>
+</tr>
+<tr>
+<td><code>confirmations.quoteId</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>If the confirmation check was run as part of a quote compatibility check, then the <code>quoteId</code> is included in the result. If <code>quoteId</code> is present, the outcome acceptance needs the <code>quoteId</code> to be specified as well.</td>
+</tr>
+<tr>
+<td><code>country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2-character country code.</td>
+</tr>
+<tr>
+<td><code>creatorId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Account entity that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3-character currency code.</td>
+</tr>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contains the details of the recipient account specific to its currency and type. The fields required (in the request) or present (in the response) vary depending on currency route and recipient type (for example, sort code, IBAN, SWIFT, email).</td>
+</tr>
+<tr>
+<td><code>details.accountNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient bank account number (GBP example).</td>
+</tr>
+<tr>
+<td><code>details.hashedByLooseHashAlgorithm</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account hash.</td>
+</tr>
+<tr>
+<td><code>details.reference</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient reference (applies for some routes).</td>
+</tr>
+<tr>
+<td><code>details.sortCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient bank sort code (GBP example).</td>
+</tr>
+<tr>
+<td><code>displayFields</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Lookup fields (key/label/value) for rendering in your front-end. Allows you to build a UI containing all the dynamic fields for a recipient individually.</td>
+</tr>
+<tr>
+<td><code>displayFields[].key</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier key name.</td>
+</tr>
+<tr>
+<td><code>displayFields[].label</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier display label.</td>
+</tr>
+<tr>
+<td><code>displayFields[].value</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account identifier value.</td>
+</tr>
+<tr>
+<td><code>hash</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account hash for tracking changes to recipient details. This is useful for re-running any validation checks on the recipient, for example against fraud engines. The hash remains constant unless the recipient's name or information in the details object changes.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the recipient. Use the returned id as <code>sourceAccount</code> to specify the refund recipient when creating transfers.</td>
+</tr>
+<tr>
+<td><code>isInternal</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Indicates whether recipient is internal.</td>
+</tr>
+<tr>
+<td><code>legalEntityType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Entity type of recipient account.</td>
+</tr>
+<tr>
+<td><code>longAccountSummary</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Longer account details summary. Can be used to display recipient details in your UI.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Recipient name details.</td>
+</tr>
+<tr>
+<td><code>name.cannotHavePatronymicName</code></td>
+<td><code>boolean,null</code></td>
+<td>No</td>
+<td>Indicates if the recipient cannot have a patronymic name (when applicable).</td>
+</tr>
+<tr>
+<td><code>name.familyName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient surname.</td>
+</tr>
+<tr>
+<td><code>name.fullName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient full name.</td>
+</tr>
+<tr>
+<td><code>name.givenName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient first name.</td>
+</tr>
+<tr>
+<td><code>name.middleName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient middle name.</td>
+</tr>
+<tr>
+<td><code>name.patronymicName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Recipient patronymic name (when applicable).</td>
+</tr>
+<tr>
+<td><code>ownedByCustomer</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Inidicates if recipient account belongs to profile owner.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Specific profile that owns the recipient account.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Recipient account type.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>The details for the ultimate beneficiary of this recipient.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.accountNumber</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary account number.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.address.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress</code></td>
+<td><code>object,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank address.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.country</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.firstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankAddress.state</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankCode</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank code.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.bankName</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Ultimate beneficiary bank name.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary name.</td>
+</tr>
+<tr>
+<td><code>ultimateBeneficiary.name.fullName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Ultimate beneficiary's full name.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-5" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

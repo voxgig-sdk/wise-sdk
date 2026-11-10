@@ -1,0 +1,90 @@
+{
+  "existing": {
+    "payment_instrument": {
+      "PAYMENT_INSTRUMENT00": {
+        "accountHolderName": "s78",
+        "accountNumber": "s79",
+        "accountOwnerDetails": {},
+        "accountType": "s7b",
+        "bankCode": "s7c",
+        "bankName": "s7d",
+        "branchCode": "s7e",
+        "disconnectReason": "s7f",
+        "id": "PAYMENT_INSTRUMENT00",
+        "reference": "s81",
+        "status": "s82",
+        "type": "s83",
+        "profile_id": "PROFILE01"
+      },
+      "PAYMENT_INSTRUMENT01": {
+        "accountHolderName": "sf0",
+        "accountNumber": "sf1",
+        "accountOwnerDetails": {},
+        "accountType": "sf3",
+        "bankCode": "sf4",
+        "bankName": "sf5",
+        "branchCode": "sf6",
+        "disconnectReason": "sf7",
+        "id": "PAYMENT_INSTRUMENT01",
+        "reference": "sf9",
+        "status": "sfa",
+        "type": "sfb",
+        "profile_id": "PROFILE01"
+      },
+      "PAYMENT_INSTRUMENT02": {
+        "accountHolderName": "s168",
+        "accountNumber": "s169",
+        "accountOwnerDetails": {},
+        "accountType": "s16b",
+        "bankCode": "s16c",
+        "bankName": "s16d",
+        "branchCode": "s16e",
+        "disconnectReason": "s16f",
+        "id": "PAYMENT_INSTRUMENT02",
+        "reference": "s171",
+        "status": "s172",
+        "type": "s173",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "payment_instrument": {
+      "payment_instrument_ref01": {
+        "accountHolderName": "s1e0",
+        "accountNumber": "s1e1",
+        "accountOwnerDetails": {},
+        "accountType": "s1e3",
+        "bankCode": "s1e4",
+        "bankName": "s1e5",
+        "branchCode": "s1e6",
+        "disconnectReason": "s1e7",
+        "reference": "s1e9",
+        "status": "s1ea",
+        "type": "s1eb"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/payment-instruments/{paymentInstrumentId}/manual-confirmation": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /profiles/{profileId}/payment-instruments": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/payment-instruments/{paymentInstrumentId}/payins": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/payment-instruments/{paymentInstrumentId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

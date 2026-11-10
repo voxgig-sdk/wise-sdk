@@ -1,0 +1,63 @@
+{
+  "existing": {
+    "ott": {
+      "OTT00": {
+        "actionType": "s32",
+        "challenges": [],
+        "oneTimeToken": "s34",
+        "userId": 53,
+        "validity": 54,
+        "id": "OTT00"
+      },
+      "OTT01": {
+        "actionType": "s64",
+        "challenges": [],
+        "oneTimeToken": "s66",
+        "userId": 103,
+        "validity": 104,
+        "id": "OTT01"
+      },
+      "OTT02": {
+        "actionType": "s96",
+        "challenges": [],
+        "oneTimeToken": "s98",
+        "userId": 153,
+        "validity": 154,
+        "id": "OTT02"
+      }
+    }
+  },
+  "new": {
+    "ott": {
+      "ott_ref01": {
+        "actionType": "sc8",
+        "challenges": [],
+        "oneTimeToken": "sca",
+        "userId": 203,
+        "validity": 204
+      }
+    }
+  },
+  "requests": {
+    "POST /one-time-token/sms/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /one-time-token/voice/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "POST /one-time-token/whatsapp/verify": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /one-time-token/status": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+# BasicBankAccountDetailFlow
+
+main: kit: flow: BasicBankAccountDetailFlow:
+{
+  entity: "bank_account_detail",
+  kind: "basic",
+  name: "BasicBankAccountDetailFlow",
+  step: [
+    {
+      i: {
+        ref: "bank_account_detail_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicBankAccountDetailFlow"
+}

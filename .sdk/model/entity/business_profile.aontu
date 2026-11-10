@@ -1,0 +1,428 @@
+# Entity: business_profile
+
+main: kit: entity: business_profile: {
+
+  alias: field: {}
+
+  fields: {
+    abn: {
+      h: "Abn"
+      n: "abn"
+      r: false
+      sh: "Australian Business Number (only for Australian businesses)."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    acn: {
+      h: "Acn"
+      n: "acn"
+      r: false
+      sh: "Australian Company Number (only for Australian businesses)."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    actorEmail: {
+      h: "Actor Email"
+      n: "actorEmail"
+      r: false
+      sh: "Email of the actor."
+      t: "`$STRING`"
+    }
+    address: {
+      h: "Address"
+      n: "address"
+      r: false
+      sh: "Main registered address of the business."
+      t: "`$OBJECT`"
+    }
+    arbn: {
+      h: "Arbn"
+      n: "arbn"
+      r: false
+      sh: "Australian Registered Body Number (only for Australian businesses)."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    businessFreeFormDescription: {
+      h: "Business Free Form Description"
+      n: "businessFreeFormDescription"
+      r: false
+      sh: "Free-form description of the business activities."
+      t: "`$STRING`"
+    }
+    businessName: {
+      h: "Business Name"
+      n: "businessName"
+      r: false
+      sh: "Registered business name."
+      t: "`$STRING`"
+    }
+    businessNameInKatakana: {
+      h: "Business Name In Katakana"
+      n: "businessNameInKatakana"
+      r: false
+      sh: "Business name in Katakana (only for Japanese businesses)."
+      t: [
+        "`$ONE`"
+        [
+          "`$STRING`"
+          "`$NULL`"
+        ]
+      ]
+    }
+    businessRepresentative: {
+      h: "Business Representative"
+      n: "businessRepresentative"
+      r: false
+      sh: "Business representative details."
+      t: "`$OBJECT`"
+    }
+    companyRole: {
+      h: "Company Role"
+      n: "companyRole"
+      r: false
+      sh: "Role of the person managing the business profile."
+      t: "`$STRING`"
+    }
+    companyType: {
+      h: "Company Type"
+      n: "companyType"
+      r: false
+      sh: "Type of company."
+      t: "`$STRING`"
+    }
+    contactDetails: {
+      h: "Contact Details"
+      n: "contactDetails"
+      op: {
+        create: {
+          req: true
+          type: "`$OBJECT`"
+        }
+        update: {
+          req: true
+          type: "`$OBJECT`"
+        }
+      }
+      r: false
+      sh: "Contact information for the business."
+      t: "`$OBJECT`"
+    }
+    createdAt: {
+      fo: "date-time"
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      sh: "Timestamp when the profile was created (ISO 8601 format)."
+      t: "`$STRING`"
+    }
+    currentState: {
+      h: "Current State"
+      n: "currentState"
+      r: false
+      sh: "Current status of this profile."
+      t: "`$STRING`"
+    }
+    descriptionOfBusiness: {
+      de: true
+      h: "Description Of Business"
+      n: "descriptionOfBusiness"
+      r: false
+      sh: "Deprecated."
+      t: "`$STRING`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: false
+      sh: "Primary email address for the business."
+      t: "`$STRING`"
+    }
+    externalCustomerId: {
+      h: "External Customer Id"
+      n: "externalCustomerId"
+      r: false
+      sh: "An external reference identifier mapping the customer of this profile to your system."
+      t: "`$STRING`"
+    }
+    firstLevelCategory: {
+      de: true
+      h: "First Level Category"
+      n: "firstLevelCategory"
+      r: false
+      sh: "Deprecated."
+      t: "`$STRING`"
+    }
+    fullName: {
+      h: "Full Name"
+      n: "fullName"
+      r: false
+      sh: "Full legal name of the business."
+      t: "`$STRING`"
+    }
+    id: {
+      fo: "int64"
+      h: "Id"
+      n: "id"
+      r: false
+      sh: "Unique identifier for the profile."
+      t: "`$INTEGER`"
+    }
+    industryCategories: {
+      h: "Industry Categories"
+      n: "industryCategories"
+      r: false
+      sh: "One or more industry categories classifying the business."
+      t: "`$ARRAY`"
+    }
+    operationalAddresses: {
+      h: "Operational Addresses"
+      n: "operationalAddresses"
+      r: false
+      sh: "An array of operational addresses for the business."
+      t: "`$ARRAY`"
+    }
+    publicId: {
+      h: "Public Id"
+      n: "publicId"
+      r: false
+      sh: "Publicly accessible identifier for the profile."
+      t: "`$STRING`"
+    }
+    registrationNumber: {
+      h: "Registration Number"
+      n: "registrationNumber"
+      r: false
+      sh: "Business registration number."
+      t: "`$STRING`"
+    }
+    secondLevelCategory: {
+      de: true
+      h: "Second Level Category"
+      n: "secondLevelCategory"
+      r: false
+      sh: "Deprecated."
+      t: "`$STRING`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: true
+      sh: "Type of profile."
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      fo: "date-time"
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      sh: "Timestamp when the profile was last updated (ISO 8601 format)."
+      t: "`$STRING`"
+    }
+    userId: {
+      fo: "int64"
+      h: "User Id"
+      n: "userId"
+      r: false
+      sh: "The ID of the user associated with this profile."
+      t: "`$INTEGER`"
+    }
+    webpage: {
+      h: "Webpage"
+      n: "webpage"
+      r: false
+      sh: "Business website URL."
+      t: "`$STRING`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "business_profile"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "abn"
+            "acn"
+            "actorEmail"
+            "address"
+            "arbn"
+            "businessFreeFormDescription"
+            "businessName"
+            "businessNameInKatakana"
+            "businessRepresentative"
+            "companyRole"
+            "companyType"
+            "contactDetails"
+            "externalCustomerId"
+            "firstLevelCategory"
+            "industryCategories"
+            "operationalAddresses"
+            "registrationNumber"
+            "secondLevelCategory"
+            "webpage"
+          ]
+          co: {
+            id: "POST /profiles/business-profile"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "xidempotence_uuid"
+                or: "X-idempotence-uuid"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/business-profile"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              lit: "business-profile"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "abn"
+            "acn"
+            "address"
+            "arbn"
+            "businessFreeFormDescription"
+            "businessName"
+            "businessNameInKatakana"
+            "companyRole"
+            "companyType"
+            "contactDetails"
+            "externalCustomerId"
+            "firstLevelCategory"
+            "id"
+            "industryCategories"
+            "operationalAddresses"
+            "registrationNumber"
+            "secondLevelCategory"
+            "webpage"
+          ]
+          co: {
+            id: "PUT /profiles/{profileId}/business-profile"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/profiles/{profileId}/business-profile"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "business-profile"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

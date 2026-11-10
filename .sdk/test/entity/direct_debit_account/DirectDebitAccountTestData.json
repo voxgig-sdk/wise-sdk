@@ -1,0 +1,48 @@
+{
+  "existing": {
+    "direct_debit_account": {
+      "DIRECT_DEBIT_ACCOUNT00": {
+        "currency": "s28",
+        "details": {},
+        "id": "DIRECT_DEBIT_ACCOUNT00",
+        "type": "s2b",
+        "profile_id": "PROFILE01"
+      },
+      "DIRECT_DEBIT_ACCOUNT01": {
+        "currency": "s50",
+        "details": {},
+        "id": "DIRECT_DEBIT_ACCOUNT01",
+        "type": "s53",
+        "profile_id": "PROFILE01"
+      },
+      "DIRECT_DEBIT_ACCOUNT02": {
+        "currency": "s78",
+        "details": {},
+        "id": "DIRECT_DEBIT_ACCOUNT02",
+        "type": "s7b",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "direct_debit_account": {
+      "direct_debit_account_ref01": {
+        "currency": "sa0",
+        "details": {},
+        "type": "sa3"
+      }
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/direct-debit-accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /profiles/{profileId}/direct-debit-accounts": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

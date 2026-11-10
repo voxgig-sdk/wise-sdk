@@ -1,0 +1,22 @@
+# BasicN3dsFlow
+
+main: kit: flow: BasicN3dsFlow:
+{
+  entity: "n3ds",
+  kind: "basic",
+  name: "BasicN3dsFlow",
+  step: [
+    {
+      i: {
+        ref: "n3ds_ref01"
+      }
+
+      m: {
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicN3dsFlow"
+}

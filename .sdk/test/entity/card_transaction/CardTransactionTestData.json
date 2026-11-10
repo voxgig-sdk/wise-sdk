@@ -1,0 +1,123 @@
+{
+  "existing": {
+    "card_transaction": {
+      "CARD_TRANSACTION00": {
+        "approvalCode": "sdc",
+        "arn": "sdd",
+        "authorisationMethod": "sde",
+        "balanceChannelReferenceId": "sdf",
+        "billingAmount": {},
+        "cardToken": "se1",
+        "creationTime": "se2",
+        "credits": [],
+        "debits": [],
+        "declineReason": "se5",
+        "detailedDeclineReason": "se6",
+        "fees": [],
+        "id": "CARD_TRANSACTION00",
+        "merchant": {},
+        "modificationTime": "sea",
+        "pinValidationResult": "seb",
+        "purgeTime": "sec",
+        "relayAuthorisationData": "sed",
+        "state": "see",
+        "transactionAmount": {},
+        "transactionAmountWithFees": {},
+        "type": "sf1",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01"
+      },
+      "CARD_TRANSACTION01": {
+        "approvalCode": "s1b8",
+        "arn": "s1b9",
+        "authorisationMethod": "s1ba",
+        "balanceChannelReferenceId": "s1bb",
+        "billingAmount": {},
+        "cardToken": "s1bd",
+        "creationTime": "s1be",
+        "credits": [],
+        "debits": [],
+        "declineReason": "s1c1",
+        "detailedDeclineReason": "s1c2",
+        "fees": [],
+        "id": "CARD_TRANSACTION01",
+        "merchant": {},
+        "modificationTime": "s1c6",
+        "pinValidationResult": "s1c7",
+        "purgeTime": "s1c8",
+        "relayAuthorisationData": "s1c9",
+        "state": "s1ca",
+        "transactionAmount": {},
+        "transactionAmountWithFees": {},
+        "type": "s1cd",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01"
+      },
+      "CARD_TRANSACTION02": {
+        "approvalCode": "s294",
+        "arn": "s295",
+        "authorisationMethod": "s296",
+        "balanceChannelReferenceId": "s297",
+        "billingAmount": {},
+        "cardToken": "s299",
+        "creationTime": "s29a",
+        "credits": [],
+        "debits": [],
+        "declineReason": "s29d",
+        "detailedDeclineReason": "s29e",
+        "fees": [],
+        "id": "CARD_TRANSACTION02",
+        "merchant": {},
+        "modificationTime": "s2a2",
+        "pinValidationResult": "s2a3",
+        "purgeTime": "s2a4",
+        "relayAuthorisationData": "s2a5",
+        "state": "s2a6",
+        "transactionAmount": {},
+        "transactionAmountWithFees": {},
+        "type": "s2a9",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01"
+      }
+    }
+  },
+  "new": {
+    "card_transaction": {
+      "card_transaction_ref01": {
+        "approvalCode": "s370",
+        "arn": "s371",
+        "authorisationMethod": "s372",
+        "balanceChannelReferenceId": "s373",
+        "billingAmount": {},
+        "cardToken": "s375",
+        "creationTime": "s376",
+        "credits": [],
+        "debits": [],
+        "declineReason": "s379",
+        "detailedDeclineReason": "s37a",
+        "fees": [],
+        "merchant": {},
+        "modificationTime": "s37e",
+        "pinValidationResult": "s37f",
+        "purgeTime": "s380",
+        "relayAuthorisationData": "s381",
+        "state": "s382",
+        "transactionAmount": {},
+        "transactionAmountWithFees": {},
+        "type": "s385"
+      }
+    }
+  },
+  "requests": {
+    "GET /spend/profiles/{profileId}/cards/{cardToken}/transactions": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "GET /spend/profiles/{profileId}/cards/transactions/{transactionId}": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "existing": {
+    "sca_session": {
+      "SCA_SESSION00": {
+        "profile_id": "PROFILE01",
+        "id": "SCA_SESSION00"
+      },
+      "SCA_SESSION01": {
+        "profile_id": "PROFILE01",
+        "id": "SCA_SESSION01"
+      },
+      "SCA_SESSION02": {
+        "profile_id": "PROFILE01",
+        "id": "SCA_SESSION02"
+      }
+    }
+  },
+  "new": {
+    "sca_session": {
+      "sca_session_ref01": {}
+    }
+  },
+  "requests": {
+    "POST /profiles/{profileId}/sca-sessions/authorise": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

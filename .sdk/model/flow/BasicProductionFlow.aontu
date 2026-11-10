@@ -1,0 +1,56 @@
+# BasicProductionFlow
+
+main: kit: flow: BasicProductionFlow:
+{
+  entity: "production",
+  kind: "basic",
+  name: "BasicProductionFlow",
+  step: [
+    {
+      d: {
+        profile_id: "profile01"
+      }
+
+      i: {
+        ref: "production_ref01",
+        srcdatavar: "production_ref01_data",
+        suffix: "_up0",
+        textfield: "description"
+      }
+
+      o: "update",
+      s: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-production_ref01"
+          }
+        }
+      ]
+    }
+
+    {
+      i: {
+        ref: "production_ref01",
+        srcdatavar: "production_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        id: "production01",
+        profile_id: "profile01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-production_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicProductionFlow"
+}

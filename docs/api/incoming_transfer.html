@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>IncomingTransfer | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a aria-current="page" href="../api/incoming_transfer.html">IncomingTransfer</a><div class="nav-sections"><a class="nav-section" href="#get-incoming-transfersincomingtransferid">GET /incoming-transfers/{incomingTransferId}</a></div>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="incomingtransfer">IncomingTransfer</h1>
+<p>An incoming transfer.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-incoming-transfersincomingtransferid"><code>/incoming-transfers/{incomingTransferId}</code></a></td>
+<td><code>load</code></td>
+<td>GetIncomingTransfer 200 response</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">incoming_transfer, err := client.IncomingTransfer(nil).Load(map[string]any{&quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(incoming_transfer)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local incoming_transfer, err = client:IncomingTransfer():load({ id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$incoming_transfer = $client-&gt;IncomingTransfer()-&gt;load([&quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">incoming_transfer = client.IncomingTransfer().load({&quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">incoming_transfer = client.IncomingTransfer.load({ &quot;id&quot; =&gt; &quot;example_id&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const incoming_transfer = await client.IncomingTransfer().load({ id: &quot;example_id&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountDetailsId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account details ID that received the incoming transfer.</td>
+</tr>
+<tr>
+<td><code>amounts</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Payment amount waterfall representing the flow of funds: instructed → interbankSettlement → credited.</td>
+</tr>
+<tr>
+<td><code>balanceId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Balance ID associated with the incoming transfer.</td>
+</tr>
+<tr>
+<td><code>chargeBearer</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Charge bearer code indicating who pays the transaction fees.</td>
+</tr>
+<tr>
+<td><code>creditTransferType</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>- <code>CUSTOMER_CREDIT_TRANSFER</code> - End-user or corporate payment where at least one side (debtor or creditor) is a non-financial institution.</td>
+</tr>
+<tr>
+<td><code>creditedTime</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Timestamp when the incoming transfer was credited to the balance.</td>
+</tr>
+<tr>
+<td><code>creditor</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The creditor (beneficiary) of the incoming transfer.</td>
+</tr>
+<tr>
+<td><code>debtor</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The debtor (ordering party) of the incoming transfer.</td>
+</tr>
+<tr>
+<td><code>endToEndId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>End-to-end identifier assigned by the debtor for reconciliation purposes.</td>
+</tr>
+<tr>
+<td><code>exchangeRate</code></td>
+<td><code>number</code></td>
+<td>Yes</td>
+<td>Wise's effective FX rate applied to this incoming transfer (source currency → target balance currency) as a decimal number.</td>
+</tr>
+<tr>
+<td><code>fees</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Breakdown of fees applied to the incoming transfer.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Unique identifier for the incoming transfer.</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents</code></td>
+<td><code>array</code></td>
+<td>Yes</td>
+<td>Financial institutions that previously instructed this payment (the historical chain the payment passed through before reaching Wise).</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer</code></td>
+<td>Yes</td>
+<td>Profile ID of the balance owner.</td>
+</tr>
+<tr>
+<td><code>scheme</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The payment scheme through which the incoming transfer was received.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Current state of the incoming transfer.</td>
+</tr>
+<tr>
+<td><code>uetr</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Universal End-to-End Transaction Reference.</td>
+</tr>
+<tr>
+<td><code>unstructuredReference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unstructured remittance information provided by the debtor.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="load">load</h2>
+<h3 id="get-incoming-transfersincomingtransferid" class="operation" data-method="get"><code>GET</code> /incoming-transfers/{incomingTransferId}</h3>
+<p>Operation ID: <code>GetIncomingTransfer</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>) or bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>incomingTransferId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Unique incoming transfer identifier. UUID-formatted string.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-getincomingtransfer-200-response" class="status" data-status="2xx">200: GetIncomingTransfer 200 response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>accountDetailsId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Account details ID that received the incoming transfer. A balance may have multiple account details (for example multiple IBANs). This identifies the specific one that was credited. Omitted when the payment was received via correspondent model.</td>
+</tr>
+<tr>
+<td><code>amounts</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Payment amount waterfall representing the flow of funds: instructed → interbankSettlement → credited.</td>
+</tr>
+<tr>
+<td><code>amounts.credited</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The amount credited to the creditor's Wise balance. Computed as interbankSettlement, after any FX conversion and Wise fees.</td>
+</tr>
+<tr>
+<td><code>amounts.credited.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 4217 currency code</td>
+</tr>
+<tr>
+<td><code>amounts.credited.value</code></td>
+<td><code>number (decimal)</code></td>
+<td>Yes</td>
+<td>Monetary value</td>
+</tr>
+<tr>
+<td><code>amounts.instructed</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The original amount instructed by the debtor. When not specified by scheme, it equals interbankSettlement.</td>
+</tr>
+<tr>
+<td><code>amounts.instructed.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 4217 currency code</td>
+</tr>
+<tr>
+<td><code>amounts.instructed.value</code></td>
+<td><code>number (decimal)</code></td>
+<td>Yes</td>
+<td>Monetary value</td>
+</tr>
+<tr>
+<td><code>amounts.interbankSettlement</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The amount settled between the instructing and instructed agent on the final interbank leg.</td>
+</tr>
+<tr>
+<td><code>amounts.interbankSettlement.currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 4217 currency code</td>
+</tr>
+<tr>
+<td><code>amounts.interbankSettlement.value</code></td>
+<td><code>number (decimal)</code></td>
+<td>Yes</td>
+<td>Monetary value</td>
+</tr>
+<tr>
+<td><code>balanceId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Balance ID associated with the incoming transfer. This is the balance that was credited.</td>
+</tr>
+<tr>
+<td><code>chargeBearer</code></td>
+<td><code>enum: DEBTOR, CREDITOR, SHARED, SERVICE_LEVEL</code></td>
+<td>No</td>
+<td>Charge bearer code indicating who pays the transaction fees. Omitted if not specified in the payment message.</td>
+</tr>
+<tr>
+<td><code>creditTransferType</code></td>
+<td><code>enum: CUSTOMER_CREDIT_TRANSFER, FI_CREDIT_TRANSFER</code></td>
+<td>No</td>
+<td>- <code>CUSTOMER_CREDIT_TRANSFER</code> - End-user or corporate payment where at least one side (debtor or creditor) is a non-financial institution. - <code>FI_CREDIT_TRANSFER</code> - Direct bank-to-bank settlement, liquidity movement, or cover transfer where both parties are financial institutions.</td>
+</tr>
+<tr>
+<td><code>creditedTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>Yes</td>
+<td>Timestamp when the incoming transfer was credited to the balance.</td>
+</tr>
+<tr>
+<td><code>creditor</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The creditor (beneficiary) of the incoming transfer.</td>
+</tr>
+<tr>
+<td><code>creditor.account</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Account details of the creditor</td>
+</tr>
+<tr>
+<td><code>creditor.account.number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier, IBAN, BBAN, or other scheme-specific account number.</td>
+</tr>
+<tr>
+<td><code>creditor.address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address of the creditor</td>
+</tr>
+<tr>
+<td><code>creditor.address.addressLines</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>Address lines. May be empty; up to two lines can be populated alongside structured fields.</td>
+</tr>
+<tr>
+<td><code>creditor.address.buildingNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Building number</td>
+</tr>
+<tr>
+<td><code>creditor.address.country</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 3166-1 alpha-2 country code</td>
+</tr>
+<tr>
+<td><code>creditor.address.countrySubDivision</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State, province, or region</td>
+</tr>
+<tr>
+<td><code>creditor.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal or ZIP code</td>
+</tr>
+<tr>
+<td><code>creditor.address.streetName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td><code>creditor.address.townName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>City or town</td>
+</tr>
+<tr>
+<td><code>creditor.agent</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Financial institution acting as the creditor's agent</td>
+</tr>
+<tr>
+<td><code>creditor.agent.address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Postal address. Fields are optional and populated based on what the payment rail provides.</td>
+</tr>
+<tr>
+<td><code>creditor.agent.address.addressLines</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>Address lines. May be empty; up to two lines can be populated alongside structured fields.</td>
+</tr>
+<tr>
+<td><code>creditor.agent.address.buildingNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Building number</td>
+</tr>
+<tr>
+<td><code>creditor.agent.address.country</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 3166-1 alpha-2 country code</td>
+</tr>
+<tr>
+<td><code>creditor.agent.address.countrySubDivision</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State, province, or region</td>
+</tr>
+<tr>
+<td><code>creditor.agent.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal or ZIP code</td>
+</tr>
+<tr>
+<td><code>creditor.agent.address.streetName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td><code>creditor.agent.address.townName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>City or town</td>
+</tr>
+<tr>
+<td><code>creditor.agent.bic</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>SWIFT BIC (Business Identifier Code) of the financial institution.</td>
+</tr>
+<tr>
+<td><code>creditor.agent.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the financial institution.</td>
+</tr>
+<tr>
+<td><code>creditor.agent.nationalCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Domestic clearing system membership identifier (for example UK sort code, US ABA routing number).</td>
+</tr>
+<tr>
+<td><code>creditor.agent.nationalCodeType</code></td>
+<td><code>enum: ABA, SORT_CODE</code></td>
+<td>No</td>
+<td>Identifies the domestic clearing system the nationalCode belongs to.</td>
+</tr>
+<tr>
+<td><code>creditor.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Full name of the creditor.</td>
+</tr>
+<tr>
+<td><code>debtor</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>The debtor (ordering party) of the incoming transfer.</td>
+</tr>
+<tr>
+<td><code>debtor.account</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Account details of the debtor</td>
+</tr>
+<tr>
+<td><code>debtor.account.number</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Account identifier, IBAN, BBAN, or other scheme-specific account number.</td>
+</tr>
+<tr>
+<td><code>debtor.address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address of the debtor</td>
+</tr>
+<tr>
+<td><code>debtor.address.addressLines</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>Address lines. May be empty; up to two lines can be populated alongside structured fields.</td>
+</tr>
+<tr>
+<td><code>debtor.address.buildingNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Building number</td>
+</tr>
+<tr>
+<td><code>debtor.address.country</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 3166-1 alpha-2 country code</td>
+</tr>
+<tr>
+<td><code>debtor.address.countrySubDivision</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State, province, or region</td>
+</tr>
+<tr>
+<td><code>debtor.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal or ZIP code</td>
+</tr>
+<tr>
+<td><code>debtor.address.streetName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td><code>debtor.address.townName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>City or town</td>
+</tr>
+<tr>
+<td><code>debtor.agent</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Financial institution acting as the debtor's agent</td>
+</tr>
+<tr>
+<td><code>debtor.agent.address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Postal address. Fields are optional and populated based on what the payment rail provides.</td>
+</tr>
+<tr>
+<td><code>debtor.agent.address.addressLines</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>Address lines. May be empty; up to two lines can be populated alongside structured fields.</td>
+</tr>
+<tr>
+<td><code>debtor.agent.address.buildingNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Building number</td>
+</tr>
+<tr>
+<td><code>debtor.agent.address.country</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 3166-1 alpha-2 country code</td>
+</tr>
+<tr>
+<td><code>debtor.agent.address.countrySubDivision</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State, province, or region</td>
+</tr>
+<tr>
+<td><code>debtor.agent.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal or ZIP code</td>
+</tr>
+<tr>
+<td><code>debtor.agent.address.streetName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td><code>debtor.agent.address.townName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>City or town</td>
+</tr>
+<tr>
+<td><code>debtor.agent.bic</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>SWIFT BIC (Business Identifier Code) of the financial institution.</td>
+</tr>
+<tr>
+<td><code>debtor.agent.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the financial institution.</td>
+</tr>
+<tr>
+<td><code>debtor.agent.nationalCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Domestic clearing system membership identifier (for example UK sort code, US ABA routing number).</td>
+</tr>
+<tr>
+<td><code>debtor.agent.nationalCodeType</code></td>
+<td><code>enum: ABA, SORT_CODE</code></td>
+<td>No</td>
+<td>Identifies the domestic clearing system the nationalCode belongs to.</td>
+</tr>
+<tr>
+<td><code>debtor.name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Full name of the debtor.</td>
+</tr>
+<tr>
+<td><code>endToEndId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>End-to-end identifier assigned by the debtor for reconciliation purposes. Omitted when not provided by the debtor.</td>
+</tr>
+<tr>
+<td><code>exchangeRate</code></td>
+<td><code>number (decimal)</code></td>
+<td>Yes</td>
+<td>Wise's effective FX rate applied to this incoming transfer (source currency → target balance currency) as a decimal number. 1 when no conversion was needed.</td>
+</tr>
+<tr>
+<td><code>fees</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td>Breakdown of fees applied to the incoming transfer. Contains both Wise fees and correspondent/intermediary bank fees.</td>
+</tr>
+<tr>
+<td><code>fees.correspondent</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Fees deducted by correspondent or intermediary banks before the funds reached Wise. Each entry includes the charging agent when available in the pacs message. Array is empty where there are no charges.</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>The financial institution that deducted this fee. Omitted when the charging agent is not identified in the payment message.</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Postal address. Fields are optional and populated based on what the payment rail provides.</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.address.addressLines</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>Address lines. May be empty; up to two lines can be populated alongside structured fields.</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.address.buildingNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Building number</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.address.country</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 3166-1 alpha-2 country code</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.address.countrySubDivision</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State, province, or region</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal or ZIP code</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.address.streetName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.address.townName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>City or town</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.bic</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>SWIFT BIC (Business Identifier Code) of the financial institution.</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the financial institution.</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.nationalCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Domestic clearing system membership identifier (for example UK sort code, US ABA routing number).</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].agent.nationalCodeType</code></td>
+<td><code>enum: ABA, SORT_CODE</code></td>
+<td>No</td>
+<td>Identifies the domestic clearing system the nationalCode belongs to.</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 4217 currency code.</td>
+</tr>
+<tr>
+<td><code>fees.correspondent[].value</code></td>
+<td><code>number (decimal)</code></td>
+<td>Yes</td>
+<td>Decimal fee amount deducted by the correspondent bank.</td>
+</tr>
+<tr>
+<td><code>fees.wise</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Fees charged by Wise (for example conversion fee, handling fee). Empty array when no Wise fees apply.</td>
+</tr>
+<tr>
+<td><code>fees.wise[].currency</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 4217 currency code.</td>
+</tr>
+<tr>
+<td><code>fees.wise[].type</code></td>
+<td><code>enum: CONVERSION, FIXED_HANDLING, OTHER</code></td>
+<td>Yes</td>
+<td>Category of the Wise fee. Additional fee types will be added in future versions.</td>
+</tr>
+<tr>
+<td><code>fees.wise[].value</code></td>
+<td><code>number (decimal)</code></td>
+<td>Yes</td>
+<td>Decimal fee amount.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>Unique identifier for the incoming transfer. UUID-formatted string.</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents</code></td>
+<td><code>array of object</code></td>
+<td>Yes</td>
+<td>Financial institutions that previously instructed this payment (the historical chain the payment passed through before reaching Wise). Ordered by position in the chain.</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Postal address. Fields are optional and populated based on what the payment rail provides.</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].address.addressLines</code></td>
+<td><code>array of string</code></td>
+<td>Yes</td>
+<td>Address lines. May be empty; up to two lines can be populated alongside structured fields.</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].address.buildingNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Building number</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].address.country</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>ISO 3166-1 alpha-2 country code</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].address.countrySubDivision</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State, province, or region</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal or ZIP code</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].address.streetName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Street name</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].address.townName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>City or town</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].bic</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>SWIFT BIC (Business Identifier Code) of the financial institution.</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Name of the financial institution.</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].nationalCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Domestic clearing system membership identifier (for example UK sort code, US ABA routing number).</td>
+</tr>
+<tr>
+<td><code>previousInstructingAgents[].nationalCodeType</code></td>
+<td><code>enum: ABA, SORT_CODE</code></td>
+<td>No</td>
+<td>Identifies the domestic clearing system the nationalCode belongs to.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Profile ID of the balance owner.</td>
+</tr>
+<tr>
+<td><code>scheme</code></td>
+<td><code>enum: SWIFT, CHAPS, SEPA, SEPA_INSTANT, ACH, FEDWIRE, ...</code></td>
+<td>Yes</td>
+<td>The payment scheme through which the incoming transfer was received.</td>
+</tr>
+<tr>
+<td><code>state</code></td>
+<td><code>enum: CREDITED</code></td>
+<td>Yes</td>
+<td>Current state of the incoming transfer. Additional states will be added in the future.</td>
+</tr>
+<tr>
+<td><code>uetr</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Universal End-to-End Transaction Reference. A globally unique identifier (UUID v4) assigned by the debtor agent to track the payment across the entire chain. UUID-formatted string.</td>
+</tr>
+<tr>
+<td><code>unstructuredReference</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Unstructured remittance information provided by the debtor. Free-text field carried through the payment rail.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="404-incomingtransfernotfounderror-404-response" class="status" data-status="4xx">404: IncomingTransferNotFoundError 404 response</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

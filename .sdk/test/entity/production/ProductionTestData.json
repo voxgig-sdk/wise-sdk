@@ -1,0 +1,59 @@
+{
+  "existing": {
+    "production": {
+      "PRODUCTION00": {
+        "description": "s32",
+        "errorCode": "s33",
+        "kioskId": "s34",
+        "occurredAt": "s35",
+        "status": "s36",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01",
+        "id": "PRODUCTION00"
+      },
+      "PRODUCTION01": {
+        "description": "s64",
+        "errorCode": "s65",
+        "kioskId": "s66",
+        "occurredAt": "s67",
+        "status": "s68",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01",
+        "id": "PRODUCTION01"
+      },
+      "PRODUCTION02": {
+        "description": "s96",
+        "errorCode": "s97",
+        "kioskId": "s98",
+        "occurredAt": "s99",
+        "status": "s9a",
+        "card_token": "CARD_TOKEN01",
+        "profile_id": "PROFILE01",
+        "id": "PRODUCTION02"
+      }
+    }
+  },
+  "new": {
+    "production": {
+      "production_ref01": {
+        "description": "sc8",
+        "errorCode": "sc9",
+        "kioskId": "sca",
+        "occurredAt": "scb",
+        "status": "scc"
+      }
+    }
+  },
+  "requests": {
+    "GET /spend/profiles/{profileId}/cards/{cardToken}/production": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    },
+    "PUT /spend/profiles/{profileId}/cards/{cardToken}/production": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

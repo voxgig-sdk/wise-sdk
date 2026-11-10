@@ -1,0 +1,176 @@
+# Entity: verification
+
+main: kit: entity: verification: {
+
+  alias: field: {}
+
+  fields: {
+    required_evidences: {
+      h: "Required Evidences"
+      n: "required_evidences"
+      r: false
+      sh: "List of evidence types required to complete verification."
+      t: "`$ARRAY`"
+    }
+  }
+
+  name: "verification"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "accountPurpose"
+            "accountPurposeExplanation"
+            "annualIncome"
+            "businessUseCase"
+            "incomeExplanation"
+            "intendedCountries"
+            "mainSourceOfFunding"
+            "mainSourceOfIncome"
+            "monthlyAnticipatedVolume"
+            "yearlyAnticipatedVolume"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/additional-verification/upload-evidences"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/additional-verification/upload-evidences"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "additional-verification"
+            }
+            {
+              lit: "upload-evidences"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/verification-status/required-evidences"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/verification-status/required-evidences"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "verification-status"
+            }
+            {
+              lit: "required-evidences"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.required_evidences`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

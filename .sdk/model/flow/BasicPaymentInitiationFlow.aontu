@@ -1,0 +1,47 @@
+# BasicPaymentInitiationFlow
+
+main: kit: flow: BasicPaymentInitiationFlow:
+{
+  entity: "payment_initiation",
+  kind: "basic",
+  name: "BasicPaymentInitiationFlow",
+  step: [
+    {
+      i: {
+        ref: "payment_initiation_ref01"
+      }
+
+      m: {
+        batch_group_id: "batch_group01",
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+
+    {
+      i: {
+        ref: "payment_initiation_ref01",
+        srcdatavar: "payment_initiation_ref01_data",
+        suffix: "_dt0"
+      }
+
+      m: {
+        batch_group_id: "batch_group01",
+        id: "payment_initiation01",
+        profile_id: "profile01"
+      }
+
+      o: "load",
+      v: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-payment_initiation_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaymentInitiationFlow"
+}

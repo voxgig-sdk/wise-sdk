@@ -1,0 +1,2247 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Profile | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a aria-current="page" href="../api/profile.html">Profile</a><div class="nav-sections"><a class="nav-section" href="#post-profilesprofileidpin">POST /profiles/{profileId}/pin</a>
+<a class="nav-section" href="#post-profilesprofileidverification-statusbank-transfer">POST /profiles/{profileId}/verification-status/bank-transfer</a>
+<a class="nav-section" href="#post-profilesprofileidexcess-money-account">POST /profiles/{profileId}/excess-money-account</a>
+<a class="nav-section" href="#post-profilesprofileidupdate-window">POST /profiles/{profileId}/update-window</a>
+<a class="nav-section" href="#post-profilesprofileidverification-documents">POST /profiles/{profileId}/verification-documents</a>
+<a class="nav-section" href="#post-profilesprofileidverification-statusupload-document">POST /profiles/{profileId}/verification-status/upload-document</a>
+<a class="nav-section" href="#post-profilespersonal-profile">POST /profiles/personal-profile</a>
+<a class="nav-section" href="#get-profiles">GET /profiles</a>
+<a class="nav-section" href="#get-profilesprofileidbalance-capacity">GET /profiles/{profileId}/balance-capacity</a>
+<a class="nav-section" href="#get-profilesprofileid">GET /profiles/{profileId}</a>
+<a class="nav-section" href="#get-profilesprofileidbusiness-profilebusiness-representative">GET /profiles/{profileId}/business-profile/business-representative</a>
+<a class="nav-section" href="#get-profilesprofileidmulti-currency-account">GET /profiles/{profileId}/multi-currency-account</a>
+<a class="nav-section" href="#delete-profilesprofileidpin">DELETE /profiles/{profileId}/pin</a>
+<a class="nav-section" href="#delete-profilesprofileidupdate-window">DELETE /profiles/{profileId}/update-window</a>
+<a class="nav-section" href="#put-profilesprofileidbusiness-profilebusiness-representative">PUT /profiles/{profileId}/business-profile/business-representative</a>
+<a class="nav-section" href="#put-profilesprofileidpersonal-profile">PUT /profiles/{profileId}/personal-profile</a>
+<a class="nav-section" href="#put-profilesprofileidverification-documents">PUT /profiles/{profileId}/verification-documents</a></div>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a href="../api/subscription.html">Subscription</a>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="profile">Profile</h1>
+<p>A personal or business profile, the owner of balances, recipients and transfers.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidpin"><code>/profiles/{profileId}/pin</code></a></td>
+<td><code>create</code></td>
+<td>The PIN has been successfully created</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidverification-statusbank-transfer"><code>/profiles/{profileId}/verification-status/bank-transfer</code></a></td>
+<td><code>create</code></td>
+<td>Verification status response</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidexcess-money-account"><code>/profiles/{profileId}/excess-money-account</code></a></td>
+<td><code>create</code></td>
+<td>OK - Excess money account configured successfully</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidupdate-window"><code>/profiles/{profileId}/update-window</code></a></td>
+<td><code>create</code></td>
+<td>Update window opened successfully</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidverification-documents"><code>/profiles/{profileId}/verification-documents</code></a></td>
+<td><code>create</code></td>
+<td>Identification document created successfully</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidverification-statusupload-document"><code>/profiles/{profileId}/verification-status/upload-document</code></a></td>
+<td><code>create</code></td>
+<td>No Content - Document successfully uploaded</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilespersonal-profile"><code>/profiles/personal-profile</code></a></td>
+<td><code>create</code></td>
+<td>Created personal profile</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profiles"><code>/profiles</code></a></td>
+<td><code>list</code></td>
+<td>Array of profile objects. Note that there might be more than one business profile returned in the response</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileidbalance-capacity"><code>/profiles/{profileId}/balance-capacity</code></a></td>
+<td><code>load</code></td>
+<td>OK - Successfully retrieved deposit limits</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileid"><code>/profiles/{profileId}</code></a></td>
+<td><code>load</code></td>
+<td>Profile object</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileidbusiness-profilebusiness-representative"><code>/profiles/{profileId}/business-profile/business-representative</code></a></td>
+<td><code>load</code></td>
+<td>Business representative object</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileidmulti-currency-account"><code>/profiles/{profileId}/multi-currency-account</code></a></td>
+<td><code>load</code></td>
+<td>Multi currency account object</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-profilesprofileidpin"><code>/profiles/{profileId}/pin</code></a></td>
+<td><code>remove</code></td>
+<td>The PIN has been deleted</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-profilesprofileidupdate-window"><code>/profiles/{profileId}/update-window</code></a></td>
+<td><code>remove</code></td>
+<td>Update window closed successfully</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-profilesprofileidbusiness-profilebusiness-representative"><code>/profiles/{profileId}/business-profile/business-representative</code></a></td>
+<td><code>update</code></td>
+<td>Business representative updated successfully</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-profilesprofileidpersonal-profile"><code>/profiles/{profileId}/personal-profile</code></a></td>
+<td><code>update</code></td>
+<td>Updated personal profile</td>
+</tr>
+<tr>
+<td><code>PUT</code></td>
+<td><a href="#put-profilesprofileidverification-documents"><code>/profiles/{profileId}/verification-documents</code></a></td>
+<td><code>update</code></td>
+<td>Identification document updated successfully</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">profiles, err := client.Profile(nil).List(nil, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(profiles)
+profile, err := client.Profile(nil).Load(map[string]any{&quot;id&quot;: 1}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(profile)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local profiles, err = client:Profile():list()
+local profile, err = client:Profile():load({ id = 1 })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$profiles = $client-&gt;Profile()-&gt;list();
+$profile = $client-&gt;Profile()-&gt;load([&quot;id&quot; =&gt; 1]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">profiles = client.Profile().list()
+profile = client.Profile().load({&quot;id&quot;: 1})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">profiles = client.Profile.list()
+profile = client.Profile.load({ &quot;id&quot; =&gt; 1 })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const profiles = await client.Profile().list()
+const profile = await client.Profile().load({ id: 1 })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Address</td>
+</tr>
+<tr>
+<td><code>avatar</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Avatar</td>
+</tr>
+<tr>
+<td><code>contactDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Contact Details</td>
+</tr>
+<tr>
+<td><code>createdAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Created At</td>
+</tr>
+<tr>
+<td><code>currentState</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Current State</td>
+</tr>
+<tr>
+<td><code>dateOfBirth</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date Of Birth</td>
+</tr>
+<tr>
+<td><code>email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Email</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First Name</td>
+</tr>
+<tr>
+<td><code>fullName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Full Name</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>Id</td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Last Name</td>
+</tr>
+<tr>
+<td><code>phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Phone Number</td>
+</tr>
+<tr>
+<td><code>preferredName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred Name</td>
+</tr>
+<tr>
+<td><code>publicId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Public Id</td>
+</tr>
+<tr>
+<td><code>secondaryAddresses</code></td>
+<td><code>array</code></td>
+<td>No</td>
+<td>Secondary Addresses</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Type</td>
+</tr>
+<tr>
+<td><code>updatedAt</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Updated At</td>
+</tr>
+<tr>
+<td><code>userId</code></td>
+<td><code>integer</code></td>
+<td>No</td>
+<td>User Id</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-profilesprofileidpin" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/pin</h3>
+<p>Operation ID: <code>scaPinCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>Accept-Encoding</code></td>
+<td><code>header</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>Content-Encoding</code></td>
+<td><code>header</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>X-tw-jose-method</code></td>
+<td><code>header</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/jose+json</code></p>
+<p>The request body is <code>string</code>.</p>
+<p>Example request body:</p>
+<pre><code class="language-json">&quot;&lt;JWE encrypted string&gt;&quot;
+</code></pre>
+<h4 id="responses">Responses</h4>
+<h5 id="200-the-pin-has-been-successfully-created" class="status" data-status="2xx">200: The PIN has been successfully created</h5>
+<h5 id="409-a-pin-has-already-been-created-for-this-profile" class="status" data-status="4xx">409: A PIN has already been created for this profile</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidverification-statusbank-transfer" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/verification-status/bank-transfer</h3>
+<p>Operation ID: <code>profileVerificationStatusCheck</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>source_currencies</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Comma-separated list of ISO 4217 currency codes.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-verification-status-response" class="status" data-status="2xx">200: Verification status response</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>request_id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Request identifier.</td>
+</tr>
+<tr>
+<td><code>routes</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>routes[].current_status</code></td>
+<td><code>enum: verified, not_verified</code></td>
+<td>No</td>
+<td>Current verification status. - <code>verified</code> , Profile is verified. <code>maximum_entitled_amount</code> can be ignored (note that some regional limits may still apply). - <code>not_verified</code> with <code>maximum_entitled_amount: 0</code> , Profile is not verified. Any payments from the user will be delayed by verification. - <code>not_verified</code> with <code>maximum_entitled_amount &amp;gt; 0</code> , Profile is not yet verified but the user can make payments up to a cumulative limit. Once reached, further payments may be delayed by additional verification requirements.</td>
+</tr>
+<tr>
+<td><code>routes[].maximum_entitled_amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Maximum entitled amount that can be transferred with the user's given verification state.</td>
+</tr>
+<tr>
+<td><code>routes[].source_currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ISO 4217 currency code.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;request_id&quot;: &quot;e66da5f6-2456-403c-bfcb-908885ee1a61&quot;,
+  &quot;routes&quot;: [
+    {
+      &quot;current_status&quot;: &quot;verified&quot;,
+      &quot;maximum_entitled_amount&quot;: 100000,
+      &quot;source_currency&quot;: &quot;GBP&quot;
+    },
+    {
+      &quot;current_status&quot;: &quot;not_verified&quot;,
+      &quot;maximum_entitled_amount&quot;: 0,
+      &quot;source_currency&quot;: &quot;USD&quot;
+    },
+    {
+      &quot;current_status&quot;: &quot;not_verified&quot;,
+      &quot;maximum_entitled_amount&quot;: 10000,
+      &quot;source_currency&quot;: &quot;EUR&quot;
+    }
+  ]
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidexcess-money-account" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/excess-money-account</h3>
+<p>Operation ID: <code>excessMoneyAccount</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recipientId</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>ID of the recipient for excess money transfers.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-ok---excess-money-account-configured-successfully" class="status" data-status="2xx">200: OK - Excess money account configured successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>recipientId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the recipient for excess money transfers.</td>
+</tr>
+<tr>
+<td><code>userProfileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>ID of the profile.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidupdate-window" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/update-window</h3>
+<p>Operation ID: <code>profileUpdateWindowOpen</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-update-window-opened-successfully" class="status" data-status="2xx">200: Update window opened successfully</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidverification-documents" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/verification-documents</h3>
+<p>Operation ID: <code>profileVerificationDocumentCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-2">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>birthCity</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The city of birth of the customer.</td>
+</tr>
+<tr>
+<td><code>birthCountry</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2 characters ISO country code.</td>
+</tr>
+<tr>
+<td><code>employerCity</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The city of the employer. Type must be <code>EMIRATES_EMPLOYER</code>.</td>
+</tr>
+<tr>
+<td><code>employerCountry</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2 characters ISO country code. Type must be <code>EMIRATES_EMPLOYER</code>.</td>
+</tr>
+<tr>
+<td><code>employerName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The name of the employer. Type must be <code>EMIRATES_EMPLOYER</code>.</td>
+</tr>
+<tr>
+<td><code>expiryDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Document expiry date.</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Person first name in document.</td>
+</tr>
+<tr>
+<td><code>issueDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Document issue date.</td>
+</tr>
+<tr>
+<td><code>issuerCountry</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Issued by country code. For example &quot;US&quot;.</td>
+</tr>
+<tr>
+<td><code>issuerState</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Issued by state code. For example &quot;NY&quot;.</td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Person last name in document.</td>
+</tr>
+<tr>
+<td><code>nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2 characters ISO country code.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: DRIVERS_LICENCE, IDENTITY_CARD, GREEN_CARD, MY_NUMBER, PASSPORT, SSN, ...</code></td>
+<td>No</td>
+<td>Document type.</td>
+</tr>
+<tr>
+<td><code>uniqueIdentifier</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Document number or value. Must be digits only for <code>SSN</code> or <code>FINANCIAL_CAPACITY_BR</code>. When using <code>FINANCIAL_CAPACITY_BR</code>, the value must contain the financial capacity amount in BRL (Brazilian Real).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-identification-document-created-successfully" class="status" data-status="2xx">200: Identification document created successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorMessage</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="422-request-could-not-be-processed-due-to-a-missing-prerequisite-returned-when-submitting-financial_capacity_br-for-a-profile-that-has-no-tax-id-on-record" class="status" data-status="4xx">422: Request could not be processed due to a missing prerequisite. Returned when submitting <code>FINANCIAL_CAPACITY_BR</code> for a profile that has no tax ID on record.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidverification-statusupload-document" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/verification-status/upload-document</h3>
+<p>Operation ID: <code>verificationUploadDocument</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID (personal or business).</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-3">Request body</h4>
+<p><code>multipart/form-data</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>documentType</code></td>
+<td><code>enum: SOURCE_OF_WEALTH, ID_PROOF, ADDRESS_PROOF, TRADING_ADDRESS_PROOF, BUSINESS_AUTH_REP_PROOF_BY_AUTH_LETTER</code></td>
+<td>Yes</td>
+<td>Type of document being uploaded. Read our guides on acceptable documents for each of the following: - Source of wealth - guide - Id Proof - <a href="https://wise.com/help/articles/2949801/how-does-wise-verify-my-identity?origin=search-ID+coument+">guide</a> - Address Proof - <a href="https://wise.com/help/articles/2949804/how-does-wise-verify-my-address?origin=search-proof+of+address+">guide</a> - Trading Address Proof - guide - Business Authorisation Letter - guide</td>
+</tr>
+<tr>
+<td><code>files</code></td>
+<td><code>string (binary)</code></td>
+<td>Yes</td>
+<td>Path of the files to be uploaded.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="204-no-content---document-successfully-uploaded" class="status" data-status="2xx">204: No Content - Document successfully uploaded</h5>
+<h5 id="400-bad-request---document-cannot-be-uploaded-in-the-current-format-check-file-size-and-extension" class="status" data-status="4xx">400: Bad Request - Document cannot be uploaded in the current format. Check file size and extension</h5>
+<h5 id="403-forbidden---the-client-is-not-authorized-to-perform-this-request" class="status" data-status="4xx">403: Forbidden - The client is not authorized to perform this request</h5>
+<h5 id="409-conflict---document-is-already-uploaded-and-cannot-be-re-submitted-before-review" class="status" data-status="4xx">409: Conflict - Document is already uploaded and cannot be re-submitted before review</h5>
+<h5 id="413-payload-too-large---requested-file-size-is-too-large" class="status" data-status="4xx">413: Payload Too Large - Requested file size is too large</h5>
+<h5 id="415-unsupported-media-type---request-payload-is-in-an-unsupported-format" class="status" data-status="4xx">415: Unsupported Media Type - Request payload is in an unsupported format</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-5" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilespersonal-profile" class="operation" data-method="post"><code>POST</code> /profiles/personal-profile</h3>
+<p>Operation ID: <code>profilePersonalCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-idempotence-uuid</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Unique idempotency key for the request.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-4">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>First line of address.</td>
+</tr>
+<tr>
+<td><code>address.city</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>address.countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>3 letter country code (lower case).</td>
+</tr>
+<tr>
+<td><code>address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code.</td>
+</tr>
+<tr>
+<td><code>address.stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code. Required for US, CA, BR and AU addresses.</td>
+</tr>
+<tr>
+<td><code>contactDetails</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>contactDetails.email</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Contact email address. Please speak with your integration account manager for details on how customer communication is handled for your integration.</td>
+</tr>
+<tr>
+<td><code>contactDetails.phoneNumber</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Contact phone number in international phone number format, example &quot;+1408XXXXXXX&quot;.</td>
+</tr>
+<tr>
+<td><code>dateOfBirth</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Date of birth.</td>
+</tr>
+<tr>
+<td><code>externalCustomerId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external reference identifier mapping the customer of this profile to your system.</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>First name (including middle names).</td>
+</tr>
+<tr>
+<td><code>firstNameInKana</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>First name in Katakana. Required for from-JPY personal transfers.</td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Last name.</td>
+</tr>
+<tr>
+<td><code>lastNameInKana</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Last name in Katakana. Required for from-JPY personal transfers.</td>
+</tr>
+<tr>
+<td><code>nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3 letter country code (lower case).</td>
+</tr>
+<tr>
+<td><code>occupations</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>occupations[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Occupation field code - this field accepts any job or occupation that the customer does, as the only occupation format currently accepted is <code>&amp;quot;FREE_FORM&amp;quot;</code>.</td>
+</tr>
+<tr>
+<td><code>occupations[].format</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Occupation field format. As of now, it only accepts the value <code>&amp;quot;FREE_FORM&amp;quot;</code>.</td>
+</tr>
+<tr>
+<td><code>preferredName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred first name, if different to the legal first name.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="200-created-personal-profile" class="status" data-status="2xx">200: Created personal profile</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>details</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Profile details.</td>
+</tr>
+<tr>
+<td><code>details.address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.address.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.address.countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.address.stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.contactDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.contactDetails.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.contactDetails.phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.dateOfBirth</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date of birth.</td>
+</tr>
+<tr>
+<td><code>details.externalCustomerId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>External reference identifier in your system.</td>
+</tr>
+<tr>
+<td><code>details.firstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First name (including middle names).</td>
+</tr>
+<tr>
+<td><code>details.firstNameInKana</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>First name in Katakana.</td>
+</tr>
+<tr>
+<td><code>details.lastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Last name.</td>
+</tr>
+<tr>
+<td><code>details.lastNameInKana</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Last name in Katakana.</td>
+</tr>
+<tr>
+<td><code>details.localizedInformation</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Localized information for the profile.</td>
+</tr>
+<tr>
+<td><code>details.nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3 letter country code (lower case).</td>
+</tr>
+<tr>
+<td><code>details.occupations</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.occupations[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.occupations[].format</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>details.preferredName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred first name.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Unique profile ID.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: PERSONAL</code></td>
+<td>No</td>
+<td>Profile type.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-6" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-profiles" class="operation" data-method="get"><code>GET</code> /profiles</h3>
+<p>Operation ID: <code>profileList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-7">Responses</h4>
+<h5 id="200-array-of-profile-objects-note-that-there-might-be-more-than-one-business-profile-returned-in-the-response" class="status" data-status="2xx">200: Array of profile objects. Note that there might be more than one business profile returned in the response</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>array of object or object</code>.</p>
+<p>Example response:</p>
+<pre><code class="language-json">[
+  {
+    &quot;address&quot;: {
+      &quot;addressFirstLine&quot;: &quot;24 Willow Creek Lane&quot;,
+      &quot;city&quot;: &quot;Bristol&quot;,
+      &quot;countryIso2Code&quot;: &quot;GB&quot;,
+      &quot;countryIso3Code&quot;: &quot;gbr&quot;,
+      &quot;id&quot;: 36086782,
+      &quot;postCode&quot;: &quot;BS1 6AE&quot;,
+      &quot;stateCode&quot;: null
+    },
+    &quot;avatar&quot;: &quot;https://example.com/avatars/sarah_jenkins.png&quot;,
+    &quot;contactDetails&quot;: {
+      &quot;email&quot;: &quot;sarah.contact@example.com&quot;,
+      &quot;phoneNumber&quot;: &quot;+447700900123&quot;
+    },
+    &quot;createdAt&quot;: &quot;2023-01-15T10:30:00&quot;,
+    &quot;currentState&quot;: &quot;VISIBLE&quot;,
+    &quot;dateOfBirth&quot;: &quot;1985-05-20&quot;,
+    &quot;email&quot;: &quot;sarah.jenkins@example.com&quot;,
+    &quot;firstName&quot;: &quot;Sarah&quot;,
+    &quot;fullName&quot;: &quot;Sarah Jenkins&quot;,
+    &quot;id&quot;: 14575282,
+    &quot;lastName&quot;: &quot;Jenkins&quot;,
+    &quot;phoneNumber&quot;: &quot;+447700900456&quot;,
+    &quot;preferredName&quot;: &quot;Sal&quot;,
+    &quot;publicId&quot;: &quot;a1b2c3d4-e5f6-7890-1234-567890abcdef&quot;,
+    &quot;secondaryAddresses&quot;: [],
+    &quot;type&quot;: &quot;PERSONAL&quot;,
+    &quot;updatedAt&quot;: &quot;2025-06-18T14:20:00&quot;,
+    &quot;userId&quot;: 9889627
+  },
+  {
+    &quot;address&quot;: {
+      &quot;addressFirstLine&quot;: &quot;15 Tech Hub Studios&quot;,
+      &quot;city&quot;: &quot;Manchester&quot;,
+      &quot;countryIso2Code&quot;: &quot;GB&quot;,
+      &quot;countryIso3Code&quot;: &quot;gbr&quot;,
+      &quot;id&quot;: 36152772,
+      &quot;postCode&quot;: &quot;M1 7JA&quot;,
+      &quot;stateCode&quot;: null
+    },
+    &quot;businessFreeFormDescription&quot;: &quot;We create cutting-edge software for businesses.&quot;,
+    &quot;businessName&quot;: &quot;Innovate Solutions Ltd&quot;,
+    &quot;companyType&quot;: &quot;LIMITED_COMPANY&quot;,
+    &quot;contactDetails&quot;: {
+      &quot;email&quot;: &quot;contact@innovate-solutions.co.uk&quot;,
+      &quot;phoneNumber&quot;: &quot;+441617891234&quot;
+    },
+    &quot;createdAt&quot;: &quot;2024-03-10T09:00:00&quot;,
+    &quot;descriptionOfBusiness&quot;: &quot;IT_DEVELOPMENT&quot;,
+    &quot;email&quot;: &quot;info@innovate-solutions.co.uk&quot;,
+    &quot;firstLevelCategory&quot;: &quot;CONSULTING_IT_BUSINESS_SERVICES&quot;,
+    &quot;fullName&quot;: &quot;Innovate Solutions Ltd&quot;,
+    &quot;id&quot;: 14599371,
+    &quot;industryCategories&quot;: [
+      &quot;SOFTWARE_DEVELOPMENT_PUBLISHING&quot;,
+      &quot;IT_CONSULTANCY_TECHNICAL_SUPPORT_SERVICES&quot;
+    ],
+    &quot;operationalAddresses&quot;: [
+      {
+        &quot;addressFirstLine&quot;: &quot;Unit 5, Innovation Park&quot;,
+        &quot;city&quot;: &quot;Leeds&quot;,
+        &quot;countryIso2Code&quot;: &quot;GB&quot;,
+        &quot;countryIso3Code&quot;: &quot;gbr&quot;,
+        &quot;id&quot;: 36152773,
+        &quot;postCode&quot;: &quot;LS1 4YZ&quot;,
+        &quot;stateCode&quot;: null
+      }
+    ],
+    &quot;publicId&quot;: &quot;f0e9d8c7-b6a5-4321-fedc-ba9876543210&quot;,
+    &quot;registrationNumber&quot;: &quot;SC1234567890ABCD&quot;,
+    &quot;secondLevelCategory&quot;: &quot;IT_DEVELOPMENT&quot;,
+    &quot;type&quot;: &quot;BUSINESS&quot;,
+    &quot;updatedAt&quot;: &quot;2025-06-18T14:22:00&quot;,
+    &quot;userId&quot;: 9889627,
+    &quot;webpage&quot;: &quot;https://www.innovate-solutions.co.uk&quot;
+  }
+]
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-7" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-profilesprofileidbalance-capacity" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}/balance-capacity</h3>
+<p>Operation ID: <code>balanceCapacity</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-8">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>currency</code></td>
+<td><code>query</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Currency code (ISO 4217 Alphabetic Code). The deposit limit will be returned in this currency.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-8">Responses</h4>
+<h5 id="200-ok---successfully-retrieved-deposit-limits" class="status" data-status="2xx">200: OK - Successfully retrieved deposit limits</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>depositLimit</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Amount of money that can be added to the account.</td>
+</tr>
+<tr>
+<td><code>depositLimit.amount</code></td>
+<td><code>number</code></td>
+<td>No</td>
+<td>Deposit limit amount.</td>
+</tr>
+<tr>
+<td><code>depositLimit.currency</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Currency code (ISO 4217 Alphabetic Code).</td>
+</tr>
+<tr>
+<td><code>hasLimit</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>True if there is a regulatory hold limit for the profile's country.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-8" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-profilesprofileid" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}</h3>
+<p>Operation ID: <code>profileGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-9">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-9">Responses</h4>
+<h5 id="200-profile-object" class="status" data-status="2xx">200: Profile object</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object or object</code>.</p>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-9" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-profilesprofileidbusiness-profilebusiness-representative" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}/business-profile/business-representative</h3>
+<p>Operation ID: <code>profileBusinessRepresentativeGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-10">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Business profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-10">Responses</h4>
+<h5 id="200-business-representative-object" class="status" data-status="2xx">200: Business representative object</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-10" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-profilesprofileidmulti-currency-account" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}/multi-currency-account</h3>
+<p>Operation ID: <code>mcaGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-11">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-11">Responses</h4>
+<h5 id="200-multi-currency-account-object" class="status" data-status="2xx">200: Multi currency account object</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>active</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether multi currency account is active or not.</td>
+</tr>
+<tr>
+<td><code>creationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Datetime when multi currency account was created.</td>
+</tr>
+<tr>
+<td><code>eligible</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td>Whether multi currency account is eligible or not.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Multi currency account ID.</td>
+</tr>
+<tr>
+<td><code>modificationTime</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Datetime when multi currency account was last modified.</td>
+</tr>
+<tr>
+<td><code>profileId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Profile ID the multi currency account is attributed to.</td>
+</tr>
+<tr>
+<td><code>recipientId</code></td>
+<td><code>integer (int64)</code></td>
+<td>No</td>
+<td>Recipient ID of the multi currency account, to be used for transfer recipient.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-11" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="remove">remove</h2>
+<h3 id="delete-profilesprofileidpin" class="operation" data-method="delete"><code>DELETE</code> /profiles/{profileId}/pin</h3>
+<p>Operation ID: <code>scaPinDelete</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-12">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>The profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-12">Responses</h4>
+<h5 id="204-the-pin-has-been-deleted" class="status" data-status="2xx">204: The PIN has been deleted</h5>
+<h5 id="404-no-pin-has-been-set-up-for-this-profile" class="status" data-status="4xx">404: No PIN has been set up for this profile</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-12" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="delete-profilesprofileidupdate-window" class="operation" data-method="delete"><code>DELETE</code> /profiles/{profileId}/update-window</h3>
+<p>Operation ID: <code>profileUpdateWindowClose</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-13">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-13">Responses</h4>
+<h5 id="200-update-window-closed-successfully" class="status" data-status="2xx">200: Update window closed successfully</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-13" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="update">update</h2>
+<h3 id="put-profilesprofileidbusiness-profilebusiness-representative" class="operation" data-method="put"><code>PUT</code> /profiles/{profileId}/business-profile/business-representative</h3>
+<p>Operation ID: <code>profileBusinessRepresentativeUpdate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-14">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Business profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-5">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>actorEmail</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Email of the actor.</td>
+</tr>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First line of address.</td>
+</tr>
+<tr>
+<td><code>address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>address.countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3 letter country code (lower case).</td>
+</tr>
+<tr>
+<td><code>address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code.</td>
+</tr>
+<tr>
+<td><code>address.stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code (max 5 chars). Required for US, CA, BR and AU addresses.</td>
+</tr>
+<tr>
+<td><code>contactDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>contactDetails.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Contact email address of the person representing the business. Please speak with your integration account manager for details on how customer communication is handled for your integration.</td>
+</tr>
+<tr>
+<td><code>contactDetails.phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Contact phone number in international phone number format, example &quot;+1408XXXXXXX&quot; of the person representing the business. Please speak with your integration account manager for details on how customer communication is handled for your integration.</td>
+</tr>
+<tr>
+<td><code>dateOfBirth</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date of birth.</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First name of the person representing the business (including middle names).</td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Last name of the person representing the business.</td>
+</tr>
+<tr>
+<td><code>localizedInformation</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td>Optional localized information for the business representative. For Kana names, provide both firstName and lastName entries with localeScriptCode set to Kana. Each combination of key and localeScriptCode must be unique.</td>
+</tr>
+<tr>
+<td><code>localizedInformation[].key</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Name of the field being localized.</td>
+</tr>
+<tr>
+<td><code>localizedInformation[].localeScriptCode</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Script code for the localized value.</td>
+</tr>
+<tr>
+<td><code>localizedInformation[].value</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Localized value of the field.</td>
+</tr>
+<tr>
+<td><code>preferredName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred first name, if different to the legal first name.</td>
+</tr>
+<tr>
+<td><code>updateContext</code></td>
+<td><code>enum: UPDATE_DETAILS, TRANSFER_OF_AUTHORISATION</code></td>
+<td>No</td>
+<td>Context of the update.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-14">Responses</h4>
+<h5 id="200-business-representative-updated-successfully" class="status" data-status="2xx">200: Business representative updated successfully</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-14" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="put-profilesprofileidpersonal-profile" class="operation" data-method="put"><code>PUT</code> /profiles/{profileId}/personal-profile</h3>
+<p>Operation ID: <code>profilePersonalUpdate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>) or bearer token (<code>PersonalToken</code>).</p>
+<h4 id="parameters-15">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Personal profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-6">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>address</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>address.addressFirstLine</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First line of address.</td>
+</tr>
+<tr>
+<td><code>address.city</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>City.</td>
+</tr>
+<tr>
+<td><code>address.countryIso3Code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3 letter country code (ISO3, lower case).</td>
+</tr>
+<tr>
+<td><code>address.postCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Postal code or ZIP code.</td>
+</tr>
+<tr>
+<td><code>address.stateCode</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>State code. Required for US, CA, BR and AU addresses.</td>
+</tr>
+<tr>
+<td><code>contactDetails</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>contactDetails.email</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Contact email address. Please speak with your integration account manager for details on how customer communication is handled for your integration.</td>
+</tr>
+<tr>
+<td><code>contactDetails.phoneNumber</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Contact phone number in international phone number format, example &quot;+1408XXXXXXX&quot;.</td>
+</tr>
+<tr>
+<td><code>dateOfBirth</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Date of birth.</td>
+</tr>
+<tr>
+<td><code>externalCustomerId</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>An external reference identifier mapping the customer of this profile to your system.</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>First name (including middle names).</td>
+</tr>
+<tr>
+<td><code>firstNameInKana</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>First name in Katakana. Required for from-JPY personal transfers.</td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Last name.</td>
+</tr>
+<tr>
+<td><code>lastNameInKana</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td>Last name in Katakana. Required for from-JPY personal transfers.</td>
+</tr>
+<tr>
+<td><code>nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>3 letter country code (ISO3, lower case).</td>
+</tr>
+<tr>
+<td><code>occupations</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>occupations[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Occupation field code - this field accepts any job or occupation that the customer does, as the only occupation format currently accepted is <code>&amp;quot;FREE_FORM&amp;quot;</code>.</td>
+</tr>
+<tr>
+<td><code>occupations[].format</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Occupation field format. As of now, it only accepts the value <code>&amp;quot;FREE_FORM&amp;quot;</code>.</td>
+</tr>
+<tr>
+<td><code>preferredName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Preferred first name, if different to the legal first name.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-15">Responses</h4>
+<h5 id="200-updated-personal-profile" class="status" data-status="2xx">200: Updated personal profile</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-15" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="put-profilesprofileidverification-documents" class="operation" data-method="put"><code>PUT</code> /profiles/{profileId}/verification-documents</h3>
+<p>Operation ID: <code>profileVerificationDocumentUpdate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-16">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>Profile ID.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-7">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientId</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The partner's client ID.</td>
+</tr>
+<tr>
+<td><code>expiryDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Document expiry date.</td>
+</tr>
+<tr>
+<td><code>firstName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Person first name in document.</td>
+</tr>
+<tr>
+<td><code>issueDate</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Document issue date.</td>
+</tr>
+<tr>
+<td><code>issuerCountry</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Issued by country code. For example &quot;US&quot;.</td>
+</tr>
+<tr>
+<td><code>issuerState</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Issued by state code. For example &quot;NY&quot;.</td>
+</tr>
+<tr>
+<td><code>lastName</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Person last name in document.</td>
+</tr>
+<tr>
+<td><code>nationality</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>2 characters ISO country code.</td>
+</tr>
+<tr>
+<td><code>placeOfBirth</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Place of birth as stated in the document.</td>
+</tr>
+<tr>
+<td><code>sex</code></td>
+<td><code>enum: MALE, FEMALE</code></td>
+<td>No</td>
+<td>Sex as stated in the document.</td>
+</tr>
+<tr>
+<td><code>type</code></td>
+<td><code>enum: DRIVERS_LICENCE, IDENTITY_CARD, GREEN_CARD, MY_NUMBER, PASSPORT, SSN, ...</code></td>
+<td>Yes</td>
+<td>Document type.</td>
+</tr>
+<tr>
+<td><code>uniqueIdentifier</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Document number or value. Must be digits only for <code>SSN</code> or <code>FINANCIAL_CAPACITY_BR</code>. When using <code>FINANCIAL_CAPACITY_BR</code>, the value must contain the financial capacity amount in BRL (Brazilian Real).</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-16">Responses</h4>
+<h5 id="200-identification-document-updated-successfully" class="status" data-status="2xx">200: Identification document updated successfully</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorMessage</code></td>
+<td><code>string,null</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="400-validation-error-possible-error-codes---notallowedforclientid--partner-is-not-found-or-is-not-a-kyc-partner---notallowedforuniqueidentifier--document-number-exceeds-maximum-length-30-characters---notnull--a-required-field-type-or-clientid-is-missing" class="status" data-status="4xx">400: Validation error. Possible error codes: - <code>not.allowed.for.clientId</code> , Partner is not found or is not a KYC partner. - <code>not.allowed.for.uniqueIdentifier</code> , Document number exceeds maximum length (30 characters). - <code>NotNull</code> , A required field (<code>type</code> or <code>clientId</code>) is missing.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errors</code></td>
+<td><code>array of object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors[].code</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors[].field</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>errors[].message</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="422-request-could-not-be-processed-due-to-a-missing-prerequisite-returned-when-submitting-financial_capacity_br-for-a-profile-that-has-no-tax-id-on-record-1" class="status" data-status="4xx">422: Request could not be processed due to a missing prerequisite. Returned when submitting <code>FINANCIAL_CAPACITY_BR</code> for a profile that has no tax ID on record.</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>errorMessage</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>success</code></td>
+<td><code>boolean</code></td>
+<td>No</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-16" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

@@ -1,0 +1,1322 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Subscription | Wise Platform API</title><link rel="stylesheet" href="../assets/style.css"></head>
+<body><a class="skip" href="#content">Skip to content</a>
+<header class="site-header"><a class="site-title" href="../index.html">Wise Platform API<span>SDK documentation</span></a><div class="site-links"><a class="repo-link" href="https://github.com/voxgig-sdk/wise-sdk">voxgig-sdk/wise-sdk</a></div></header>
+<div class="site-notice" role="note"></div>
+<div class="shell"><nav class="site-nav" aria-label="Documentation"><div class="search"><label for="search">Search documentation</label><input id="search" type="search" data-base="../" placeholder="Find a guide or reference"><div id="results" aria-live="polite"></div></div><details><summary>Overview</summary><a href="../index.html">Wise Platform API</a></details>
+<details open><summary>API</summary><a href="../api/index.html">API overview</a>
+<a href="../api/account_detail.html">AccountDetail</a>
+<a href="../api/account_requirement.html">AccountRequirement</a>
+<a href="../api/activity.html">Activity</a>
+<a href="../api/address.html">Address</a>
+<a href="../api/address_requirement.html">AddressRequirement</a>
+<a href="../api/balance.html">Balance</a>
+<a href="../api/balance_statement.html">BalanceStatement</a>
+<a href="../api/bank_account_detail.html">BankAccountDetail</a>
+<a href="../api/bank_account_details_order.html">BankAccountDetailsOrder</a>
+<a href="../api/batch_group.html">BatchGroup</a>
+<a href="../api/bulk_settlement.html">BulkSettlement</a>
+<a href="../api/business_profile.html">BusinessProfile</a>
+<a href="../api/card.html">Card</a>
+<a href="../api/card_holder_limit.html">CardHolderLimit</a>
+<a href="../api/card_limit.html">CardLimit</a>
+<a href="../api/card_order.html">CardOrder</a>
+<a href="../api/card_sensitive_detail.html">CardSensitiveDetail</a>
+<a href="../api/card_transaction.html">CardTransaction</a>
+<a href="../api/case.html">Case</a>
+<a href="../api/claim_account.html">ClaimAccount</a>
+<a href="../api/comparison.html">Comparison</a>
+<a href="../api/contact.html">Contact</a>
+<a href="../api/currency.html">Currency</a>
+<a href="../api/delivery_estimate.html">DeliveryEstimate</a>
+<a href="../api/delivery_update.html">DeliveryUpdate</a>
+<a href="../api/digital_wallet.html">DigitalWallet</a>
+<a href="../api/direct_debit_account.html">DirectDebitAccount</a>
+<a href="../api/director.html">Director</a>
+<a href="../api/dispute.html">Dispute</a>
+<a href="../api/dispute_reason.html">DisputeReason</a>
+<a href="../api/facetec.html">Facetec</a>
+<a href="../api/file.html">File</a>
+<a href="../api/funding.html">Funding</a>
+<a href="../api/gpi_tracking.html">GpiTracking</a>
+<a href="../api/hold_limit_breach.html">HoldLimitBreach</a>
+<a href="../api/incoming_transfer.html">IncomingTransfer</a>
+<a href="../api/jose.html">Jose</a>
+<a href="../api/kyc_review.html">KycReview</a>
+<a href="../api/link_request.html">LinkRequest</a>
+<a href="../api/message.html">Message</a>
+<a href="../api/multi_currency_account.html">MultiCurrencyAccount</a>
+<a href="../api/one_time_token.html">OneTimeToken</a>
+<a href="../api/ott.html">Ott</a>
+<a href="../api/payin.html">Payin</a>
+<a href="../api/payin_deposit_detail.html">PayinDepositDetail</a>
+<a href="../api/payment.html">Payment</a>
+<a href="../api/payment_initiation.html">PaymentInitiation</a>
+<a href="../api/payment_instrument.html">PaymentInstrument</a>
+<a href="../api/payment_intent.html">PaymentIntent</a>
+<a href="../api/phone_number.html">PhoneNumber</a>
+<a href="../api/production.html">Production</a>
+<a href="../api/profile.html">Profile</a>
+<a href="../api/quote.html">Quote</a>
+<a href="../api/rate.html">Rate</a>
+<a href="../api/recipient.html">Recipient</a>
+<a href="../api/rule.html">Rule</a>
+<a href="../api/saml.html">Saml</a>
+<a href="../api/sca_device_fingerprint.html">ScaDeviceFingerprint</a>
+<a href="../api/sca_facemap.html">ScaFacemap</a>
+<a href="../api/sca_otp.html">ScaOtp</a>
+<a href="../api/sca_session.html">ScaSession</a>
+<a href="../api/settlement_allocation.html">SettlementAllocation</a>
+<a href="../api/simulation.html">Simulation</a>
+<a href="../api/spend_control.html">SpendControl</a>
+<a href="../api/spend_limit.html">SpendLimit</a>
+<a aria-current="page" href="../api/subscription.html">Subscription</a><div class="nav-sections"><a class="nav-section" href="#post-applicationsclientkeysubscriptions">POST /applications/{clientKey}/subscriptions</a>
+<a class="nav-section" href="#post-profilesprofileidsubscriptions">POST /profiles/{profileId}/subscriptions</a>
+<a class="nav-section" href="#get-applicationsclientkeysubscriptions">GET /applications/{clientKey}/subscriptions</a>
+<a class="nav-section" href="#get-profilesprofileidsubscriptions">GET /profiles/{profileId}/subscriptions</a>
+<a class="nav-section" href="#get-applicationsclientkeysubscriptionssubscriptionid">GET /applications/{clientKey}/subscriptions/{subscriptionId}</a>
+<a class="nav-section" href="#get-profilesprofileidsubscriptionssubscriptionid">GET /profiles/{profileId}/subscriptions/{subscriptionId}</a>
+<a class="nav-section" href="#delete-applicationsclientkeysubscriptionssubscriptionid">DELETE /applications/{clientKey}/subscriptions/{subscriptionId}</a>
+<a class="nav-section" href="#delete-profilesprofileidsubscriptionssubscriptionid">DELETE /profiles/{profileId}/subscriptions/{subscriptionId}</a></div>
+<a href="../api/test_notification.html">TestNotification</a>
+<a href="../api/third_party_transfer.html">ThirdPartyTransfer</a>
+<a href="../api/three_d_secure.html">ThreeDSecure</a>
+<a href="../api/token.html">Token</a>
+<a href="../api/transfer.html">Transfer</a>
+<a href="../api/transfer_requirement.html">TransferRequirement</a>
+<a href="../api/ubo.html">Ubo</a>
+<a href="../api/user.html">User</a>
+<a href="../api/verification.html">Verification</a></details>
+<details><summary>Guides</summary><a href="../guides/authentication.html">Authentication</a>
+<a href="../guides/first-call.html">Make your first API call</a>
+<a href="../guides/errors.html">Handle errors</a>
+<a href="../guides/concepts.html">Entities, SDKs, and tools</a></details>
+<details><summary>SDKs</summary><a href="../sdks/go.html">Golang</a>
+<a href="../sdks/lua.html">Lua</a>
+<a href="../sdks/php.html">PHP</a>
+<a href="../sdks/py.html">Python</a>
+<a href="../sdks/rb.html">Ruby</a>
+<a href="../sdks/ts.html">TypeScript</a></details>
+<details><summary>Tools</summary><a href="../tools/go-cli.html">Go CLI</a></details>
+<details><summary>Features</summary><a href="../features/debug.html">Debug capture</a>
+<a href="../features/idempotency.html">Idempotency</a>
+<a href="../features/metrics.html">Metrics</a>
+<a href="../features/paging.html">Paging</a>
+<a href="../features/ratelimit.html">Rate limiting</a>
+<a href="../features/retry.html">Retry</a>
+<a href="../features/secrets.html">Secrets</a>
+<a href="../features/test.html">Test transport</a>
+<a href="../features/timeout.html">Timeout</a></details></nav><main id="content"><div class="page-context"><span class="section-dot" aria-hidden="true"></span>API</div><h1 id="subscription">Subscription</h1>
+<p>A webhook subscription, for an application or a profile.</p>
+<h2 id="operations">Operations</h2>
+<p>Every route this entity exposes. Each route links to its own reference on this page.</p>
+<table>
+<thead>
+<tr>
+<th>Method</th>
+<th>Route</th>
+<th>SDK operation</th>
+<th>Returns</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-applicationsclientkeysubscriptions"><code>/applications/{clientKey}/subscriptions</code></a></td>
+<td><code>create</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>POST</code></td>
+<td><a href="#post-profilesprofileidsubscriptions"><code>/profiles/{profileId}/subscriptions</code></a></td>
+<td><code>create</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-applicationsclientkeysubscriptions"><code>/applications/{clientKey}/subscriptions</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileidsubscriptions"><code>/profiles/{profileId}/subscriptions</code></a></td>
+<td><code>list</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-applicationsclientkeysubscriptionssubscriptionid"><code>/applications/{clientKey}/subscriptions/{subscriptionId}</code></a></td>
+<td><code>load</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>GET</code></td>
+<td><a href="#get-profilesprofileidsubscriptionssubscriptionid"><code>/profiles/{profileId}/subscriptions/{subscriptionId}</code></a></td>
+<td><code>load</code></td>
+<td>OK</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-applicationsclientkeysubscriptionssubscriptionid"><code>/applications/{clientKey}/subscriptions/{subscriptionId}</code></a></td>
+<td><code>remove</code></td>
+<td>No Content</td>
+</tr>
+<tr>
+<td><code>DELETE</code></td>
+<td><a href="#delete-profilesprofileidsubscriptionssubscriptionid"><code>/profiles/{profileId}/subscriptions/{subscriptionId}</code></a></td>
+<td><code>remove</code></td>
+<td>No Content</td>
+</tr>
+</tbody>
+</table>
+<h2 id="examples">Examples</h2>
+<p>One example per SDK, generated from the API model. The argument names are the parameters and fields of this entity, and the values are placeholders. The examples are not compiled or executed.</p>
+<h3 id="golang">Golang</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/go.html#set-up-the-client">Golang setup</a>, then call the operations:</p>
+<pre><code class="language-go">subscriptions, err := client.Subscription(nil).List(map[string]any{&quot;client_key&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(subscriptions)
+subscription, err := client.Subscription(nil).Load(map[string]any{&quot;client_key&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(subscription)
+created, err := client.Subscription(nil).Create(map[string]any{&quot;client_key&quot;: &quot;example&quot;, &quot;delivery&quot;: map[string]any{}, &quot;name&quot;: &quot;example&quot;, &quot;trigger_on&quot;: &quot;example&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(created)
+removed, err := client.Subscription(nil).Remove(map[string]any{&quot;client_key&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(removed)
+</code></pre>
+<h3 id="lua">Lua</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/lua.html#set-up-the-client">Lua setup</a>, then call the operations:</p>
+<pre><code class="language-lua">local subscriptions, err = client:Subscription():list({ client_key = &quot;example&quot; })
+local subscription, err = client:Subscription():load({ client_key = &quot;example&quot;, id = &quot;example_id&quot; })
+local created, err = client:Subscription():create({ client_key = &quot;example&quot;, delivery = {}, name = &quot;example&quot;, trigger_on = &quot;example&quot; })
+local removed, err = client:Subscription():remove({ client_key = &quot;example&quot;, id = &quot;example_id&quot; })
+</code></pre>
+<h3 id="php">PHP</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/php.html#set-up-the-client">PHP setup</a>, then call the operations:</p>
+<pre><code class="language-php">$subscriptions = $client-&gt;Subscription()-&gt;list([&quot;client_key&quot; =&gt; &quot;example&quot;]);
+$subscription = $client-&gt;Subscription()-&gt;load([&quot;client_key&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+$created = $client-&gt;Subscription()-&gt;create([&quot;client_key&quot; =&gt; &quot;example&quot;, &quot;delivery&quot; =&gt; [], &quot;name&quot; =&gt; &quot;example&quot;, &quot;trigger_on&quot; =&gt; &quot;example&quot;]);
+$client-&gt;Subscription()-&gt;remove([&quot;client_key&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot;]);
+</code></pre>
+<h3 id="python">Python</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/py.html#set-up-the-client">Python setup</a>, then call the operations:</p>
+<pre><code class="language-py">subscriptions = client.Subscription().list({&quot;client_key&quot;: &quot;example&quot;})
+subscription = client.Subscription().load({&quot;client_key&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+created = client.Subscription().create({ &quot;client_key&quot;: &quot;example&quot;, &quot;delivery&quot;: {}, &quot;name&quot;: &quot;example&quot;, &quot;trigger_on&quot;: &quot;example&quot; })
+client.Subscription().remove({&quot;client_key&quot;: &quot;example&quot;, &quot;id&quot;: &quot;example_id&quot;})
+</code></pre>
+<h3 id="ruby">Ruby</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/rb.html#set-up-the-client">Ruby setup</a>, then call the operations:</p>
+<pre><code class="language-rb">subscriptions = client.Subscription.list({ &quot;client_key&quot; =&gt; &quot;example&quot; })
+subscription = client.Subscription.load({ &quot;client_key&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+created = client.Subscription.create({ &quot;client_key&quot; =&gt; &quot;example&quot;, &quot;delivery&quot; =&gt; {}, &quot;name&quot; =&gt; &quot;example&quot;, &quot;trigger_on&quot; =&gt; &quot;example&quot; })
+client.Subscription.remove({ &quot;client_key&quot; =&gt; &quot;example&quot;, &quot;id&quot; =&gt; &quot;example_id&quot; })
+</code></pre>
+<h3 id="typescript">TypeScript</h3>
+<p>Construct <code>client</code> as shown in the <a href="../sdks/ts.html#set-up-the-client">TypeScript setup</a>, then call the operations:</p>
+<pre><code class="language-ts">const subscriptions = await client.Subscription().list({ client_key: &quot;example&quot; })
+const subscription = await client.Subscription().load({ client_key: &quot;example&quot;, id: &quot;example_id&quot; })
+const created = await client.Subscription().create({ client_key: &quot;example&quot;, delivery: {}, name: &quot;example&quot;, trigger_on: &quot;example&quot; })
+await client.Subscription().remove({ client_key: &quot;example&quot;, id: &quot;example_id&quot; })
+</code></pre>
+<h2 id="fields">Fields</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Timestamp of when the subscription was created.</td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Created By</td>
+</tr>
+<tr>
+<td><code>delivery</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Delivery</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>UUID that uniquely identifies the subscription.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A custom name for your webhook to ease with identification.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td>Scope</td>
+</tr>
+<tr>
+<td><code>trigger_on</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event type this subscription is listening for.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="create">create</h2>
+<h3 id="post-applicationsclientkeysubscriptions" class="operation" data-method="post"><code>POST</code> /applications/{clientKey}/subscriptions</h3>
+<p>Operation ID: <code>webhookApplicationSubscriptionCreate</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientKey</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Your application's client key.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delivery</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>delivery.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The URL where your server will be listening for events.</td>
+</tr>
+<tr>
+<td><code>delivery.version</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The event representation semantic version.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A custom name for your webhook to ease with identification.</td>
+</tr>
+<tr>
+<td><code>trigger_on</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Choose from a list of available events.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses">Responses</h4>
+<h5 id="200-ok" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the subscription was created.</td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the creator.</td>
+</tr>
+<tr>
+<td><code>created_by.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creator type (for example &quot;application&quot; or &quot;user&quot;).</td>
+</tr>
+<tr>
+<td><code>delivery</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>delivery.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL where your server will be listening for events.</td>
+</tr>
+<tr>
+<td><code>delivery.version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event representation semantic version.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>UUID that uniquely identifies the subscription.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A custom name for your webhook to ease with identification.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>scope.domain</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Scope of this subscription (for example &quot;application&quot; or &quot;profile&quot;).</td>
+</tr>
+<tr>
+<td><code>scope.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID associated with the scope (client key or profile ID).</td>
+</tr>
+<tr>
+<td><code>trigger_on</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event type this subscription is listening for. List of available events.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="post-profilesprofileidsubscriptions" class="operation" data-method="post"><code>POST</code> /profiles/{profileId}/subscriptions</h3>
+<p>Operation ID: <code>webhookProfileSubscriptionCreate</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-1">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>ID of the profile you are subscribing to.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-body-1">Request body</h4>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>delivery</code></td>
+<td><code>object</code></td>
+<td>Yes</td>
+<td></td>
+</tr>
+<tr>
+<td><code>delivery.url</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The URL where your server will be listening for events.</td>
+</tr>
+<tr>
+<td><code>delivery.version</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>The event representation semantic version.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>A custom name for your webhook to ease with identification.</td>
+</tr>
+<tr>
+<td><code>trigger_on</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Choose from a list of available events.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-1">Responses</h4>
+<h5 id="200-ok-1" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the subscription was created.</td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the creator.</td>
+</tr>
+<tr>
+<td><code>created_by.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creator type (for example &quot;application&quot; or &quot;user&quot;).</td>
+</tr>
+<tr>
+<td><code>delivery</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>delivery.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL where your server will be listening for events.</td>
+</tr>
+<tr>
+<td><code>delivery.version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event representation semantic version.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>UUID that uniquely identifies the subscription.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A custom name for your webhook to ease with identification.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>scope.domain</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Scope of this subscription (for example &quot;application&quot; or &quot;profile&quot;).</td>
+</tr>
+<tr>
+<td><code>scope.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID associated with the scope (client key or profile ID).</td>
+</tr>
+<tr>
+<td><code>trigger_on</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event type this subscription is listening for. List of available events.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;created_at&quot;: &quot;2019-10-10T13:55:57Z&quot;,
+  &quot;created_by&quot;: {
+    &quot;id&quot;: &quot;&lt;your user ID&gt;&quot;,
+    &quot;type&quot;: &quot;user&quot;
+  },
+  &quot;delivery&quot;: {
+    &quot;url&quot;: &quot;https://your.webhook.url/12345&quot;,
+    &quot;version&quot;: &quot;4.0.0&quot;
+  },
+  &quot;id&quot;: &quot;72195556-e5cb-495e-a010-b37a4f2a3043&quot;,
+  &quot;name&quot;: &quot;Webhook Subscription #1&quot;,
+  &quot;scope&quot;: {
+    &quot;domain&quot;: &quot;profile&quot;,
+    &quot;id&quot;: &quot;&lt;your profile ID&gt;&quot;
+  },
+  &quot;trigger_on&quot;: &quot;transfers#state-change&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-1" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="list">list</h2>
+<h3 id="get-applicationsclientkeysubscriptions" class="operation" data-method="get"><code>GET</code> /applications/{clientKey}/subscriptions</h3>
+<p>Operation ID: <code>webhookApplicationSubscriptionList</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-2">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientKey</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Your application's client key.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-2">Responses</h4>
+<h5 id="200-ok-2" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the subscription was created.</td>
+</tr>
+<tr>
+<td><code>[].created_by</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>[].created_by.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the creator.</td>
+</tr>
+<tr>
+<td><code>[].created_by.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creator type (for example &quot;application&quot; or &quot;user&quot;).</td>
+</tr>
+<tr>
+<td><code>[].delivery</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>[].delivery.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL where your server will be listening for events.</td>
+</tr>
+<tr>
+<td><code>[].delivery.version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event representation semantic version.</td>
+</tr>
+<tr>
+<td><code>[].id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>UUID that uniquely identifies the subscription.</td>
+</tr>
+<tr>
+<td><code>[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A custom name for your webhook to ease with identification.</td>
+</tr>
+<tr>
+<td><code>[].scope</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>[].scope.domain</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Scope of this subscription (for example &quot;application&quot; or &quot;profile&quot;).</td>
+</tr>
+<tr>
+<td><code>[].scope.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID associated with the scope (client key or profile ID).</td>
+</tr>
+<tr>
+<td><code>[].trigger_on</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event type this subscription is listening for. List of available events.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-2" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-profilesprofileidsubscriptions" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}/subscriptions</h3>
+<p>Operation ID: <code>webhookProfileSubscriptionList</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-3">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>ID of the profile.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-3">Responses</h4>
+<h5 id="200-ok-3" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>[].created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the subscription was created.</td>
+</tr>
+<tr>
+<td><code>[].created_by</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>[].created_by.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the creator.</td>
+</tr>
+<tr>
+<td><code>[].created_by.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creator type (for example &quot;application&quot; or &quot;user&quot;).</td>
+</tr>
+<tr>
+<td><code>[].delivery</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>[].delivery.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL where your server will be listening for events.</td>
+</tr>
+<tr>
+<td><code>[].delivery.version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event representation semantic version.</td>
+</tr>
+<tr>
+<td><code>[].id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>UUID that uniquely identifies the subscription.</td>
+</tr>
+<tr>
+<td><code>[].name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A custom name for your webhook to ease with identification.</td>
+</tr>
+<tr>
+<td><code>[].scope</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>[].scope.domain</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Scope of this subscription (for example &quot;application&quot; or &quot;profile&quot;).</td>
+</tr>
+<tr>
+<td><code>[].scope.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID associated with the scope (client key or profile ID).</td>
+</tr>
+<tr>
+<td><code>[].trigger_on</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event type this subscription is listening for. List of available events.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">[
+  {
+    &quot;created_by&quot;: {
+      &quot;id&quot;: &quot;&lt;your user ID&gt;&quot;,
+      &quot;type&quot;: &quot;user&quot;
+    },
+    &quot;delivery&quot;: {
+      &quot;url&quot;: &quot;https://your.webhook.url/12345&quot;,
+      &quot;version&quot;: &quot;2.0.0&quot;
+    },
+    &quot;id&quot;: &quot;e889e085-3677-4110-be26-3e9160ac9f25&quot;,
+    &quot;name&quot;: &quot;#1 subscription&quot;,
+    &quot;scope&quot;: {
+      &quot;domain&quot;: &quot;profile&quot;,
+      &quot;id&quot;: &quot;&lt;your profile ID&gt;&quot;
+    },
+    &quot;trigger_on&quot;: &quot;transfers#state-change&quot;
+  },
+  {
+    &quot;created_by&quot;: {
+      &quot;id&quot;: &quot;&lt;your user ID&gt;&quot;,
+      &quot;type&quot;: &quot;user&quot;
+    },
+    &quot;delivery&quot;: {
+      &quot;url&quot;: &quot;https://your.webhook.url/12345&quot;,
+      &quot;version&quot;: &quot;2.0.0&quot;
+    },
+    &quot;id&quot;: &quot;eabeb3f5-c134-4a1c-99e2-86a1163daf1b&quot;,
+    &quot;name&quot;: &quot;#2 subscription&quot;,
+    &quot;scope&quot;: {
+      &quot;domain&quot;: &quot;profile&quot;,
+      &quot;id&quot;: &quot;&lt;your profile ID&gt;&quot;
+    },
+    &quot;trigger_on&quot;: &quot;transfers#state-change&quot;
+  }
+]
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-3" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="load">load</h2>
+<h3 id="get-applicationsclientkeysubscriptionssubscriptionid" class="operation" data-method="get"><code>GET</code> /applications/{clientKey}/subscriptions/{subscriptionId}</h3>
+<p>Operation ID: <code>webhookApplicationSubscriptionGet</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-4">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientKey</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Your application's client key.</td>
+</tr>
+<tr>
+<td><code>subscriptionId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>UUID of the subscription.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-4">Responses</h4>
+<h5 id="200-ok-4" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the subscription was created.</td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the creator.</td>
+</tr>
+<tr>
+<td><code>created_by.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creator type (for example &quot;application&quot; or &quot;user&quot;).</td>
+</tr>
+<tr>
+<td><code>delivery</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>delivery.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL where your server will be listening for events.</td>
+</tr>
+<tr>
+<td><code>delivery.version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event representation semantic version.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>UUID that uniquely identifies the subscription.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A custom name for your webhook to ease with identification.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>scope.domain</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Scope of this subscription (for example &quot;application&quot; or &quot;profile&quot;).</td>
+</tr>
+<tr>
+<td><code>scope.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID associated with the scope (client key or profile ID).</td>
+</tr>
+<tr>
+<td><code>trigger_on</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event type this subscription is listening for. List of available events.</td>
+</tr>
+</tbody>
+</table>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-4" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="get-profilesprofileidsubscriptionssubscriptionid" class="operation" data-method="get"><code>GET</code> /profiles/{profileId}/subscriptions/{subscriptionId}</h3>
+<p>Operation ID: <code>webhookProfileSubscriptionGet</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-5">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>ID of the profile.</td>
+</tr>
+<tr>
+<td><code>subscriptionId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>UUID of the subscription.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-5">Responses</h4>
+<h5 id="200-ok-5" class="status" data-status="2xx">200: OK</h5>
+<p><code>application/json</code></p>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>created_at</code></td>
+<td><code>string (date-time)</code></td>
+<td>No</td>
+<td>Timestamp of when the subscription was created.</td>
+</tr>
+<tr>
+<td><code>created_by</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>created_by.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID of the creator.</td>
+</tr>
+<tr>
+<td><code>created_by.type</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Creator type (for example &quot;application&quot; or &quot;user&quot;).</td>
+</tr>
+<tr>
+<td><code>delivery</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>delivery.url</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The URL where your server will be listening for events.</td>
+</tr>
+<tr>
+<td><code>delivery.version</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event representation semantic version.</td>
+</tr>
+<tr>
+<td><code>id</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>UUID that uniquely identifies the subscription.</td>
+</tr>
+<tr>
+<td><code>name</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>A custom name for your webhook to ease with identification.</td>
+</tr>
+<tr>
+<td><code>scope</code></td>
+<td><code>object</code></td>
+<td>No</td>
+<td></td>
+</tr>
+<tr>
+<td><code>scope.domain</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>Scope of this subscription (for example &quot;application&quot; or &quot;profile&quot;).</td>
+</tr>
+<tr>
+<td><code>scope.id</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>ID associated with the scope (client key or profile ID).</td>
+</tr>
+<tr>
+<td><code>trigger_on</code></td>
+<td><code>string</code></td>
+<td>No</td>
+<td>The event type this subscription is listening for. List of available events.</td>
+</tr>
+</tbody>
+</table>
+<p>Example response:</p>
+<pre><code class="language-json">{
+  &quot;created_at&quot;: &quot;2008-09-15T15:53:00Z&quot;,
+  &quot;created_by&quot;: {
+    &quot;id&quot;: &quot;&lt;your user ID&gt;&quot;,
+    &quot;type&quot;: &quot;user&quot;
+  },
+  &quot;delivery&quot;: {
+    &quot;url&quot;: &quot;https://your.webhook.url/12345&quot;,
+    &quot;version&quot;: &quot;2.0.0&quot;
+  },
+  &quot;id&quot;: &quot;f215f353-35fd-405b-b27f-4fd603c905ed&quot;,
+  &quot;name&quot;: &quot;Webhook Subscription #1&quot;,
+  &quot;scope&quot;: {
+    &quot;domain&quot;: &quot;profile&quot;,
+    &quot;id&quot;: &quot;&lt;your profile ID&gt;&quot;
+  },
+  &quot;trigger_on&quot;: &quot;balances#credit&quot;
+}
+</code></pre>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-5" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h2 id="remove">remove</h2>
+<h3 id="delete-applicationsclientkeysubscriptionssubscriptionid" class="operation" data-method="delete"><code>DELETE</code> /applications/{clientKey}/subscriptions/{subscriptionId}</h3>
+<p>Operation ID: <code>webhookApplicationSubscriptionDelete</code>.</p>
+<p>Authentication: bearer token (<code>ClientCredentialsToken</code>).</p>
+<h4 id="parameters-6">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>clientKey</code></td>
+<td><code>path</code></td>
+<td><code>string</code></td>
+<td>Yes</td>
+<td>Your application's client key.</td>
+</tr>
+<tr>
+<td><code>subscriptionId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>UUID of the subscription.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-6">Responses</h4>
+<h5 id="204-no-content" class="status" data-status="2xx">204: No Content</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-6" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+<h3 id="delete-profilesprofileidsubscriptionssubscriptionid" class="operation" data-method="delete"><code>DELETE</code> /profiles/{profileId}/subscriptions/{subscriptionId}</h3>
+<p>Operation ID: <code>webhookProfileSubscriptionDelete</code>.</p>
+<p>Authentication: bearer token (<code>UserToken</code>).</p>
+<h4 id="parameters-7">Parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th>In</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>profileId</code></td>
+<td><code>path</code></td>
+<td><code>integer (int64)</code></td>
+<td>Yes</td>
+<td>ID of the profile.</td>
+</tr>
+<tr>
+<td><code>subscriptionId</code></td>
+<td><code>path</code></td>
+<td><code>string (uuid)</code></td>
+<td>Yes</td>
+<td>UUID of the subscription.</td>
+</tr>
+<tr>
+<td><code>X-External-Correlation-Id</code></td>
+<td><code>header</code></td>
+<td><code>string (uuid)</code></td>
+<td>No</td>
+<td>Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. Learn more.</td>
+</tr>
+</tbody>
+</table>
+<h4 id="responses-7">Responses</h4>
+<h5 id="204-no-content-1" class="status" data-status="2xx">204: No Content</h5>
+<h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-7" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
+<p><code>application/json</code></p>
+<p>The response is <code>object</code>.</p>
+</main></div>
+<script src="../assets/search.js" defer></script></body></html>

@@ -1,0 +1,23 @@
+# BasicFundingFlow
+
+main: kit: flow: BasicFundingFlow:
+{
+  entity: "funding",
+  kind: "basic",
+  name: "BasicFundingFlow",
+  step: [
+    {
+      i: {
+        ref: "funding_ref01"
+      }
+
+      m: {
+        profile_id: "profile01",
+        transfer_id: "transfer01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicFundingFlow"
+}

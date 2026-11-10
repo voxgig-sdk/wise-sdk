@@ -1,0 +1,294 @@
+# Entity: card_sensitive_detail
+
+main: kit: entity: card_sensitive_detail: {
+
+  alias: field: {}
+
+  fields: {
+    encryptedPayload: {
+      h: "Encrypted Payload"
+      n: "encryptedPayload"
+      r: true
+      sh: "Your [JWE payload](/guides/product/issue-cards/sensitive-card-details)."
+      t: "`$STRING`"
+    }
+    key: {
+      h: "Key"
+      n: "key"
+      r: false
+      sh: "The RSA public key."
+      t: "`$STRING`"
+    }
+    keyVersion: {
+      h: "Key Version"
+      n: "keyVersion"
+      r: true
+      sh: "The version of the key to use."
+      t: "`$INTEGER`"
+    }
+    version: {
+      fo: "int32"
+      h: "Version"
+      n: "version"
+      r: false
+      sh: "Version of the encryption key."
+      t: "`$INTEGER`"
+    }
+  }
+
+  name: "card_sensitive_detail"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "encryptedPayload"
+            "keyVersion"
+          ]
+          co: {
+            id: "POST /twcard-data/v1/sensitive-card-data/details"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+                explode: false
+                k: "header"
+                n: "x_tw_twcard_card_token"
+                or: "x-tw-twcard-card-token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/twcard-data/v1/sensitive-card-data/details"
+          q: {
+            "$action": "details"
+            exist: [
+              "x_tw_twcard_card_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "twcard-data"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "sensitive-card-data"
+            }
+            {
+              lit: "details"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "encryptedPayload"
+            "keyVersion"
+          ]
+          co: {
+            id: "POST /twcard-data/v1/sensitive-card-data/pin"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+                explode: false
+                k: "header"
+                n: "x_tw_twcard_card_token"
+                or: "x-tw-twcard-card-token"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/twcard-data/v1/sensitive-card-data/pin"
+          q: {
+            "$action": "pin"
+            exist: [
+              "x_tw_twcard_card_token"
+            ]
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "twcard-data"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "sensitive-card-data"
+            }
+            {
+              lit: "pin"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "encryptedPayload"
+            "keyVersion"
+          ]
+          co: {
+            id: "POST /twcard-data/v1/sensitive-card-data/preset-pin"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "142"
+                explode: false
+                k: "header"
+                n: "x_tw_twcard_order_id"
+                or: "x-tw-twcard-order-id"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/twcard-data/v1/sensitive-card-data/preset-pin"
+          q: {
+            exist: [
+              "x_tw_twcard_order_id"
+            ]
+          }
+          rs: {
+            kind: "raw"
+            media: "text/plain"
+          }
+          s: [
+            {
+              lit: "twcard-data"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "sensitive-card-data"
+            }
+            {
+              lit: "preset-pin"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /twcard-data/v1/clientSideEncryption/fetchEncryptingKey"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/twcard-data/v1/clientSideEncryption/fetchEncryptingKey"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "twcard-data"
+            }
+            {
+              lit: "v1"
+            }
+            {
+              lit: "clientSideEncryption"
+            }
+            {
+              lit: "fetchEncryptingKey"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

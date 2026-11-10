@@ -1,0 +1,46 @@
+{
+  "existing": {
+    "payin_deposit_detail": {
+      "PAYIN_DEPOSIT_DETAIL00": {
+        "payinBank": {},
+        "payinBankAccount": {},
+        "wiseInformation": {},
+        "profile_id": "PROFILE01",
+        "transfer_id": "TRANSFER01",
+        "id": "PAYIN_DEPOSIT_DETAIL00"
+      },
+      "PAYIN_DEPOSIT_DETAIL01": {
+        "payinBank": {},
+        "payinBankAccount": {},
+        "wiseInformation": {},
+        "profile_id": "PROFILE01",
+        "transfer_id": "TRANSFER01",
+        "id": "PAYIN_DEPOSIT_DETAIL01"
+      },
+      "PAYIN_DEPOSIT_DETAIL02": {
+        "payinBank": {},
+        "payinBankAccount": {},
+        "wiseInformation": {},
+        "profile_id": "PROFILE01",
+        "transfer_id": "TRANSFER01",
+        "id": "PAYIN_DEPOSIT_DETAIL02"
+      }
+    }
+  },
+  "new": {
+    "payin_deposit_detail": {
+      "payin_deposit_detail_ref01": {
+        "payinBank": {},
+        "payinBankAccount": {},
+        "wiseInformation": {}
+      }
+    }
+  },
+  "requests": {
+    "GET /profiles/{profileId}/transfers/{transferId}/deposit-details/bank-transfer": {
+      "provenance": "operation-contract",
+      "version": 2,
+      "source": "openapi3"
+    }
+  }
+}

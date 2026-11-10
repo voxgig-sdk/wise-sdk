@@ -1,0 +1,304 @@
+# Entity: card_holder_limit
+
+main: kit: entity: card_holder_limit: {
+
+  alias: field: {}
+
+  fields: {
+    aggregateWindow: {
+      h: "Aggregate Window"
+      n: "aggregateWindow"
+      op: {
+        list: {
+          req: false
+          type: "`$OBJECT`"
+        }
+      }
+      r: true
+      sh: "The limits to set, per aggregation window."
+      t: "`$OBJECT`"
+    }
+    spendLimits: {
+      h: "Spend Limits"
+      n: "spendLimits"
+      r: false
+      sh: "Spend limits configured for this cardholder."
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      op: {
+        list: {
+          req: false
+          type: "`$STRING`"
+        }
+      }
+      r: true
+      sh: "The category of spending the limit applies to."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "card_holder_limit"
+  op: {
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /spend/profiles/{businessProfileId}/card-holder-profiles/{cardHolderProfileId}/spend-limits"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "card_holder_profile_id"
+                or: "cardHolderProfileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "businessProfileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/spend/profiles/{businessProfileId}/card-holder-profiles/{cardHolderProfileId}/spend-limits"
+          q: {
+            exist: [
+              "card_holder_profile_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              businessProfileId: "profile_id"
+              cardHolderProfileId: "card_holder_profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "card-holder-profiles"
+            }
+            {
+              var: "card_holder_profile_id"
+            }
+            {
+              lit: "spend-limits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body.spendLimits`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /spend/profiles/{businessProfileId}/card-holder-profiles/{cardHolderProfileId}/spend-limits"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "card_holder_profile_id"
+                or: "cardHolderProfileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "businessProfileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/spend/profiles/{businessProfileId}/card-holder-profiles/{cardHolderProfileId}/spend-limits"
+          q: {
+            exist: [
+              "card_holder_profile_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              businessProfileId: "profile_id"
+              cardHolderProfileId: "card_holder_profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "card-holder-profiles"
+            }
+            {
+              var: "card_holder_profile_id"
+            }
+            {
+              lit: "spend-limits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "aggregateWindow"
+            "type"
+          ]
+          co: {
+            id: "PATCH /spend/profiles/{businessProfileId}/card-holder-profiles/{cardHolderProfileId}/spend-limits"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "card_holder_profile_id"
+                or: "cardHolderProfileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+              {
+                k: "param"
+                n: "profile_id"
+                or: "businessProfileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PATCH"
+          o: "/spend/profiles/{businessProfileId}/card-holder-profiles/{cardHolderProfileId}/spend-limits"
+          q: {
+            exist: [
+              "card_holder_profile_id"
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              businessProfileId: "profile_id"
+              cardHolderProfileId: "card_holder_profile_id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "card-holder-profiles"
+            }
+            {
+              var: "card_holder_profile_id"
+            }
+            {
+              lit: "spend-limits"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

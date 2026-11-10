@@ -1,0 +1,26 @@
+# BasicPaymentFlow
+
+main: kit: flow: BasicPaymentFlow:
+{
+  entity: "payment",
+  kind: "basic",
+  name: "BasicPaymentFlow",
+  step: [
+    {
+      m: {
+        transfer_id: "transfer01"
+      }
+
+      o: "list",
+      v: [
+        {
+          apply: "ItemExists",
+          def: {
+            ref: "payment_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicPaymentFlow"
+}

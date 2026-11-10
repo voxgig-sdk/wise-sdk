@@ -1,0 +1,129 @@
+# Entity: token
+
+main: kit: entity: token: {
+
+  alias: field: {}
+
+  fields: {
+    access_token: {
+      h: "Access Token"
+      n: "access_token"
+      r: false
+      sh: "Access token to be used when calling the API."
+      t: "`$STRING`"
+    }
+    created_at: {
+      h: "Created At"
+      n: "created_at"
+      r: false
+      sh: "Token creation time in ISO 8601 format."
+      t: "`$STRING`"
+    }
+    expires_at: {
+      h: "Expires At"
+      n: "expires_at"
+      r: false
+      sh: "Access token expiration timestamp (UTC)."
+      t: "`$STRING`"
+    }
+    expires_in: {
+      fo: "int32"
+      h: "Expires In"
+      n: "expires_in"
+      r: false
+      sh: "Access token expiry time in seconds."
+      t: "`$INTEGER`"
+    }
+    refresh_token: {
+      h: "Refresh Token"
+      n: "refresh_token"
+      r: false
+      sh: "Refresh token used to obtain new user access tokens without requiring the user to re-authorise."
+      t: "`$STRING`"
+    }
+    refresh_token_expires_at: {
+      h: "Refresh Token Expires At"
+      n: "refresh_token_expires_at"
+      r: false
+      sh: "Refresh token expiration timestamp (UTC)."
+      t: "`$STRING`"
+    }
+    refresh_token_expires_in: {
+      fo: "int32"
+      h: "Refresh Token Expires In"
+      n: "refresh_token_expires_in"
+      r: false
+      sh: "Refresh token expiry time in seconds."
+      t: "`$INTEGER`"
+    }
+    scope: {
+      h: "Scope"
+      n: "scope"
+      r: false
+      sh: "Scope of the token."
+      t: "`$STRING`"
+    }
+    token_type: {
+      h: "Token Type"
+      n: "token_type"
+      r: false
+      sh: "Type of the token."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "token"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          co: {
+            id: "POST /oauth/token"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/oauth/token"
+          rb: {
+            kind: "form"
+            media: "application/x-www-form-urlencoded"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "oauth"
+            }
+            {
+              lit: "token"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

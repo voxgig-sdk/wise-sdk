@@ -1,0 +1,105 @@
+# Entity: three_d_secure
+
+main: kit: entity: three_d_secure: {
+
+  alias: field: {}
+
+  fields: {
+    challengeStatus: {
+      h: "Challenge Status"
+      n: "challengeStatus"
+      r: true
+      sh: "The customer's response to the 3DS challenge."
+      t: "`$STRING`"
+    }
+    transactionReference: {
+      h: "Transaction Reference"
+      n: "transactionReference"
+      r: true
+      sh: "Transaction reference as received in the 3DS challenge webhook event."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "three_d_secure"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "challengeStatus"
+            "transactionReference"
+          ]
+          co: {
+            id: "POST /spend/profiles/{profileId}/3dsecure/challenge-result"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "profile_id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/spend/profiles/{profileId}/3dsecure/challenge-result"
+          q: {
+            exist: [
+              "profile_id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "profile_id"
+            }
+          }
+          s: [
+            {
+              lit: "spend"
+            }
+            {
+              lit: "profiles"
+            }
+            {
+              var: "profile_id"
+            }
+            {
+              lit: "3dsecure"
+            }
+            {
+              lit: "challenge-result"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+  relations: ancestors: [
+    [path("$.main.kit.entity.profile")]
+  ]
+
+}

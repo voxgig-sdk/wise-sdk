@@ -1,0 +1,1294 @@
+# Entity: profile
+
+main: kit: entity: profile: {
+
+  alias: field: {}
+
+  fields: {
+    address: {
+      h: "Address"
+      n: "address"
+      r: false
+      t: "`$OBJECT`"
+    }
+    avatar: {
+      h: "Avatar"
+      n: "avatar"
+      r: false
+      t: "`$STRING`"
+    }
+    contactDetails: {
+      h: "Contact Details"
+      n: "contactDetails"
+      r: false
+      t: "`$OBJECT`"
+    }
+    createdAt: {
+      h: "Created At"
+      n: "createdAt"
+      r: false
+      t: "`$STRING`"
+    }
+    currentState: {
+      h: "Current State"
+      n: "currentState"
+      r: false
+      t: "`$STRING`"
+    }
+    dateOfBirth: {
+      h: "Date Of Birth"
+      n: "dateOfBirth"
+      r: false
+      t: "`$STRING`"
+    }
+    email: {
+      h: "Email"
+      n: "email"
+      r: false
+      t: "`$STRING`"
+    }
+    firstName: {
+      h: "First Name"
+      n: "firstName"
+      r: false
+      t: "`$STRING`"
+    }
+    fullName: {
+      h: "Full Name"
+      n: "fullName"
+      r: false
+      t: "`$STRING`"
+    }
+    id: {
+      h: "Id"
+      n: "id"
+      r: false
+      t: "`$INTEGER`"
+    }
+    lastName: {
+      h: "Last Name"
+      n: "lastName"
+      r: false
+      t: "`$STRING`"
+    }
+    phoneNumber: {
+      h: "Phone Number"
+      n: "phoneNumber"
+      r: false
+      t: "`$STRING`"
+    }
+    preferredName: {
+      h: "Preferred Name"
+      n: "preferredName"
+      r: false
+      t: "`$STRING`"
+    }
+    publicId: {
+      h: "Public Id"
+      n: "publicId"
+      r: false
+      t: "`$STRING`"
+    }
+    secondaryAddresses: {
+      h: "Secondary Addresses"
+      n: "secondaryAddresses"
+      r: false
+      t: "`$ARRAY`"
+    }
+    type: {
+      h: "Type"
+      n: "type"
+      r: false
+      t: "`$STRING`"
+    }
+    updatedAt: {
+      h: "Updated At"
+      n: "updatedAt"
+      r: false
+      t: "`$STRING`"
+    }
+    userId: {
+      h: "User Id"
+      n: "userId"
+      r: false
+      t: "`$INTEGER`"
+    }
+  }
+
+  id: {
+    field: "id"
+    name: "id"
+  }
+
+  name: "profile"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: false
+          co: {
+            id: "POST /profiles/{profileId}/pin"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "identity"
+                explode: false
+                k: "header"
+                n: "accept_encoding"
+                or: "Accept-Encoding"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "identity"
+                explode: false
+                k: "header"
+                n: "content_encoding"
+                or: "Content-Encoding"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                ex: "jwe"
+                explode: false
+                k: "header"
+                n: "xtw_jose_method"
+                or: "X-tw-jose-method"
+                r: true
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/pin"
+          q: {
+            "$action": "pin"
+            exist: [
+              "accept_encoding"
+              "content_encoding"
+              "id"
+              "xtw_jose_method"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          rb: {
+            kind: "json"
+            media: "application/jose+json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pin"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /profiles/{profileId}/verification-status/bank-transfer"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: "GBP,USD,EUR"
+                explode: true
+                k: "query"
+                n: "source_currency"
+                or: "source_currencies"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/verification-status/bank-transfer"
+          q: {
+            "$action": "verification_status_bank_transfer"
+            exist: [
+              "id"
+              "source_currency"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verification-status"
+            }
+            {
+              lit: "bank-transfer"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "recipientId"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/excess-money-account"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/excess-money-account"
+          q: {
+            "$action": "excess_money_account"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "excess-money-account"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /profiles/{profileId}/update-window"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/update-window"
+          q: {
+            "$action": "update_window"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "update-window"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "birthCity"
+            "birthCountry"
+            "employerCity"
+            "employerCountry"
+            "employerName"
+            "expiryDate"
+            "firstName"
+            "issueDate"
+            "issuerCountry"
+            "issuerState"
+            "lastName"
+            "nationality"
+            "type"
+            "uniqueIdentifier"
+          ]
+          co: {
+            id: "POST /profiles/{profileId}/verification-documents"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/verification-documents"
+          q: {
+            "$action": "verification_document"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verification-documents"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "POST /profiles/{profileId}/verification-status/upload-document"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/{profileId}/verification-status/upload-document"
+          q: {
+            "$action": "verification_status_upload_document"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          rb: {
+            fields: [
+              {
+                name: "documentType"
+              }
+              {
+                binary: true
+                name: "files"
+              }
+            ]
+            kind: "multipart"
+            media: "multipart/form-data"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verification-status"
+            }
+            {
+              lit: "upload-document"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "address"
+            "contactDetails"
+            "dateOfBirth"
+            "externalCustomerId"
+            "firstName"
+            "firstNameInKana"
+            "lastName"
+            "lastNameInKana"
+            "nationality"
+            "occupations"
+            "preferredName"
+          ]
+          co: {
+            id: "POST /profiles/personal-profile"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+              {
+                explode: false
+                k: "header"
+                n: "xidempotence_uuid"
+                or: "X-idempotence-uuid"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/profiles/personal-profile"
+          q: {
+            "$action": "personal_profile"
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              lit: "personal-profile"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    list: {
+      name: "list"
+      points: [
+        {
+          co: {
+            id: "GET /profiles"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    load: {
+      name: "load"
+      points: [
+        {
+          co: {
+            id: "GET /profiles/{profileId}/balance-capacity"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+            query: [
+              {
+                ex: "SGD"
+                explode: true
+                k: "query"
+                n: "currency"
+                or: "currency"
+                r: true
+                style: "form"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/balance-capacity"
+          q: {
+            "$action": "balance_capacity"
+            exist: [
+              "currency"
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "balance-capacity"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /profiles/{profileId}"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}"
+          q: {
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /profiles/{profileId}/business-profile/business-representative"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/business-profile/business-representative"
+          q: {
+            "$action": "business_profile_business_representative"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "business-profile"
+            }
+            {
+              lit: "business-representative"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "GET /profiles/{profileId}/multi-currency-account"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "GET"
+          o: "/profiles/{profileId}/multi-currency-account"
+          q: {
+            "$action": "multi_currency_account"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "multi-currency-account"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    remove: {
+      name: "remove"
+      points: [
+        {
+          co: {
+            id: "DELETE /profiles/{profileId}/pin"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/profiles/{profileId}/pin"
+          q: {
+            "$action": "pin"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "pin"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          co: {
+            id: "DELETE /profiles/{profileId}/update-window"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "DELETE"
+          o: "/profiles/{profileId}/update-window"
+          q: {
+            "$action": "update_window"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "update-window"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+    update: {
+      name: "update"
+      points: [
+        {
+          bf: [
+            "actorEmail"
+            "address"
+            "contactDetails"
+            "dateOfBirth"
+            "firstName"
+            "lastName"
+            "localizedInformation"
+            "preferredName"
+            "updateContext"
+          ]
+          co: {
+            id: "PUT /profiles/{profileId}/business-profile/business-representative"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/profiles/{profileId}/business-profile/business-representative"
+          q: {
+            "$action": "business_profile_business_representative"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "business-profile"
+            }
+            {
+              lit: "business-representative"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "address"
+            "contactDetails"
+            "dateOfBirth"
+            "externalCustomerId"
+            "firstName"
+            "firstNameInKana"
+            "lastName"
+            "lastNameInKana"
+            "nationality"
+            "occupations"
+            "preferredName"
+          ]
+          co: {
+            id: "PUT /profiles/{profileId}/personal-profile"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/profiles/{profileId}/personal-profile"
+          q: {
+            "$action": "personal_profile"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "personal-profile"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+        {
+          bf: [
+            "clientId"
+            "expiryDate"
+            "firstName"
+            "issueDate"
+            "issuerCountry"
+            "issuerState"
+            "lastName"
+            "nationality"
+            "placeOfBirth"
+            "sex"
+            "type"
+            "uniqueIdentifier"
+          ]
+          co: {
+            id: "PUT /profiles/{profileId}/verification-documents"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+            params: [
+              {
+                k: "param"
+                n: "id"
+                or: "profileId"
+                r: true
+                t: "`$INTEGER`"
+              }
+            ]
+          }
+          m: "PUT"
+          o: "/profiles/{profileId}/verification-documents"
+          q: {
+            "$action": "verification_document"
+            exist: [
+              "id"
+            ]
+          }
+          r: {
+            param: {
+              profileId: "id"
+            }
+          }
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "profiles"
+            }
+            {
+              var: "id"
+            }
+            {
+              lit: "verification-documents"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

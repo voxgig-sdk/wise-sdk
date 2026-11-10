@@ -1,0 +1,23 @@
+# BasicPaymentInstrumentDetailsResourceFlow
+
+main: kit: flow: BasicPaymentInstrumentDetailsResourceFlow:
+{
+  entity: "payment_instrument_details_resource",
+  kind: "basic",
+  name: "BasicPaymentInstrumentDetailsResourceFlow",
+  step: [
+    {
+      i: {
+        ref: "payment_instrument_details_resource_ref01"
+      }
+
+      m: {
+        payment_instrument_id: "payment_instrument01",
+        profile_id: "profile01"
+      }
+
+      o: "create"
+    }
+  ],
+  "key$": "BasicPaymentInstrumentDetailsResourceFlow"
+}

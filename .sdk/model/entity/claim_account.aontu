@@ -1,0 +1,77 @@
+# Entity: claim_account
+
+main: kit: entity: claim_account: {
+
+  alias: field: {}
+
+  fields: {
+    claimAccountCode: {
+      h: "Claim Account Code"
+      n: "claimAccountCode"
+      r: false
+      sh: "The `claim_account_code` to be used in the redirect to Wise."
+      t: "`$STRING`"
+    }
+    registrationCode: {
+      h: "Registration Code"
+      n: "registrationCode"
+      r: true
+      sh: "The `registration_code` obtained when [creating the user](/api-reference/user/usercreate)."
+      t: "`$STRING`"
+    }
+  }
+
+  name: "claim_account"
+  op: {
+    create: {
+      name: "create"
+      points: [
+        {
+          bf: [
+            "registrationCode"
+          ]
+          co: {
+            id: "POST /user/claim-account"
+            source: "openapi3"
+            version: 2
+          }
+          g: {
+            header: [
+              {
+                ex: "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+                explode: false
+                k: "header"
+                n: "x_external_correlation_id"
+                or: "X-External-Correlation-Id"
+                r: false
+                style: "simple"
+                t: "`$STRING`"
+              }
+            ]
+          }
+          m: "POST"
+          o: "/user/claim-account"
+          rs: {
+            kind: "json"
+            media: "application/json"
+          }
+          s: [
+            {
+              lit: "user"
+            }
+            {
+              lit: "claim-account"
+            }
+          ]
+          t: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}
