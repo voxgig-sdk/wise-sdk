@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.SettlementAllocationResponseContentEntity = void 0;
+exports.SettlementAllocationEntity = void 0;
 const WiseEntityBase_1 = require("../WiseEntityBase");
-class SettlementAllocationResponseContentEntity extends WiseEntityBase_1.WiseEntityBase {
+class SettlementAllocationEntity extends WiseEntityBase_1.WiseEntityBase {
     constructor(client, entopts) {
         super(client, entopts);
-        this.name = 'settlement_allocation_response_content';
-        this.name_ = 'settlement_allocation_response_content';
-        this.Name = 'SettlementAllocationResponseContent';
+        this.name = 'settlement_allocation';
+        this.name_ = 'settlement_allocation';
+        this.Name = 'SettlementAllocation';
     }
     make() {
-        return new SettlementAllocationResponseContentEntity(this._client, this.entopts());
+        return new SettlementAllocationEntity(this._client, this.entopts());
     }
     async load(reqmatch, ctrl) {
         const utility = this._utility;
@@ -101,7 +101,7 @@ class SettlementAllocationResponseContentEntity extends WiseEntityBase_1.WiseEnt
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<SettlementAllocationResponseContentEntity> return stays clean under strict null checks.
+                // Promise<SettlementAllocationEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }
@@ -192,11 +192,11 @@ class SettlementAllocationResponseContentEntity extends WiseEntityBase_1.WiseEnt
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<SettlementAllocationResponseContentEntity> return stays clean under strict null checks.
+                // Promise<SettlementAllocationEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }
     }
 }
-exports.SettlementAllocationResponseContentEntity = SettlementAllocationResponseContentEntity;
-//# sourceMappingURL=SettlementAllocationResponseContentEntity.js.map
+exports.SettlementAllocationEntity = SettlementAllocationEntity;
+//# sourceMappingURL=SettlementAllocationEntity.js.map

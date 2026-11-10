@@ -45,13 +45,13 @@ const live_entity_1 = require("../../live-entity");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 (0, utility_1.loadEnvLocal)(__dirname + '/../../../.env.local');
-(0, node_test_1.describe)('N3dsEntity', async () => {
+(0, node_test_1.describe)('GpiTrackingEntity', async () => {
     // Per-test live pacing. Delay is read from sdk-test-control.json's
     // `test.live.delayMs`; only sleeps when WISE_TEST_LIVE=TRUE.
     (0, node_test_1.afterEach)((0, utility_1.liveDelay)('WISE_TEST_LIVE'));
     (0, node_test_1.test)('instance', async () => {
         const testsdk = __1.WiseSDK.test();
-        const ent = testsdk.N3ds();
+        const ent = testsdk.GpiTracking();
         (0, node_assert_1.default)(null != ent);
     });
     (0, node_test_1.test)('validate', async (t) => {
@@ -60,28 +60,27 @@ const utility_1 = require("../../utility");
             return;
         }
         const client = __1.WiseSDK.test(undefined, { feature: { validate: { active: true } } });
-        await node_assert_1.default.rejects(client.N3ds().create({ "profile_id": "x", "challengeStatus": "x", "transactionReference": "x" }), (err) => 'validate_failed' === err.code);
+        await node_assert_1.default.rejects(client.GpiTracking().create({ "identifier": 1, "identifierType": "x" }), (err) => 'validate_failed' === err.code);
     });
     (0, node_test_1.test)('basic', async (t) => {
         const live = 'TRUE' === process.env.WISE_TEST_LIVE;
         for (const op of ['create']) {
-            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'n3ds.' + op, live))
+            if (!live && (0, utility_1.maybeSkipControl)(t, 'entityOp', 'gpi_tracking.' + op, live))
                 return;
         }
         const setup = basicSetup();
         if (setup.live) {
-            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "challengeStatus": { "a": true, "h": "Challenge Status", "n": "challengeStatus", "r": true, "sh": "The customer's response to the 3DS challenge.", "t": "`$STRING`", "key$": "challengeStatus", "index$": 0 }, "transactionReference": { "a": true, "h": "Transaction Reference", "n": "transactionReference", "r": true, "sh": "Transaction reference as received in the 3DS challenge webhook event.", "t": "`$STRING`", "key$": "transactionReference", "index$": 1 } }, "name": "n3ds", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": ["challengeStatus", "transactionReference"], "co": { "id": "POST /spend/profiles/{profileId}/3dsecure/challenge-result", "source": "openapi3", "version": 2 }, "g": { "header": [{ "a": true, "ex": "f47ac10b-58cc-4372-a567-0e02b2c3d479", "explode": false, "k": "header", "n": "x_external_correlation_id", "or": "X-External-Correlation-Id", "r": false, "style": "simple", "t": "`$STRING`", "index$": 0 }], "params": [{ "a": true, "k": "param", "n": "profile_id", "or": "profileId", "r": true, "t": "`$INTEGER`", "index$": 0 }] }, "k": "http", "m": "POST", "o": "/spend/profiles/{profileId}/3dsecure/challenge-result", "q": { "exist": ["profile_id"] }, "r": { "param": { "profileId": "profile_id" } }, "s": [{ "lit": "spend" }, { "lit": "profiles" }, { "var": "profile_id" }, { "lit": "3dsecure" }, { "lit": "challenge-result" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "create" } }, "relations": { "ancestors": [["$.main.kit.entity.profile"]] }, "key$": "n3ds", "name__orig": "n3ds", "Name": "N3ds", "name_": "n3ds", "name-": "n3ds", "NAME": "N3DS", "index$": 41 }, { "active": true, "entity": "n3ds", "key$": "BasicN3dsFlow", "kind": "basic", "name": "BasicN3dsFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "n3ds_ref01" }, "m": { "profile_id": "profile01" }, "o": "create", "s": [], "v": [], "index$": 0 }] }, 'N3ds', { "POST /spend/profiles/{profileId}/3dsecure/challenge-result": { "protocol": "http", "requestBody": { "required": true, "content": { "application/json": { "schema": { "type": "object", "required": ["transactionReference", "challengeStatus"], "properties": { "transactionReference": { "type": "string", "description": "Transaction reference as received in the 3DS challenge webhook event.", "example": "148579538", "key$": "transactionReference" }, "challengeStatus": { "type": "string", "description": "The customer's response to the 3DS challenge.", "enum": ["APPROVED", "REJECTED"], "example": "APPROVED", "key$": "challengeStatus" } }, "x-ref": "#/components/schemas/ChallengeResultRequest", "index$": 1 } } } }, "parameters": [{ "name": "profileId", "in": "path", "required": true, "schema": { "type": "integer", "format": "int64" }, "description": "The profile ID (personal or business) associated with the 3DS challenge.", "index$": 0 }, { "x-global": true, "name": "X-External-Correlation-Id", "in": "header", "required": false, "description": "Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. [Learn more](/guides/developer/headers/correlation-id).\n", "schema": { "type": "string", "format": "uuid", "maxLength": 36 }, "example": "f47ac10b-58cc-4372-a567-0e02b2c3d479", "x-ref": "#/components/parameters/X-External-Correlation-Id", "index$": 1 }] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "n3ds.create.0": "GET-only live run: needs POST /spend/profiles/{profileId}/3dsecure/challenge-result" } : {});
+            return (0, live_entity_1.runLiveEntity)(setup, { "active": true, "alias": { "field": {} }, "fields": { "identifier": { "a": true, "h": "Identifier", "n": "identifier", "r": true, "sh": "The UETR or Wise transfer ID of the transfer to look up, matching `identifierType`.", "t": "`$STRING`", "key$": "identifier", "index$": 0 }, "identifierType": { "a": true, "h": "Identifier Type", "n": "identifierType", "r": true, "sh": "The type of identifier used to look up the transfer.", "t": "`$STRING`", "key$": "identifierType", "index$": 1 }, "transactions": { "a": true, "h": "Transactions", "n": "transactions", "r": false, "sh": "The matching GPI tracking transactions.", "t": "`$ARRAY`", "key$": "transactions", "index$": 2 } }, "name": "gpi_tracking", "op": { "create": { "input": "data", "name": "create", "points": [{ "a": true, "bf": ["identifier", "identifierType"], "co": { "id": "POST /gpi-tracking", "source": "openapi3", "version": 2 }, "g": { "header": [{ "a": true, "ex": "f47ac10b-58cc-4372-a567-0e02b2c3d479", "explode": false, "k": "header", "n": "x_external_correlation_id", "or": "X-External-Correlation-Id", "r": false, "style": "simple", "t": "`$STRING`", "index$": 0 }] }, "k": "http", "m": "POST", "o": "/gpi-tracking", "q": {}, "r": {}, "rs": { "kind": "json", "media": "application/json" }, "s": [{ "lit": "gpi-tracking" }], "t": { "req": "`reqdata`", "res": "`body`" }, "index$": 0 }], "key$": "create" } }, "relations": { "ancestors": [] }, "key$": "gpi_tracking", "name__orig": "gpi_tracking", "Name": "GpiTracking", "name_": "gpi_tracking", "name-": "gpi-tracking", "NAME": "GPI_TRACKING", "index$": 33 }, { "active": true, "entity": "gpi_tracking", "key$": "BasicGpiTrackingFlow", "kind": "basic", "name": "BasicGpiTrackingFlow", "param": {}, "step": [{ "a": true, "d": {}, "i": { "ref": "gpi_tracking_ref01" }, "m": {}, "o": "create", "s": [], "v": [], "index$": 0 }] }, 'GpiTracking', { "POST /gpi-tracking": { "protocol": "http", "requestBody": { "content": { "application/json": { "schema": { "type": "object", "description": "Identify the transfer to look up by `UETR` or `TRANSFER_ID`.", "properties": { "identifierType": { "type": "string", "description": "The type of identifier used to look up the transfer.", "enum": ["UETR", "TRANSFER_ID"], "x-ref": "#/components/schemas/GpiTrackingIdentifierType", "key$": "identifierType" }, "identifier": { "type": "string", "minLength": 1, "description": "The UETR or Wise transfer ID of the transfer to look up, matching `identifierType`. Must be a UUID (e.g. `97ed4827-7b6f-4491-a206-42bcf859a919`) when `identifierType` is `UETR`, or a positive integer (int64) (e.g. `16521632`) when `identifierType` is `TRANSFER_ID`.", "example": "97ed4827-7b6f-4491-a206-42bcf859a919", "key$": "identifier" } }, "required": ["identifier", "identifierType"], "x-ref": "#/components/schemas/LookupGpiTrackingRequestContent", "index$": 1 }, "examples": { "lookup-by-transfer-id": { "summary": "Look up GPI tracking by transfer ID", "value": { "identifierType": "TRANSFER_ID", "identifier": "16521632" } }, "lookup-by-uetr": { "summary": "Look up GPI tracking by UETR", "value": { "identifierType": "UETR", "identifier": "97ed4827-7b6f-4491-a206-42bcf859a919" } } } } }, "required": true }, "parameters": [{ "x-global": true, "name": "X-External-Correlation-Id", "in": "header", "required": false, "description": "Optional UUID for correlating requests across systems. If provided, Wise echoes it back in the response. Maximum 36 characters. [Learn more](/guides/developer/headers/correlation-id).\n", "schema": { "type": "string", "format": "uuid", "maxLength": 36 }, "example": "f47ac10b-58cc-4372-a567-0e02b2c3d479", "x-ref": "#/components/parameters/X-External-Correlation-Id", "index$": 0 }] } }, { strict: LIVE_STRICT, t }, 'TRUE' === process.env.VOXGIG_GETONLY_GUARD ? { "gpi_tracking.create.0": "GET-only live run: needs POST /gpi-tracking" } : {});
         }
         const client = setup.client;
         const struct = setup.struct;
         const isempty = struct.isempty;
         const select = struct.select;
         // CREATE
-        const n3ds_ref01_ent = client.N3ds();
-        let n3ds_ref01_data = setup.data.new.n3ds['n3ds_ref01'];
-        n3ds_ref01_data['profile_id'] = setup.idmap['profile01'];
-        n3ds_ref01_data = (await n3ds_ref01_ent.create(n3ds_ref01_data)).data();
-        (0, node_assert_1.default)(null != n3ds_ref01_data);
+        const gpi_tracking_ref01_ent = client.GpiTracking();
+        let gpi_tracking_ref01_data = setup.data.new.gpi_tracking['gpi_tracking_ref01'];
+        gpi_tracking_ref01_data = (await gpi_tracking_ref01_ent.create(gpi_tracking_ref01_data)).data();
+        (0, node_assert_1.default)(null != gpi_tracking_ref01_data);
     });
 });
 // main.kit.test.live.strict is true (the default is true): a live
@@ -93,7 +92,7 @@ function basicSetup(extra) {
     // TODO: fix test def options
     const options = {}; // null
     // TODO: needs test utility to resolve path
-    const entityDataFile = node_path_1.default.resolve(__dirname, '../../../../.sdk/test/entity/n3ds/N3dsTestData.json');
+    const entityDataFile = node_path_1.default.resolve(__dirname, '../../../../.sdk/test/entity/gpi_tracking/GpiTrackingTestData.json');
     // TODO: file ready util needed?
     const entityDataSource = Fs.readFileSync(entityDataFile).toString('utf8');
     // TODO: need a xlang JSON parse utility in voxgig/struct with better error msgs
@@ -103,23 +102,23 @@ function basicSetup(extra) {
     const struct = client.utility().struct;
     const merge = struct.merge;
     const transform = struct.transform;
-    let idmap = transform(['n3ds01', 'n3ds02', 'n3ds03', 'profile01', 'profile02', 'profile03'], {
+    let idmap = transform(['gpi_tracking01', 'gpi_tracking02', 'gpi_tracking03'], {
         '`$PACK`': ['', {
                 '`$KEY`': '`$COPY`',
                 '`$VAL`': ['`$FORMAT`', 'upper', '`$COPY`']
             }]
     });
     const env = (0, utility_1.envOverride)({
-        'WISE_TEST_N3DS_ENTID': idmap,
+        'WISE_TEST_GPI_TRACKING_ENTID': idmap,
         'WISE_TEST_LIVE': 'FALSE',
         'WISE_TEST_EXPLAIN': 'FALSE',
         'WISE_APIKEY': '',
     });
-    idmap = env['WISE_TEST_N3DS_ENTID'];
+    idmap = env['WISE_TEST_GPI_TRACKING_ENTID'];
     const live = 'TRUE' === env.WISE_TEST_LIVE;
     const transport = (0, live_runner_1.createLiveTransport)();
     if (live) {
-        const rawIds = process.env['WISE_TEST_N3DS_ENTID'];
+        const rawIds = process.env['WISE_TEST_GPI_TRACKING_ENTID'];
         idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {};
         if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
             throw new Error('Live ENTID must be a JSON object');
@@ -154,4 +153,4 @@ function basicSetup(extra) {
     };
     return setup;
 }
-//# sourceMappingURL=N3dsEntity.test.js.map
+//# sourceMappingURL=GpiTrackingEntity.test.js.map

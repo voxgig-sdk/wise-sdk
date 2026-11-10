@@ -43,6 +43,7 @@ const AddressRequirementEntity_1 = require("./entity/AddressRequirementEntity");
 const BalanceEntity_1 = require("./entity/BalanceEntity");
 const BalanceStatementEntity_1 = require("./entity/BalanceStatementEntity");
 const BankAccountDetailEntity_1 = require("./entity/BankAccountDetailEntity");
+const BankAccountDetailsOrderEntity_1 = require("./entity/BankAccountDetailsOrderEntity");
 const BatchGroupEntity_1 = require("./entity/BatchGroupEntity");
 const BulkSettlementEntity_1 = require("./entity/BulkSettlementEntity");
 const BusinessProfileEntity_1 = require("./entity/BusinessProfileEntity");
@@ -56,7 +57,6 @@ const CaseEntity_1 = require("./entity/CaseEntity");
 const ClaimAccountEntity_1 = require("./entity/ClaimAccountEntity");
 const ComparisonEntity_1 = require("./entity/ComparisonEntity");
 const ContactEntity_1 = require("./entity/ContactEntity");
-const CreateThirdPartyTransferResponseContentEntity_1 = require("./entity/CreateThirdPartyTransferResponseContentEntity");
 const CurrencyEntity_1 = require("./entity/CurrencyEntity");
 const DeliveryEstimateEntity_1 = require("./entity/DeliveryEstimateEntity");
 const DeliveryUpdateEntity_1 = require("./entity/DeliveryUpdateEntity");
@@ -68,15 +68,14 @@ const DisputeReasonEntity_1 = require("./entity/DisputeReasonEntity");
 const FacetecEntity_1 = require("./entity/FacetecEntity");
 const FileEntity_1 = require("./entity/FileEntity");
 const FundingEntity_1 = require("./entity/FundingEntity");
+const GpiTrackingEntity_1 = require("./entity/GpiTrackingEntity");
 const HoldLimitBreachEntity_1 = require("./entity/HoldLimitBreachEntity");
 const IncomingTransferEntity_1 = require("./entity/IncomingTransferEntity");
 const JoseEntity_1 = require("./entity/JoseEntity");
 const KycReviewEntity_1 = require("./entity/KycReviewEntity");
 const LinkRequestEntity_1 = require("./entity/LinkRequestEntity");
-const LookupGpiTrackingResponseContentEntity_1 = require("./entity/LookupGpiTrackingResponseContentEntity");
 const MessageEntity_1 = require("./entity/MessageEntity");
 const MultiCurrencyAccountEntity_1 = require("./entity/MultiCurrencyAccountEntity");
-const N3dsEntity_1 = require("./entity/N3dsEntity");
 const OneTimeTokenEntity_1 = require("./entity/OneTimeTokenEntity");
 const OttEntity_1 = require("./entity/OttEntity");
 const PayinEntity_1 = require("./entity/PayinEntity");
@@ -84,7 +83,6 @@ const PayinDepositDetailEntity_1 = require("./entity/PayinDepositDetailEntity");
 const PaymentEntity_1 = require("./entity/PaymentEntity");
 const PaymentInitiationEntity_1 = require("./entity/PaymentInitiationEntity");
 const PaymentInstrumentEntity_1 = require("./entity/PaymentInstrumentEntity");
-const PaymentInstrumentDetailsResourceEntity_1 = require("./entity/PaymentInstrumentDetailsResourceEntity");
 const PaymentIntentEntity_1 = require("./entity/PaymentIntentEntity");
 const PhoneNumberEntity_1 = require("./entity/PhoneNumberEntity");
 const ProductionEntity_1 = require("./entity/ProductionEntity");
@@ -98,13 +96,14 @@ const ScaDeviceFingerprintEntity_1 = require("./entity/ScaDeviceFingerprintEntit
 const ScaFacemapEntity_1 = require("./entity/ScaFacemapEntity");
 const ScaOtpEntity_1 = require("./entity/ScaOtpEntity");
 const ScaSessionEntity_1 = require("./entity/ScaSessionEntity");
-const SettlementAllocationResponseContentEntity_1 = require("./entity/SettlementAllocationResponseContentEntity");
+const SettlementAllocationEntity_1 = require("./entity/SettlementAllocationEntity");
 const SimulationEntity_1 = require("./entity/SimulationEntity");
 const SpendControlEntity_1 = require("./entity/SpendControlEntity");
 const SpendLimitEntity_1 = require("./entity/SpendLimitEntity");
 const SubscriptionEntity_1 = require("./entity/SubscriptionEntity");
 const TestNotificationEntity_1 = require("./entity/TestNotificationEntity");
 const ThirdPartyTransferEntity_1 = require("./entity/ThirdPartyTransferEntity");
+const ThreeDSecureEntity_1 = require("./entity/ThreeDSecureEntity");
 const TokenEntity_1 = require("./entity/TokenEntity");
 const TransferEntity_1 = require("./entity/TransferEntity");
 const TransferRequirementEntity_1 = require("./entity/TransferRequirementEntity");
@@ -422,6 +421,13 @@ class WiseSDK {
         const self = this;
         return new BankAccountDetailEntity_1.BankAccountDetailEntity(self, entopts);
     }
+    // Entity access: `client.BankAccountDetailsOrder().list()` / `client.BankAccountDetailsOrder().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    BankAccountDetailsOrder(entopts) {
+        const self = this;
+        return new BankAccountDetailsOrderEntity_1.BankAccountDetailsOrderEntity(self, entopts);
+    }
     // Entity access: `client.BatchGroup().list()` / `client.BatchGroup().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -513,13 +519,6 @@ class WiseSDK {
         const self = this;
         return new ContactEntity_1.ContactEntity(self, entopts);
     }
-    // Entity access: `client.CreateThirdPartyTransferResponseContent().list()` / `client.CreateThirdPartyTransferResponseContent().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    CreateThirdPartyTransferResponseContent(entopts) {
-        const self = this;
-        return new CreateThirdPartyTransferResponseContentEntity_1.CreateThirdPartyTransferResponseContentEntity(self, entopts);
-    }
     // Entity access: `client.Currency().list()` / `client.Currency().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -597,6 +596,13 @@ class WiseSDK {
         const self = this;
         return new FundingEntity_1.FundingEntity(self, entopts);
     }
+    // Entity access: `client.GpiTracking().list()` / `client.GpiTracking().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    GpiTracking(entopts) {
+        const self = this;
+        return new GpiTrackingEntity_1.GpiTrackingEntity(self, entopts);
+    }
     // Entity access: `client.HoldLimitBreach().list()` / `client.HoldLimitBreach().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -632,13 +638,6 @@ class WiseSDK {
         const self = this;
         return new LinkRequestEntity_1.LinkRequestEntity(self, entopts);
     }
-    // Entity access: `client.LookupGpiTrackingResponseContent().list()` / `client.LookupGpiTrackingResponseContent().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    LookupGpiTrackingResponseContent(entopts) {
-        const self = this;
-        return new LookupGpiTrackingResponseContentEntity_1.LookupGpiTrackingResponseContentEntity(self, entopts);
-    }
     // Entity access: `client.Message().list()` / `client.Message().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
@@ -652,13 +651,6 @@ class WiseSDK {
     MultiCurrencyAccount(entopts) {
         const self = this;
         return new MultiCurrencyAccountEntity_1.MultiCurrencyAccountEntity(self, entopts);
-    }
-    // Entity access: `client.N3ds().list()` / `client.N3ds().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    N3ds(entopts) {
-        const self = this;
-        return new N3dsEntity_1.N3dsEntity(self, entopts);
     }
     // Entity access: `client.OneTimeToken().list()` / `client.OneTimeToken().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -708,13 +700,6 @@ class WiseSDK {
     PaymentInstrument(entopts) {
         const self = this;
         return new PaymentInstrumentEntity_1.PaymentInstrumentEntity(self, entopts);
-    }
-    // Entity access: `client.PaymentInstrumentDetailsResource().list()` / `client.PaymentInstrumentDetailsResource().load({ id })`.
-    // The argument is the entity OPTIONS object (passed to the entity
-    // constructor as entopts), not initial entity data.
-    PaymentInstrumentDetailsResource(entopts) {
-        const self = this;
-        return new PaymentInstrumentDetailsResourceEntity_1.PaymentInstrumentDetailsResourceEntity(self, entopts);
     }
     // Entity access: `client.PaymentIntent().list()` / `client.PaymentIntent().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -807,12 +792,12 @@ class WiseSDK {
         const self = this;
         return new ScaSessionEntity_1.ScaSessionEntity(self, entopts);
     }
-    // Entity access: `client.SettlementAllocationResponseContent().list()` / `client.SettlementAllocationResponseContent().load({ id })`.
+    // Entity access: `client.SettlementAllocation().list()` / `client.SettlementAllocation().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
     // constructor as entopts), not initial entity data.
-    SettlementAllocationResponseContent(entopts) {
+    SettlementAllocation(entopts) {
         const self = this;
-        return new SettlementAllocationResponseContentEntity_1.SettlementAllocationResponseContentEntity(self, entopts);
+        return new SettlementAllocationEntity_1.SettlementAllocationEntity(self, entopts);
     }
     // Entity access: `client.Simulation().list()` / `client.Simulation().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity
@@ -855,6 +840,13 @@ class WiseSDK {
     ThirdPartyTransfer(entopts) {
         const self = this;
         return new ThirdPartyTransferEntity_1.ThirdPartyTransferEntity(self, entopts);
+    }
+    // Entity access: `client.ThreeDSecure().list()` / `client.ThreeDSecure().load({ id })`.
+    // The argument is the entity OPTIONS object (passed to the entity
+    // constructor as entopts), not initial entity data.
+    ThreeDSecure(entopts) {
+        const self = this;
+        return new ThreeDSecureEntity_1.ThreeDSecureEntity(self, entopts);
     }
     // Entity access: `client.Token().list()` / `client.Token().load({ id })`.
     // The argument is the entity OPTIONS object (passed to the entity

@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateThirdPartyTransferResponseContentEntity = void 0;
+exports.GpiTrackingEntity = void 0;
 const WiseEntityBase_1 = require("../WiseEntityBase");
-class CreateThirdPartyTransferResponseContentEntity extends WiseEntityBase_1.WiseEntityBase {
+class GpiTrackingEntity extends WiseEntityBase_1.WiseEntityBase {
     constructor(client, entopts) {
         super(client, entopts);
-        this.name = 'create_third_party_transfer_response_content';
-        this.name_ = 'create_third_party_transfer_response_content';
-        this.Name = 'CreateThirdPartyTransferResponseContent';
+        this.name = 'gpi_tracking';
+        this.name_ = 'gpi_tracking';
+        this.Name = 'GpiTracking';
     }
     make() {
-        return new CreateThirdPartyTransferResponseContentEntity(this._client, this.entopts());
+        return new GpiTrackingEntity(this._client, this.entopts());
     }
     async create(reqdata, ctrl) {
         const utility = this._utility;
@@ -98,11 +98,11 @@ class CreateThirdPartyTransferResponseContentEntity extends WiseEntityBase_1.Wis
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<CreateThirdPartyTransferResponseContentEntity> return stays clean under strict null checks.
+                // Promise<GpiTrackingEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }
     }
 }
-exports.CreateThirdPartyTransferResponseContentEntity = CreateThirdPartyTransferResponseContentEntity;
-//# sourceMappingURL=CreateThirdPartyTransferResponseContentEntity.js.map
+exports.GpiTrackingEntity = GpiTrackingEntity;
+//# sourceMappingURL=GpiTrackingEntity.js.map

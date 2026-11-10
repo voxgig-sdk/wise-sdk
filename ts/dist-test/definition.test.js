@@ -762,6 +762,176 @@ const PLAN = [
     {
         "entity": "balance",
         "accessor": "Balance",
+        "op": "create",
+        "method": "POST",
+        "path": "/profiles/{profileId}/balance-movements",
+        "action": "movement",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "xidempotence_uuid",
+                "wire": "X-idempotence-uuid",
+                "value": "h2"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 201,
+        "sample": {
+            "id": 30000001,
+            "type": "CONVERSION",
+            "state": "COMPLETED",
+            "balancesAfter": [
+                {
+                    "id": 1,
+                    "value": 10000594.71,
+                    "currency": "GBP"
+                }
+            ],
+            "creationTime": "2017-11-21T09:55:49.275Z",
+            "sourceAmount": {
+                "value": 113.48,
+                "currency": "EUR"
+            },
+            "targetAmount": {
+                "value": 100,
+                "currency": "GBP"
+            },
+            "rate": 0.88558,
+            "feeAmounts": [
+                {
+                    "value": 0.56,
+                    "currency": "EUR"
+                }
+            ],
+            "steps": [
+                {
+                    "id": 369588,
+                    "type": "CONVERSION",
+                    "creationTime": "2017-11-21T09:55:49.276Z",
+                    "balancesAfter": [
+                        {
+                            "value": 9998887.01,
+                            "currency": "EUR"
+                        }
+                    ],
+                    "sourceAmount": {
+                        "value": 113.48,
+                        "currency": "EUR"
+                    },
+                    "targetAmount": {
+                        "value": 100,
+                        "currency": "GBP"
+                    },
+                    "fee": {
+                        "value": 0.56,
+                        "currency": "EUR"
+                    },
+                    "rate": 0.88558
+                }
+            ]
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "balance",
+        "accessor": "Balance",
+        "op": "create",
+        "method": "POST",
+        "path": "/profiles/{profileId}/balances",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "xidempotence_uuid",
+                "wire": "X-idempotence-uuid",
+                "value": "h2"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 201,
+        "sample": {
+            "id": 200001,
+            "currency": "EUR",
+            "type": "STANDARD",
+            "name": null,
+            "icon": null,
+            "investmentState": "NOT_INVESTED",
+            "amount": {
+                "value": 310.86,
+                "currency": "EUR"
+            },
+            "reservedAmount": {
+                "value": 0,
+                "currency": "EUR"
+            },
+            "cashAmount": {
+                "value": 310.86,
+                "currency": "EUR"
+            },
+            "totalWorth": {
+                "value": 310.86,
+                "currency": "EUR"
+            },
+            "creationTime": "2020-05-20T14:43:16.658Z",
+            "modificationTime": "2020-05-20T14:43:16.658Z",
+            "visible": true
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "balance",
+        "accessor": "Balance",
         "op": "list",
         "method": "GET",
         "path": "/profiles/{profileId}/balances",
@@ -1030,7 +1200,7 @@ const PLAN = [
     {
         "entity": "balance_statement",
         "accessor": "BalanceStatement",
-        "op": "list",
+        "op": "load",
         "method": "GET",
         "path": "/profiles/{profileId}/balance-statements/{balanceId}/statement.json",
         "args": [
@@ -1247,6 +1417,113 @@ const PLAN = [
     {
         "entity": "bank_account_detail",
         "accessor": "BankAccountDetail",
+        "op": "create",
+        "method": "POST",
+        "path": "/profiles/{profileId}/bank-details",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": 12345678
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "id": "2",
+            "currency": "GBP",
+            "active": true,
+            "localDetails": {
+                "bankName": "Wise",
+                "bankAddress": "TEA BUILDING, FLOOR 6, SHOREDITCH HIGH STREET",
+                "sortCode": "231370",
+                "accountNumber": "00000001",
+                "type": "UK_ACCOUNT"
+            },
+            "internationalDetails": {
+                "bankName": "Wise",
+                "bankAddress": "TEA BUILDING, FLOOR 6, SHOREDITCH HIGH STREET",
+                "swiftCode": "TRWIGB22XXX",
+                "iban": "GB123450000000001",
+                "type": "IBAN"
+            }
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "bank_account_details_order",
+        "accessor": "BankAccountDetailsOrder",
+        "op": "create",
+        "method": "POST",
+        "path": "/profiles/{profileId}/account-details-orders",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": 12345678
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "status": "PENDING_USER",
+            "currency": "EUR",
+            "requirements": [
+                {
+                    "type": "VERIFICATION",
+                    "status": "PENDING_USER"
+                }
+            ]
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "bank_account_details_order",
+        "accessor": "BankAccountDetailsOrder",
         "op": "list",
         "method": "GET",
         "path": "/profiles/{profileId}/account-details-orders",
@@ -2995,6 +3272,95 @@ const PLAN = [
         "accessor": "CardSensitiveDetail",
         "op": "create",
         "method": "POST",
+        "path": "/twcard-data/v1/sensitive-card-data/details",
+        "action": "details",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "x_tw_twcard_card_token",
+                "wire": "x-tw-twcard-card-token",
+                "value": "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "nonce": "33d51227-9ad6-4624-b4b7-7853b56076dd",
+            "cvv2": "111",
+            "pan": "4396910000012345",
+            "expiryDate": "10/31",
+            "cardholderName": "John Smith"
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "card_sensitive_detail",
+        "accessor": "CardSensitiveDetail",
+        "op": "create",
+        "method": "POST",
+        "path": "/twcard-data/v1/sensitive-card-data/pin",
+        "action": "pin",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "x_tw_twcard_card_token",
+                "wire": "x-tw-twcard-card-token",
+                "value": "ca0c8154-1e14-4464-a1ce-dcea7dc3de52"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "nonce": "33d51227-9ad6-4624-b4b7-7853b56076dd",
+            "pin": "1234"
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "card_sensitive_detail",
+        "accessor": "CardSensitiveDetail",
+        "op": "create",
+        "method": "POST",
         "path": "/twcard-data/v1/sensitive-card-data/preset-pin",
         "args": [],
         "select": {},
@@ -3510,7 +3876,7 @@ const PLAN = [
     {
         "entity": "comparison",
         "accessor": "Comparison",
-        "op": "list",
+        "op": "load",
         "method": "GET",
         "path": "/comparisons",
         "args": [],
@@ -3798,81 +4164,6 @@ const PLAN = [
         "idField": "id"
     },
     {
-        "entity": "create_third_party_transfer_response_content",
-        "accessor": "CreateThirdPartyTransferResponseContent",
-        "op": "create",
-        "method": "POST",
-        "path": "/profiles/{profileId}/third-party-transfers",
-        "args": [
-            {
-                "name": "profile_id",
-                "wire": "profileId",
-                "value": 123456789
-            }
-        ],
-        "select": {},
-        "headers": [
-            {
-                "name": "x_external_correlation_id",
-                "wire": "X-External-Correlation-Id",
-                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
-            }
-        ],
-        "cookies": [],
-        "responseMedia": [
-            "application/json"
-        ],
-        "query": [],
-        "queryArgs": [],
-        "auth": [
-            [
-                {
-                    "in": "header",
-                    "name": "authorization",
-                    "scheme": "bearer"
-                }
-            ]
-        ],
-        "status": 201,
-        "sample": {
-            "id": 16521632,
-            "originalTransferId": "54a6bc09-cef9-49a8-9041-f1f0c654cd88",
-            "user": 4342275,
-            "targetAccount": 8692237,
-            "sourceAccount": 1527389,
-            "quote": "8fa9be20-ba43-4b15-abbb-9424e1481050",
-            "status": "cancelled",
-            "rate": 0.89,
-            "details": {
-                "reference": "T475890"
-            },
-            "hasActiveIssues": false,
-            "sourceCurrency": "EUR",
-            "sourceValue": 0,
-            "targetCurrency": "GBP",
-            "targetValue": 150,
-            "originator": {
-                "legalEntityType": "BUSINESS",
-                "name": {
-                    "fullName": "Hot Air Balloon Services Ltd"
-                },
-                "reference": "CST-2991992",
-                "businessRegistrationCode": "83920-546",
-                "businessRegistrationDate": "2020-01-15",
-                "address": {
-                    "firstLine": "Salu tee 14",
-                    "city": "Tallinn",
-                    "stateCode": "",
-                    "countryCode": "EE",
-                    "postCode": "12112"
-                },
-                "accountDetails": "23456789"
-            },
-            "created": "2025-10-29T12:28:16.000Z"
-        },
-        "idField": "id"
-    },
-    {
         "entity": "currency",
         "accessor": "Currency",
         "op": "list",
@@ -4148,6 +4439,106 @@ const PLAN = [
                     "modificationTime": "2025-08-19T21:28:28.434738000Z"
                 }
             ]
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "digital_wallet",
+        "accessor": "DigitalWallet",
+        "op": "create",
+        "method": "POST",
+        "path": "/twcard-data/v1/push-provisioning/encrypted-payload/apple-pay",
+        "action": "apple-pay",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "x_tw_twcard_card_token",
+                "wire": "x-tw-twcard-card-token",
+                "value": "a3f90c98-1cd1-4488-9050-2e32c696f8fa"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "encryptedPassData": "443232323637393045DDE321469537FE461E824AA55BA67BF645454330A32433610DE1D1461475BEB6D815F31764DDC20298BD779FBE37EE5AB3CBDA9F9825E1",
+            "activationData": "KDlTthhZTGufMY…….xPSUrfmqCHXaI9wOGY=",
+            "ephemeralKey": "A1B2C3D4E5F6112233445566"
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "digital_wallet",
+        "accessor": "DigitalWallet",
+        "op": "create",
+        "method": "POST",
+        "path": "/twcard-data/v1/push-provisioning/encrypted-payload/google-pay",
+        "action": "google-pay",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "x_tw_twcard_card_token",
+                "wire": "x-tw-twcard-card-token",
+                "value": "a3f90c98-1cd1-4488-9050-2e32c696f8fa"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "opaquePaymentCard": "eyJraWQiOiIwQk...",
+            "cardNetwork": "CARD_NETWORK_VISA",
+            "tokenServiceProvider": "TOKEN_PROVIDER_VISA",
+            "cardDisplayName": "Wise Card",
+            "cardLastDigits": "1234",
+            "userAddress": {
+                "addressLine1": "56 Shoreditch High St",
+                "addressLine2": "The Tea Bldg",
+                "countryCode": "GB",
+                "locality": "London",
+                "administrativeArea": "",
+                "name": "John Smith",
+                "phoneNumber": "+441234567890",
+                "postalCode": "E1 6JJ"
+            }
         },
         "idField": "id"
     },
@@ -5071,6 +5462,60 @@ const PLAN = [
         "idField": "id"
     },
     {
+        "entity": "gpi_tracking",
+        "accessor": "GpiTracking",
+        "op": "create",
+        "method": "POST",
+        "path": "/gpi-tracking",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": null,
+        "status": 200,
+        "sample": {
+            "transactions": [
+                {
+                    "uetr": "97ed4827-7b6f-4491-a206-42bcf859a919",
+                    "status": "ACSP",
+                    "cancellationStatus": "CANCELLATION_REJECTED",
+                    "initiatedAt": "2023-09-18T12:05:50Z",
+                    "lastUpdatedAt": "2023-09-18T12:13:33.314Z",
+                    "events": [
+                        {
+                            "status": "ACSP",
+                            "statusReason": {
+                                "code": "G001",
+                                "settlementMethod": {
+                                    "code": "INGA"
+                                },
+                                "instructedAgent": "LHVBEE22XXX",
+                                "chargeBearer": "SHAR"
+                            },
+                            "statusTime": "2023-09-18T12:13:33.314Z",
+                            "amountInconsistency": false,
+                            "eventType": "CANCELLATION_RESPONSE",
+                            "eventTarget": "CREDIT_TRANSFER",
+                            "eventCreationTime": "2023-09-18T12:13:33.348Z"
+                        }
+                    ]
+                }
+            ]
+        },
+        "idField": "id"
+    },
+    {
         "entity": "hold_limit_breach",
         "accessor": "HoldLimitBreach",
         "op": "list",
@@ -5335,6 +5780,7 @@ const PLAN = [
         "op": "create",
         "method": "POST",
         "path": "/auth/jose/playground/jwsjwe",
+        "action": "jwsjwe",
         "args": [],
         "select": {},
         "headers": [
@@ -5368,6 +5814,102 @@ const PLAN = [
         "auth": null,
         "status": 200,
         "sample": "eyJraWQiOiJiMzc0ODE1MC0xNGQ0LTRlMDAtYjM5NC03YWUwYzkzYmUyNDUiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.VGhpcyBpcyB0aGUgZW5jcnlwdGVkIENFSw.aXZfdmFsdWU.ZW5jcnlwdGVkX3BheWxvYWQ.YXV0aF90YWc",
+        "idField": "id"
+    },
+    {
+        "entity": "jose",
+        "accessor": "Jose",
+        "op": "create",
+        "method": "POST",
+        "path": "/auth/jose/playground/jwe",
+        "action": "jwe",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "x_tw_jose_method",
+                "wire": "x-tw-jose-method",
+                "value": "jwe"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/jose+json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": null,
+        "status": 200,
+        "sample": "eyJraWQiOiI2ZGE0OTQ5NS0xNjMyLTQzY2QtOWEwMy1kZDMyNDYwM2VjZDciLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.qwMqgFXRI84THQdCHhxNe5yvKOuKp2rAMH62xQ1OioPatnLfxqPHJUX0as13B3g3JKaqGgF0qMi7r3QbJ_cXNFBIg1yenCwWv4192J73-kEkCSyS-FflDCNfih1z1mm95ftAE7FhHJVG5tcSm_B0-bPU3SbjB3SDhR3QlLX5o_sQmYkQay8PKSssyBS5tCjuKdz-9QNvZtNADPujKrJGe5hE5r7ShcNwVUS2vpMXANiQTzZnQ2L3j_m07Rru-PgMxHTD2uR621B87YfTHonWDJe4XogA_pMWD_hzHVQKT7Il--2YOtv8PTnLge-uVvRTgqUiYUdvq85nPyDKsOQMnQ.zprknKK9W4iAX7YA.LJWA6oRcYj0LruM3GLPtZ0CtVNpI0Zs9WFrARDd464kKxSlu15LBiFFCFwOHbeKoRudfp8Br7MfRIlaTLHxPEE1xoBB8jZN8fakAcApU.OlMATtfF9XMtYJtTsGuBGQ02",
+        "idField": "id"
+    },
+    {
+        "entity": "jose",
+        "accessor": "Jose",
+        "op": "create",
+        "method": "POST",
+        "path": "/auth/jose/playground/jwe-direct-encryption",
+        "action": "jwe-direct-encryption",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "x_tw_jose_method",
+                "wire": "x-tw-jose-method",
+                "value": "jwe"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/jose+json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": null,
+        "status": 200,
+        "sample": "eyJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiZGlyIn0..gTnxA4uYrCTWVNp1.jQ3dDidM2Z8RuYkgQt1ydJ6xYy5uG3CH72-pioHlZPqucxPWeN1pWwmceQKgpGulJmw3nYLRNkgCa9yQHMofpFIlV5HQJS6mQDxZP4G2kj3bFKvByckRYQQ3v3W7TkjfVL4NAVlrDqxx3G29-qblRwbyneMP.mVY_uctEfEAleVVbHjcqdA04",
+        "idField": "id"
+    },
+    {
+        "entity": "jose",
+        "accessor": "Jose",
+        "op": "create",
+        "method": "POST",
+        "path": "/auth/jose/playground/jws",
+        "action": "jws",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "x_tw_jose_method",
+                "wire": "x-tw-jose-method",
+                "value": "jws"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/jose+json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": null,
+        "status": 200,
+        "sample": "eyJ2ZXJzaW9uIjoxLCJhbGciOiJFUzUxMiJ9.eyJtZXNzYWdlIjoiam9zZS1wbGF5Z3JvdW5kLXJlc3BvbnNlLVRoaXMgaXMgYW4gZXhhbXBsZSBmcm9tIGRvY3Mud2lzZS5jb20iLCJtZXRob2QiOiJQT1NUIn0.APYfoUySW_dPdBBVST3tJdaCBCMQZm0UR6g0vBqxjjX4WWkOdt6h045EXZKMT1m0JEMI5b7KpN14Mib9BxS7VWpLAPwYhTU5pJcQrtiK4fwaBMTT_DwipZk6ASXVevrMK_Tn9YSSkKDsv6X9qyBsnIXKy304Ex5QIHKmSGQT6wNSJ7Ye02",
         "idField": "id"
     },
     {
@@ -5459,6 +6001,80 @@ const PLAN = [
             },
             "scope": "PAYLOAD_SIGNING"
         },
+        "idField": "id"
+    },
+    {
+        "entity": "jose",
+        "accessor": "Jose",
+        "op": "load",
+        "method": "GET",
+        "path": "/auth/jose/playground/jwe",
+        "action": "jwe",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "x_tw_jose_encryption_kid",
+                "wire": "x-tw-jose-encryption-kid",
+                "value": "2333836d-2e1c-4acd-8b52-234d379260aa"
+            },
+            {
+                "name": "x_tw_jose_method",
+                "wire": "x-tw-jose-method",
+                "value": "jwe"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/jose+json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": null,
+        "status": 200,
+        "sample": "eyJraWQiOiI2ZGE0OTQ5NS0xNjMyLTQzY2QtOWEwMy1kZDMyNDYwM2VjZDciLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.UC5mC6XSGZZuQzUALpM2QfDWyi-lcl4Wv3v8-9L04BFmqYTyiQMO-YMxiwzOdVbF-L01CaFcr_iuoM36fKp01onJAtsrvuGcnrHeh23kMwZ5k29ycGTckE0YYLe-WV9WtXguudfFC3Hri9v4FTPEE1_BbkrHACVufuhw_xWUWgYAekfm7dnmTI_3SmtExWZ_P-Xn6rkGXhsJ0Kq9LB-F3mnuvz_iglvZsW76RdLV_I4es-TfTnQgVOGO-N38SSS4wCF1qw2TWOkpNAe9kyAg6a8tWw8ZkpOxJlmGdp4jLuG_GDWlmtDrv9ntgeCLDRiTp4SLYL2MGYdmNXigZI5xrg.P_h3CuIiKxEzndER.Zf0wahZEHQSMcb4olkeT1NNzh3Alj34XbXVdREiqQH9CKDa-GnKvh1lXXYuvTO99vtBmNRM.iTzGQ3FNRIybDT_lJcnaeQ03",
+        "idField": "id"
+    },
+    {
+        "entity": "jose",
+        "accessor": "Jose",
+        "op": "load",
+        "method": "GET",
+        "path": "/auth/jose/playground/jwsjwe",
+        "action": "jwsjwe",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "x_tw_jose_encryption_kid",
+                "wire": "X-TW-JOSE-Encryption-kid",
+                "value": "2333836d-2e1c-4acd-8b52-234d379260aa"
+            },
+            {
+                "name": "x_tw_jose_method",
+                "wire": "x-tw-jose-method",
+                "value": "jws+jwe"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/jose+json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": null,
+        "status": 200,
+        "sample": "eyJraWQiOiJiMzc0ODE1MC0xNGQ0LTRlMDAtYjM5NC03YWUwYzkzYmUyNDUiLCJlbmMiOiJBMjU2R0NNIiwiYWxnIjoiUlNBLU9BRVAtMjU2In0.VGhpcyBpcyB0aGUgZW5jcnlwdGVkIENFSw.aXZfdmFsdWU.ZW5jcnlwdGVkX3BheWxvYWQ.YXV0aF90YWc",
         "idField": "id"
     },
     {
@@ -6070,60 +6686,6 @@ const PLAN = [
         "idField": "id"
     },
     {
-        "entity": "lookup_gpi_tracking_response_content",
-        "accessor": "LookupGpiTrackingResponseContent",
-        "op": "create",
-        "method": "POST",
-        "path": "/gpi-tracking",
-        "args": [],
-        "select": {},
-        "headers": [
-            {
-                "name": "x_external_correlation_id",
-                "wire": "X-External-Correlation-Id",
-                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
-            }
-        ],
-        "cookies": [],
-        "responseMedia": [
-            "application/json"
-        ],
-        "query": [],
-        "queryArgs": [],
-        "auth": null,
-        "status": 200,
-        "sample": {
-            "transactions": [
-                {
-                    "uetr": "97ed4827-7b6f-4491-a206-42bcf859a919",
-                    "status": "ACSP",
-                    "cancellationStatus": "CANCELLATION_REJECTED",
-                    "initiatedAt": "2023-09-18T12:05:50Z",
-                    "lastUpdatedAt": "2023-09-18T12:13:33.314Z",
-                    "events": [
-                        {
-                            "status": "ACSP",
-                            "statusReason": {
-                                "code": "G001",
-                                "settlementMethod": {
-                                    "code": "INGA"
-                                },
-                                "instructedAgent": "LHVBEE22XXX",
-                                "chargeBearer": "SHAR"
-                            },
-                            "statusTime": "2023-09-18T12:13:33.314Z",
-                            "amountInconsistency": false,
-                            "eventType": "CANCELLATION_RESPONSE",
-                            "eventTarget": "CREDIT_TRANSFER",
-                            "eventCreationTime": "2023-09-18T12:13:33.348Z"
-                        }
-                    ]
-                }
-            ]
-        },
-        "idField": "id"
-    },
-    {
         "entity": "message",
         "accessor": "Message",
         "op": "create",
@@ -6164,6 +6726,96 @@ const PLAN = [
             "type": "FREEFORM",
             "author": "PARTNER"
         },
+        "idField": "id"
+    },
+    {
+        "entity": "multi_currency_account",
+        "accessor": "MultiCurrencyAccount",
+        "op": "list",
+        "method": "GET",
+        "path": "/borderless-accounts-configuration/profiles/{profileId}/available-currencies",
+        "action": "available-currencies",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": [
+            "EUR",
+            "GBP",
+            "USD"
+        ],
+        "idField": "id"
+    },
+    {
+        "entity": "multi_currency_account",
+        "accessor": "MultiCurrencyAccount",
+        "op": "list",
+        "method": "GET",
+        "path": "/borderless-accounts-configuration/profiles/{profileId}/payin-currencies",
+        "action": "payin-currencies",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": [
+            "EUR",
+            "GBP",
+            "USD"
+        ],
         "idField": "id"
     },
     {
@@ -6228,11 +6880,12 @@ const PLAN = [
         "idField": "id"
     },
     {
-        "entity": "n3ds",
-        "accessor": "N3ds",
+        "entity": "one_time_token",
+        "accessor": "OneTimeToken",
         "op": "create",
         "method": "POST",
-        "path": "/spend/profiles/{profileId}/3dsecure/challenge-result",
+        "path": "/profiles/{profileId}/device-fingerprints/verify",
+        "action": "device-fingerprint",
         "args": [
             {
                 "name": "profile_id",
@@ -6243,12 +6896,35 @@ const PLAN = [
         "select": {},
         "headers": [
             {
+                "name": "accept_encoding",
+                "wire": "Accept-Encoding",
+                "value": "identity"
+            },
+            {
+                "name": "content_encoding",
+                "wire": "Content-Encoding",
+                "value": "identity"
+            },
+            {
+                "name": "one_time_token",
+                "wire": "One-Time-Token",
+                "value": "h3"
+            },
+            {
                 "name": "x_external_correlation_id",
                 "wire": "X-External-Correlation-Id",
                 "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "xtw_jose_method",
+                "wire": "X-tw-jose-method",
+                "value": "jwe"
             }
         ],
         "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
         "query": [],
         "queryArgs": [],
         "auth": [
@@ -6260,8 +6936,91 @@ const PLAN = [
                 }
             ]
         ],
-        "status": 204,
-        "sample": null,
+        "status": 200,
+        "sample": {
+            "oneTimeToken": "5932d5b5-ec13-452f-8688-308feade7834",
+            "challenges": [
+                {
+                    "primaryChallenge": {
+                        "type": "PIN"
+                    },
+                    "passed": false
+                }
+            ],
+            "validity": 3600
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "one_time_token",
+        "accessor": "OneTimeToken",
+        "op": "create",
+        "method": "POST",
+        "path": "/profiles/{profileId}/pin/verify",
+        "action": "pin",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "accept_encoding",
+                "wire": "Accept-Encoding",
+                "value": "identity"
+            },
+            {
+                "name": "content_encoding",
+                "wire": "Content-Encoding",
+                "value": "identity"
+            },
+            {
+                "name": "one_time_token",
+                "wire": "One-Time-Token",
+                "value": "h3"
+            },
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            },
+            {
+                "name": "xtw_jose_method",
+                "wire": "X-tw-jose-method",
+                "value": "jwe"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "oneTimeToken": "5932d5b5-ec13-452f-8688-308feade7834",
+            "challenges": [
+                {
+                    "primaryChallenge": {
+                        "type": "PIN"
+                    },
+                    "passed": false
+                }
+            ],
+            "validity": 3600
+        },
         "idField": "id"
     },
     {
@@ -6317,6 +7076,144 @@ const PLAN = [
                 }
             ],
             "validity": 3600
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "ott",
+        "accessor": "Ott",
+        "op": "create",
+        "method": "POST",
+        "path": "/one-time-token/sms/verify",
+        "action": "sms",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "one_time_token",
+                "wire": "One-Time-Token",
+                "value": "h1"
+            },
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "oneTimeTokenProperties": {
+                "oneTimeToken": "9f5f5812-2609-4e48-8418-b64437c0c7cd",
+                "challenges": [],
+                "validity": 3600
+            }
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "ott",
+        "accessor": "Ott",
+        "op": "create",
+        "method": "POST",
+        "path": "/one-time-token/voice/verify",
+        "action": "voice",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "one_time_token",
+                "wire": "One-Time-Token",
+                "value": "h1"
+            },
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "oneTimeTokenProperties": {
+                "oneTimeToken": "9f5f5812-2609-4e48-8418-b64437c0c7cd",
+                "challenges": [],
+                "validity": 3600
+            }
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "ott",
+        "accessor": "Ott",
+        "op": "create",
+        "method": "POST",
+        "path": "/one-time-token/whatsapp/verify",
+        "action": "whatsapp",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "one_time_token",
+                "wire": "One-Time-Token",
+                "value": "h1"
+            },
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "oneTimeTokenProperties": {
+                "oneTimeToken": "9f5f5812-2609-4e48-8418-b64437c0c7cd",
+                "challenges": [],
+                "validity": 3600
+            }
         },
         "idField": "id"
     },
@@ -6743,6 +7640,70 @@ const PLAN = [
         "accessor": "PaymentInstrument",
         "op": "create",
         "method": "POST",
+        "path": "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}/manual-confirmation",
+        "action": "manual-confirmation",
+        "args": [
+            {
+                "name": "id",
+                "wire": "paymentInstrumentId",
+                "value": "p1"
+            },
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p2"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "accountNumber": "x",
+            "accountOwnerDetails": {
+                "city": "x",
+                "companyName": "x",
+                "country": "x",
+                "firstLine": "x",
+                "postCode": "x",
+                "state": "x"
+            },
+            "bankCode": "x",
+            "bankName": "x",
+            "branchCode": "x",
+            "disconnectReason": "x",
+            "id": "x",
+            "reference": "x",
+            "status": "x",
+            "type": "x"
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "payment_instrument",
+        "accessor": "PaymentInstrument",
+        "op": "create",
+        "method": "POST",
         "path": "/profiles/{profileId}/payment-instruments",
         "args": [
             {
@@ -6861,70 +7822,6 @@ const PLAN = [
         "op": "load",
         "method": "GET",
         "path": "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}",
-        "args": [
-            {
-                "name": "id",
-                "wire": "paymentInstrumentId",
-                "value": "p1"
-            },
-            {
-                "name": "profile_id",
-                "wire": "profileId",
-                "value": "p2"
-            }
-        ],
-        "select": {},
-        "headers": [
-            {
-                "name": "x_external_correlation_id",
-                "wire": "X-External-Correlation-Id",
-                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
-            }
-        ],
-        "cookies": [],
-        "responseMedia": [
-            "application/json"
-        ],
-        "query": [],
-        "queryArgs": [],
-        "auth": [
-            [
-                {
-                    "in": "header",
-                    "name": "authorization",
-                    "scheme": "bearer"
-                }
-            ]
-        ],
-        "status": 200,
-        "sample": {
-            "accountNumber": "x",
-            "accountOwnerDetails": {
-                "city": "x",
-                "companyName": "x",
-                "country": "x",
-                "firstLine": "x",
-                "postCode": "x",
-                "state": "x"
-            },
-            "bankCode": "x",
-            "bankName": "x",
-            "branchCode": "x",
-            "disconnectReason": "x",
-            "id": "x",
-            "reference": "x",
-            "status": "x",
-            "type": "x"
-        },
-        "idField": "id"
-    },
-    {
-        "entity": "payment_instrument_details_resource",
-        "accessor": "PaymentInstrumentDetailsResource",
-        "op": "create",
-        "method": "POST",
-        "path": "/profiles/{profileId}/payment-instruments/{paymentInstrumentId}/manual-confirmation",
-        "action": "manual-confirmation",
         "args": [
             {
                 "name": "id",
@@ -9795,6 +10692,132 @@ const PLAN = [
     {
         "entity": "sca_otp",
         "accessor": "ScaOtp",
+        "op": "create",
+        "method": "POST",
+        "path": "/one-time-token/sms/trigger",
+        "action": "sms",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "one_time_token",
+                "wire": "One-Time-Token",
+                "value": "h1"
+            },
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "obfuscatedPhoneNo": "*********8888"
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "sca_otp",
+        "accessor": "ScaOtp",
+        "op": "create",
+        "method": "POST",
+        "path": "/one-time-token/voice/trigger",
+        "action": "voice",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "one_time_token",
+                "wire": "One-Time-Token",
+                "value": "h1"
+            },
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "obfuscatedPhoneNo": "*********8888"
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "sca_otp",
+        "accessor": "ScaOtp",
+        "op": "create",
+        "method": "POST",
+        "path": "/one-time-token/whatsapp/trigger",
+        "action": "whatsapp",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "one_time_token",
+                "wire": "One-Time-Token",
+                "value": "h1"
+            },
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "obfuscatedPhoneNo": "*********8888"
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "sca_otp",
+        "accessor": "ScaOtp",
         "op": "remove",
         "method": "DELETE",
         "path": "/application/users/{userId}/phone-numbers/{phoneNumberId}",
@@ -9881,12 +10904,11 @@ const PLAN = [
         "idField": "id"
     },
     {
-        "entity": "settlement_allocation_response_content",
-        "accessor": "SettlementAllocationResponseContent",
+        "entity": "settlement_allocation",
+        "accessor": "SettlementAllocation",
         "op": "create",
         "method": "POST",
         "path": "/settlement/allocations",
-        "action": "allocation",
         "args": [],
         "select": {},
         "headers": [
@@ -9926,14 +10948,14 @@ const PLAN = [
         "idField": "id"
     },
     {
-        "entity": "settlement_allocation_response_content",
-        "accessor": "SettlementAllocationResponseContent",
+        "entity": "settlement_allocation",
+        "accessor": "SettlementAllocation",
         "op": "load",
         "method": "GET",
         "path": "/settlement/allocations/{allocationId}",
         "args": [
             {
-                "name": "allocation_id",
+                "name": "id",
                 "wire": "allocationId",
                 "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
             }
@@ -10012,6 +11034,607 @@ const PLAN = [
         "accessor": "Simulation",
         "op": "create",
         "method": "POST",
+        "path": "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/authorisation",
+        "action": "card-authorisation",
+        "args": [
+            {
+                "name": "card_token",
+                "wire": "cardToken",
+                "value": "p1"
+            },
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p2"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "reference": {
+                "transaction": {
+                    "acquirer": {
+                        "institutionId": "430010",
+                        "name": "ACQUIRER NAME",
+                        "city": "CITY NAME",
+                        "merchantCategoryCode": 5499,
+                        "country": "GB",
+                        "acceptorTerminalId": "TERMID01",
+                        "acceptorIdCode": "CARD ACCEPTOR",
+                        "forwardingInstitutionId": "400050"
+                    },
+                    "card": {
+                        "token": "59123122-223d-45f9-b840-0ad4a4f80937",
+                        "schemeName": "VISA",
+                        "pan": "4242424242424242",
+                        "pin": "1234",
+                        "cvv1": "123",
+                        "icvv": "456",
+                        "cvv2": "789",
+                        "expiration": [
+                            2029,
+                            7
+                        ],
+                        "sequenceNumber": 1,
+                        "profileId": 2,
+                        "userId": 5,
+                        "cardStatus": "ACTIVE",
+                        "country": "SG",
+                        "currencies": [
+                            "SGD"
+                        ]
+                    },
+                    "pos": {
+                        "type": "CHIP_AND_PIN",
+                        "acceptsOnlinePins": true,
+                        "maxPinLength": 12,
+                        "supports3ds": false,
+                        "hasChip": true
+                    },
+                    "transactionStartTime": 1667541087.0476434,
+                    "stan": "363054",
+                    "schemeTransactionId": "932290252416153",
+                    "retrievalReferenceNum": "230805363054"
+                },
+                "requestMti": "0200",
+                "authorizationIdResponse": "123646"
+            },
+            "error": null
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
+        "path": "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/clearing",
+        "action": "card-clearing",
+        "args": [
+            {
+                "name": "card_token",
+                "wire": "cardToken",
+                "value": "p1"
+            },
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p2"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "reference": {
+                "transaction": {
+                    "acquirer": {
+                        "institutionId": "430010",
+                        "name": "ACQUIRER NAME",
+                        "city": "CITY NAME",
+                        "merchantCategoryCode": 5499,
+                        "country": "GB",
+                        "acceptorTerminalId": "TERMID01",
+                        "acceptorIdCode": "CARD ACCEPTOR",
+                        "forwardingInstitutionId": "400050"
+                    },
+                    "card": {
+                        "token": "59123122-223d-45f9-b840-0ad4a4f80937",
+                        "schemeName": "VISA",
+                        "pan": "4242424242424242",
+                        "pin": "1234",
+                        "cvv1": "123",
+                        "icvv": "456",
+                        "cvv2": "789",
+                        "expiration": [
+                            2029,
+                            7
+                        ],
+                        "sequenceNumber": 1,
+                        "profileId": 2,
+                        "userId": 5,
+                        "cardStatus": "ACTIVE",
+                        "country": "SG",
+                        "currencies": [
+                            "SGD"
+                        ]
+                    },
+                    "pos": {
+                        "type": "CHIP_AND_PIN",
+                        "acceptsOnlinePins": true,
+                        "maxPinLength": 12,
+                        "supports3ds": false,
+                        "hasChip": true
+                    },
+                    "transactionStartTime": 1667541087.0476434,
+                    "stan": "363054",
+                    "schemeTransactionId": "932290252416153",
+                    "retrievalReferenceNum": "230805363054"
+                },
+                "requestMti": "0200",
+                "authorizationIdResponse": "123646"
+            },
+            "error": null
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
+        "path": "/simulation/spend/profiles/{profileId}/cards/{cardToken}/production",
+        "action": "card-production",
+        "args": [
+            {
+                "name": "card_token",
+                "wire": "cardToken",
+                "value": "p1"
+            },
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p2"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": null,
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
+        "path": "/simulation/spend/profiles/{profileId}/cards/{cardToken}/transactions/reversal",
+        "action": "card-reversal",
+        "args": [
+            {
+                "name": "card_token",
+                "wire": "cardToken",
+                "value": "p1"
+            },
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p2"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "reference": {
+                "transaction": {
+                    "acquirer": {
+                        "institutionId": "430010",
+                        "name": "ACQUIRER NAME",
+                        "city": "CITY NAME",
+                        "merchantCategoryCode": 5499,
+                        "country": "GB",
+                        "acceptorTerminalId": "TERMID01",
+                        "acceptorIdCode": "CARD ACCEPTOR",
+                        "forwardingInstitutionId": "400050"
+                    },
+                    "card": {
+                        "token": "59123122-223d-45f9-b840-0ad4a4f80937",
+                        "schemeName": "VISA",
+                        "pan": "4242424242424242",
+                        "pin": "1234",
+                        "cvv1": "123",
+                        "icvv": "456",
+                        "cvv2": "789",
+                        "expiration": [
+                            2029,
+                            7
+                        ],
+                        "sequenceNumber": 1,
+                        "profileId": 2,
+                        "userId": 5,
+                        "cardStatus": "ACTIVE",
+                        "country": "SG",
+                        "currencies": [
+                            "SGD"
+                        ]
+                    },
+                    "pos": {
+                        "type": "CHIP_AND_PIN",
+                        "acceptsOnlinePins": true,
+                        "maxPinLength": 12,
+                        "supports3ds": false,
+                        "hasChip": true
+                    },
+                    "transactionStartTime": 1667541087.0476434,
+                    "stan": "363054",
+                    "schemeTransactionId": "932290252416153",
+                    "retrievalReferenceNum": "230805363054"
+                },
+                "requestMti": "0200",
+                "authorizationIdResponse": "123646"
+            },
+            "error": null
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
+        "path": "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/add",
+        "action": "kyc-requirement-add",
+        "args": [
+            {
+                "name": "kyc_review_id",
+                "wire": "kycReviewId",
+                "value": "p1"
+            },
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p2"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 202,
+        "sample": null,
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
+        "path": "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/requirements/submit",
+        "action": "kyc-requirement-submit",
+        "args": [
+            {
+                "name": "kyc_review_id",
+                "wire": "kycReviewId",
+                "value": "p1"
+            },
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p2"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 202,
+        "sample": null,
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
+        "path": "/simulation/profiles/{profileId}/kyc-reviews/{kycReviewId}/verify",
+        "action": "kyc-review-verify",
+        "args": [
+            {
+                "name": "kyc_review_id",
+                "wire": "kycReviewId",
+                "value": "p1"
+            },
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p2"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 202,
+        "sample": null,
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
+        "path": "/simulation/profiles/{profileId}/bank-transactions/import",
+        "action": "bank-transaction-import",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 201,
+        "sample": null,
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
+        "path": "/simulation/profiles/{profileId}/swift-in",
+        "action": "swift-in",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "id": 123,
+            "messageReference": null,
+            "mur": null,
+            "uetr": "f87c3c37-d97b-4da6-a788-94004414e648",
+            "messageType": "pacs.008.001.08",
+            "sender": null,
+            "receiver": null,
+            "state": "RECEIVED",
+            "direction": "INCOMING",
+            "jsonMessage": null,
+            "finMessage": null,
+            "processTime": "2026-02-27T09:24:38.484276Z",
+            "amount": 100,
+            "currency": "EUR",
+            "valueDate": null,
+            "payoutInstructionId": null,
+            "transferId": null,
+            "actor": "SYSTEM",
+            "actorId": null,
+            "actorOktaId": null,
+            "source": "SWIFT_CLOUD",
+            "attributes": null,
+            "ackMessage": false
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
+        "path": "/simulation/profiles/{profileId}/verifications",
+        "action": "verification",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": null,
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
         "path": "/simulation/transfers/{transferId}/payout-failure",
         "args": [
             {
@@ -10056,6 +11679,51 @@ const PLAN = [
         "accessor": "Simulation",
         "op": "create",
         "method": "POST",
+        "path": "/simulation/balance/topup",
+        "action": "balance-topup",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 200,
+        "sample": {
+            "transactionId": 5,
+            "state": "COMPLETED",
+            "balancesAfter": [
+                {
+                    "id": 5,
+                    "value": 100,
+                    "currency": "EUR"
+                }
+            ]
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
         "path": "/simulation/sanction-cases",
         "action": "sanction_case",
         "args": [],
@@ -10087,6 +11755,30 @@ const PLAN = [
             "eventId": "550e8400-e29b-41d4-a716-446655440001",
             "caseId": 42
         },
+        "idField": "id"
+    },
+    {
+        "entity": "simulation",
+        "accessor": "Simulation",
+        "op": "create",
+        "method": "POST",
+        "path": "/simulation/settlement/funds",
+        "action": "settlement-funds",
+        "args": [],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "query": [],
+        "queryArgs": [],
+        "auth": null,
+        "status": 204,
+        "sample": null,
         "idField": "id"
     },
     {
@@ -10304,6 +11996,66 @@ const PLAN = [
             "targetValue": 895.32,
             "targetCurrency": "GBP"
         },
+        "idField": "id"
+    },
+    {
+        "entity": "spend_control",
+        "accessor": "SpendControl",
+        "op": "create",
+        "method": "POST",
+        "path": "/spend/applications/{clientId}/spend-controls/rules/apply",
+        "action": "apply",
+        "args": [
+            {
+                "name": "application_id",
+                "wire": "clientId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "query": [],
+        "queryArgs": [],
+        "auth": null,
+        "status": 200,
+        "sample": null,
+        "idField": "id"
+    },
+    {
+        "entity": "spend_control",
+        "accessor": "SpendControl",
+        "op": "create",
+        "method": "POST",
+        "path": "/spend/applications/{clientId}/spend-controls/rules/unapply",
+        "action": "unapply",
+        "args": [
+            {
+                "name": "application_id",
+                "wire": "clientId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "query": [],
+        "queryArgs": [],
+        "auth": null,
+        "status": 200,
+        "sample": null,
         "idField": "id"
     },
     {
@@ -11045,6 +12797,81 @@ const PLAN = [
     {
         "entity": "third_party_transfer",
         "accessor": "ThirdPartyTransfer",
+        "op": "create",
+        "method": "POST",
+        "path": "/profiles/{profileId}/third-party-transfers",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": 123456789
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "responseMedia": [
+            "application/json"
+        ],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 201,
+        "sample": {
+            "id": 16521632,
+            "originalTransferId": "54a6bc09-cef9-49a8-9041-f1f0c654cd88",
+            "user": 4342275,
+            "targetAccount": 8692237,
+            "sourceAccount": 1527389,
+            "quote": "8fa9be20-ba43-4b15-abbb-9424e1481050",
+            "status": "cancelled",
+            "rate": 0.89,
+            "details": {
+                "reference": "T475890"
+            },
+            "hasActiveIssues": false,
+            "sourceCurrency": "EUR",
+            "sourceValue": 0,
+            "targetCurrency": "GBP",
+            "targetValue": 150,
+            "originator": {
+                "legalEntityType": "BUSINESS",
+                "name": {
+                    "fullName": "Hot Air Balloon Services Ltd"
+                },
+                "reference": "CST-2991992",
+                "businessRegistrationCode": "83920-546",
+                "businessRegistrationDate": "2020-01-15",
+                "address": {
+                    "firstLine": "Salu tee 14",
+                    "city": "Tallinn",
+                    "stateCode": "",
+                    "countryCode": "EE",
+                    "postCode": "12112"
+                },
+                "accountDetails": "23456789"
+            },
+            "created": "2025-10-29T12:28:16.000Z"
+        },
+        "idField": "id"
+    },
+    {
+        "entity": "third_party_transfer",
+        "accessor": "ThirdPartyTransfer",
         "op": "load",
         "method": "GET",
         "path": "/profiles/{profileId}/third-party-transfers/{transferId}",
@@ -11120,6 +12947,43 @@ const PLAN = [
             },
             "created": "2025-10-29T12:28:16.000Z"
         },
+        "idField": "id"
+    },
+    {
+        "entity": "three_d_secure",
+        "accessor": "ThreeDSecure",
+        "op": "create",
+        "method": "POST",
+        "path": "/spend/profiles/{profileId}/3dsecure/challenge-result",
+        "args": [
+            {
+                "name": "profile_id",
+                "wire": "profileId",
+                "value": "p1"
+            }
+        ],
+        "select": {},
+        "headers": [
+            {
+                "name": "x_external_correlation_id",
+                "wire": "X-External-Correlation-Id",
+                "value": "f47ac10b-58cc-4372-a567-0e02b2c3d479"
+            }
+        ],
+        "cookies": [],
+        "query": [],
+        "queryArgs": [],
+        "auth": [
+            [
+                {
+                    "in": "header",
+                    "name": "authorization",
+                    "scheme": "bearer"
+                }
+            ]
+        ],
+        "status": 204,
+        "sample": null,
         "idField": "id"
     },
     {

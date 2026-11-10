@@ -9,7 +9,7 @@ const live_runner_1 = require("../../live-runner");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 (0, utility_1.loadEnvLocal)(__dirname + '/../../../.env.local');
-(0, node_test_1.describe)('BankAccountDetailDirect', async () => {
+(0, node_test_1.describe)('BankAccountDetailsOrderDirect', async () => {
     // Per-test live pacing. Delay is read from sdk-test-control.json's
     // `test.live.delayMs`; only sleeps when WISE_TEST_LIVE=TRUE.
     (0, node_test_1.afterEach)((0, utility_1.liveDelay)('WISE_TEST_LIVE'));
@@ -21,13 +21,13 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)('function' === typeof sdk.direct);
         (0, node_assert_1.default)('function' === typeof sdk.prepare);
     });
-    (0, node_test_1.test)('direct-list-bank_account_detail', async (t) => {
+    (0, node_test_1.test)('direct-list-bank_account_details_order', async (t) => {
         if (liveScenariosActive()) {
             t.skip('Covered by live operation scenarios');
             return;
         }
         const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
-        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-bank_account_detail', setup.live))
+        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-bank_account_details_order', setup.live))
             return;
         if ((0, utility_1.skipIfMissingIds)(t, setup, ["profile01"], LIVE_STRICT))
             return;
@@ -77,7 +77,7 @@ function liveScenariosActive() { return false && process.env.WISE_TEST_LIVE === 
 function directSetup(mockres) {
     const calls = [];
     const env = (0, utility_1.envOverride)({
-        'WISE_TEST_BANK_ACCOUNT_DETAIL_ENTID': {},
+        'WISE_TEST_BANK_ACCOUNT_DETAILS_ORDER_ENTID': {},
         'WISE_TEST_LIVE': 'FALSE',
         'WISE_APIKEY': '',
     });
@@ -89,7 +89,7 @@ function directSetup(mockres) {
         const client = new __1.WiseSDK(Object.assign({}, (0, utility_1.liveClientOptions)(), { system: { fetch: transport.fetch },
             apikey: env.WISE_APIKEY,
         }));
-        let idmap = env['WISE_TEST_BANK_ACCOUNT_DETAIL_ENTID'];
+        let idmap = env['WISE_TEST_BANK_ACCOUNT_DETAILS_ORDER_ENTID'];
         if ('string' === typeof idmap && idmap.startsWith('{')) {
             idmap = JSON.parse(idmap);
         }
@@ -128,4 +128,4 @@ function unwrapListData(data) {
     }
     return null;
 }
-//# sourceMappingURL=BankAccountDetailDirect.test.js.map
+//# sourceMappingURL=BankAccountDetailsOrderDirect.test.js.map

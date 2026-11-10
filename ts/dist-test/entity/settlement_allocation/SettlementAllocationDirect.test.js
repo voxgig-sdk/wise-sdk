@@ -9,7 +9,7 @@ const live_runner_1 = require("../../live-runner");
 const __1 = require("../../..");
 const utility_1 = require("../../utility");
 (0, utility_1.loadEnvLocal)(__dirname + '/../../../.env.local');
-(0, node_test_1.describe)('SettlementAllocationResponseContentDirect', async () => {
+(0, node_test_1.describe)('SettlementAllocationDirect', async () => {
     // Per-test live pacing. Delay is read from sdk-test-control.json's
     // `test.live.delayMs`; only sleeps when WISE_TEST_LIVE=TRUE.
     (0, node_test_1.afterEach)((0, utility_1.liveDelay)('WISE_TEST_LIVE'));
@@ -21,25 +21,25 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)('function' === typeof sdk.direct);
         (0, node_assert_1.default)('function' === typeof sdk.prepare);
     });
-    (0, node_test_1.test)('direct-load-settlement_allocation_response_content', async (t) => {
+    (0, node_test_1.test)('direct-load-settlement_allocation', async (t) => {
         if (liveScenariosActive()) {
             t.skip('Covered by live operation scenarios');
             return;
         }
         const setup = directSetup({ id: 'direct01' });
-        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-settlement_allocation_response_content', setup.live))
+        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-settlement_allocation', setup.live))
             return;
         const { client, calls } = setup;
         const params = {};
         const query = {};
         if (setup.live) {
-            params.allocation_id = "f47ac10b-58cc-4372-a567-0e02b2c3d479";
+            params.id = "f47ac10b-58cc-4372-a567-0e02b2c3d479";
         }
         else {
-            params.allocation_id = 'direct01';
+            params.id = 'direct01';
         }
         const result = await client.direct({
-            path: 'settlement/allocations/{allocation_id}',
+            path: 'settlement/allocations/{id}',
             method: 'GET',
             params,
             query,
@@ -72,7 +72,7 @@ function liveScenariosActive() { return false && process.env.WISE_TEST_LIVE === 
 function directSetup(mockres) {
     const calls = [];
     const env = (0, utility_1.envOverride)({
-        'WISE_TEST_SETTLEMENT_ALLOCATION_RESPONSE_CONTENT_ENTID': {},
+        'WISE_TEST_SETTLEMENT_ALLOCATION_ENTID': {},
         'WISE_TEST_LIVE': 'FALSE',
         'WISE_APIKEY': '',
     });
@@ -84,12 +84,12 @@ function directSetup(mockres) {
         const client = new __1.WiseSDK(Object.assign({}, (0, utility_1.liveClientOptions)(), { system: { fetch: transport.fetch },
             apikey: env.WISE_APIKEY,
         }));
-        let idmap = env['WISE_TEST_SETTLEMENT_ALLOCATION_RESPONSE_CONTENT_ENTID'];
+        let idmap = env['WISE_TEST_SETTLEMENT_ALLOCATION_ENTID'];
         if ('string' === typeof idmap && idmap.startsWith('{')) {
             idmap = JSON.parse(idmap);
         }
         // A path parameter's example stands in for an id *_ENTID does not give.
-        idmap = Object.assign({ allocation01: 'f47ac10b-58cc-4372-a567-0e02b2c3d479' }, 'object' === typeof idmap ? idmap : {});
+        idmap = Object.assign({ settlement_allocation01: 'f47ac10b-58cc-4372-a567-0e02b2c3d479' }, 'object' === typeof idmap ? idmap : {});
         return { client, calls, live, idmap, transport };
     }
     const mockFetch = async (url, init) => {
@@ -123,4 +123,4 @@ function unwrapListData(data) {
     }
     return null;
 }
-//# sourceMappingURL=SettlementAllocationResponseContentDirect.test.js.map
+//# sourceMappingURL=SettlementAllocationDirect.test.js.map

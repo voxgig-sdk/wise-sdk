@@ -100,11 +100,8 @@ export interface Balance {
     modificationTime?: string;
     name?: string | null;
     overdraft?: Record<string, any>;
-    quoteId?: string;
     reservedAmount?: Record<string, any>;
-    sourceBalanceId?: number;
     state: string;
-    targetBalanceId?: number;
     targetRecipientId: number;
     totalAvailable?: Record<string, any>;
     totalCash?: Record<string, any>;
@@ -124,32 +121,28 @@ export interface BalanceListMatch {
 export interface BalanceCreateData {
     hold_limit_breach_id?: number;
     profile_id: number;
-    amount?: Record<string, any>;
     currency: string;
     name?: string | null;
-    quoteId?: string;
-    sourceBalanceId?: number;
     state: string;
-    targetBalanceId?: number;
     targetRecipientId: number;
     type: string;
+    $action?: string;
+    [action: string]: any;
 }
 export interface BalanceRemoveMatch {
     id: number;
     profile_id: number;
 }
 export interface BalanceStatement {
-    amount?: Record<string, any>;
-    date?: string;
-    details?: Record<string, any>;
-    exchangeDetails?: Record<string, any> | null;
+    accountHolder?: Record<string, any>;
+    bankDetails?: Record<string, any> | null;
+    endOfStatementBalance?: Record<string, any>;
     id?: string;
-    referenceNumber?: string;
-    runningBalance?: Record<string, any>;
-    totalFees?: Record<string, any>;
-    type?: string;
+    issuer?: Record<string, any>;
+    query?: Record<string, any>;
+    transactions?: any[];
 }
-export interface BalanceStatementListMatch {
+export interface BalanceStatementLoadMatch {
     id: number;
     profile_id: number;
     currency: string;
@@ -159,30 +152,37 @@ export interface BalanceStatementListMatch {
     type?: string;
 }
 export interface BankAccountDetail {
-    accountDetailsId?: number;
     active?: boolean;
-    balanceId?: number | null;
-    creationTime?: string;
     currency?: string;
     id?: string;
     internationalDetails?: Record<string, any> | null;
     localDetails?: Record<string, any>;
-    modificationTime?: string;
     reason?: string;
-    requirements?: any[];
-    status?: string;
     targetAccountId: number;
-}
-export interface BankAccountDetailListMatch {
-    profile_id: number;
-    currency: string;
 }
 export interface BankAccountDetailCreateData {
     payment_id?: number;
     profile_id: number;
-    currency: string;
     reason?: string;
     targetAccountId: number;
+}
+export interface BankAccountDetailsOrder {
+    accountDetailsId?: number;
+    balanceId?: number | null;
+    creationTime?: string;
+    currency?: string;
+    id?: string;
+    modificationTime?: string;
+    requirements?: any[];
+    status?: string;
+}
+export interface BankAccountDetailsOrderListMatch {
+    profile_id: number;
+    currency: string;
+}
+export interface BankAccountDetailsOrderCreateData {
+    profile_id: number;
+    currency: string;
 }
 export interface BatchGroup {
     alreadyPaid?: boolean;
@@ -470,32 +470,22 @@ export interface CardOrderUpdateData {
     [action: string]: any;
 }
 export interface CardSensitiveDetail {
-    cardholderName?: string;
-    cvv2?: string;
     encryptedPayload: string;
-    expiryDate?: string;
     key?: string;
     keyVersion: number;
-    nonce?: string;
-    pan?: string;
-    pin?: string;
     version?: number;
 }
 export interface CardSensitiveDetailLoadMatch {
-    cardholderName?: string;
-    cvv2?: string;
     encryptedPayload?: string;
-    expiryDate?: string;
     key?: string;
     keyVersion?: number;
-    nonce?: string;
-    pan?: string;
-    pin?: string;
     version?: number;
 }
 export interface CardSensitiveDetailCreateData {
     encryptedPayload: string;
     keyVersion: number;
+    $action?: string;
+    [action: string]: any;
 }
 export interface CardTransaction {
     approvalCode?: string | null;
@@ -566,15 +556,17 @@ export interface ClaimAccountCreateData {
     registrationCode: string;
 }
 export interface Comparison {
-    alias?: string;
-    id?: number;
-    logos?: Record<string, any>;
-    name?: string;
-    partner?: boolean;
-    quotes?: any[];
-    type?: string;
+    amount?: number;
+    amountType?: string;
+    providerCountry?: string | null;
+    providerTypes?: any[];
+    providers?: any[];
+    sourceCountry?: string | null;
+    sourceCurrency?: string | null;
+    targetCountry?: string | null;
+    targetCurrency?: string | null;
 }
-export interface ComparisonListMatch {
+export interface ComparisonLoadMatch {
     exclude_partner?: boolean;
     filter?: string;
     include_wise?: boolean;
@@ -605,23 +597,6 @@ export interface ContactCreateData {
     is_direct_identifier_creation: boolean;
     identifier?: string;
     targetCurrency?: string;
-}
-export interface CreateThirdPartyTransferResponseContent {
-    details: Record<string, any>;
-    originalTransferId: string;
-    originator: any;
-    quote: string;
-    sourceAccount?: number;
-    targetAccount: number;
-}
-export interface CreateThirdPartyTransferResponseContentCreateData {
-    profile_id: number;
-    details: Record<string, any>;
-    originalTransferId: string;
-    originator: any;
-    quote: string;
-    sourceAccount?: number;
-    targetAccount: number;
 }
 export interface Currency {
     code?: string;
@@ -663,31 +638,17 @@ export interface DeliveryUpdateCreateData {
 }
 export interface DigitalWallet {
     activation: string;
-    activationData?: string;
-    cardDisplayName?: string;
-    cardLastDigits?: string;
-    cardNetwork?: string;
-    certificates: any[];
-    clientDeviceId: string;
-    clientWalletAccountId: string;
-    encryptedPassData?: string;
-    ephemeralKey?: string;
-    nonce: string;
-    nonceSignature: string;
-    opaquePaymentCard?: string;
     paymentTokens?: any[];
-    tokenServiceProvider?: string;
-    userAddress?: Record<string, any>;
     walletNames?: any[];
 }
 export interface DigitalWalletCreateData {
+    card_token: string;
+    payment_token_unique_reference?: string;
+    profile_id: number;
     activation: string;
-    certificates: any[];
-    clientDeviceId: string;
-    clientWalletAccountId: string;
-    nonce: string;
-    nonceSignature: string;
     walletNames?: any[];
+    $action?: string;
+    [action: string]: any;
 }
 export interface DirectDebitAccount {
     currency?: string;
@@ -837,6 +798,15 @@ export interface FundingCreateData {
     balanceId?: any;
     partnerReference?: any;
 }
+export interface GpiTracking {
+    identifier: string;
+    identifierType: string;
+    transactions?: any[];
+}
+export interface GpiTrackingCreateData {
+    identifier: string;
+    identifierType: string;
+}
 export interface HoldLimitBreach {
     amount?: number;
     closingReason?: string;
@@ -888,6 +858,8 @@ export interface JoseLoadMatch {
     algorithm: string;
     scope: string;
     version?: number;
+    $action?: string;
+    [action: string]: any;
 }
 export interface JoseCreateData {
     keyId?: string;
@@ -895,6 +867,8 @@ export interface JoseCreateData {
     scope?: string;
     validFrom?: string;
     validTill?: string;
+    $action?: string;
+    [action: string]: any;
 }
 export interface KycReview {
     createdAt?: string;
@@ -959,15 +933,6 @@ export interface LinkRequestCreateData {
     $action?: string;
     [action: string]: any;
 }
-export interface LookupGpiTrackingResponseContent {
-    identifier: string;
-    identifierType: string;
-    transactions?: any[];
-}
-export interface LookupGpiTrackingResponseContentCreateData {
-    identifier: string;
-    identifierType: string;
-}
 export interface Message {
     submissionData: Record<string, any>;
     type: string;
@@ -988,15 +953,8 @@ export interface MultiCurrencyAccountLoadMatch {
 }
 export interface MultiCurrencyAccountListMatch {
     profile_id: number;
-}
-export interface N3ds {
-    challengeStatus: string;
-    transactionReference: string;
-}
-export interface N3dsCreateData {
-    profile_id: number;
-    challengeStatus: string;
-    transactionReference: string;
+    $action?: string;
+    [action: string]: any;
 }
 export interface OneTimeToken {
     challenges?: any[];
@@ -1007,12 +965,13 @@ export interface OneTimeToken {
 export interface OneTimeTokenCreateData {
     profile_id: number;
     faceMap?: string;
+    $action?: string;
+    [action: string]: any;
 }
 export interface Ott {
     actionType?: string;
     challenges?: any[];
     oneTimeToken?: string;
-    otpCode?: string;
     userId?: number;
     validity?: number;
 }
@@ -1020,12 +979,13 @@ export interface OttLoadMatch {
     actionType?: string;
     challenges?: any[];
     oneTimeToken?: string;
-    otpCode?: string;
     userId?: number;
     validity?: number;
 }
 export interface OttCreateData {
-    otpCode?: string;
+    otpCode?: any;
+    $action?: string;
+    [action: string]: any;
 }
 export interface Payin {
     amount?: number;
@@ -1124,31 +1084,6 @@ export interface PaymentInstrumentCreateData {
     branchCode?: string;
     reference?: string;
     type: string;
-}
-export interface PaymentInstrumentDetailsResource {
-    accountNumber?: string;
-    accountOwnerDetails?: Record<string, any>;
-    bankCode?: string;
-    bankName?: string;
-    branchCode?: string;
-    disconnectReason?: string;
-    id?: string;
-    reference?: string;
-    status?: string;
-    type?: string;
-}
-export interface PaymentInstrumentDetailsResourceCreateData {
-    id: string;
-    profile_id: number;
-    accountNumber?: string;
-    accountOwnerDetails?: Record<string, any>;
-    bankCode?: string;
-    bankName?: string;
-    branchCode?: string;
-    disconnectReason?: string;
-    reference?: string;
-    status?: string;
-    type?: string;
     $action?: string;
     [action: string]: any;
 }
@@ -1509,10 +1444,10 @@ export interface ScaFacemapRemoveMatch {
     profile_id: number;
 }
 export interface ScaOtp {
-    obfuscatedPhoneNo?: string;
 }
 export interface ScaOtpCreateData {
-    obfuscatedPhoneNo?: string;
+    $action?: string;
+    [action: string]: any;
 }
 export interface ScaOtpRemoveMatch {
     phone_number_id: number;
@@ -1525,10 +1460,12 @@ export interface ScaSessionCreateData {
     $action?: string;
     [action: string]: any;
 }
-export interface SettlementAllocationResponseContent {
+export interface SettlementAllocation {
+    command: Record<string, any>;
     createdAt?: string;
     currency?: string;
     expectedTotalAmount?: number;
+    file: string;
     id?: string;
     nextPageToken?: string;
     paymentIntents?: any[];
@@ -1536,68 +1473,38 @@ export interface SettlementAllocationResponseContent {
     state?: string;
     updatedAt?: string;
 }
-export interface SettlementAllocationResponseContentLoadMatch {
-    allocation_id: string;
+export interface SettlementAllocationLoadMatch {
+    id: string;
     include_payment_intent?: boolean;
     page_size?: number;
     page_token?: string;
 }
-export interface SettlementAllocationResponseContentCreateData {
-    createdAt?: string;
-    currency?: string;
-    expectedTotalAmount?: number;
-    id?: string;
+export interface SettlementAllocationCreateData {
+    command: Record<string, any>;
+    createdAt: string;
+    currency: string;
+    expectedTotalAmount: number;
+    file: string;
+    id: string;
     nextPageToken?: string;
     paymentIntents?: any[];
-    paymentReference?: string;
-    state?: string;
-    updatedAt?: string;
-    $action?: string;
-    [action: string]: any;
+    paymentReference: string;
+    state: string;
+    updatedAt: string;
 }
 export interface Simulation {
-    amount?: Record<string, any>;
-    balanceId: number;
-    balancesAfter?: any[];
-    beneficiaryAccount?: string;
-    beneficiaryAddress?: Record<string, any>;
-    beneficiaryName?: string;
     business?: string;
-    cardNumber?: string;
-    channel?: string;
-    charges?: any[];
     created?: string;
     creationTime?: number;
-    currency: string;
-    currencyCode: string;
     description?: string | null;
     details?: Record<string, any>;
-    errorCode?: string;
     failure_reason_code?: string;
     hasActiveIssues?: boolean;
     id?: string;
-    instructedAmount?: number;
-    instructedCurrencyCode?: string;
     key?: string;
-    mcc?: number;
-    paymentReference?: string;
-    pos?: string;
-    previousInstructingAgents?: any[];
-    profileId: number;
     quote?: number;
     rate?: number;
-    ref?: Record<string, any>;
     reference?: string;
-    requestedAction?: string;
-    requirement?: string;
-    requirements?: any[];
-    senderAccount?: string;
-    senderAccountNumber?: string;
-    senderAddress?: Record<string, any>;
-    senderBank?: Record<string, any>;
-    senderBankCode?: string;
-    senderBic?: string;
-    senderName?: string;
     sourceAccount?: string;
     sourceCurrency?: string;
     sourceValue?: number;
@@ -1607,7 +1514,6 @@ export interface Simulation {
     targetCurrency?: string;
     targetValue?: number;
     transactionId?: number;
-    transactionType?: string;
     transferRequest?: string;
     user?: number;
     wise_id?: number;
@@ -1623,73 +1529,22 @@ export interface SimulationListMatch {
     kyc_review_id?: string;
 }
 export interface SimulationCreateData {
-    amount: Record<string, any>;
-    balanceId: number;
-    balancesAfter?: any[];
-    beneficiaryAccount?: string;
-    beneficiaryAddress?: Record<string, any>;
-    beneficiaryName?: string;
-    business?: string;
-    cardNumber?: string;
-    channel?: string;
-    charges?: any[];
-    created?: string;
-    creationTime?: number;
-    currency: string;
-    currencyCode: string;
-    description?: string | null;
-    details?: Record<string, any>;
-    errorCode?: string;
+    transfer_id: number;
     failure_reason_code?: string;
-    hasActiveIssues?: boolean;
-    id?: string;
-    instructedAmount?: number;
-    instructedCurrencyCode?: string;
-    key?: string;
-    mcc?: number;
-    paymentReference: string;
-    pos?: string;
-    previousInstructingAgents?: any[];
-    profileId: number;
-    quote?: number;
-    rate?: number;
-    ref?: Record<string, any>;
-    reference?: string;
-    requestedAction?: string;
-    requirement?: string;
-    requirements?: any[];
-    senderAccount?: string;
-    senderAccountNumber?: string;
-    senderAddress?: Record<string, any>;
-    senderBank?: Record<string, any>;
-    senderBankCode?: string;
-    senderBic?: string;
-    senderName?: string;
-    sourceAccount?: string;
-    sourceCurrency?: string;
-    sourceValue?: number;
-    state?: string;
-    status?: string;
-    targetAccount?: number;
-    targetCurrency?: string;
-    targetValue?: number;
-    transactionId?: number;
-    transactionType?: string;
-    transferRequest?: string;
-    user?: number;
-    wise_id?: number;
     $action?: string;
     [action: string]: any;
 }
 export interface SpendControl {
-    ruleId?: string;
+    ruleId?: number;
 }
 export interface SpendControlListMatch {
     application_id: string;
 }
 export interface SpendControlCreateData {
     application_id: string;
-    ruleId?: string;
+    ruleId?: number;
+    $action?: string;
+    [action: string]: any;
 }
 export interface SpendControlRemoveMatch {
     application_id: string;
@@ -1772,6 +1627,24 @@ export interface ThirdPartyTransfer {
 export interface ThirdPartyTransferLoadMatch {
     id: number;
     profile_id: number;
+}
+export interface ThirdPartyTransferCreateData {
+    profile_id: number;
+    details: Record<string, any>;
+    originalTransferId: string;
+    originator: Record<string, any>;
+    quote: string;
+    sourceAccount?: number;
+    targetAccount: number;
+}
+export interface ThreeDSecure {
+    challengeStatus: string;
+    transactionReference: string;
+}
+export interface ThreeDSecureCreateData {
+    profile_id: number;
+    challengeStatus: string;
+    transactionReference: string;
 }
 export interface Token {
     access_token?: string;

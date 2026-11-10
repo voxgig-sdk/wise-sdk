@@ -1,16 +1,16 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.LookupGpiTrackingResponseContentEntity = void 0;
+exports.ThreeDSecureEntity = void 0;
 const WiseEntityBase_1 = require("../WiseEntityBase");
-class LookupGpiTrackingResponseContentEntity extends WiseEntityBase_1.WiseEntityBase {
+class ThreeDSecureEntity extends WiseEntityBase_1.WiseEntityBase {
     constructor(client, entopts) {
         super(client, entopts);
-        this.name = 'lookup_gpi_tracking_response_content';
-        this.name_ = 'lookup_gpi_tracking_response_content';
-        this.Name = 'LookupGpiTrackingResponseContent';
+        this.name = 'three_d_secure';
+        this.name_ = 'three_d_secure';
+        this.Name = 'ThreeDSecure';
     }
     make() {
-        return new LookupGpiTrackingResponseContentEntity(this._client, this.entopts());
+        return new ThreeDSecureEntity(this._client, this.entopts());
     }
     async create(reqdata, ctrl) {
         const utility = this._utility;
@@ -98,11 +98,11 @@ class LookupGpiTrackingResponseContentEntity extends WiseEntityBase_1.WiseEntity
             }
             else {
                 // Off-happy-path (throw disabled): typed as any so the method's
-                // Promise<LookupGpiTrackingResponseContentEntity> return stays clean under strict null checks.
+                // Promise<ThreeDSecureEntity> return stays clean under strict null checks.
                 return undefined;
             }
         }
     }
 }
-exports.LookupGpiTrackingResponseContentEntity = LookupGpiTrackingResponseContentEntity;
-//# sourceMappingURL=LookupGpiTrackingResponseContentEntity.js.map
+exports.ThreeDSecureEntity = ThreeDSecureEntity;
+//# sourceMappingURL=ThreeDSecureEntity.js.map

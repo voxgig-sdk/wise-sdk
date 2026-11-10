@@ -21,15 +21,13 @@ const utility_1 = require("../../utility");
         (0, node_assert_1.default)('function' === typeof sdk.direct);
         (0, node_assert_1.default)('function' === typeof sdk.prepare);
     });
-    (0, node_test_1.test)('direct-list-balance_statement', async (t) => {
+    (0, node_test_1.test)('direct-load-balance_statement', async (t) => {
         if (liveScenariosActive()) {
             t.skip('Covered by live operation scenarios');
             return;
         }
-        const setup = directSetup([{ id: 'direct01' }, { id: 'direct02' }]);
-        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-list-balance_statement', setup.live))
-            return;
-        if ((0, utility_1.skipIfMissingIds)(t, setup, ["balance_statement01", "profile01"], LIVE_STRICT))
+        const setup = directSetup({ id: 'direct01' });
+        if ((0, utility_1.maybeSkipControl)(t, 'direct', 'direct-load-balance_statement', setup.live))
             return;
         const { client, calls } = setup;
         const params = {};
@@ -38,8 +36,8 @@ const utility_1 = require("../../utility");
             query.currency = "EUR";
             query.intervalEnd = "2025-04-30T23:59:59.999Z";
             query.intervalStart = "2025-03-01T00:00:00.000Z";
-            params.id = setup.idmap['balance_statement01'];
-            params.profile_id = setup.idmap['profile01'];
+            params.id = 64;
+            params.profile_id = 12345;
         }
         else {
             params.id = 'direct01';
@@ -53,19 +51,17 @@ const utility_1 = require("../../utility");
         });
         if (setup.live) {
             if (!result.ok || result.status < 200 || result.status >= 300) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list failed: ' + (0, utility_1.describeLive)(result));
+                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live load failed: ' + (0, utility_1.describeLive)(result));
             }
-            if (!(Array.isArray(unwrapListData(result.data)))) {
-                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live list returned no list: ' + (0, utility_1.describeLive)(result));
+            if (!(null != result.data)) {
+                return void (0, utility_1.liveMiss)(t, LIVE_STRICT, 'Live load returned no data: ' + (0, utility_1.describeLive)(result));
             }
         }
         else {
             (0, node_assert_1.default)(result.ok === true);
             (0, node_assert_1.default)(result.status === 200);
             (0, node_assert_1.default)(null != result.data);
-            const listArr = unwrapListData(result.data);
-            (0, node_assert_1.default)(Array.isArray(listArr));
-            (0, node_assert_1.default)(listArr.length === 2);
+            (0, node_assert_1.default)(result.data.id === 'direct01');
             (0, node_assert_1.default)(calls.length === 1);
             (0, node_assert_1.default)(calls[0].init.method === 'GET');
             (0, node_assert_1.default)(calls[0].url.includes('direct01'));
