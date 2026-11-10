@@ -61,6 +61,12 @@ in Wise's documentation.
 **No MCP server.** Wise runs its own hosted MCP server for its API, so this SDK does not
 generate one. The SDKs and the CLI are all here.
 
+**Not yet run with a token.** The only live calls so far are to `Currency().list()`, on
+Production and the Sandbox, which the live API answers without a token. Every other
+request was checked against a local server answering from the definition. Wise's
+descriptions are written in Redocly's Markdoc, and one parameter description in the
+generated documentation still shows an `admonition` tag as text.
+
 ## Entities, not endpoints
 
 This SDK exposes the API as **75 semantic entities** that you
