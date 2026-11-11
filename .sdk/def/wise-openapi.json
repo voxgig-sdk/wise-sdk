@@ -28218,7 +28218,7 @@
       "put": {
         "operationId": "transferCancel",
         "summary": "Cancel a transfer",
-        "description": "Transfers can be cancelled via API when they are in the `incoming_payment_waiting` state. \n\nIf the transfer is being held for compliance-related reasons or has moved into the `funds_converted` state, the API will return a **409 Conflict** error with the code `transfer.cancellation.not.allowed`.\n\n{% admonition type=\"info\" %}\nSome special conditions can apply for Embedded Solutions partners. Discuss with your implementation team for details.\n{% /admonition %}\n",
+        "description": "Transfers can be cancelled via API when they are in the `incoming_payment_waiting` state.\n\nThe response returns a `409 Conflict` error with the code `transfer.cancellation.not.allowed` if either of the following is true:\n  - The transfer is in the `processing` state and being held for compliance-related reasons.\n  - The transfer has moved into the `funds_converted` state.\n\n{% admonition type=\"info\" %}\nSome special conditions can apply for Embedded Solutions partners. Discuss with your implementation team for details.\n{% /admonition %}\n",
         "tags": [
           "transfer"
         ],
@@ -28247,7 +28247,7 @@
         ],
         "responses": {
           "200": {
-            "description": "Returns the cancelled transfer object, with or without an `originator` block depending on the type of transfer.",
+            "description": "Returns the transfer object with `status` set to `cancelled`. If the original transfer was a third-party transfer, the response includes the `originator` object.",
             "content": {
               "application/json": {
                 "schema": {
@@ -28283,7 +28283,7 @@
             }
           },
           "409": {
-            "description": "Transfer cannot be cancelled because it is in a non-cancellable state or has other restrictions. The error response will include the code `transfer.cancellation.not.allowed`.",
+            "description": "Transfer cannot be cancelled because it is in a non-cancellable state or has other restrictions. The error response includes the code `transfer.cancellation.not.allowed`.",
             "headers": {
               "X-External-Correlation-Id": {
                 "$ref": "#/components/headers/X-External-Correlation-Id"

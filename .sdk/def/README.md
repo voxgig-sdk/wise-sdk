@@ -6,9 +6,9 @@ byte for byte.
 | | |
 |---|---|
 | Source | https://docs.wise.com/_bundle/api-reference/@latest/index.json?download (the "Download OpenAPI description" link of the API reference at https://docs.wise.com) |
-| Fetched | 2026-11-10T15:19:35Z |
-| Size | 2236796 bytes |
-| sha256 | `26a173d3f063345da6b927b95a3f6f2f9fbbe2f3a93e362ee884f713d4e0594a` |
+| Fetched | 2026-11-11T12:15:31Z |
+| Size | 2236923 bytes |
+| sha256 | `997120fa28632d663d0dedb2004913ec6868e20c0f40715a1795cdf4bed40ce3` |
 | Version | `info.version` 2026Q4, OpenAPI 3.1.0 — 188 paths, 229 operations, 316 schemas, 31 webhooks, 56 tags |
 | Terms | The definition declares no `license` and no `termsOfService`. |
 
