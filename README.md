@@ -545,6 +545,7 @@ The OpenAPI spec(s) this SDK was generated from are kept in the
 [`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://api.wise.com/2026Q4](https://api.wise.com/2026Q4)
+- Documentation: [https://docs.wise.com](https://docs.wise.com)
 
 ## Security
 
