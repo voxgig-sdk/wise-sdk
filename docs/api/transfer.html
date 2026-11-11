@@ -167,7 +167,7 @@
 <td><code>PUT</code></td>
 <td><a href="#put-transferstransferidcancel"><code>/transfers/{transferId}/cancel</code></a></td>
 <td><code>update</code></td>
-<td>Returns the cancelled transfer object, with or without an <code>originator</code> block depending on the type of transfer</td>
+<td>Returns the transfer object with <code>status</code> set to <code>cancelled</code>. If the original transfer was a third-party transfer, the response includes the <code>originator</code> object</td>
 </tr>
 </tbody>
 </table>
@@ -974,11 +974,11 @@ const updated = await client.Transfer().update({ id: 1, business: 1, created: &q
 </tbody>
 </table>
 <h4 id="responses-7">Responses</h4>
-<h5 id="200-returns-the-cancelled-transfer-object-with-or-without-an-originator-block-depending-on-the-type-of-transfer" class="status" data-status="2xx">200: Returns the cancelled transfer object, with or without an <code>originator</code> block depending on the type of transfer</h5>
+<h5 id="200-returns-the-transfer-object-with-status-set-to-cancelled-if-the-original-transfer-was-a-third-party-transfer-the-response-includes-the-originator-object" class="status" data-status="2xx">200: Returns the transfer object with <code>status</code> set to <code>cancelled</code>. If the original transfer was a third-party transfer, the response includes the <code>originator</code> object</h5>
 <p><code>application/json</code></p>
 <p>The response is <code>object or object</code>.</p>
 <h5 id="404-transfer-not-found-4" class="status" data-status="4xx">404: Transfer not found</h5>
-<h5 id="409-transfer-cannot-be-cancelled-because-it-is-in-a-non-cancellable-state-or-has-other-restrictions-the-error-response-will-include-the-code-transfercancellationnotallowed" class="status" data-status="4xx">409: Transfer cannot be cancelled because it is in a non-cancellable state or has other restrictions. The error response will include the code <code>transfer.cancellation.not.allowed</code></h5>
+<h5 id="409-transfer-cannot-be-cancelled-because-it-is-in-a-non-cancellable-state-or-has-other-restrictions-the-error-response-includes-the-code-transfercancellationnotallowed" class="status" data-status="4xx">409: Transfer cannot be cancelled because it is in a non-cancellable state or has other restrictions. The error response includes the code <code>transfer.cancellation.not.allowed</code></h5>
 <h5 id="429-rate-limit-exceeded-retry-after-the-number-of-seconds-specified-in-the-retry-after-header-7" class="status" data-status="4xx">429: Rate limit exceeded. Retry after the number of seconds specified in the <code>Retry-After</code> header</h5>
 <p><code>application/json</code></p>
 <p>The response is <code>object</code>.</p>

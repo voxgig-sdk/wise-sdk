@@ -6,7 +6,7 @@ The PHP SDK for the Wise API — an entity-oriented client using PHP conventions
 
 The SDK exposes the API as capitalised, semantic **Entities** — for example `$client->AccountDetail()` — with named operations (`list`/`load`/`create`/`update`/`remove`) instead of raw URL paths and query strings. Working with resources and verbs keeps call sites self-describing and reduces cognitive load.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Other languages and the CLI live alongside this one — see
 > the [top-level README](../README.md).
 
 

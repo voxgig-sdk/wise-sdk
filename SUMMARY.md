@@ -1030,7 +1030,7 @@ Key fields to recognise:
 
 A transfer: create, list, get or cancel one, and its receipts and payout information.
 
-Results: Transfer successfully created.; Returns an array of transfer objects, with or without an `originator` block depending on the type of each transfer.; Returns the transfer object, with or without an `originator` block depending on the type of transfer.; Non objection certificate in PDF format.; Returns payout information for the transfer.; Transfer confirmation receipt in Wise branded PDF format.; The US Combined Receipt in Wise branded PDF format.; Returns the cancelled transfer object, with or without an `originator` block depending on the type of transfer.
+Results: Transfer successfully created.; Returns an array of transfer objects, with or without an `originator` block depending on the type of each transfer.; Returns the transfer object, with or without an `originator` block depending on the type of transfer.; Non objection certificate in PDF format.; Returns payout information for the transfer.; Transfer confirmation receipt in Wise branded PDF format.; The US Combined Receipt in Wise branded PDF format.; Returns the transfer object with `status` set to `cancelled`. If the original transfer was a third-party transfer, the response includes the `originator` object.
 
 SDK operations: `create`, `list`, `load`, `update`.
 

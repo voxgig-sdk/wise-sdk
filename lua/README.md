@@ -6,7 +6,7 @@ The Lua SDK for the Wise API — an entity-oriented client using Lua conventions
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client:AccountDetail()` — each with the same small set of operations (`list`, `load`, `create`, `update`, `remove`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Other languages and the CLI live alongside this one — see
 > the [top-level README](../README.md).
 
 

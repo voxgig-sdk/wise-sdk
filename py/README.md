@@ -9,7 +9,7 @@ carrying a small, uniform set of operations (`list`, `load`, `create`, `update`,
 paths and query strings. You work with named resources and verbs, which
 keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Other languages and the CLI live alongside this one — see
 > the [top-level README](../README.md).
 
 
