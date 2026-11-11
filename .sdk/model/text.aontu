@@ -19,6 +19,7 @@ main: kit: text: {
   title: 'Wise Platform API'
   summary: "The Wise Platform API is a REST-based interface that enables programmatic access to Wise's payment infrastructure: quotes, recipients, transfers, balances, cards and the profiles that own them."
   website: 'https://wise.com'
+  docs_url: 'https://docs.wise.com'
   about_md: `**Versions.** Wise versions the whole API by quarter, in the URL. This SDK is
 generated from version \`2026Q4\`: Production is \`https://api.wise.com/2026Q4\`, the default,
 and the Sandbox is \`https://api.wise-sandbox.com/2026Q4\`.
